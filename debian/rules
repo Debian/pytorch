@@ -1,0 +1,58 @@
+#!/usr/bin/make -f
+export DEB_BUILD_MAINT_OPTIONS   = hardening=+all
+export DEB_CFLAGS_MAINT_APPEND   = # -march=native
+export DEB_CXXFLAGS_MAINT_APPEND = # -march=native
+export DEB_LDFLAGS_MAINT_APPEND  = -Wl,--as-needed
+export LC_ALL=C.UTF-8
+export PYBUILD_DISABLE_python2 = 1 # No more Python2 Packages
+export PYBUILD_NAME = torch
+
+# configurations
+export BLAS = OpenBLAS
+export CFLAGS = $(CPPFLAGS) $(shell dpkg-buildflags --get CFLAGS)
+export CXXFLAGS = $(CPPFLAGS) $(shell dpkg-buildflags --get CXXFLAGS)
+export NO_CUDA = 1 # Will never build CUDA version. Use Anaconda/Pip please.
+export REL_WITH_DEB_INFO = 1
+export USE_CUDA = 0
+export USE_CUDNN = 0
+export USE_DISTRIBUTED = 1
+export USE_FBGEMM = 0
+export USE_FFMPEG = 1
+export USE_GLOO_IBVERBS = 1
+export USE_LEVELDB = 1
+export USE_LMDB = 1
+export USE_MIOPEN = 0
+export USE_MKLDNN = 0
+export USE_NNPACK = 0
+export USE_OPENCV = 1
+export USE_QNNPACK = 0
+export USE_REDIS = 0
+export USE_SYSTEM_LIBS = ON
+export USE_SYSTEM_NCCL = 0
+export USE_XNNPACK = ON
+export USE_ZSTD = 0
+
+
+%:
+	dh $@ -Spybuild --with python3
+
+override_dh_auto_clean:
+	dh_auto_clean
+	-find . -type d -name __pycache__ -exec rm -rf '{}' +
+
+override_dh_auto_build:
+	: # In order to avoid building everything twice.
+
+override_dh_auto_test:
+	:
+
+override_dh_auto_install:
+	python3 setup.py install --install-layout=deb \
+		--root=$(shell pwd)/debian/python3-torch/
+
+override_dh_python3:
+	dh_python3 --requires=requirements.txt --no-ext-rename
+	dh_numpy3
+
+override_dh_auto_clean:
+	-$(RM) -r build*

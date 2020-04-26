@@ -1,0 +1,1 @@
+Test-Command: python3 -c "import sys, torch as th; print(sys.version, th.__path__, th.__version__)"

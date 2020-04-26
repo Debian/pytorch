@@ -1,0 +1,5 @@
+pytorch (1.5.0-1) UNRELEASED; urgency=medium
+
+  * Initial release. (Closes: #853923)
+
+ -- Mo Zhou <lumin@debian.org>  Fri, 31 May 2019 06:29:43 +0000

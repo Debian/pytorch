@@ -1,0 +1,636 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Source: https://github.com/pytorch/pytorch
+Comment:
+ The source package has been repacked with all source code of dependency
+ projects embedded because it's difficult and worthless to get rid of all
+ the recursively nested embedded sources. Even if somebody spent a week to
+ get that done, upstream's volatile status will immediately destroy that
+ hardwork. I fully understand that technical gracefulness is good to have,
+ but at this point that is just not affordable.
+
+Files: *
+Copyright: 
+ 2016-     Facebook, Inc            (Adam Paszke)
+ 2014-     Facebook, Inc            (Soumith Chintala)
+ 2011-2014 Idiap Research Institute (Ronan Collobert)
+ 2012-2014 Deepmind Technologies    (Koray Kavukcuoglu)
+ 2011-2012 NEC Laboratories America (Koray Kavukcuoglu)
+ 2011-2013 NYU                      (Clement Farabet)
+ 2006-2010 NEC Laboratories America (Ronan Collobert, Leon Bottou, Iain Melvin, Jason Weston)
+ 2006      Idiap Research Institute (Samy Bengio)
+ 2001-2004 Idiap Research Institute (Ronan Collobert, Samy Bengio, Johnny Mariethoz)
+ 2016-present, Facebook Inc. All rights reserved.
+ 2015 Google Inc.
+ 2015 Yangqing Jia
+ 2013, 2014, 2015, the respective Caffe contributors
+ 2015, 2016 the respective contributors
+License: BSD-3-Clause
+Comment:
+ 1. aten/src/ATen/native/Distributions.cpp contains a function borrowed
+    from an MIT-licensed project.
+
+Files: aten/src/ATen/native/cpu/avx_mathfun.h
+Copyright: 2012 Giovanni Garberoglio
+License: ZLIB
+
+Files: binaries/*
+Copyright: 2016-present, Facebook, Inc.
+License: Apache-2.0
+
+Files: c10/util/Array.h
+Copyright: 2007-2017 Free Software Foundation, Inc.
+License: GPL-3.0+
+
+Files: c10/util/Optional.h
+       c10/util/flat_hash_map.h
+Copyright: 2011 - 2012 Andrzej Krzemienski.
+           2017 Malte Skarupke
+License: BSL-1.0
+
+Files: c10/util/AlignOf.h
+       c10/util/SmallVector.cpp
+       c10/util/SmallVector.h
+       c10/util/ArrayRef.h
+Copyright: LLVM Compiler Infrastructure contributors
+License: U-OF-I-BSD-LIKE
+
+Files: c10/test/util/either_test.cpp
+       c10/util/either.h
+Copyright: CryFS developers
+License: LGPL-3.0+
+
+Files: caffe2/contrib/aten/gen_op.py
+       caffe2/contrib/gloo/allgather_ops.cc
+       caffe2/contrib/gloo/allgather_ops.h
+       caffe2/contrib/gloo/reduce_scatter_ops.cc
+       caffe2/contrib/gloo/reduce_scatter_ops.h
+       caffe2/core/hip/common_miopen.h
+       caffe2/core/hip/common_miopen.hip
+       caffe2/core/net_async_tracing.cc
+       caffe2/core/net_async_tracing.h
+       caffe2/core/net_async_tracing_test.cc
+       caffe2/experiments/operators/fully_connected_op_decomposition.cc
+       caffe2/experiments/operators/fully_connected_op_decomposition.h
+       caffe2/experiments/operators/fully_connected_op_decomposition_gpu.cc
+       caffe2/experiments/operators/fully_connected_op_prune.cc
+       caffe2/experiments/operators/fully_connected_op_prune.h
+       caffe2/experiments/operators/fully_connected_op_sparse.cc
+       caffe2/experiments/operators/fully_connected_op_sparse.h
+       caffe2/experiments/operators/funhash_op.cc
+       caffe2/experiments/operators/funhash_op.h
+       caffe2/experiments/operators/sparse_funhash_op.cc
+       caffe2/experiments/operators/sparse_funhash_op.h
+       caffe2/experiments/operators/sparse_matrix_reshape_op.cc
+       caffe2/experiments/operators/sparse_matrix_reshape_op.h
+       caffe2/experiments/operators/tt_contraction_op.cc
+       caffe2/experiments/operators/tt_contraction_op.h
+       caffe2/experiments/operators/tt_contraction_op_gpu.cc
+       caffe2/experiments/operators/tt_pad_op.cc
+       caffe2/experiments/operators/tt_pad_op.h
+       caffe2/experiments/python/SparseTransformer.py
+       caffe2/experiments/python/convnet_benchmarks.py
+       caffe2/experiments/python/device_reduce_sum_bench.py
+       caffe2/experiments/python/funhash_op_test.py
+       caffe2/experiments/python/net_construct_bench.py
+       caffe2/experiments/python/sparse_funhash_op_test.py
+       caffe2/experiments/python/sparse_reshape_op_test.py
+       caffe2/experiments/python/tt_contraction_op_test.py
+       caffe2/experiments/python/tt_pad_op_test.py
+       caffe2/mobile/contrib/nnapi/dlnnapi.c
+       caffe2/mobile/contrib/nnapi/nnapi_benchmark.cc
+       caffe2/observers/profile_observer.cc
+       caffe2/observers/profile_observer.h
+       caffe2/operators/hip/conv_op_miopen.hip
+       caffe2/operators/hip/local_response_normalization_op_miopen.hip
+       caffe2/operators/hip/pool_op_miopen.hip
+       caffe2/operators/hip/spatial_batch_norm_op_miopen.hip
+       caffe2/operators/stump_func_op.cc
+       caffe2/operators/stump_func_op.cu
+       caffe2/operators/stump_func_op.h
+       caffe2/operators/unique_ops.cc
+       caffe2/operators/unique_ops.cu
+       caffe2/operators/unique_ops.h
+       caffe2/operators/upsample_op.cc
+       caffe2/operators/upsample_op.h
+       caffe2/opt/fusion.h
+       caffe2/python/layers/label_smooth.py
+       caffe2/python/modeling/get_entry_from_blobs.py
+       caffe2/python/modeling/get_entry_from_blobs_test.py
+       caffe2/python/modeling/gradient_clipping_test.py
+       caffe2/python/operator_test/unique_ops_test.py
+       caffe2/python/operator_test/upsample_op_test.py
+       caffe2/python/pybind_state_int8.cc
+       caffe2/python/transformations.py
+       caffe2/python/transformations_test.py
+       caffe2/quantization/server/batch_matmul_dnnlowp_op.cc
+       caffe2/quantization/server/batch_matmul_dnnlowp_op.h
+       caffe2/quantization/server/elementwise_linear_dnnlowp_op.cc
+       caffe2/quantization/server/elementwise_linear_dnnlowp_op.h
+       caffe2/quantization/server/elementwise_sum_relu_op.cc
+       caffe2/quantization/server/fully_connected_fake_lowp_op.cc
+       caffe2/quantization/server/fully_connected_fake_lowp_op.h
+       caffe2/utils/bench_utils.h
+Copyright: 2016, -present, Facebook, Inc.
+License: Apache-2.0
+
+Files: caffe2/contrib/opencl/OpenCL/cl.hpp
+       caffe2/mobile/contrib/libopencl-stub/include/CL/cl.h
+       caffe2/mobile/contrib/libopencl-stub/include/CL/cl.hpp
+       caffe2/mobile/contrib/libopencl-stub/include/CL/cl_ext.h
+       caffe2/mobile/contrib/libopencl-stub/include/CL/cl_gl.h
+       caffe2/mobile/contrib/libopencl-stub/include/CL/cl_gl_ext.h
+       caffe2/mobile/contrib/libopencl-stub/include/CL/cl_platform.h
+       caffe2/mobile/contrib/libopencl-stub/include/CL/opencl.h
+Copyright: 2008-2015, The Khronos Group Inc.
+License: Expat
+
+Files: caffe2/mobile/contrib/libvulkan-stub/include/vulkan/vk_platform.h
+       caffe2/mobile/contrib/libvulkan-stub/include/vulkan/vulkan.h
+Copyright: 2014-2016, The Khronos Group Inc.
+License: Apache-2.0
+
+Files: caffe2/mobile/contrib/libvulkan-stub/include/libvulkan-stub.h
+       caffe2/mobile/contrib/libvulkan-stub/src/libvulkan-stub.c
+Copyright: 2016-2017, ARM Limited and Contributors
+License: Expat
+
+Files: caffe2/mobile/contrib/nnapi/NeuralNetworks.h
+Copyright: 2017, The Android Open Source Project
+License: Apache-2.0
+
+Files: caffe2/operators/quantized/int8_utils.h
+Copyright: 2015, The Gemmlowp Authors.
+License: Apache-2.0
+
+Files: caffe2/operators/deform_conv_op.cu
+Copyright: 
+  2014-2017, The Regents of the University of California (Regents)
+  2014-2017, the Caffe contributors
+License: BSD-2-Clause
+
+Files: caffe2/image/transform_gpu.h
+Copyright: 2016, NVIDIA CORPORATION
+License: BSD-2-Clause
+
+Files: caffe2/test/caffe2_gtest_main.cc
+Copyright: 2006, Google Inc.
+License: BSD-3-Clause
+
+Files: modules/detectron/batch_permutation_op.cc
+ modules/detectron/batch_permutation_op.cu
+ modules/detectron/batch_permutation_op.h
+ modules/detectron/group_spatial_softmax_op.cc
+ modules/detectron/group_spatial_softmax_op.cu
+ modules/detectron/group_spatial_softmax_op.h
+ modules/detectron/ps_roi_pool_op.cc
+ modules/detectron/ps_roi_pool_op.h
+ modules/detectron/roi_pool_f_op.cc
+ modules/detectron/roi_pool_f_op.cu
+ modules/detectron/roi_pool_f_op.h
+ modules/detectron/sample_as_op.cc
+ modules/detectron/sample_as_op.cu
+ modules/detectron/sample_as_op.h
+ modules/detectron/select_smooth_l1_loss_op.cc
+ modules/detectron/select_smooth_l1_loss_op.cu
+ modules/detectron/select_smooth_l1_loss_op.h
+ modules/detectron/sigmoid_cross_entropy_loss_op.cc
+ modules/detectron/sigmoid_cross_entropy_loss_op.cu
+ modules/detectron/sigmoid_cross_entropy_loss_op.h
+ modules/detectron/sigmoid_focal_loss_op.cc
+ modules/detectron/sigmoid_focal_loss_op.cu
+ modules/detectron/sigmoid_focal_loss_op.h
+ modules/detectron/smooth_l1_loss_op.cc
+ modules/detectron/smooth_l1_loss_op.cu
+ modules/detectron/smooth_l1_loss_op.h
+ modules/detectron/softmax_focal_loss_op.cc
+ modules/detectron/softmax_focal_loss_op.cu
+ modules/detectron/softmax_focal_loss_op.h
+ modules/detectron/spatial_narrow_as_op.cc
+ modules/detectron/spatial_narrow_as_op.cu
+ modules/detectron/spatial_narrow_as_op.h
+ modules/detectron/upsample_nearest_op.cc
+ modules/detectron/upsample_nearest_op.h
+ modules/module_test/module_test_dynamic.cc
+ modules/rocksdb/rocksdb.cc
+Copyright: 2016, -present, Facebook, Inc.
+License: Apache-2.0
+
+Files: modules/detectron/ps_roi_pool_op.cu
+Copyright: 2016, -present, Facebook, Inc.
+License: Apache-2.0 or BSD-2-Clause
+
+Files: modules/detectron/upsample_nearest_op.cu
+Copyright: 2016, -present, Facebook, Inc.
+License: Apache-2.0 or BSD-3-Clause
+
+Files: scripts/apache_header.txt
+       scripts/apache_python.txt
+Copyright: 2016, -present, Facebook, Inc.
+License: Apache-2.0
+
+Files: tools/amd_build/pyHIPIFY/hipify_python.py
+Copyright: 2015-2016, Advanced Micro Devices, Inc.
+License: Expat
+
+Files: torch/_six.py
+Copyright: 2010-2017, Benjamin Peterson
+License: Expat
+
+Files: torch/csrc/jit/script/strtod.cpp
+       torch/csrc/utils/structseq.cpp
+Copyright: 2001-2014, Python Software Foundation
+License: Python
+ A copy of the python license can be found here:
+ https://github.com/python/cpython/blob/master/LICENSE
+
+Files: torch/csrc/utils/hash.h
+Copyright: Boost contributors and Pytorch contributors
+License: BSL-1.0
+
+Files: third_party/benchmark/*
+Copyright: 2018, Google Inc.
+           2016, Ismael Jimenez Martinez.
+           2017, Roman Lebedev.
+License: Apache-2.0
+
+Files: third_party/cpuinfo/*
+Copyright: 2010-2012, Marat Dukhan
+  2012-2017, Georgia Institute of Technology
+  2017, Georgia Institute of Technology
+  2017-2018, Facebook Inc.
+  2018, Marat Dukhan
+License: BSD-2-Clause
+
+Files: third_party/fbgemm/*
+Copyright: Facebook, Inc. and its affiliates.
+License: BSD-3-Clause
+
+Files: third_party/foxi/*
+Copyright: 2019, Lu Fang
+License: Expat
+
+Files: third_party/FP16/*
+Copyright: 2017, Facebook Inc.
+           2017, Georgia Institute of Technology
+           2012-2013, Christian Rau <rauy@users.sourceforge.net>
+           1993-2014, NVIDIA Corporation.
+License: Expat
+
+Files: third_party/FP16/third-party/eigen-half.h
+Copyright: Fabian Giesen, 2016
+License: MPL-2.0
+
+Files: third_party/FXdiv/*
+Copyright: 2016-2017, Marat Dukhan
+           2017, Facebook Inc.
+License: Expat
+
+Files: third_party/gemmlowp/*
+Copyright: 2015, Google Inc.
+  2015, petewarden.
+  2018, The gemmlowp Authors.
+  2016, Zhou Mo <cdluminate@gmail.com>
+License: Apache-2.0
+
+Files: third_party/gloo/*
+Copyright: 2017, -present, Facebook, Inc.
+License: BSD-3-Clause
+
+Files: third_party/googletest/*
+Copyright: 2003-2018, Google Inc.
+License: BSD-3-Clause
+
+Files: third_party/googletest/googlemock/scripts/generator/*
+       third_party/googletest/googlemock/scripts/upload.py
+       third_party/googletest/googletest/scripts/upload.py
+Copyright: 2007, Google Inc.
+  2007, Neal Norwitz
+  2009, Google Inc.
+  2009, Neal Norwitz
+License: Apache-2.0
+
+Files: third_party/miniz*
+Copyright: 2010-2014, Rich Geldreich and Tenacious Software LLC
+  2013-2014, RAD Game Tools and Valve Software
+License: Expat
+
+Files: third_party/neon2sse/*
+Copyright: 2012-2016 Intel Corporation.
+License: neon2sse-bsd-like
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions are met:
+ .
+ * Redistributions of source code must retain the above copyright notice,
+   this list of conditions and the following disclaimer.
+ .
+ * The name of the copyright holders may not be used to endorse or promote products
+   derived from this software without specific prior written permission.
+ .
+ This software is provided by the copyright holders and contributors "as is" and
+ any express or implied warranties, including, but not limited to, the implied
+ warranties of merchantability and fitness for a particular purpose are disclaimed.
+ In no event shall the Intel Corporation or contributors be liable for any direct,
+ indirect, incidental, special, exemplary, or consequential damages
+ (including, but not limited to, procurement of substitute goods or services;
+ loss of use, data, or profits; or business interruption) however caused
+ and on any theory of liability, whether in contract, strict liability,
+ or tort (including negligence or otherwise) arising in any way out of
+ the use of this software, even if advised of the possibility of such damage.
+
+Files: third_party/NNPACK/*
+Copyright: 2015-2017, Georgia Institute of Technology
+  2017, Facebook Inc.
+License: BSD-2-Clause
+
+Files: third_party/onnx/*
+Copyright: Facebook, Inc. and Microsoft Corporation.
+License: Expat
+
+Files: third_party/psimd/*
+Copyright: 2014-2017, Georgia Institute of Technology
+  2017, Facebook Inc.
+License: Expat
+
+Files: third_party/pthreadpool/*
+Copyright: 2015-2017, Georgia Institute of Technology
+  2017, Facebook Inc.
+License: BSD-2-Clause
+
+Files: third_party/pybind11/*
+Copyright: 2016 Wenzel Jakob <wenzel.jakob@epfl.ch>
+License: BSD-3-Clause
+
+Files: third_party/python-enum/*
+Copyright: Ethan Furman <ethan@stoneleaf.us>
+License: BSD-3-Clause
+
+Files: third_party/python-peachpy/*
+Copyright: 2017, Facebook Inc.
+           2013-2017, Georgia Institute of Technology
+License: BSD-2-Clause
+
+Files: third_party/python-six/*
+Copyright: 2010-2017, Benjamin Peterson
+License: Expat
+
+Files: third_party/QNNPACK/*
+Copyright: Facebook, Inc. and its affiliates.
+License: BSD-3-Clause
+Comment:
+ Files: third_party/QNNPACK/src/requantization/gemmlowp-neon.c
+        third_party/QNNPACK/src/requantization/gemmlowp-scalar.h
+        third_party/QNNPACK/src/requantization/gemmlowp-sse.h
+ Copyright: Facebook, Inc. and its affiliates.
+ License: Apache-2.0
+ .
+ Files: third_party/QNNPACK/deps/clog/*
+ Copyright: 2017, Georgia Institute of Technology
+            2017-2018, Facebook Inc.
+            2018, Marat Dukhan
+ License: BSD-2-Clause
+
+Files: third_party/sleef/*
+Copyright: 2010-2018 Naoki Shibata
+License: BSL-1.0
+Comment:
+ Files: third_party/sleef/src/gencoef/dp.h
+        third_party/sleef/src/gencoef/gencoef.c
+        third_party/sleef/src/gencoef/ld.h
+        third_party/sleef/src/gencoef/qp.h
+        third_party/sleef/src/gencoef/simplexfr.c
+        third_party/sleef/src/gencoef/sp.h
+ Copyright: 2010-2018 Naoki Shibata
+ License: CC-BY-4.0
+
+Files: third_party/zstd/*
+Copyright: 2013-2018, Yann Collet
+	       2016, Przemyslaw Skibinski
+	       2016-2018, Facebook, Inc.
+License: BSD-3-Clause and GPL-2.0+
+
+Files: debian/*
+Copyright: 2019 Mo Zhou <cdluminate@gmail.com>
+License: Expat
+
+License: BSD-3-Clause
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ 1. Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+ 2. Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in the
+    documentation and/or other materials provided with the distribution.
+ 3. Neither the name of the University nor the names of its contributors
+    may be used to endorse or promote products derived from this software
+    without specific prior written permission.
+ .
+ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+ ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT 
+ LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR 
+ A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE HOLDERS OR
+ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, 
+ EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, 
+ PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
+ PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF 
+ LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING 
+ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS 
+ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+License: BSD-2-Clause
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions are met:
+ .
+ * Redistributions of source code must retain the above copyright notice, this
+   list of conditions and the following disclaimer.
+ .
+ * Redistributions in binary form must reproduce the above copyright notice,
+   this list of conditions and the following disclaimer in the documentation
+   and/or other materials provided with the distribution.
+ .
+ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+ FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+ SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+ CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+ OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+License: ZLIB
+ This software is provided 'as-is', without any express or implied
+ warranty.  In no event will the authors be held liable for any damages
+ arising from the use of this software.
+ .
+ Permission is granted to anyone to use this software for any purpose,
+ including commercial applications, and to alter it and redistribute it
+ freely, subject to the following restrictions:
+ .
+ 1. The origin of this software must not be misrepresented; you must not
+    claim that you wrote the original software. If you use this software
+    in a product, an acknowledgment in the product documentation would be
+    appreciated but is not required.
+ 2. Altered source versions must be plainly marked as such, and must not be
+    misrepresented as being the original software.
+ 3. This notice may not be removed or altered from any source distribution.
+
+License: Apache-2.0
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+ .
+ http://www.apache.org/licenses/LICENSE-2.0
+ .
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+ .
+ On Debian systems, the complete text of the Apache version 2.0 license
+ can be found in "/usr/share/common-licenses/Apache-2.0".
+
+License: GPL-3.0+
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
+ .
+ This package is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ .
+ You should have received a copy of the GNU General Public License
+ along with this program. If not, see <http://www.gnu.org/licenses/>.
+ .
+ On Debian systems, the complete text of the GNU General
+ Public License version 3 can be found in "/usr/share/common-licenses/GPL-3".
+
+License: LGPL-3.0+
+ This package is free software; you can redistribute it and/or
+ modify it under the terms of the GNU Lesser General Public
+ License as published by the Free Software Foundation; either
+ version 3 of the License, or (at your option) any later version.
+ .
+ This package is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ Lesser General Public License for more details.
+ .
+ You should have received a copy of the GNU General Public License
+ along with this program. If not, see <http://www.gnu.org/licenses/>.
+ .
+ On Debian systems, the complete text of the GNU Lesser General
+ Public License can be found in "/usr/share/common-licenses/LGPL-3".
+
+License: Expat
+ Permission is hereby granted, free of charge, to any person obtaining a
+ copy of this software and associated documentation files (the "Software"),
+ to deal in the Software without restriction, including without limitation
+ the rights to use, copy, modify, merge, publish, distribute, sublicense,
+ and/or sell copies of the Software, and to permit persons to whom the
+ Software is furnished to do so, subject to the following conditions:
+ .
+ The above copyright notice and this permission notice shall be included
+ in all copies or substantial portions of the Software.
+ .
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+ OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+ MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+ IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+ CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, 
+ TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE 
+ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+License: BSL-1.0
+ Boost Software License - Version 1.0 - August 17th, 2003
+ .
+ Permission is hereby granted, free of charge, to any person or organization
+ obtaining a copy of the software and accompanying documentation covered by
+ this license (the "Software") to use, reproduce, display, distribute,
+ execute, and transmit the Software, and to prepare derivative works of the
+ Software, and to permit third-parties to whom the Software is furnished to
+ do so, all subject to the following:
+ .
+ The copyright notices in the Software and this entire statement, including
+ the above license grant, this restriction and the following disclaimer,
+ must be included in all copies of the Software, in whole or in part, and
+ all derivative works of the Software, unless such copies or derivative
+ works are solely in the form of machine-executable object code generated by
+ a source language processor.
+ .
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE, TITLE AND NON-INFRINGEMENT. IN NO EVENT
+ SHALL THE COPYRIGHT HOLDERS OR ANYONE DISTRIBUTING THE SOFTWARE BE LIABLE
+ FOR ANY DAMAGES OR OTHER LIABILITY, WHETHER IN CONTRACT, TORT OR OTHERWISE,
+ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+ DEALINGS IN THE SOFTWARE.
+
+License: GPL-2.0+
+ This package is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 2 of the License, or
+ (at your option) any later version.
+ .
+ This package is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ .
+ You should have received a copy of the GNU General Public License
+ along with this program. If not, see <http://www.gnu.org/licenses/>
+ .
+ On Debian systems, the complete text of the GNU General
+ Public License version 2 can be found in "/usr/share/common-licenses/GPL-2".
+
+License: MPL-2.0
+ /usr/share/common-licenses/MPL-2.0
+
+License: U-OF-I-BSD-LIKE
+ ==============================================================================
+ LLVM Release License
+ ==============================================================================
+ University of Illinois/NCSA
+ Open Source License
+ .
+ Copyright (c) 2003-2017 University of Illinois at Urbana-Champaign.
+ All rights reserved.
+ .
+ Developed by:
+ .
+     LLVM Team
+ .
+     University of Illinois at Urbana-Champaign
+ .
+     http://llvm.org
+ .
+ Permission is hereby granted, free of charge, to any person obtaining a copy of
+ this software and associated documentation files (the "Software"), to deal with
+ the Software without restriction, including without limitation the rights to
+ use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
+ of the Software, and to permit persons to whom the Software is furnished to do
+ so, subject to the following conditions:
+ .
+     * Redistributions of source code must retain the above copyright notice,
+       this list of conditions and the following disclaimers.
+ .
+     * Redistributions in binary form must reproduce the above copyright notice,
+       this list of conditions and the following disclaimers in the
+       documentation and/or other materials provided with the distribution.
+ .
+     * Neither the names of the LLVM Team, University of Illinois at
+       Urbana-Champaign, nor the names of its contributors may be used to
+       endorse or promote products derived from this Software without specific
+       prior written permission.
+ .
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+ FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL THE
+ CONTRIBUTORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS WITH THE
+ SOFTWARE.

@@ -2,42 +2,80 @@ Source: pytorch
 Section: science
 Homepage: https://pytorch.org/
 Priority: optional
-Standards-Version: 4.3.0
+Standards-Version: 4.5.0
 Vcs-Git: https://salsa.debian.org/deeplearning-team/pytorch.git
 Vcs-Browser: https://salsa.debian.org/deeplearning-team/pytorch
-Maintainer: Mo Zhou <cdluminate@gmail.com>
+Maintainer: Mo Zhou <lumin@debian.org>
 Build-Depends:
  cmake,
  debhelper-compat (= 12),
+ dh-exec,
  dh-python,
  libasio-dev,
- libopenblas-dev,
+ libavcodec-dev,
+ libcpuinfo-dev,
+ libfp16-dev,
+ libfxdiv-dev,
+ libleveldb-dev,
+ liblmdb-dev,
+ libonnx-dev,
+ libopenblas-dev | libblas-dev,
+ libopencv-dev,
+ libprotobuf-dev,
+ libprotoc-dev,
+ libpsimd-dev,
+ libpthreadpool-dev,
+ libxnnpack-dev,
+ ninja-build,
+ protobuf-compiler,
  python,
  python-yaml,
  python3-all,
  python3-all-dev,
  python3-cffi,
  python3-numpy,
+ python3-onnx,
  python3-setuptools,
  python3-yaml,
- protobuf-compiler,
- libprotobuf-dev,
- ninja-build,
 
 Package: python3-torch
 Architecture: any
-Depends:
- python3 (>= 3.5),
- python3-cffi,
- python3-numpy,
- ${misc:Depends},
- ${shlibs:Depends},
- ${python3:Depends},
-Description: Tensors and Dynamic neural networks in Python (CPU Version)
+Depends: ${misc:Depends}, ${shlibs:Depends}, ${python3:Depends},
+Description: Tensors and Dynamic neural networks in Python with strong GPU acceleration
  PyTorch is a Python package that provides two high-level features:
- (1) Tensor computation (like NumPy) with strong GPU acceleration;
- (2) Deep neural networks built on a tape-based autograd system.
- You can reuse your favorite Python packages such as NumPy, SciPy and
- Cython to extend PyTorch when needed.
  .
- This version is CPU-only.
+ (1) Tensor computation (like NumPy) with strong GPU acceleration
+ (2) Deep neural networks built on a tape-based autograd system
+ .
+ You can reuse your favorite Python packages such as NumPy, SciPy and Cython
+ to extend PyTorch when needed.
+ .
+ This is the CPU-only version of PyTorch and Caffe2 (Python interface).
+
+Package: libtorch-dev
+Architecture: any
+Depends: ${misc:Depends}, libtorch1 (= ${binary:Depends})
+Description: Tensors and Dynamic neural networks in Python with strong GPU acceleration
+ PyTorch is a Python package that provides two high-level features:
+ .
+ (1) Tensor computation (like NumPy) with strong GPU acceleration
+ (2) Deep neural networks built on a tape-based autograd system
+ .
+ You can reuse your favorite Python packages such as NumPy, SciPy and Cython
+ to extend PyTorch when needed.
+ .
+ This is the CPU-only version of PyTorch and Caffe2 (Development files).
+
+Package: libtorch1
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends},
+Description: Tensors and Dynamic neural networks in Python with strong GPU acceleration
+ PyTorch is a Python package that provides two high-level features:
+ .
+ (1) Tensor computation (like NumPy) with strong GPU acceleration
+ (2) Deep neural networks built on a tape-based autograd system
+ .
+ You can reuse your favorite Python packages such as NumPy, SciPy and Cython
+ to extend PyTorch when needed.
+ .
+ This is the CPU-only version of PyTorch and Caffe2 (Shared Objects).

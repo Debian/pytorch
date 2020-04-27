@@ -5,7 +5,9 @@ Priority: optional
 Standards-Version: 4.5.0
 Vcs-Git: https://salsa.debian.org/deeplearning-team/pytorch.git
 Vcs-Browser: https://salsa.debian.org/deeplearning-team/pytorch
-Maintainer: Mo Zhou <lumin@debian.org>
+Maintainer: Debian Deep Learning Team <debian-science-maintainers@lists.alioth.debian.org>
+Uploaders: Mo Zhou <lumin@debian.org>,
+Rules-Requires-Root: no
 Build-Depends:
  cmake,
  debhelper-compat (= 12),

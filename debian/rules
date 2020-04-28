@@ -43,6 +43,10 @@ override_dh_auto_clean:
 	dh_auto_clean
 	-find . -type d -name __pycache__ -exec rm -rf '{}' +
 
+override_dh_auto_configure:
+	cd third_party/; ln -s /usr/src/googletest .
+	dh_auto_configure
+
 override_dh_auto_build:
 	: # In order to avoid building everything twice.
 
@@ -59,3 +63,4 @@ override_dh_python3:
 
 override_dh_auto_clean:
 	-$(RM) -r build*
+	-$(RM) -f third_party/googletest

@@ -68,7 +68,8 @@ override_dh_auto_install:
 		ln -s /usr/include/torch . ;\
 		ln -s /usr/include/caffe2 . ;\
 		ln -s /usr/include/ATen . ;\
-		ln -s /usr/include/c10 .
+		ln -s /usr/include/c10 . ;\
+		ln -s /usr/include/TH .
 	# move the (public) shared libs out of the python package
 	mkdir -p debian/libtorch1/usr/lib/$(DEB_HOST_MULTIARCH)/
 	-mv debian/python3-torch/usr/lib/python3*/dist-packages/torch/lib/*.so.* \

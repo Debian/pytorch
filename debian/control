@@ -45,7 +45,8 @@ Build-Depends:
 
 Package: python3-torch
 Architecture: any
-Depends: ${misc:Depends}, ${shlibs:Depends}, ${python3:Depends},
+Depends: ${misc:Depends}, ${shlibs:Depends}, ${python3:Depends}, libtorch1 (= ${binary:Version}),
+Recommends: python3-hypothesis,
 Description: Tensors and Dynamic neural networks in Python with strong GPU acceleration
  PyTorch is a Python package that provides two high-level features:
  .

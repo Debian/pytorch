@@ -35,6 +35,13 @@ export USE_XNNPACK = ON
 export USE_ZMQ = ON
 export USE_ZSTD = OFF
 
+ifneq (,$(filter parallel=%,$(DEB_BUILD_OPTIONS)))
+  JOBS := $(patsubst parallel=%,%,$(filter parallel=%,$(DEB_BUILD_OPTIONS)))
+else
+  JOBS := 8
+endif
+export MAX_JOBS := $(JOBS)
+
 
 %:
 	dh $@ -Spybuild --with python3

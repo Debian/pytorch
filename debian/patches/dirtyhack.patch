@@ -54,7 +54,7 @@ Author: Mo Zhou
  cmake_dependent_option(
      USE_NUMA "Use NUMA. Only available on Linux." ON
      "LINUX" OFF)
-@@ -174,10 +174,10 @@
+@@ -174,16 +174,16 @@
  option(USE_NUMPY "Use NumPy" ON)
  option(USE_OBSERVERS "Use observers module." OFF)
  option(USE_OPENCL "Use OpenCL" OFF)
@@ -67,6 +67,13 @@ Author: Mo Zhou
  option(USE_PYTORCH_QNNPACK "Use ATen/QNNPACK (quantized 8-bit operators)" ON)
  option(USE_REDIS "Use Redis" OFF)
  option(USE_ROCKSDB "Use RocksDB" OFF)
+ option(USE_SNPE "Use Qualcomm's SNPE library" OFF)
+ option(USE_SYSTEM_EIGEN_INSTALL
+-    "Use system Eigen instead of the one under third_party" OFF)
++	"Use system Eigen instead of the one under third_party" ON)
+ option(USE_TENSORRT "Using Nvidia TensorRT library" OFF)
+ option(USE_XNNPACK "Use XNNPACK" ON)
+ option(USE_ZMQ "Use ZMQ" OFF)
 @@ -208,6 +208,8 @@
  # Used when building Caffe2 through setup.py
  option(BUILDING_WITH_TORCH_LIBS "Tell cmake if Caffe2 is being built alongside torch libs" ON)
@@ -341,14 +348,17 @@ Author: Mo Zhou
  # ---[ QNNPACK library
  SET(PYTORCH_QNNPACK_INIT_SRCS
    src/init.c
-@@ -291,33 +231,25 @@
+@@ -289,69 +229,56 @@
+ 
+ # ---[ Configure clog
  IF(NOT TARGET clog)
-   SET(CLOG_BUILD_TESTS OFF CACHE BOOL "")
-   SET(CLOG_RUNTIME_TYPE "${CPUINFO_RUNTIME_TYPE}" CACHE STRING "")
+-  SET(CLOG_BUILD_TESTS OFF CACHE BOOL "")
+-  SET(CLOG_RUNTIME_TYPE "${CPUINFO_RUNTIME_TYPE}" CACHE STRING "")
 -  ADD_SUBDIRECTORY(
 -    "${CLOG_SOURCE_DIR}"
 -    "${CONFU_DEPENDENCIES_BINARY_DIR}/clog")
-+  include_directories(${CMAKE_SOURCE_DIR}/debian/clog)
++	add_library(clog STATIC ${CMAKE_SOURCE_DIR}/debian/clog/src/clog.c
++		${CMAKE_SOURCE_DIR}/debian/clog/include/clog.h)
    # We build static version of clog but a dynamic library may indirectly depend on it
 -  SET_PROPERTY(TARGET clog PROPERTY POSITION_INDEPENDENT_CODE ON)
 +  #SET_PROPERTY(TARGET clog PROPERTY POSITION_INDEPENDENT_CODE ON)
@@ -383,7 +393,12 @@ Author: Mo Zhou
  ENDIF()
  IF(PYTORCH_QNNPACK_CUSTOM_THREADPOOL)
    # Depend on pthreadpool interface, but not on implementation.
-@@ -329,29 +261,25 @@
+   # This is used when QNNPACK user (e.g. Caffe2) provides its own threadpool implementation.
+-  TARGET_LINK_LIBRARIES(pytorch_qnnpack PUBLIC pthreadpool_interface)
++  TARGET_LINK_LIBRARIES(pytorch_qnnpack PUBLIC pthreadpool)
+ ELSE()
+   TARGET_LINK_LIBRARIES(pytorch_qnnpack PUBLIC pthreadpool)
+ ENDIF()
  
  # ---[ Configure FXdiv
  IF(NOT TARGET fxdiv)
@@ -447,3 +462,13 @@ Author: Mo Zhou
    if(GCC_7)
      set(CMAKE_BUILD_TYPE ${OLD_CMAKE_BUILD_TYPE})
    endif()
+--- a/test/cpp/jit/CMakeLists.txt
++++ b/test/cpp/jit/CMakeLists.txt
+@@ -7,6 +7,7 @@
+   ${TORCH_ROOT}/test/cpp/common/main.cpp
+   ${JIT_TEST_ROOT}/gtest.cpp
+   ${JIT_TEST_SRCS})
++target_link_libraries(test_jit PRIVATE onnx_proto onnx)
+ 
+ set(JIT_TEST_DEPENDENCIES torch gtest)
+ 

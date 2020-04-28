@@ -9,7 +9,23 @@ Comment:
  but at this point that is just not affordable.
 
 Files: *
-Copyright: 
+ ./android/*
+ ./aten/*
+ ./benchmarks/*
+ ./binaries/*
+ ./c10/*
+ ./caffe2/*
+ ./cmake/*
+ ./docker/*
+ ./docs/*
+ ./ios/*
+ ./modules/*
+ ./scripts/*
+ ./submodules/*
+ ./test/*
+ ./tools/*
+ ./torch/*
+Copyright: Facebook, Inc. and its affiliates.
  2016-     Facebook, Inc            (Adam Paszke)
  2014-     Facebook, Inc            (Soumith Chintala)
  2011-2014 Idiap Research Institute (Ronan Collobert)
@@ -247,170 +263,430 @@ Files: torch/csrc/utils/hash.h
 Copyright: Boost contributors and Pytorch contributors
 License: BSL-1.0
 
-Files: third_party/benchmark/*
-Copyright: 2018, Google Inc.
-           2016, Ismael Jimenez Martinez.
-           2017, Roman Lebedev.
-License: Apache-2.0
-
-Files: third_party/cpuinfo/*
-Copyright: 2010-2012, Marat Dukhan
-  2012-2017, Georgia Institute of Technology
-  2017, Georgia Institute of Technology
-  2017-2018, Facebook Inc.
-  2018, Marat Dukhan
-License: BSD-2-Clause
-
-Files: third_party/fbgemm/*
-Copyright: Facebook, Inc. and its affiliates.
-License: BSD-3-Clause
-
-Files: third_party/foxi/*
-Copyright: 2019, Lu Fang
-License: Expat
-
-Files: third_party/FP16/*
-Copyright: 2017, Facebook Inc.
-           2017, Georgia Institute of Technology
-           2012-2013, Christian Rau <rauy@users.sourceforge.net>
-           1993-2014, NVIDIA Corporation.
-License: Expat
-
-Files: third_party/FP16/third-party/eigen-half.h
-Copyright: Fabian Giesen, 2016
-License: MPL-2.0
-
-Files: third_party/FXdiv/*
-Copyright: 2016-2017, Marat Dukhan
-           2017, Facebook Inc.
-License: Expat
-
-Files: third_party/gemmlowp/*
-Copyright: 2015, Google Inc.
-  2015, petewarden.
-  2018, The gemmlowp Authors.
-  2016, Zhou Mo <cdluminate@gmail.com>
-License: Apache-2.0
-
-Files: third_party/gloo/*
-Copyright: 2017, -present, Facebook, Inc.
-License: BSD-3-Clause
-
-Files: third_party/googletest/*
-Copyright: 2003-2018, Google Inc.
-License: BSD-3-Clause
-
-Files: third_party/googletest/googlemock/scripts/generator/*
-       third_party/googletest/googlemock/scripts/upload.py
-       third_party/googletest/googletest/scripts/upload.py
-Copyright: 2007, Google Inc.
-  2007, Neal Norwitz
-  2009, Google Inc.
-  2009, Neal Norwitz
-License: Apache-2.0
-
 Files: third_party/miniz*
 Copyright: 2010-2014, Rich Geldreich and Tenacious Software LLC
   2013-2014, RAD Game Tools and Valve Software
 License: Expat
 
-Files: third_party/neon2sse/*
-Copyright: 2012-2016 Intel Corporation.
-License: neon2sse-bsd-like
- Redistribution and use in source and binary forms, with or without
- modification, are permitted provided that the following conditions are met:
- .
- * Redistributions of source code must retain the above copyright notice,
-   this list of conditions and the following disclaimer.
- .
- * The name of the copyright holders may not be used to endorse or promote products
-   derived from this software without specific prior written permission.
- .
- This software is provided by the copyright holders and contributors "as is" and
- any express or implied warranties, including, but not limited to, the implied
- warranties of merchantability and fitness for a particular purpose are disclaimed.
- In no event shall the Intel Corporation or contributors be liable for any direct,
- indirect, incidental, special, exemplary, or consequential damages
- (including, but not limited to, procurement of substitute goods or services;
- loss of use, data, or profits; or business interruption) however caused
- and on any theory of liability, whether in contract, strict liability,
- or tort (including negligence or otherwise) arising in any way out of
- the use of this software, even if advised of the possibility of such damage.
-
-Files: third_party/NNPACK/*
-Copyright: 2015-2017, Georgia Institute of Technology
-  2017, Facebook Inc.
-License: BSD-2-Clause
-
-Files: third_party/onnx/*
-Copyright: Facebook, Inc. and Microsoft Corporation.
-License: Expat
-
-Files: third_party/psimd/*
-Copyright: 2014-2017, Georgia Institute of Technology
-  2017, Facebook Inc.
-License: Expat
-
-Files: third_party/pthreadpool/*
-Copyright: 2015-2017, Georgia Institute of Technology
-  2017, Facebook Inc.
-License: BSD-2-Clause
-
-Files: third_party/pybind11/*
-Copyright: 2016 Wenzel Jakob <wenzel.jakob@epfl.ch>
-License: BSD-3-Clause
-
-Files: third_party/python-enum/*
-Copyright: Ethan Furman <ethan@stoneleaf.us>
-License: BSD-3-Clause
-
-Files: third_party/python-peachpy/*
-Copyright: 2017, Facebook Inc.
-           2013-2017, Georgia Institute of Technology
-License: BSD-2-Clause
-
-Files: third_party/python-six/*
-Copyright: 2010-2017, Benjamin Peterson
-License: Expat
-
-Files: third_party/QNNPACK/*
-Copyright: Facebook, Inc. and its affiliates.
-License: BSD-3-Clause
-Comment:
- Files: third_party/QNNPACK/src/requantization/gemmlowp-neon.c
-        third_party/QNNPACK/src/requantization/gemmlowp-scalar.h
-        third_party/QNNPACK/src/requantization/gemmlowp-sse.h
- Copyright: Facebook, Inc. and its affiliates.
- License: Apache-2.0
- .
- Files: third_party/QNNPACK/deps/clog/*
- Copyright: 2017, Georgia Institute of Technology
-            2017-2018, Facebook Inc.
-            2018, Marat Dukhan
- License: BSD-2-Clause
-
-Files: third_party/sleef/*
-Copyright: 2010-2018 Naoki Shibata
-License: BSL-1.0
-Comment:
- Files: third_party/sleef/src/gencoef/dp.h
-        third_party/sleef/src/gencoef/gencoef.c
-        third_party/sleef/src/gencoef/ld.h
-        third_party/sleef/src/gencoef/qp.h
-        third_party/sleef/src/gencoef/simplexfr.c
-        third_party/sleef/src/gencoef/sp.h
- Copyright: 2010-2018 Naoki Shibata
- License: CC-BY-4.0
-
-Files: third_party/zstd/*
-Copyright: 2013-2018, Yann Collet
-	       2016, Przemyslaw Skibinski
-	       2016-2018, Facebook, Inc.
-License: BSD-3-Clause and GPL-2.0+
 
 Files: debian/*
-Copyright: 2019 Mo Zhou <cdluminate@gmail.com>
+Copyright: 2019-2020 Mo Zhou <lumin@debian.org>
 License: Expat
+
+################################################################################################################################################
+
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: FIXME
+Upstream-Contact: FIXME
+Source: FIXME
+Disclaimer: Autogenerated by licensecheck
+
+License: UNKNOWN
+ FIXME
+
+Files: ./binaries/benchmark_args.h
+ ./binaries/benchmark_helper.cc
+ ./binaries/benchmark_helper.h
+ ./binaries/convert_and_benchmark.cc
+ ./binaries/convert_caffe_image_db.cc
+ ./binaries/convert_db.cc
+ ./binaries/convert_encoded_to_raw_leveldb.cc
+ ./binaries/convert_image_to_tensor.cc
+ ./binaries/core_overhead_benchmark.cc
+ ./binaries/core_overhead_benchmark_gpu.cc
+ ./binaries/db_throughput.cc
+ ./binaries/dump_operator_names.cc
+ ./binaries/inspect_gpu.cc
+ ./binaries/make_cifar_db.cc
+ ./binaries/make_image_db.cc
+ ./binaries/make_mnist_db.cc
+ ./binaries/parallel_info.cc
+ ./binaries/predictor_verifier.cc
+ ./binaries/print_core_object_sizes_gpu.cc
+ ./binaries/print_registered_core_operators.cc
+ ./binaries/run_plan.cc
+ ./binaries/run_plan_mpi.cc
+ ./binaries/speed_benchmark.cc
+ ./binaries/speed_benchmark_torch.cc
+ ./binaries/split_db.cc
+ ./binaries/tsv_2_proto.cc
+ ./binaries/tutorial_blob.cc
+ ./binaries/zmq_feeder.cc
+ ./caffe2/contrib/aten/gen_op.py
+ ./caffe2/contrib/gloo/allgather_ops.cc
+ ./caffe2/contrib/gloo/allgather_ops.h
+ ./caffe2/contrib/gloo/reduce_scatter_ops.cc
+ ./caffe2/contrib/gloo/reduce_scatter_ops.h
+ ./caffe2/core/hip/common_miopen.h
+ ./caffe2/core/hip/common_miopen.hip
+ ./caffe2/core/net_async_tracing.cc
+ ./caffe2/core/net_async_tracing.h
+ ./caffe2/core/net_async_tracing_test.cc
+ ./caffe2/experiments/operators/fully_connected_op_decomposition.cc
+ ./caffe2/experiments/operators/fully_connected_op_decomposition.h
+ ./caffe2/experiments/operators/fully_connected_op_decomposition_gpu.cc
+ ./caffe2/experiments/operators/fully_connected_op_prune.cc
+ ./caffe2/experiments/operators/fully_connected_op_prune.h
+ ./caffe2/experiments/operators/fully_connected_op_sparse.cc
+ ./caffe2/experiments/operators/fully_connected_op_sparse.h
+ ./caffe2/experiments/operators/funhash_op.cc
+ ./caffe2/experiments/operators/funhash_op.h
+ ./caffe2/experiments/operators/sparse_funhash_op.cc
+ ./caffe2/experiments/operators/sparse_funhash_op.h
+ ./caffe2/experiments/operators/sparse_matrix_reshape_op.cc
+ ./caffe2/experiments/operators/sparse_matrix_reshape_op.h
+ ./caffe2/experiments/operators/tt_contraction_op.cc
+ ./caffe2/experiments/operators/tt_contraction_op.h
+ ./caffe2/experiments/operators/tt_contraction_op_gpu.cc
+ ./caffe2/experiments/operators/tt_pad_op.cc
+ ./caffe2/experiments/operators/tt_pad_op.h
+ ./caffe2/experiments/python/SparseTransformer.py
+ ./caffe2/experiments/python/convnet_benchmarks.py
+ ./caffe2/experiments/python/device_reduce_sum_bench.py
+ ./caffe2/experiments/python/funhash_op_test.py
+ ./caffe2/experiments/python/net_construct_bench.py
+ ./caffe2/experiments/python/sparse_funhash_op_test.py
+ ./caffe2/experiments/python/sparse_reshape_op_test.py
+ ./caffe2/experiments/python/tt_contraction_op_test.py
+ ./caffe2/experiments/python/tt_pad_op_test.py
+ ./caffe2/mobile/contrib/nnapi/dlnnapi.c
+ ./caffe2/mobile/contrib/nnapi/nnapi_benchmark.cc
+ ./caffe2/observers/profile_observer.cc
+ ./caffe2/observers/profile_observer.h
+ ./caffe2/operators/hip/conv_op_miopen.hip
+ ./caffe2/operators/hip/local_response_normalization_op_miopen.hip
+ ./caffe2/operators/hip/pool_op_miopen.hip
+ ./caffe2/operators/hip/spatial_batch_norm_op_miopen.hip
+ ./caffe2/operators/stump_func_op.cc
+ ./caffe2/operators/stump_func_op.cu
+ ./caffe2/operators/stump_func_op.h
+ ./caffe2/operators/unique_ops.cc
+ ./caffe2/operators/unique_ops.cu
+ ./caffe2/operators/unique_ops.h
+ ./caffe2/operators/upsample_op.cc
+ ./caffe2/operators/upsample_op.h
+ ./caffe2/opt/fusion.h
+ ./caffe2/python/layers/label_smooth.py
+ ./caffe2/python/modeling/get_entry_from_blobs.py
+ ./caffe2/python/modeling/get_entry_from_blobs_test.py
+ ./caffe2/python/modeling/gradient_clipping_test.py
+ ./caffe2/python/operator_test/unique_ops_test.py
+ ./caffe2/python/operator_test/upsample_op_test.py
+ ./caffe2/python/pybind_state_int8.cc
+ ./caffe2/python/transformations.py
+ ./caffe2/python/transformations_test.py
+ ./caffe2/quantization/server/batch_matmul_dnnlowp_op.cc
+ ./caffe2/quantization/server/batch_matmul_dnnlowp_op.h
+ ./caffe2/quantization/server/elementwise_linear_dnnlowp_op.cc
+ ./caffe2/quantization/server/elementwise_linear_dnnlowp_op.h
+ ./caffe2/quantization/server/elementwise_sum_relu_op.cc
+ ./caffe2/quantization/server/fully_connected_fake_lowp_op.cc
+ ./caffe2/quantization/server/fully_connected_fake_lowp_op.h
+ ./caffe2/quantization/server/spatial_batch_norm_relu_op.cc
+ ./caffe2/utils/bench_utils.h
+ ./modules/detectron/group_spatial_softmax_op.cc
+ ./modules/detectron/group_spatial_softmax_op.cu
+ ./modules/detectron/group_spatial_softmax_op.h
+ ./modules/detectron/ps_roi_pool_op.cc
+ ./modules/detectron/ps_roi_pool_op.h
+ ./modules/detectron/roi_pool_f_op.cc
+ ./modules/detectron/roi_pool_f_op.cu
+ ./modules/detectron/roi_pool_f_op.h
+ ./modules/detectron/sample_as_op.cc
+ ./modules/detectron/sample_as_op.cu
+ ./modules/detectron/sample_as_op.h
+ ./modules/detectron/select_smooth_l1_loss_op.cc
+ ./modules/detectron/select_smooth_l1_loss_op.cu
+ ./modules/detectron/select_smooth_l1_loss_op.h
+ ./modules/detectron/sigmoid_cross_entropy_loss_op.cc
+ ./modules/detectron/sigmoid_cross_entropy_loss_op.cu
+ ./modules/detectron/sigmoid_cross_entropy_loss_op.h
+ ./modules/detectron/sigmoid_focal_loss_op.cc
+ ./modules/detectron/sigmoid_focal_loss_op.cu
+ ./modules/detectron/sigmoid_focal_loss_op.h
+ ./modules/detectron/smooth_l1_loss_op.cc
+ ./modules/detectron/smooth_l1_loss_op.cu
+ ./modules/detectron/smooth_l1_loss_op.h
+ ./modules/detectron/softmax_focal_loss_op.cc
+ ./modules/detectron/softmax_focal_loss_op.cu
+ ./modules/detectron/softmax_focal_loss_op.h
+ ./modules/detectron/spatial_narrow_as_op.cc
+ ./modules/detectron/spatial_narrow_as_op.cu
+ ./modules/detectron/spatial_narrow_as_op.h
+ ./modules/detectron/upsample_nearest_op.cc
+ ./modules/detectron/upsample_nearest_op.h
+ ./modules/module_test/module_test_dynamic.cc
+ ./modules/rocksdb/rocksdb.cc
+Copyright: 2016, -present, Facebook, Inc.
+  2017, -present, Facebook, Inc.
+  2018, -present, Facebook, Inc.
+License: Apache-2.0
+ FIXME
+
+Files: ./caffe2/contrib/opencl/OpenCL/cl.hpp
+ ./caffe2/mobile/contrib/libopencl-stub/include/CL/cl.h
+ ./caffe2/mobile/contrib/libopencl-stub/include/CL/cl.hpp
+ ./caffe2/mobile/contrib/libopencl-stub/include/CL/cl_ext.h
+ ./caffe2/mobile/contrib/libopencl-stub/include/CL/cl_gl.h
+ ./caffe2/mobile/contrib/libopencl-stub/include/CL/cl_gl_ext.h
+ ./caffe2/mobile/contrib/libopencl-stub/include/CL/cl_platform.h
+ ./caffe2/mobile/contrib/libopencl-stub/include/CL/opencl.h
+Copyright: 2008-2012, The Khronos Group Inc.
+  2008-2013, The Khronos Group Inc.
+  2008-2015, The Khronos Group Inc.
+License: Khronos
+ FIXME
+
+Files: ./android/pytorch_android/host/build.gradle
+ ./aten/src/ATen/native/quantized/cpu/qnnpack/src/requantization/gemmlowp-neon.c
+ ./aten/src/ATen/native/quantized/cpu/qnnpack/src/requantization/gemmlowp-scalar.h
+ ./aten/src/ATen/native/quantized/cpu/qnnpack/src/requantization/gemmlowp-sse.h
+Copyright: Facebook, Inc. and its affiliates.
+License: Apache-2.0
+ FIXME
+
+Files: ./android/pytorch_android/src/main/java/org/pytorch/INativePeer.java
+ ./android/pytorch_android/src/main/java/org/pytorch/LiteModuleLoader.java
+ ./android/pytorch_android/src/main/java/org/pytorch/LiteNativePeer.java
+ ./android/pytorch_android/src/main/java/org/pytorch/NativePeer.java
+Copyright: Facebook, Inc. and its affiliates. Confidential and proprietary.
+License: UNKNOWN
+ FIXME
+
+Files: ./.circleci/docker/java/jni.h
+ ./caffe2/mobile/contrib/nnapi/NeuralNetworks.h
+Copyright: 2006, The Android Open Source Project
+  2017, The Android Open Source Project
+License: Apache-2.0
+ FIXME
+
+Files: ./caffe2/mobile/contrib/libvulkan-stub/include/vulkan/vk_platform.h
+ ./caffe2/mobile/contrib/libvulkan-stub/include/vulkan/vulkan.h
+Copyright: 2014-2015, The Khronos Group Inc.
+  2015-2016, The Khronos Group Inc.
+License: Apache-2.0
+ FIXME
+
+Files: ./aten/src/ATen/native/quantized/cpu/qnnpack/deps/clog/LICENSE
+ ./debian/clog/LICENSE
+Copyright: 2017, Georgia Institute of Technology
+  2017-2018, Facebook Inc.
+  2018, Marat Dukhan
+License: BSD-2-clause
+ FIXME
+
+Files: ./c10/util/flat_hash_map.h
+ ./c10/util/order_preserving_flat_hash_map.h
+Copyright: Malte Skarupke 2017.
+License: BSL-1.0
+ FIXME
+
+Files: ./caffe2/mobile/contrib/libvulkan-stub/include/libvulkan-stub.h
+ ./caffe2/mobile/contrib/libvulkan-stub/src/libvulkan-stub.c
+Copyright: 2016-2017, ARM Limited and Contributors
+License: Expat
+ FIXME
+
+Files: ./cmake/Modules_CUDA_fix/upstream/FindCUDA/make2cmake.cmake
+ ./cmake/Modules_CUDA_fix/upstream/FindCUDA/parse_cubin.cmake
+Copyright: 2007-2009, Scientific Computing and Imaging Institute, University of Utah
+  2008-2009, NVIDIA Corporation.
+License: Expat
+ FIXME
+
+Files: ./third_party/miniz-2.0.8/LICENSE
+ ./third_party/miniz-2.0.8/miniz.c
+Copyright: 2010-2014, Rich Geldreich and Tenacious Software LLC
+  2013-2014, RAD Game Tools and Valve Software
+License: Expat
+ FIXME
+
+Files: ./aten/src/ATen/dlpack.h
+ ./caffe2/python/dlpack.h
+Copyright: 2017, Contributors
+License: UNKNOWN
+ FIXME
+
+Files: ./torch/csrc/api/include/torch/nn/modules/adaptive.h
+ ./torch/nn/modules/adaptive.py
+Copyright: David Grangier, and HervÃ© JÃ©gou.
+License: UNKNOWN
+ FIXME
+
+Files: ./aten/src/ATen/native/LossCTC.cpp
+ ./aten/src/ATen/native/cuda/LossCTC.cu
+Copyright: 2018, MathInf GmbH, Thomas Viehmann
+License: UNKNOWN
+ FIXME
+
+Files: ./caffe2/utils/murmur_hash3.cc
+ ./caffe2/utils/murmur_hash3.h
+Copyright: NONE
+License: public-domain
+ FIXME
+
+Files: ./caffe2/python/mint/static/css/simple-sidebar.css
+Copyright: NONE
+License: Apache-2.0
+ FIXME
+
+Files: ./caffe2/operators/quantized/int8_utils.h
+Copyright: 2015, The Gemmlowp Authors.
+License: Apache-2.0
+ FIXME
+
+Files: ./caffe2/operators/deform_conv_op.cu
+Copyright: 
+  2014-2017, The Regents of the University of California (Regents)
+  2014-2017, the respective contributors
+  All contributions by the University of California:
+  details. If a contributor wants to further mark
+  model: each contributor holds copyright over
+  solely in the commit message of the change when it is
+License: Apache-2.0 and/or BSD-2-clause
+ FIXME
+
+Files: ./modules/detectron/ps_roi_pool_op.cu
+Copyright: 2016, -present, Facebook, Inc.
+License: Apache-2.0 and/or BSD-2-clause and/or Expat
+ FIXME
+
+Files: ./modules/detectron/upsample_nearest_op.cu
+Copyright: 2016, -present, Facebook, Inc.
+License: Apache-2.0 and/or BSD-3-clause
+ FIXME
+
+Files: ./caffe2/image/transform_gpu.h
+Copyright: 2016, NVIDIA CORPORATION
+License: BSD-2-clause
+ FIXME
+
+Files: ./aten/src/ATen/native/quantized/cpu/qnnpack/LICENSE
+Copyright: Facebook, Inc. and its affiliates.
+License: BSD-3-clause
+ FIXME
+
+Files: ./caffe2/test/caffe2_gtest_main.cc
+Copyright: 2006, Google Inc.
+License: BSD-3-clause
+ FIXME
+
+Files: ./aten/src/ATen/native/Math.h
+Copyright: 2014, Indiana University
+License: BSD-3-clause
+ FIXME
+
+Files: ./torch/csrc/utils/hash.h
+Copyright: NONE
+License: BSL-1.0
+ FIXME
+
+Files: ./c10/util/Optional.h
+Copyright: 2011-2012, Andrzej Krzemienski.
+License: BSL-1.0
+ FIXME
+
+Files: ./c10/util/variant.h
+Copyright: Michael Park, 2015-2017
+License: BSL-1.0
+ FIXME
+
+Files: ./torch/utils/hipify/hipify_python.py
+Copyright: 2015-2016, Advanced Micro Devices, Inc.
+License: Expat
+ FIXME
+
+Files: ./torch/_six.py
+Copyright: 2010-2017, Benjamin Peterson
+License: Expat
+ FIXME
+
+Files: ./aten/src/ATen/native/Distributions.cpp
+Copyright: Copyright 2005 Robert Kern (robert.kern@gmail.com)
+License: Expat
+ FIXME
+
+Files: ./caffe2/onnx/torch_ops/defs.cc
+Copyright: Facebook Inc. and Microsoft Corporation.
+License: Expat
+ FIXME
+
+Files: ./debian/foxi/LICENSE
+Copyright: 2019, Lu Fang
+License: Expat
+ FIXME
+
+Files: ./cmake/Modules_CUDA_fix/upstream/FindCUDA/run_nvcc.cmake
+Copyright: 2008-2009, NVIDIA Corporation.
+License: Expat
+ FIXME
+
+Files: ./c10/util/Array.h
+Copyright: 2007-2017, Free Software Foundation, Inc.
+License: GPL-3+
+ FIXME
+
+Files: ./c10/util/reverse_iterator.h
+Copyright: 2001-2019, Free Software Foundation, Inc.
+License: GPL-3+ and/or NTP
+ FIXME
+
+Files: ./aten/src/ATen/native/Distributions.h
+Copyright: 
+  2005, Robert Kern (robert.kern@gmail.com)
+License: UNKNOWN
+ FIXME
+
+Files: ./cmake/Modules/FindLMDB.cmake
+Copyright: 2006, Laurent Montel, <montel@kde.org>
+  2013, Conrad Steenberg <conrad.steenberg@gmail.com>
+License: UNKNOWN
+ FIXME
+
+Files: ./caffe2/core/scope_guard.h
+Copyright: 2016, Facebook
+License: UNKNOWN
+ FIXME
+
+Files: ./aten/src/ATen/core/MT19937RNGEngine.h
+Copyright: 1997-2002, Makoto Matsumoto and Takuji Nishimura,
+License: UNKNOWN
+ FIXME
+
+Files: ./caffe2/image/transform_gpu.cu
+Copyright: 2016, NVIDIA CORPORATION
+License: UNKNOWN
+ FIXME
+
+Files: ./torch/csrc/utils/structseq.cpp
+Copyright: Python Software Foundation
+License: UNKNOWN
+ FIXME
+
+Files: ./torch/csrc/jit/frontend/strtod.cpp
+Copyright: 2001-2014, Python Software Foundation;
+License: UNKNOWN
+ FIXME
+
+Files: ./aten/src/ATen/native/cuda/Math.cuh
+Copyright: 1984, 1987, 1992, 2000, Stephen L. Moshier
+License: UNKNOWN
+ FIXME
+
+Files: ./caffe2/mobile/contrib/libopencl-stub/LICENSE
+Copyright: interest in the
+License: UNKNOWN
+ FIXME
+
+Files: ./caffe2/python/layers/conv.py
+Copyright: is needed
+License: UNKNOWN
+ FIXME
+
+Files: ./aten/src/ATen/native/cpu/avx_mathfun.h
+Copyright: 2012, Giovanni Garberoglio
+License: Zlib
+ FIXME
 
 License: BSD-3-Clause
  Redistribution and use in source and binary forms, with or without

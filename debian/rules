@@ -58,7 +58,7 @@ override_dh_auto_test:
 	:
 
 override_dh_auto_install:
-	dh_auto_install -- --install-layout=deb \
+	python3 setup.py install --install-layout=deb \
 		--root=$(shell pwd)/debian/python3-torch/
 	# move the headers out of the python package
 	mkdir -p debian/libtorch-dev/usr/include
@@ -73,7 +73,7 @@ override_dh_auto_install:
 	-mv debian/python3-torch/usr/lib/python3*/dist-packages/torch/share/cmake \
 		debian/libtorch-dev/usr/lib/$(DEB_HOST_MULTIARCH)/
 	# move the test binaries out of the python packaage
-	mvdir -p debian/libtorch-test/usr/lib/libtorch-test/
+	mkdir -p debian/libtorch-test/usr/lib/libtorch-test/
 	-mv debian/python3-torch/usr/lib/python3*/dist-packages/torch/test/* \
 		debian/libtorch-test/usr/lib/libtorch-test/
 

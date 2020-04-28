@@ -1,3 +1,8 @@
+Description: The elegant patching work is based on the master branch
+    https://github.com/pytorch/pytorch/issues/14699
+  And we will be able to use that solution in the next upstream release.
+  I don't want to rebase my patches back to this version, so let's go with a fast, yet dirty hack.
+Author: Mo Zhou
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -117,7 +117,7 @@

@@ -1,0 +1,10 @@
+Convenient code copies:
+
+debian/foxi:
+ source: https://github.com/houseroad/foxi/
+ checkout: https://github.com/houseroad/foxi/commit/8015abb727dfc9e223bfd293730daa9138f1f9c4
+
+debian/clog:
+ source: https://github.com/pytorch/cpuinfo/
+ checkout: https://github.com/pytorch/cpuinfo/commit/2b14e445016dd46f7de821cdf3093e2823b9ab21
+ path: deps/clog

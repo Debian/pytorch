@@ -48,7 +48,7 @@ override_dh_auto_clean:
 	-find . -type d -name __pycache__ -exec rm -rf '{}' +
 
 override_dh_auto_configure:
-	cd third_party/; ln -s /usr/src/googletest .
+	cd third_party/; rmdir googletest; ln -s /usr/src/googletest .
 	dh_auto_configure
 
 override_dh_auto_build:
@@ -62,8 +62,13 @@ override_dh_auto_install:
 		--root=$(shell pwd)/debian/python3-torch/
 	# move the headers out of the python package
 	mkdir -p debian/libtorch-dev/usr/include
-	-mv debian/python3-torch/usr/lib/python3*/dist-packages/torch/include \
-		debian/libtorch-dev/usr/
+	-mv debian/python3-torch/usr/lib/python3*/dist-packages/torch/include/* \
+		debian/libtorch-dev/usr/include/
+	-cd debian/python3-torch/usr/lib/python3*/dist-packages/torch/include/; \
+		ln -s /usr/include/torch . ;\
+		ln -s /usr/include/caffe2 . ;\
+		ln -s /usr/include/ATen . ;\
+		ln -s /usr/include/c10 .
 	# move the (public) shared libs out of the python package
 	mkdir -p debian/libtorch1/usr/lib/$(DEB_HOST_MULTIARCH)/
 	-mv debian/python3-torch/usr/lib/python3*/dist-packages/torch/lib/*.so.* \

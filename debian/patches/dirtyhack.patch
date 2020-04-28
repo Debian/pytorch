@@ -487,3 +487,90 @@ Author: Mo Zhou
          self.run(build_args, my_env)
  
          # in cmake, .cu compilation involves generating certain intermediates
+--- a/torch/lib/libshm/CMakeLists.txt
++++ b/torch/lib/libshm/CMakeLists.txt
+@@ -23,6 +23,7 @@
+ ENDIF ()
+ 
+ ADD_LIBRARY(shm SHARED core.cpp)
++set_target_properties(shm PROPERTIES VERSION 1 SOVERSION 1)
+ 
+ target_include_directories(shm PUBLIC
+   ${CMAKE_BINARY_DIR}/aten/src # provides "ATen/TypeExtendedInterface.h" to ATen.h
+--- a/c10/CMakeLists.txt
++++ b/c10/CMakeLists.txt
+@@ -37,6 +37,7 @@
+ file(GLOB_RECURSE C10_ALL_TEST_FILES test/*.cpp)
+ file(GLOB_RECURSE C10_HEADERS *.h)
+ add_library(c10 ${C10_SRCS} ${C10_HEADERS})
++set_target_properties(c10 PROPERTIES VERSION 1 SOVERSION 1)
+ # If building shared library, set dllimport/dllexport proper.
+ target_compile_options(c10 PRIVATE "-DC10_BUILD_MAIN_LIB")
+ # Enable hidden visibility if compiler supports it.
+--- a/modules/detectron/CMakeLists.txt
++++ b/modules/detectron/CMakeLists.txt
+@@ -32,6 +32,7 @@
+     install(TARGETS caffe2_detectron_ops_hip DESTINATION lib)
+   elseif(NOT IOS_PLATFORM)
+     add_library(caffe2_detectron_ops SHARED ${Detectron_CPU_SRCS})
++	set_target_properties(caffe2_detectron_ops PROPERTIES VERSION 1 SOVERSION 1)
+     target_link_libraries(caffe2_detectron_ops torch ${OpenMP_link})
+     install(TARGETS caffe2_detectron_ops DESTINATION lib)
+     if (MSVC)
+--- a/modules/observers/CMakeLists.txt
++++ b/modules/observers/CMakeLists.txt
+@@ -14,6 +14,7 @@
+     "${CMAKE_CURRENT_SOURCE_DIR}/observer_config.cc"
+     "${CMAKE_CURRENT_SOURCE_DIR}/perf_observer.cc"
+     )
++set_target_properties(caffe2_observers PROPERTY VERSION 1 SOVERSION 1)
+ target_link_libraries(caffe2_observers PUBLIC torch_library)
+ target_include_directories(caffe2_observers PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/..)
+ target_compile_options(caffe2_observers PRIVATE "-DCAFFE2_BUILD_OBSERVER_LIB")
+--- a/modules/module_test/CMakeLists.txt
++++ b/modules/module_test/CMakeLists.txt
+@@ -10,6 +10,7 @@
+   add_library(
+       caffe2_module_test_dynamic
+       ${CMAKE_CURRENT_SOURCE_DIR}/module_test_dynamic.cc)
++  set_target_properties(caffe2_module_test_dynamic PROPERTIES VERSION 1 SOVERSION 1)
+ 
+   target_link_libraries(caffe2_module_test_dynamic torch_library)
+   install(TARGETS caffe2_module_test_dynamic DESTINATION lib)
+--- a/torch/CMakeLists.txt
++++ b/torch/CMakeLists.txt
+@@ -378,6 +378,7 @@
+ )
+ 
+ add_library(torch_python SHARED ${TORCH_PYTHON_SRCS})
++set_target_properties(torch_python PROPERTIES VERSION 1 SOVERSION 1)
+ add_dependencies(torch_python torch_python_stubs)
+ 
+ # Required workaround for generated sources
+--- a/caffe2/CMakeLists.txt
++++ b/caffe2/CMakeLists.txt
+@@ -657,6 +657,7 @@
+ 
+ 
+ add_library(torch_cpu ${Caffe2_CPU_SRCS})
++set_target_properties(torch_cpu PROPERTIES VERSION 1 SOVERSION 1)
+ torch_compile_options(torch_cpu)  # see cmake/public/utils.cmake
+ 
+ if (USE_LLVM AND LLVM_FOUND)
+@@ -681,6 +682,7 @@
+ # Wrapper library for people who link against torch and expect both CPU and CUDA support
+ # Contains "torch_cpu" and "torch_cuda"
+ add_library(torch ${DUMMY_EMPTY_FILE})
++set_target_properties(torch PROPERTIES VERSION 1 SOVERSION 1)
+ 
+ if(USE_ROCM)
+   filter_list(__caffe2_hip_srcs_cpp Caffe2_HIP_SRCS "\\.(cu|hip)$")
+@@ -1174,7 +1176,7 @@
+ # this we have to preload those libs in a global namespace.
+ if (BUILD_SHARED_LIBS)
+   add_library(torch_global_deps SHARED ${TORCH_SRC_DIR}/csrc/empty.c)
+-  set_target_properties(torch_global_deps PROPERTIES LINKER_LANGUAGE C)
++  set_target_properties(torch_global_deps PROPERTIES LINKER_LANGUAGE C VERSION 1 SOVERSION 1)
+   if (USE_MPI)
+       target_link_libraries(torch_global_deps ${MPI_CXX_LIBRARIES})
+   endif()

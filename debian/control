@@ -86,7 +86,7 @@ Description: Tensors and Dynamic neural networks in Python with strong GPU accel
 
 Package: libtorch-test
 Architecture: any
-Depends: ${misc:Depends}, ${shlibs:Depends},
+Depends: ${misc:Depends}, ${shlibs:Depends}, libtorch1 (= ${binary:Version}),
 Description: Tensors and Dynamic neural networks in Python with strong GPU acceleration
  PyTorch is a Python package that provides two high-level features:
  .

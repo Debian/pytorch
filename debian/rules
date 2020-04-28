@@ -66,8 +66,12 @@ override_dh_auto_install:
 		debian/libtorch-dev/usr/
 	# move the (public) shared libs out of the python package
 	mkdir -p debian/libtorch1/usr/lib/$(DEB_HOST_MULTIARCH)/
-	-mv debian/python3-torch/usr/lib/python3*/dist-packages/torch/lib/* \
+	-mv debian/python3-torch/usr/lib/python3*/dist-packages/torch/lib/*.so.* \
 		debian/libtorch1/usr/lib/$(DEB_HOST_MULTIARCH)/
+	# move the links to shared libs out of the python package
+	mkdir -p debian/libtorch-dev/usr/lib/$(DEB_HOST_MULTIARCH)/
+	-mv debian/python3-torch/usr/lib/python3*/dist-packages/torch/lib/*.so \
+		debian/libtorch-dev/usr/lib/$(DEB_HOST_MULTIARCH)/
 	# move the cmake files out of the python package
 	mkdir -p debian/libtorch-dev/usr/lib/$(DEB_HOST_MULTIARCH)/
 	-mv debian/python3-torch/usr/lib/python3*/dist-packages/torch/share/cmake \

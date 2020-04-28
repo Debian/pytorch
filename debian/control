@@ -42,6 +42,11 @@ Build-Depends:
  python3-setuptools,
  python3-yaml,
  python3-yaml,
+ libeigen3-dev,
+ libgoogle-glog-dev,
+ libgflags-dev,
+ libzmq3-dev,
+ libsnappy-dev,
 
 Package: python3-torch
 Architecture: any

@@ -34,6 +34,7 @@ Build-Depends:
  libprotoc-dev,
  libpsimd-dev,
  libpthreadpool-dev,
+ libsleef-dev,
  libsnappy-dev,
  libxnnpack-dev,
  libzmq3-dev,

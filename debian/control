@@ -39,14 +39,15 @@ Build-Depends:
  libzmq3-dev,
  ninja-build,
  protobuf-compiler,
+ pybind11-dev,
  python3,
  python3-all,
  python3-all-dev,
  python3-cffi,
  python3-numpy,
  python3-onnx,
+ python3-pybind11,
  python3-setuptools,
- python3-yaml,
  python3-yaml,
 
 Package: python3-torch

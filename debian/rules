@@ -70,8 +70,18 @@ override_dh_auto_install:
 		debian/libtorch1/usr/lib/$(DEB_HOST_MULTIARCH)/
 	# move the links to shared libs out of the python package
 	mkdir -p debian/libtorch-dev/usr/lib/$(DEB_HOST_MULTIARCH)/
-	-mv debian/python3-torch/usr/lib/python3*/dist-packages/torch/lib/*.so \
-		debian/libtorch-dev/usr/lib/$(DEB_HOST_MULTIARCH)/
+	-cd debian/python3-torch/usr/lib/python3*/dist-packages/torch/lib ; \
+		$(RM) libc10.so libcaffe2_detectron_ops.so libcaffe2_module_test_dynamic.so \
+			libcaffe2_observers.so libshm.so libtorch_cpu.so libtorch_python.so libtorch.so # don't remove libtorch_global_deps.so 
+	-cd debian/libtorch-dev/usr/lib/$(DEB_HOST_MULTIARCH)/; \
+		ln -s libc10.so.1 libc10.so ;\
+		ln -s libcaffe2_detectron_ops.so.1 libcaffe2_detectron_ops.so ;\
+		ln -s libcaffe2_module_test_dynamic.so.1 libcaffe2_module_test_dynamic.so ;\
+		ln -s libcaffe2_observers.so.1 libcaffe2_observers.so ;\
+		ln -s libshm.so.1 libshm.so ;\
+		ln -s libtorch_cpu.so.1 libtorch_cpu.so ;\
+		ln -s libtorch_python.so.1 libtorch_python.so ;\
+		ln -s libtorch.so.1 libtorch.so
 	# move the cmake files out of the python package
 	mkdir -p debian/libtorch-dev/usr/lib/$(DEB_HOST_MULTIARCH)/
 	-mv debian/python3-torch/usr/lib/python3*/dist-packages/torch/share/cmake \

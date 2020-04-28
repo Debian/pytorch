@@ -58,8 +58,24 @@ override_dh_auto_test:
 	:
 
 override_dh_auto_install:
-	python3 setup.py install --install-layout=deb \
+	dh_auto_install -- --install-layout=deb \
 		--root=$(shell pwd)/debian/python3-torch/
+	# move the headers out of the python package
+	mkdir -p debian/libtorch-dev/usr/include
+	-mv debian/python3-torch/usr/lib/python3*/dist-packages/torch/include \
+		debian/libtorch-dev/usr/
+	# move the (public) shared libs out of the python package
+	mkdir -p debian/libtorch1/usr/lib/$(DEB_HOST_MULTIARCH)/
+	-mv debian/python3-torch/usr/lib/python3*/dist-packages/torch/lib/* \
+		debian/libtorch1/usr/lib/$(DEB_HOST_MULTIARCH)/
+	# move the cmake files out of the python package
+	mkdir -p debian/libtorch-dev/usr/lib/$(DEB_HOST_MULTIARCH)/
+	-mv debian/python3-torch/usr/lib/python3*/dist-packages/torch/share/cmake \
+		debian/libtorch-dev/usr/lib/$(DEB_HOST_MULTIARCH)/
+	# move the test binaries out of the python packaage
+	mvdir -p debian/libtorch-test/usr/lib/libtorch-test/
+	-mv debian/python3-torch/usr/lib/python3*/dist-packages/torch/test/* \
+		debian/libtorch-test/usr/lib/libtorch-test/
 
 override_dh_python3:
 	dh_python3 --requires=requirements.txt --no-ext-rename
@@ -68,3 +84,6 @@ override_dh_python3:
 override_dh_auto_clean:
 	-$(RM) -r build*
 	-$(RM) -f third_party/googletest
+
+override_dh_dwz:
+	: # FTBFS

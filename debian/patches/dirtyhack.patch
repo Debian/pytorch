@@ -1,0 +1,371 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -117,7 +117,7 @@
+ option(ATEN_NO_TEST "Do not build ATen test binaries" OFF)
+ option(BUILD_BINARY "Build C++ binaries" OFF)
+ option(BUILD_DOCS "Build Caffe2 documentation" OFF)
+-option(BUILD_CUSTOM_PROTOBUF "Build and use Caffe2's own protobuf under third_party" ON)
++option(BUILD_CUSTOM_PROTOBUF "Build and use Caffe2's own protobuf under third_party" OFF)
+ option(BUILD_PYTHON "Build Python binaries" ON)
+ option(BUILD_CAFFE2_OPS "Build Caffe2 operators" ON)
+ option(BUILD_SHARED_LIBS "Build libcaffe2.so" ON)
+@@ -136,8 +136,8 @@
+     "BUILD_TEST" OFF)
+ option(COLORIZE_OUTPUT "Colorize output during compilation" ON)
+ option(USE_ASAN "Use Address Sanitizer" OFF)
+-option(USE_CUDA "Use CUDA" ON)
+-option(USE_ROCM "Use ROCm" ON)
++option(USE_CUDA "Use CUDA" OFF)
++option(USE_ROCM "Use ROCm" OFF)
+ option(CAFFE2_STATIC_LINK_CUDA "Statically link CUDA libraries" OFF)
+ cmake_dependent_option(
+     USE_CUDNN "Use cuDNN" ON
+@@ -145,13 +145,13 @@
+ cmake_dependent_option(
+     USE_STATIC_CUDNN "Use cuDNN static libraries" OFF
+     "USE_CUDNN" OFF)
+-option(USE_FBGEMM "Use FBGEMM (quantized 8-bit server operators)" ON)
+-option(USE_FFMPEG "Use ffmpeg" OFF)
+-option(USE_GFLAGS "Use GFLAGS" OFF)
+-option(USE_GLOG "Use GLOG" OFF)
+-option(USE_LEVELDB "Use LEVELDB" OFF)
++option(USE_FBGEMM "Use FBGEMM (quantized 8-bit server operators)" OFF)
++option(USE_FFMPEG "Use ffmpeg" ON)
++option(USE_GFLAGS "Use GFLAGS" ON)
++option(USE_GLOG "Use GLOG" ON)
++option(USE_LEVELDB "Use LEVELDB" ON)
+ option(USE_LITE_PROTO "Use lite protobuf instead of full." OFF)
+-option(USE_LMDB "Use LMDB" OFF)
++option(USE_LMDB "Use LMDB" ON)
+ option(USE_METAL "Use Metal for iOS build" ON)
+ option(USE_NATIVE_ARCH "Use -march=native" OFF)
+ cmake_dependent_option(
+@@ -174,10 +174,10 @@
+ option(USE_NUMPY "Use NumPy" ON)
+ option(USE_OBSERVERS "Use observers module." OFF)
+ option(USE_OPENCL "Use OpenCL" OFF)
+-option(USE_OPENCV "Use OpenCV" OFF)
++option(USE_OPENCV "Use OpenCV" ON)
+ option(USE_OPENMP "Use OpenMP for parallel code" ON)
+ option(USE_PROF "Use profiling" OFF)
+-option(USE_QNNPACK "Use QNNPACK (quantized 8-bit operators)" ON)
++option(USE_QNNPACK "Use QNNPACK (quantized 8-bit operators)" OFF)
+ option(USE_PYTORCH_QNNPACK "Use ATen/QNNPACK (quantized 8-bit operators)" ON)
+ option(USE_REDIS "Use Redis" OFF)
+ option(USE_ROCKSDB "Use RocksDB" OFF)
+@@ -208,6 +208,8 @@
+ # Used when building Caffe2 through setup.py
+ option(BUILDING_WITH_TORCH_LIBS "Tell cmake if Caffe2 is being built alongside torch libs" ON)
+ 
++set(GOOGLETEST_SOURCE_DIR "/usr/src/googletest")
++
+ # /Z7 override option
+ # When generating debug symbols, CMake default to use the flag /Zi.
+ # However, it is not compatible with sccache. So we rewrite it off.
+@@ -216,7 +218,7 @@
+   MSVC_Z7_OVERRIDE "Work around sccache bug by replacing /Zi and /ZI with /Z7 when using MSVC (if you are not using sccache, you can turn this OFF)" ON
+   "MSVC" OFF)
+ 
+-set(ONNX_NAMESPACE "onnx_torch" CACHE STRING "A namespace for ONNX; needed to build with other frameworks that share ONNX.")
++set(ONNX_NAMESPACE "onnx" CACHE STRING "A namespace for ONNX; needed to build with other frameworks that share ONNX.")
+ set(SELECTED_OP_LIST "" CACHE STRING
+     "Path to the yaml file that contains the list of operators to include for custom build. Include all operators by default.")
+ set(OP_DEPENDENCY "" CACHE STRING
+--- a/cmake/Dependencies.cmake
++++ b/cmake/Dependencies.cmake
+@@ -280,12 +280,9 @@
+   endif()
+ 
+   IF(NOT TARGET pthreadpool)
+-    SET(PTHREADPOOL_BUILD_TESTS OFF CACHE BOOL "")
+-    SET(PTHREADPOOL_BUILD_BENCHMARKS OFF CACHE BOOL "")
+-    ADD_SUBDIRECTORY(
+-      "${PTHREADPOOL_SOURCE_DIR}"
+-      "${CONFU_DEPENDENCIES_BINARY_DIR}/pthreadpool"
+-      EXCLUDE_FROM_ALL)
++    find_library(PTHREADPOOL_LIBRARY pthreadpool)
++	add_library(pthreadpool SHARED IMPORTED)
++	set_property(TARGET pthreadpool PROPERTY IMPORTED_LOCATION ${PTHREADPOOL_LIBRARY})
+   ENDIF()
+ endif()
+ 
+@@ -300,42 +297,17 @@
+   endif()
+ 
+   IF(NOT TARGET pthreadpool)
+-    SET(PTHREADPOOL_BUILD_TESTS OFF CACHE BOOL "")
+-    SET(PTHREADPOOL_BUILD_BENCHMARKS OFF CACHE BOOL "")
+-    ADD_SUBDIRECTORY(
+-      "${PTHREADPOOL_SOURCE_DIR}"
+-      "${CONFU_DEPENDENCIES_BINARY_DIR}/pthreadpool"
+-      EXCLUDE_FROM_ALL)
++    find_library(PTHREADPOOL_LIBRARY pthreadpool)
++	add_library(pthreadpool SHARED IMPORTED)
++	set_property(TARGET pthreadpool PROPERTY IMPORTED_LOCATION ${PTHREADPOOL_LIBRARY})
+   ENDIF()
+ endif()
+ 
+ # ---[ Caffe2 uses cpuinfo library in the thread pool
+ if (NOT TARGET cpuinfo)
+-  if (NOT DEFINED CPUINFO_SOURCE_DIR)
+-    set(CPUINFO_SOURCE_DIR "${CMAKE_CURRENT_LIST_DIR}/../third_party/cpuinfo" CACHE STRING "cpuinfo source directory")
+-  endif()
+-
+-  set(CPUINFO_BUILD_TOOLS OFF CACHE BOOL "")
+-  set(CPUINFO_BUILD_UNIT_TESTS OFF CACHE BOOL "")
+-  set(CPUINFO_BUILD_MOCK_TESTS OFF CACHE BOOL "")
+-  set(CPUINFO_BUILD_BENCHMARKS OFF CACHE BOOL "")
+-  set(CPUINFO_LIBRARY_TYPE "static" CACHE STRING "")
+-  set(CPUINFO_LOG_LEVEL "error" CACHE STRING "")
+-  if(MSVC)
+-    if (CAFFE2_USE_MSVC_STATIC_RUNTIME)
+-      set(CPUINFO_RUNTIME_TYPE "static" CACHE STRING "")
+-    else()
+-      set(CPUINFO_RUNTIME_TYPE "shared" CACHE STRING "")
+-    endif()
+-  endif()
+-  add_subdirectory(
+-    "${CPUINFO_SOURCE_DIR}"
+-    "${CONFU_DEPENDENCIES_BINARY_DIR}/cpuinfo")
+-  # We build static version of cpuinfo but link
+-  # them into a shared library for Caffe2, so they need PIC.
+-  set_property(TARGET cpuinfo PROPERTY POSITION_INDEPENDENT_CODE ON)
+-  # Need to set this to avoid conflict with XNNPACK's clog external project
+-  set(CLOG_SOURCE_DIR "${CPUINFO_SOURCE_DIR}/deps/clog")
++	find_library(CPUINFO_LIBRARY cpuinfo)
++	add_library(cpuinfo SHARED IMPORTED)
++	set_property(TARGET cpuinfo PROPERTY IMPORTED_LOCATION ${CPUINFO_LIBRARY})
+ endif()
+ list(APPEND Caffe2_DEPENDENCY_LIBS cpuinfo)
+ 
+@@ -424,25 +396,9 @@
+   endif()
+ 
+   if(NOT TARGET XNNPACK)
+-    set(XNNPACK_CUSTOM_THREADPOOL ON CACHE BOOL "")
+-    set(XNNPACK_LIBRARY_TYPE "static" CACHE STRING "")
+-    set(XNNPACK_BUILD_BENCHMARKS OFF CACHE BOOL "")
+-    set(XNNPACK_BUILD_TESTS OFF CACHE BOOL "")
+-
+-    add_subdirectory(
+-      "${XNNPACK_SOURCE_DIR}"
+-      "${CONFU_DEPENDENCIES_BINARY_DIR}/XNNPACK")
+-
+-    set_property(TARGET XNNPACK PROPERTY POSITION_INDEPENDENT_CODE ON)
+-    # Context: pthreadpool_get_threads_count implementation that is built in pytorch, uses
+-    # implementation defined in caffe2/utils/threadpool/pthreadpool_impl.cc. This implementation
+-    # assumes the the pthreadpool* passed is of type caffe2::ThradPool and thus does reinterpret cast.
+-    # This is not valid when we create pthreadpool via caffe2::xnnpack_threadpool, which is of type
+-    # compatible with new pthreadpool interface and is used in PT's XNNPACK integration.
+-    # Thus all the calls for pthreadpool_get_threads_count originating from XNNPACK must be routed
+-    # appropriately to pthreadpool_get_threads_count_xnnpack, which does not do the aforementioned
+-    # casting to caffe2::ThradPool. Once the threadpools are unified, we will not need this.
+-    target_compile_definitions(XNNPACK PRIVATE -Dpthreadpool_get_threads_count=pthreadpool_get_threads_count_xnnpack)
++	  find_library(XNNPACK_LIBRARY XNNPACK)
++	  add_library(XNNPACK SHARED IMPORTED)
++	  set_property(TARGET XNNPACK PROPERTY IMPORTED_LOCATION ${XNNPACK_LIBRARY})
+   endif()
+ 
+   include_directories(SYSTEM ${XNNPACK_INCLUDE_DIR})
+@@ -1203,7 +1159,15 @@
+   endif()
+   # Add op schemas in "ai.onnx.pytorch" domain
+   add_subdirectory("${CMAKE_CURRENT_LIST_DIR}/../caffe2/onnx/torch_ops")
+-  add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/../third_party/onnx EXCLUDE_FROM_ALL)
++
++  find_library(ONNX_LIBRARY onnx)
++  add_library(onnx SHARED IMPORTED)
++  set_property(TARGET onnx PROPERTY IMPORTED_LOCATION ${ONNX_LIBRARY})
++
++  find_library(ONNX_PROTO_LIBRARY onnx_proto)
++  add_library(onnx_proto SHARED IMPORTED)
++  set_property(TARGET onnx_proto PROPERTY IMPORTED_LOCATION ${ONNX_PROTO_LIBRARY})
++
+   add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/../third_party/foxi EXCLUDE_FROM_ALL)
+ 
+   include_directories(${ONNX_INCLUDE_DIRS})
+@@ -1211,12 +1175,8 @@
+   add_definitions(-DONNX_NAMESPACE=${ONNX_NAMESPACE})
+   # In mobile build we care about code size, and so we need drop
+   # everything (e.g. checker, optimizer) in onnx but the pb definition.
+-  if (ANDROID OR IOS)
+-    caffe2_interface_library(onnx_proto onnx_library)
+-  else()
+-    caffe2_interface_library(onnx onnx_library)
+-  endif()
+-  list(APPEND Caffe2_DEPENDENCY_WHOLE_LINK_LIBS onnx_library)
++
++  list(APPEND Caffe2_DEPENDENCY_LIBS onnx_proto onnx)
+   list(APPEND Caffe2_DEPENDENCY_LIBS foxi_loader)
+   # Recover the build shared libs option.
+   set(BUILD_SHARED_LIBS ${TEMP_BUILD_SHARED_LIBS})
+--- a/aten/src/ATen/native/quantized/cpu/qnnpack/CMakeLists.txt
++++ b/aten/src/ATen/native/quantized/cpu/qnnpack/CMakeLists.txt
+@@ -60,56 +60,6 @@
+   SET(CLOG_SOURCE_DIR "${PROJECT_SOURCE_DIR}/deps/clog")
+ ENDIF()
+ 
+-IF(NOT DEFINED CPUINFO_SOURCE_DIR)
+-  MESSAGE(STATUS "Downloading cpuinfo to ${CONFU_DEPENDENCIES_SOURCE_DIR}/cpuinfo (define CPUINFO_SOURCE_DIR to avoid it)")
+-  CONFIGURE_FILE(cmake/DownloadCpuinfo.cmake "${CONFU_DEPENDENCIES_BINARY_DIR}/cpuinfo-download/CMakeLists.txt")
+-  EXECUTE_PROCESS(COMMAND "${CMAKE_COMMAND}" -G "${CMAKE_GENERATOR}" .
+-    WORKING_DIRECTORY "${CONFU_DEPENDENCIES_BINARY_DIR}/cpuinfo-download")
+-  EXECUTE_PROCESS(COMMAND "${CMAKE_COMMAND}" --build .
+-    WORKING_DIRECTORY "${CONFU_DEPENDENCIES_BINARY_DIR}/cpuinfo-download")
+-  SET(CPUINFO_SOURCE_DIR "${CONFU_DEPENDENCIES_SOURCE_DIR}/cpuinfo" CACHE STRING "cpuinfo source directory")
+-ENDIF()
+-
+-IF(NOT DEFINED FP16_SOURCE_DIR)
+-  MESSAGE(STATUS "Downloading FP16 to ${CONFU_DEPENDENCIES_SOURCE_DIR}/fp16 (define FP16_SOURCE_DIR to avoid it)")
+-  CONFIGURE_FILE(cmake/DownloadFP16.cmake "${CONFU_DEPENDENCIES_BINARY_DIR}/fp16-download/CMakeLists.txt")
+-  EXECUTE_PROCESS(COMMAND "${CMAKE_COMMAND}" -G "${CMAKE_GENERATOR}" .
+-    WORKING_DIRECTORY "${CONFU_DEPENDENCIES_BINARY_DIR}/fp16-download")
+-  EXECUTE_PROCESS(COMMAND "${CMAKE_COMMAND}" --build .
+-    WORKING_DIRECTORY "${CONFU_DEPENDENCIES_BINARY_DIR}/fp16-download")
+-  SET(FP16_SOURCE_DIR "${CONFU_DEPENDENCIES_SOURCE_DIR}/fp16" CACHE STRING "FP16 source directory")
+-ENDIF()
+-
+-IF(NOT DEFINED FXDIV_SOURCE_DIR)
+-  MESSAGE(STATUS "Downloading FXdiv to ${CONFU_DEPENDENCIES_SOURCE_DIR}/fxdiv (define FXDIV_SOURCE_DIR to avoid it)")
+-  CONFIGURE_FILE(cmake/DownloadFXdiv.cmake "${CONFU_DEPENDENCIES_BINARY_DIR}/fxdiv-download/CMakeLists.txt")
+-  EXECUTE_PROCESS(COMMAND "${CMAKE_COMMAND}" -G "${CMAKE_GENERATOR}" .
+-    WORKING_DIRECTORY "${CONFU_DEPENDENCIES_BINARY_DIR}/fxdiv-download")
+-  EXECUTE_PROCESS(COMMAND "${CMAKE_COMMAND}" --build .
+-    WORKING_DIRECTORY "${CONFU_DEPENDENCIES_BINARY_DIR}/fxdiv-download")
+-  SET(FXDIV_SOURCE_DIR "${CONFU_DEPENDENCIES_SOURCE_DIR}/fxdiv" CACHE STRING "FXdiv source directory")
+-ENDIF()
+-
+-IF(NOT DEFINED PSIMD_SOURCE_DIR)
+-  MESSAGE(STATUS "Downloading PSimd to ${CONFU_DEPENDENCIES_SOURCE_DIR}/psimd (define PSIMD_SOURCE_DIR to avoid it)")
+-  CONFIGURE_FILE(cmake/DownloadPSimd.cmake "${CONFU_DEPENDENCIES_BINARY_DIR}/psimd-download/CMakeLists.txt")
+-  EXECUTE_PROCESS(COMMAND "${CMAKE_COMMAND}" -G "${CMAKE_GENERATOR}" .
+-    WORKING_DIRECTORY "${CONFU_DEPENDENCIES_BINARY_DIR}/psimd-download")
+-  EXECUTE_PROCESS(COMMAND "${CMAKE_COMMAND}" --build .
+-    WORKING_DIRECTORY "${CONFU_DEPENDENCIES_BINARY_DIR}/psimd-download")
+-  SET(PSIMD_SOURCE_DIR "${CONFU_DEPENDENCIES_SOURCE_DIR}/psimd" CACHE STRING "PSimd source directory")
+-ENDIF()
+-
+-IF(NOT DEFINED PTHREADPOOL_SOURCE_DIR)
+-  MESSAGE(STATUS "Downloading pthreadpool to ${CONFU_DEPENDENCIES_SOURCE_DIR}/pthreadpool (define PTHREADPOOL_SOURCE_DIR to avoid it)")
+-  CONFIGURE_FILE(cmake/DownloadPThreadPool.cmake "${CONFU_DEPENDENCIES_BINARY_DIR}/pthreadpool-download/CMakeLists.txt")
+-  EXECUTE_PROCESS(COMMAND "${CMAKE_COMMAND}" -G "${CMAKE_GENERATOR}" .
+-    WORKING_DIRECTORY "${CONFU_DEPENDENCIES_BINARY_DIR}/pthreadpool-download")
+-  EXECUTE_PROCESS(COMMAND "${CMAKE_COMMAND}" --build .
+-    WORKING_DIRECTORY "${CONFU_DEPENDENCIES_BINARY_DIR}/pthreadpool-download")
+-  SET(PTHREADPOOL_SOURCE_DIR "${CONFU_DEPENDENCIES_SOURCE_DIR}/pthreadpool" CACHE STRING "pthreadpool source directory")
+-ENDIF()
+-
+ IF(PYTORCH_QNNPACK_BUILD_TESTS AND NOT DEFINED GOOGLETEST_SOURCE_DIR)
+   MESSAGE(STATUS "Downloading Google Test to ${CONFU_DEPENDENCIES_SOURCE_DIR}/googletest (define GOOGLETEST_SOURCE_DIR to avoid it)")
+   CONFIGURE_FILE(cmake/DownloadGoogleTest.cmake "${CONFU_DEPENDENCIES_BINARY_DIR}/googletest-download/CMakeLists.txt")
+@@ -120,16 +70,6 @@
+   SET(GOOGLETEST_SOURCE_DIR "${CONFU_DEPENDENCIES_SOURCE_DIR}/googletest" CACHE STRING "Google Test source directory")
+ ENDIF()
+ 
+-IF(PYTORCH_QNNPACK_BUILD_BENCHMARKS AND NOT DEFINED GOOGLEBENCHMARK_SOURCE_DIR)
+-  MESSAGE(STATUS "Downloading Google Benchmark to ${CONFU_DEPENDENCIES_SOURCE_DIR}/googlebenchmark (define GOOGLEBENCHMARK_SOURCE_DIR to avoid it)")
+-  CONFIGURE_FILE(cmake/DownloadGoogleBenchmark.cmake "${CONFU_DEPENDENCIES_BINARY_DIR}/googlebenchmark-download/CMakeLists.txt")
+-  EXECUTE_PROCESS(COMMAND "${CMAKE_COMMAND}" -G "${CMAKE_GENERATOR}" .
+-    WORKING_DIRECTORY "${CONFU_DEPENDENCIES_BINARY_DIR}/googlebenchmark-download")
+-  EXECUTE_PROCESS(COMMAND "${CMAKE_COMMAND}" --build .
+-    WORKING_DIRECTORY "${CONFU_DEPENDENCIES_BINARY_DIR}/googlebenchmark-download")
+-  SET(GOOGLEBENCHMARK_SOURCE_DIR "${CONFU_DEPENDENCIES_SOURCE_DIR}/googlebenchmark" CACHE STRING "Google Benchmark source directory")
+-ENDIF()
+-
+ # ---[ QNNPACK library
+ SET(PYTORCH_QNNPACK_INIT_SRCS
+   src/init.c
+@@ -301,23 +241,17 @@
+ 
+ # ---[ Configure cpuinfo
+ IF(NOT TARGET cpuinfo)
+-  SET(CPUINFO_BUILD_TOOLS OFF CACHE BOOL "")
+-  SET(CPUINFO_BUILD_UNIT_TESTS OFF CACHE BOOL "")
+-  SET(CPUINFO_BUILD_MOCK_TESTS OFF CACHE BOOL "")
+-  SET(CPUINFO_BUILD_BENCHMARKS OFF CACHE BOOL "")
+-  ADD_SUBDIRECTORY(
+-    "${CPUINFO_SOURCE_DIR}"
+-    "${CONFU_DEPENDENCIES_BINARY_DIR}/cpuinfo")
++	add_library(cpuinfo SHARED IMPORTED)
++	find_library(CPUINFO_LIBRARY cpuinfo)
++	set_target_properties(cpuinfo PROPERTIES IMPORTED_LOCATION ${CPUINFO_LIBRARY})
+ ENDIF()
+ TARGET_LINK_LIBRARIES(pytorch_qnnpack PRIVATE cpuinfo)
+ 
+ # ---[ Configure pthreadpool
+ IF(NOT TARGET pthreadpool)
+-  SET(PTHREADPOOL_BUILD_TESTS OFF CACHE BOOL "")
+-  SET(PTHREADPOOL_BUILD_BENCHMARKS OFF CACHE BOOL "")
+-  ADD_SUBDIRECTORY(
+-    "${PTHREADPOOL_SOURCE_DIR}"
+-    "${CONFU_DEPENDENCIES_BINARY_DIR}/pthreadpool")
++	add_library(ptreahdpool SHARED IMPORTED)
++	find_library(PTHREADPOOL_LIBRARY pthreadpool)
++	set_property(TARGET pthreadpool PROPERTY IMPORTED_LOCATION ${PTHREADPOOL_LIBRARY})
+ ENDIF()
+ IF(PYTORCH_QNNPACK_CUSTOM_THREADPOOL)
+   # Depend on pthreadpool interface, but not on implementation.
+@@ -329,29 +263,25 @@
+ 
+ # ---[ Configure FXdiv
+ IF(NOT TARGET fxdiv)
+-  SET(FXDIV_BUILD_TESTS OFF CACHE BOOL "")
+-  SET(FXDIV_BUILD_BENCHMARKS OFF CACHE BOOL "")
+-  ADD_SUBDIRECTORY(
+-    "${FXDIV_SOURCE_DIR}"
+-    "${CONFU_DEPENDENCIES_BINARY_DIR}/fxdiv")
++	find_file(FXDIV_HDR fxdiv.h PATH_SUFFIXES include)
++	add_library(fxdiv STATIC ${FXDIV_HDR})
++	set_property(TARGET fxdiv PROPERTY LINKER_LANGUAGE C)
+ ENDIF()
+ TARGET_LINK_LIBRARIES(pytorch_qnnpack PRIVATE fxdiv)
+ 
+ # ---[ Configure psimd
+ IF(NOT TARGET psimd)
+-  ADD_SUBDIRECTORY(
+-    "${PSIMD_SOURCE_DIR}"
+-    "${CONFU_DEPENDENCIES_BINARY_DIR}/psimd")
++	find_file(PSIMD_HDR psimd.h PATH_SUFFIXES include)
++	add_library(psimd STATIC ${PSIMD_HDR})
++	set_property(TARGET psimd PROPERTY LINKER_LANGUAGE C)
+ ENDIF()
+ TARGET_LINK_LIBRARIES(pytorch_qnnpack PRIVATE psimd)
+ 
+ # ---[ Configure FP16
+ IF(NOT TARGET fp16)
+-  SET(FP16_BUILD_TESTS OFF CACHE BOOL "")
+-  SET(FP16_BUILD_BENCHMARKS OFF CACHE BOOL "")
+-  ADD_SUBDIRECTORY(
+-    "${FP16_SOURCE_DIR}"
+-    "${CONFU_DEPENDENCIES_BINARY_DIR}/fp16")
++	find_file(FP16_HDR fp16.h PATH_SUFFIXES include)
++	add_library(fp16 STATIC ${FP16_HDR})
++	set_property(TARGET fp16 PROPERTY LINKER_LANGUAGE C)
+ ENDIF()
+ TARGET_LINK_LIBRARIES(pytorch_qnnpack PRIVATE fp16)
+ 
+--- a/setup.py
++++ b/setup.py
+@@ -287,6 +287,7 @@
+     report('-- Building version ' + version)
+ 
+     def check_file(f):
++        return
+         if not os.path.exists(f):
+             report("Could not find {}".format(f))
+             report("Did you run 'git submodule update --init --recursive'?")
+--- a/aten/src/ATen/CMakeLists.txt
++++ b/aten/src/ATen/CMakeLists.txt
+@@ -255,7 +255,11 @@
+   if(GCC_7)
+     set(CMAKE_BUILD_TYPE Release)  # Always build Sleef as a Release build to work around a gcc-7 bug
+   endif()
+-  add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/../../../third_party/sleef" ${CMAKE_BINARY_DIR}/sleef)
++
++  add_library(sleef SHARED IMPORTED)
++  find_library(SLEEF_LIBRARY sleef)
++  set_property(TARGET sleef PROPERTY IMPORTED_LOCATION ${SLEEF_LIBRARY})
++
+   if(GCC_7)
+     set(CMAKE_BUILD_TYPE ${OLD_CMAKE_BUILD_TYPE})
+   endif()

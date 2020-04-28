@@ -5,7 +5,11 @@ Description: The elegant patching work is based on the master branch
 Author: Mo Zhou
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -117,7 +117,7 @@
+@@ -114,10 +114,11 @@
+ # Note to developers: if you add an option below, make sure you also add it to
+ # cmake/Summary.cmake so that the summary prints out the option values.
+ include(CMakeDependentOption)
++set(CMAKE_VERBOSE_MAKEFILE ON)
  option(ATEN_NO_TEST "Do not build ATen test binaries" OFF)
  option(BUILD_BINARY "Build C++ binaries" OFF)
  option(BUILD_DOCS "Build Caffe2 documentation" OFF)
@@ -14,7 +18,7 @@ Author: Mo Zhou
  option(BUILD_PYTHON "Build Python binaries" ON)
  option(BUILD_CAFFE2_OPS "Build Caffe2 operators" ON)
  option(BUILD_SHARED_LIBS "Build libcaffe2.so" ON)
-@@ -136,8 +136,8 @@
+@@ -136,8 +137,8 @@
      "BUILD_TEST" OFF)
  option(COLORIZE_OUTPUT "Colorize output during compilation" ON)
  option(USE_ASAN "Use Address Sanitizer" OFF)
@@ -25,7 +29,7 @@ Author: Mo Zhou
  option(CAFFE2_STATIC_LINK_CUDA "Statically link CUDA libraries" OFF)
  cmake_dependent_option(
      USE_CUDNN "Use cuDNN" ON
-@@ -145,13 +145,13 @@
+@@ -145,13 +146,13 @@
  cmake_dependent_option(
      USE_STATIC_CUDNN "Use cuDNN static libraries" OFF
      "USE_CUDNN" OFF)
@@ -45,7 +49,7 @@ Author: Mo Zhou
  option(USE_METAL "Use Metal for iOS build" ON)
  option(USE_NATIVE_ARCH "Use -march=native" OFF)
  cmake_dependent_option(
-@@ -164,7 +164,7 @@
+@@ -164,7 +165,7 @@
      USE_SYSTEM_NCCL "Use system-wide NCCL" OFF
      "USE_NCCL" OFF)
  option(USE_NNAPI "Use NNAPI" OFF)
@@ -54,7 +58,7 @@ Author: Mo Zhou
  cmake_dependent_option(
      USE_NUMA "Use NUMA. Only available on Linux." ON
      "LINUX" OFF)
-@@ -174,16 +174,16 @@
+@@ -174,16 +175,16 @@
  option(USE_NUMPY "Use NumPy" ON)
  option(USE_OBSERVERS "Use observers module." OFF)
  option(USE_OPENCL "Use OpenCL" OFF)
@@ -74,7 +78,7 @@ Author: Mo Zhou
  option(USE_TENSORRT "Using Nvidia TensorRT library" OFF)
  option(USE_XNNPACK "Use XNNPACK" ON)
  option(USE_ZMQ "Use ZMQ" OFF)
-@@ -208,6 +208,8 @@
+@@ -208,6 +209,8 @@
  # Used when building Caffe2 through setup.py
  option(BUILDING_WITH_TORCH_LIBS "Tell cmake if Caffe2 is being built alongside torch libs" ON)
  
@@ -83,7 +87,7 @@ Author: Mo Zhou
  # /Z7 override option
  # When generating debug symbols, CMake default to use the flag /Zi.
  # However, it is not compatible with sccache. So we rewrite it off.
-@@ -216,7 +218,7 @@
+@@ -216,7 +219,7 @@
    MSVC_Z7_OVERRIDE "Work around sccache bug by replacing /Zi and /ZI with /Z7 when using MSVC (if you are not using sccache, you can turn this OFF)" ON
    "MSVC" OFF)
  
@@ -472,3 +476,14 @@ Author: Mo Zhou
  
  set(JIT_TEST_DEPENDENCIES torch gtest)
  
+--- a/tools/setup_helpers/cmake.py
++++ b/tools/setup_helpers/cmake.py
+@@ -335,7 +335,7 @@
+         if IS_WINDOWS and not USE_NINJA:  # We are likely using msbuild here
+             build_args += ['--', '/p:CL_MPCount={}'.format(max_jobs)]
+         else:
+-            build_args += ['--', '-j', max_jobs]
++            build_args += ['--', '-j', max_jobs, '-v']
+         self.run(build_args, my_env)
+ 
+         # in cmake, .cu compilation involves generating certain intermediates

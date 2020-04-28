@@ -9,8 +9,8 @@ export PYBUILD_NAME = torch
 
 # configurations
 export BLAS = OpenBLAS
-export CFLAGS = $(CPPFLAGS) $(shell dpkg-buildflags --get CFLAGS)
-export CXXFLAGS = $(CPPFLAGS) $(shell dpkg-buildflags --get CXXFLAGS)
+export CFLAGS = $(CPPFLAGS) $(shell dpkg-buildflags --get CFLAGS) -gsplit-dwarf
+export CXXFLAGS = $(CPPFLAGS) $(shell dpkg-buildflags --get CXXFLAGS) -gsplit-dwarf
 export NO_CUDA = 1 # Will never build CUDA version. Use Anaconda/Pip please.
 export REL_WITH_DEB_INFO = ON
 export USE_CUDA = OFF

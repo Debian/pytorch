@@ -36,11 +36,8 @@ export USE_ZMQ = ON
 export USE_ZSTD = OFF
 
 ifneq (,$(filter parallel=%,$(DEB_BUILD_OPTIONS)))
-  JOBS := $(patsubst parallel=%,%,$(filter parallel=%,$(DEB_BUILD_OPTIONS)))
-else
-  JOBS := 8
+export MAX_JOBS := $(patsubst parallel=%,%,$(filter parallel=%,$(DEB_BUILD_OPTIONS)))
 endif
-export MAX_JOBS := $(JOBS)
 
 
 %:

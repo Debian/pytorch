@@ -52,6 +52,7 @@ Build-Depends:
  python3-yaml,
 
 Package: python3-torch
+Section: python
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends}, ${python3:Depends}, libtorch1 (= ${binary:Version}),
 Suggests: python3-pytest, python3-hypothesis,
@@ -67,6 +68,7 @@ Description: Tensors and Dynamic neural networks in Python with strong GPU accel
  This is the CPU-only version of PyTorch and Caffe2 (Python interface).
 
 Package: libtorch-dev
+Section: libdevel
 Architecture: any
 Depends: ${misc:Depends}, libtorch1 (= ${binary:Version})
 Description: Tensors and Dynamic neural networks in Python with strong GPU acceleration
@@ -81,6 +83,7 @@ Description: Tensors and Dynamic neural networks in Python with strong GPU accel
  This is the CPU-only version of PyTorch and Caffe2 (Development files).
 
 Package: libtorch1
+Section: libs
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends},
 Description: Tensors and Dynamic neural networks in Python with strong GPU acceleration

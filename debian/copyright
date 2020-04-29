@@ -120,13 +120,6 @@ Copyright: Caffe contributors
 License: BSD-2-Clause
 Comment: https://github.com/BVLC/caffe/blob/master/LICENSE
   
-Files: aten/src/ATen/native/quantized/cpu/qnnpack/deps/clog/*
-       ./debian/clog/*
-Copyright: Copyright (C) 2018 Marat Dukhan
- Copyright (c) 2017-2018 Facebook Inc.
- Copyright (c) 2017 Georgia Institute of Technology
-License: BSD-2-Clause
-
 Files: aten/src/ATen/native/quantized/cpu/qnnpack/*
 Copyright: Facebook, Inc. and its affiliates.
 License: BSD-3-Clause
@@ -353,6 +346,13 @@ License: Expat
 Files: debian/foxi/*
 Copyright: 2019, Lu Fang
 License: Expat
+
+Files: aten/src/ATen/native/quantized/cpu/qnnpack/deps/clog/*
+       debian/clog/*
+Copyright: Copyright (C) 2018 Marat Dukhan
+ Copyright (c) 2017-2018 Facebook Inc.
+ Copyright (c) 2017 Georgia Institute of Technology
+License: BSD-2-Clause
 
 ## tools/ (nothing special
 

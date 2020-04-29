@@ -35,22 +35,22 @@ Comment:
 ### Global
 
 Files: *
- ./android/*
- ./aten/*
- ./benchmarks/*
- ./binaries/*
- ./c10/*
- ./caffe2/*
- ./cmake/*
- ./docker/*
- ./docs/*
- ./ios/*
- ./modules/*
- ./scripts/*
- ./submodules/*
- ./test/*
- ./tools/*
- ./torch/*
+ android/*
+ aten/*
+ benchmarks/*
+ binaries/*
+ c10/*
+ caffe2/*
+ cmake/*
+ docker/*
+ docs/*
+ ios/*
+ modules/*
+ scripts/*
+ submodules/*
+ test/*
+ tools/*
+ torch/*
 Copyright: Facebook, Inc. and its affiliates.
  2016-     Facebook, Inc            (Adam Paszke)
  2014-     Facebook, Inc            (Soumith Chintala)
@@ -74,14 +74,14 @@ License: Expat
 
 ## android/
 
-Files: ./android/pytorch_android/host/build.gradle
+Files: android/pytorch_android/host/build.gradle
 Copyright: Facebook, Inc. and its affiliates.
 License: Apache-2.0
 
-Files: ./android/*
+Files: android/*
 Copyright: Copyright holders for Files: * 
 License: BSD-3-Clause
-Comment: according to ./android/gradle.properties :: POM_LICENSE_NAME
+Comment: according to android/gradle.properties :: POM_LICENSE_NAME
  there are some "confidential/proprietary" claims in the java files
  I guess upstream forgot to remove it, hence asked here:
  https://github.com/pytorch/pytorch/issues/37475
@@ -103,58 +103,58 @@ Copyright: 2012 Giovanni Garberoglio
  Copyright holders for Files: * 
 License: ZLIB
 
-Files: ./aten/src/ATen/native/LossCTC.cpp
-       ./aten/src/ATen/native/cuda/LossCTC.cu
+Files: aten/src/ATen/native/LossCTC.cpp
+       aten/src/ATen/native/cuda/LossCTC.cu
 Copyright: 2018, MathInf GmbH, Thomas Viehmann
 License: BSD-3-Clause
 
-Files: ./aten/src/ATen/native/cuda/UpSampleLinear1d.cu
-       ./aten/src/ATen/native/cuda/UpSampleBilinear2d.cu
-       ./aten/src/ATen/native/cuda/UpSampleTrilinear3d.cu
-       ./aten/src/ATen/native/UpSampleTrilinear3d.cpp
-       ./aten/src/ATen/native/UpSampleLinear1d.cpp
-       ./aten/src/ATen/native/UpSampleBilinear2d.cpp
+Files: aten/src/ATen/native/cuda/UpSampleLinear1d.cu
+       aten/src/ATen/native/cuda/UpSampleBilinear2d.cu
+       aten/src/ATen/native/cuda/UpSampleTrilinear3d.cu
+       aten/src/ATen/native/UpSampleTrilinear3d.cpp
+       aten/src/ATen/native/UpSampleLinear1d.cpp
+       aten/src/ATen/native/UpSampleBilinear2d.cpp
 Copyright: Caffe contributors
            Pauline Luc
            George Papandreou
 License: BSD-2-Clause
 Comment: https://github.com/BVLC/caffe/blob/master/LICENSE
   
-Files: ./aten/src/ATen/native/quantized/cpu/qnnpack/deps/clog/*
+Files: aten/src/ATen/native/quantized/cpu/qnnpack/deps/clog/*
        ./debian/clog/*
 Copyright: Copyright (C) 2018 Marat Dukhan
  Copyright (c) 2017-2018 Facebook Inc.
  Copyright (c) 2017 Georgia Institute of Technology
 License: BSD-2-Clause
 
-Files: ./aten/src/ATen/native/quantized/cpu/qnnpack/*
+Files: aten/src/ATen/native/quantized/cpu/qnnpack/*
 Copyright: Facebook, Inc. and its affiliates.
 License: BSD-3-Clause
 Comment: This is acknowledged by upstream as a forked copy of QNNPACK
 
-Files: ./aten/src/ATen/dlpack.h
-       ./caffe2/python/dlpack.h
+Files: aten/src/ATen/dlpack.h
+       caffe2/python/dlpack.h
 Copyright: 2017, DLPack Contributors
 License: Apache-2.0
 Comment: https://github.com/dmlc/dlpack/blob/master/LICENSE
  DLPack contributors partly overlap with Pytorch contributors
 
-Files: ./aten/src/ATen/native/Math.h
+Files: aten/src/ATen/native/Math.h
 Copyright: 2014, Indiana University
 License: BSD-3-Clause
 
-Files: ./aten/src/ATen/native/Distributions.h
- ./aten/src/ATen/native/Distributions.cpp
+Files: aten/src/ATen/native/Distributions.h
+ aten/src/ATen/native/Distributions.cpp
 Copyright: 2005, Robert Kern (robert.kern@gmail.com)
  Copyright holders for Files: * 
 License: BSD-3-Clause
 Comment: these files includes MIT(Expat)-licensed function by Robert Kern
 
-Files: ./aten/src/ATen/native/cuda/Math.cuh
+Files: aten/src/ATen/native/cuda/Math.cuh
 Copyright: 1984, 1987, 1992, 2000, Stephen L. Moshier
 License: BSD-3-Clause
 
-Files: ./aten/src/ATen/core/MT19937RNGEngine.h
+Files: aten/src/ATen/core/MT19937RNGEngine.h
 Copyright: 1997-2002, Makoto Matsumoto and Takuji Nishimura,
 License: BSD-3-Clause
 
@@ -188,8 +188,8 @@ Files: c10/util/Array.h
 Copyright: 2007-2017 Free Software Foundation, Inc.
 License: GPL-3.0+
 
-Files: ./c10/util/flat_hash_map.h
-       ./c10/util/order_preserving_flat_hash_map.h
+Files: c10/util/flat_hash_map.h
+       c10/util/order_preserving_flat_hash_map.h
 Copyright: 2017 Malte Skarupke
 License: BSL-1.0
 
@@ -199,15 +199,15 @@ Copyright: CryFS developers
 License: LGPL-3.0+
 Comment: https://github.com/cryfs/cryfs/blob/14ad22570ddacef22d5ff139cdff68a54fc8234d/LICENSE.txt
 
-Files: ./c10/util/reverse_iterator.h
+Files: c10/util/reverse_iterator.h
 Copyright: 2001-2019, Free Software Foundation, Inc.
 License: GPL-3+ AND NTP
 
-Files: ./c10/util/Optional.h
+Files: c10/util/Optional.h
 Copyright: 2011-2012, Andrzej Krzemienski.
 License: BSL-1.0
 
-Files: ./c10/util/variant.h
+Files: c10/util/variant.h
 Copyright: Michael Park, 2015-2017
 License: BSL-1.0
 
@@ -226,7 +226,7 @@ Files: caffe2/contrib/opencl/OpenCL/cl.hpp
 Copyright: 2008-2015, The Khronos Group Inc.
 License: Expat
 
-Files: ./caffe2/core/nomnigraph/include/nomnigraph/Support/Casting.h
+Files: caffe2/core/nomnigraph/include/nomnigraph/Support/Casting.h
 Copyright: LLVM Compiler Infrastructure contributors
 License: U-OF-I-BSD-LIKE
 
@@ -234,7 +234,7 @@ Files: caffe2/image/transform_gpu.h
 Copyright: 2016, NVIDIA CORPORATION
 License: BSD-2-Clause
 
-Files: ./caffe2/mobile/contrib/libopencl-stub/*
+Files: caffe2/mobile/contrib/libopencl-stub/*
 Copyright: libopencl-stub authors
 License: public-domain
 
@@ -248,7 +248,7 @@ Files: caffe2/mobile/contrib/libvulkan-stub/include/libvulkan-stub.h
 Copyright: 2016-2017, ARM Limited and Contributors
 License: Expat
 
-Files: ./caffe2/onnx/torch_ops/defs.cc
+Files: caffe2/onnx/torch_ops/defs.cc
 Copyright: Facebook Inc. and Microsoft Corporation.
 License: Expat
 
@@ -258,23 +258,23 @@ Copyright: 2015, The Gemmlowp Authors.
 License: Apache-2.0
 Comment: Partially from https://github.com/google/gemmlowp
 
-Files: ./caffe2/operators/deform_conv_op.cu
+Files: caffe2/operators/deform_conv_op.cu
 Copyright: 
   2014-2017, The Regents of the University of California (Regents)
   2014-2017, the respective Caffe contributors
   2017 Microsoft
 License: Apache-2.0 AND BSD-2-clause
 
-Files: ./caffe2/python/mint/static/css/simple-sidebar.css
+Files: caffe2/python/mint/static/css/simple-sidebar.css
 Copyright: Start Bootstrap https://startbootstrap.com/
 License: Apache-2.0
 
-Files: ./caffe2/test/caffe2_gtest_main.cc
+Files: caffe2/test/caffe2_gtest_main.cc
 Copyright: 2006, Google Inc.
 License: BSD-3-clause
 
-Files: ./caffe2/utils/murmur_hash3.cc
- ./caffe2/utils/murmur_hash3.h
+Files: caffe2/utils/murmur_hash3.cc
+ caffe2/utils/murmur_hash3.h
 Copyright: Austin Appleby
 License: public-domain
 
@@ -282,21 +282,21 @@ Files: caffe2/mobile/contrib/nnapi/NeuralNetworks.h
 Copyright: 2017, The Android Open Source Project
 License: Apache-2.0
 
-Files: ./caffe2/core/scope_guard.h
+Files: caffe2/core/scope_guard.h
 Copyright: 2016, Facebook
            Tudor Bosman <tudorb@fb.com>
 License: Apache-2.0
 
 ## cmake/
 
-Files: ./cmake/Modules_CUDA_fix/upstream/FindCUDA/run_nvcc.cmake
-       ./cmake/Modules_CUDA_fix/upstream/FindCUDA/make2cmake.cmake
-       ./cmake/Modules_CUDA_fix/upstream/FindCUDA/parse_cubin.cmake
+Files: cmake/Modules_CUDA_fix/upstream/FindCUDA/run_nvcc.cmake
+       cmake/Modules_CUDA_fix/upstream/FindCUDA/make2cmake.cmake
+       cmake/Modules_CUDA_fix/upstream/FindCUDA/parse_cubin.cmake
 Copyright: 2007-2009, Scientific Computing and Imaging Institute, University of Utah
   2008-2009, NVIDIA Corporation.
 License: Expat
 
-Files: ./cmake/Modules/FindLMDB.cmake
+Files: cmake/Modules/FindLMDB.cmake
 Copyright: 2006, Laurent Montel, <montel@kde.org>
   2013, Conrad Steenberg <conrad.steenberg@gmail.com>
 License: BSD-3-Clause
@@ -350,7 +350,7 @@ Copyright: 2010-2014, Rich Geldreich and Tenacious Software LLC
   2013-2014, RAD Game Tools and Valve Software
 License: Expat
 
-Files: ./debian/foxi/*
+Files: debian/foxi/*
 Copyright: 2019, Lu Fang
 License: Expat
 
@@ -366,7 +366,7 @@ Files: torch/csrc/utils/hash.h
 Copyright: Boost contributors and Pytorch contributors
 License: BSL-1.0
 
-Files: ./torch/utils/hipify/hipify_python.py
+Files: torch/utils/hipify/hipify_python.py
 Copyright: 2015-2016, Advanced Micro Devices, Inc.
 License: Expat
 
@@ -379,7 +379,7 @@ License: Python
 
 ## hidden directories
 
-Files: ./.circleci/docker/java/jni.h
+Files: .circleci/docker/java/jni.h
 Copyright: 2006, The Android Open Source Project
 License: Apache-2.0
 

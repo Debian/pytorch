@@ -2,7 +2,7 @@
 export DEB_BUILD_MAINT_OPTIONS   = hardening=+all
 export DEB_CFLAGS_MAINT_APPEND   = # -march=native
 export DEB_CXXFLAGS_MAINT_APPEND = # -march=native
-export DEB_LDFLAGS_MAINT_APPEND  = -Wl,--as-needed
+export DEB_LDFLAGS_MAINT_APPEND  = # -Wl,--as-needed
 export LC_ALL=C.UTF-8
 export PYBUILD_DISABLE_python2 = 1 # No more Python2 Packages
 export PYBUILD_NAME = torch

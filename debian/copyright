@@ -213,12 +213,13 @@ License: BSL-1.0
 
 ## caffe2/
 
-Files: caffe2/contrib/aten/gen_op.py
-       caffe2/quantization/server/fully_connected_fake_lowp_op.cc
-       caffe2/quantization/server/fully_connected_fake_lowp_op.h
-       caffe2/utils/bench_utils.h
+Files: caffe2/*
 Copyright: 2016, -present, Facebook, Inc.
 License: Apache-2.0
+Comment: in the past facebook had merged caffe2 codebase into pytorch's
+ https://github.com/facebookarchive/caffe2/blob/master/LICENSE
+ The global license for caffe2 project is Apache-2.0
+ and you can still see many files containing an Apache-2.0 banner
 
 Files: caffe2/contrib/opencl/OpenCL/cl.hpp
        caffe2/mobile/contrib/libopencl-stub/include/CL/cl.h

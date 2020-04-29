@@ -8,6 +8,8 @@ Comment:
  hardwork. I fully understand that technical gracefulness is good to have,
  but at this point that is just not affordable.
 
+### Global
+
 Files: *
  ./android/*
  ./aten/*
@@ -44,6 +46,36 @@ License: BSD-3-Clause
 Comment:
  1. aten/src/ATen/native/Distributions.cpp contains a function borrowed
     from an MIT-licensed project.
+
+## android/
+
+Files: ./android/pytorch_android/host/build.gradle
+Copyright: Facebook, Inc. and its affiliates.
+License: Apache-2.0
+
+Files: ./android/*
+Copyright: Facebook, Inc. and its affiliates.
+ 2016-     Facebook, Inc            (Adam Paszke)
+ 2014-     Facebook, Inc            (Soumith Chintala)
+ 2011-2014 Idiap Research Institute (Ronan Collobert)
+ 2012-2014 Deepmind Technologies    (Koray Kavukcuoglu)
+ 2011-2012 NEC Laboratories America (Koray Kavukcuoglu)
+ 2011-2013 NYU                      (Clement Farabet)
+ 2006-2010 NEC Laboratories America (Ronan Collobert, Leon Bottou, Iain Melvin, Jason Weston)
+ 2006      Idiap Research Institute (Samy Bengio)
+ 2001-2004 Idiap Research Institute (Ronan Collobert, Samy Bengio, Johnny Mariethoz)
+ 2016-present, Facebook Inc. All rights reserved.
+ 2015 Google Inc.
+ 2015 Yangqing Jia
+ 2013, 2014, 2015, the respective Caffe contributors
+ 2015, 2016 the respective contributors
+License: BSD-3-Clause
+Comment: according to ./android/gradle.properties :: POM_LICENSE_NAME
+ there are some "confidential/proprietary" claims in the java files
+ I guess upstream forgot to remove it, hence asked here:
+ https://github.com/pytorch/pytorch/issues/37475
+
+## aten/
 
 Files: aten/src/ATen/native/cpu/avx_mathfun.h
 Copyright: 2012 Giovanni Garberoglio
@@ -435,22 +467,6 @@ Copyright: 2008-2012, The Khronos Group Inc.
   2008-2013, The Khronos Group Inc.
   2008-2015, The Khronos Group Inc.
 License: Khronos
- FIXME
-
-Files: ./android/pytorch_android/host/build.gradle
- ./aten/src/ATen/native/quantized/cpu/qnnpack/src/requantization/gemmlowp-neon.c
- ./aten/src/ATen/native/quantized/cpu/qnnpack/src/requantization/gemmlowp-scalar.h
- ./aten/src/ATen/native/quantized/cpu/qnnpack/src/requantization/gemmlowp-sse.h
-Copyright: Facebook, Inc. and its affiliates.
-License: Apache-2.0
- FIXME
-
-Files: ./android/pytorch_android/src/main/java/org/pytorch/INativePeer.java
- ./android/pytorch_android/src/main/java/org/pytorch/LiteModuleLoader.java
- ./android/pytorch_android/src/main/java/org/pytorch/LiteNativePeer.java
- ./android/pytorch_android/src/main/java/org/pytorch/NativePeer.java
-Copyright: Facebook, Inc. and its affiliates. Confidential and proprietary.
-License: UNKNOWN
  FIXME
 
 Files: ./.circleci/docker/java/jni.h

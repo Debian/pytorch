@@ -1,0 +1,592 @@
+diff --git a/.circleci/ecr_gc_docker/docker_hub.py b/.circleci/ecr_gc_docker/docker_hub.py
+index cac6fb4..03f20ea 100755
+--- a/.circleci/ecr_gc_docker/docker_hub.py
++++ b/.circleci/ecr_gc_docker/docker_hub.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python
+ 
+ from collections import namedtuple
+ 
+diff --git a/.circleci/ecr_gc_docker/gc.py b/.circleci/ecr_gc_docker/gc.py
+index bce51ba..0280a96 100755
+--- a/.circleci/ecr_gc_docker/gc.py
++++ b/.circleci/ecr_gc_docker/gc.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python
+ 
+ import argparse
+ import datetime
+diff --git a/.circleci/ensure-consistency.py b/.circleci/ensure-consistency.py
+index 972eded..f47cb57 100755
+--- a/.circleci/ensure-consistency.py
++++ b/.circleci/ensure-consistency.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/python3
+ 
+ import os
+ import subprocess
+diff --git a/.circleci/generate_config_yml.py b/.circleci/generate_config_yml.py
+index b485770..dbebeeb 100755
+--- a/.circleci/generate_config_yml.py
++++ b/.circleci/generate_config_yml.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/python3
+ 
+ """
+ This script is the source of truth for config.yml.
+diff --git a/.circleci/scripts/build_android_gradle.sh b/.circleci/scripts/build_android_gradle.sh
+index 3d97a4f..b40c767 100755
+--- a/.circleci/scripts/build_android_gradle.sh
++++ b/.circleci/scripts/build_android_gradle.sh
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env bash
++#!/usr/bin/bash
+ set -eux -o pipefail
+ 
+ export ANDROID_NDK_HOME=/opt/ndk
+diff --git a/.circleci/scripts/publish_android_snapshot.sh b/.circleci/scripts/publish_android_snapshot.sh
+index b309f17..a722c4f 100755
+--- a/.circleci/scripts/publish_android_snapshot.sh
++++ b/.circleci/scripts/publish_android_snapshot.sh
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env bash
++#!/usr/bin/bash
+ # DO NOT ADD 'set -x' not to reveal CircleCI secret context environment variables
+ set -eu -o pipefail
+ 
+diff --git a/.circleci/scripts/setup_ci_environment.sh b/.circleci/scripts/setup_ci_environment.sh
+index 87870ef..248ea3e 100755
+--- a/.circleci/scripts/setup_ci_environment.sh
++++ b/.circleci/scripts/setup_ci_environment.sh
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env bash
++#!/usr/bin/bash
+ set -ex -o pipefail
+ 
+ # Set up NVIDIA docker repo
+diff --git a/.circleci/scripts/setup_linux_system_environment.sh b/.circleci/scripts/setup_linux_system_environment.sh
+index 3e592e0..3eab815 100755
+--- a/.circleci/scripts/setup_linux_system_environment.sh
++++ b/.circleci/scripts/setup_linux_system_environment.sh
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env bash
++#!/usr/bin/bash
+ set -eux -o pipefail
+ 
+ # Set up CircleCI GPG keys for apt, if needed
+diff --git a/.circleci/validate-docker-version.py b/.circleci/validate-docker-version.py
+index 9410b88..d644e98 100755
+--- a/.circleci/validate-docker-version.py
++++ b/.circleci/validate-docker-version.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/python3
+ import cimodel.data.caffe2_build_definitions as caffe2_build_definitions
+ import cimodel.data.pytorch_build_definitions as pytorch_build_definitions
+ from yaml import load
+diff --git a/.jenkins/pytorch/build-mobile-code-analysis.sh b/.jenkins/pytorch/build-mobile-code-analysis.sh
+index a5ae281..3482864 100755
+--- a/.jenkins/pytorch/build-mobile-code-analysis.sh
++++ b/.jenkins/pytorch/build-mobile-code-analysis.sh
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env bash
++#!/usr/bin/bash
+ # DO NOT ADD 'set -x' not to reveal CircleCI secret context environment variables
+ set -eu -o pipefail
+ 
+diff --git a/.jenkins/pytorch/build-mobile.sh b/.jenkins/pytorch/build-mobile.sh
+index fccb3cb..079c42d 100755
+--- a/.jenkins/pytorch/build-mobile.sh
++++ b/.jenkins/pytorch/build-mobile.sh
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env bash
++#!/usr/bin/bash
+ # DO NOT ADD 'set -x' not to reveal CircleCI secret context environment variables
+ set -eu -o pipefail
+ 
+diff --git a/.jenkins/pytorch/win-test-helpers/download_image.py b/.jenkins/pytorch/win-test-helpers/download_image.py
+index a9923a9..0960b78 100755
+--- a/.jenkins/pytorch/win-test-helpers/download_image.py
++++ b/.jenkins/pytorch/win-test-helpers/download_image.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python
+ 
+ import os
+ import sys
+diff --git a/.jenkins/pytorch/win-test-helpers/run_python_nn_smoketests.py b/.jenkins/pytorch/win-test-helpers/run_python_nn_smoketests.py
+index f364e98..ef109e8 100755
+--- a/.jenkins/pytorch/win-test-helpers/run_python_nn_smoketests.py
++++ b/.jenkins/pytorch/win-test-helpers/run_python_nn_smoketests.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python
+ 
+ from __future__ import print_function
+ 
+diff --git a/.jenkins/pytorch/win-test-helpers/upload_image.py b/.jenkins/pytorch/win-test-helpers/upload_image.py
+index 80b365b..1ec4e55 100755
+--- a/.jenkins/pytorch/win-test-helpers/upload_image.py
++++ b/.jenkins/pytorch/win-test-helpers/upload_image.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python
+ 
+ import os
+ import sys
+diff --git a/aten/src/ATen/native/quantized/cpu/qnnpack/configure.py b/aten/src/ATen/native/quantized/cpu/qnnpack/configure.py
+index 743b658..37ccf5e 100755
+--- a/aten/src/ATen/native/quantized/cpu/qnnpack/configure.py
++++ b/aten/src/ATen/native/quantized/cpu/qnnpack/configure.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python
+ #
+ # Copyright (c) Facebook, Inc. and its affiliates.
+ # All rights reserved.
+diff --git a/aten/src/ATen/native/quantized/cpu/qnnpack/deps/clog/configure.py b/aten/src/ATen/native/quantized/cpu/qnnpack/deps/clog/configure.py
+index d6b829c..27c2749 100755
+--- a/aten/src/ATen/native/quantized/cpu/qnnpack/deps/clog/configure.py
++++ b/aten/src/ATen/native/quantized/cpu/qnnpack/deps/clog/configure.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python
+ #
+ # Copyright (c) Facebook, Inc. and its affiliates.
+ # All rights reserved.
+diff --git a/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-android-arm64.sh b/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-android-arm64.sh
+index 389430b..adaa907 100755
+--- a/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-android-arm64.sh
++++ b/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-android-arm64.sh
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env bash
++#!/usr/bin/bash
+ #
+ # Copyright (c) Facebook, Inc. and its affiliates.
+ # All rights reserved.
+diff --git a/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-android-armv7.sh b/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-android-armv7.sh
+index 6f32950..c74c894 100755
+--- a/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-android-armv7.sh
++++ b/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-android-armv7.sh
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env bash
++#!/usr/bin/bash
+ #
+ # Copyright (c) Facebook, Inc. and its affiliates.
+ # All rights reserved.
+diff --git a/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-android-x86.sh b/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-android-x86.sh
+index 5f19db5..3138ca1 100755
+--- a/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-android-x86.sh
++++ b/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-android-x86.sh
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env bash
++#!/usr/bin/bash
+ #
+ # Copyright (c) Facebook, Inc. and its affiliates.
+ # All rights reserved.
+diff --git a/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-ios-arm64.sh b/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-ios-arm64.sh
+index d155d6f..a54d87b 100755
+--- a/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-ios-arm64.sh
++++ b/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-ios-arm64.sh
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env bash
++#!/usr/bin/bash
+ #
+ # Copyright (c) Facebook, Inc. and its affiliates.
+ # All rights reserved.
+diff --git a/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-ios-arm64e.sh b/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-ios-arm64e.sh
+index 985315f..0fb2b8a 100755
+--- a/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-ios-arm64e.sh
++++ b/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-ios-arm64e.sh
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env bash
++#!/usr/bin/bash
+ #
+ # Copyright (c) Facebook, Inc. and its affiliates.
+ # All rights reserved.
+diff --git a/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-ios-armv7.sh b/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-ios-armv7.sh
+index 0431c09..dc1d187 100755
+--- a/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-ios-armv7.sh
++++ b/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-ios-armv7.sh
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env bash
++#!/usr/bin/bash
+ #
+ # Copyright (c) Facebook, Inc. and its affiliates.
+ # All rights reserved.
+diff --git a/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-ios-armv7s.sh b/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-ios-armv7s.sh
+index e3f3d6b..6443245 100755
+--- a/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-ios-armv7s.sh
++++ b/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-ios-armv7s.sh
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env bash
++#!/usr/bin/bash
+ #
+ # Copyright (c) Facebook, Inc. and its affiliates.
+ # All rights reserved.
+diff --git a/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-ios-i386.sh b/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-ios-i386.sh
+index e895214..aaaf1bf 100755
+--- a/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-ios-i386.sh
++++ b/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-ios-i386.sh
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env bash
++#!/usr/bin/bash
+ #
+ # Copyright (c) Facebook, Inc. and its affiliates.
+ # All rights reserved.
+diff --git a/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-ios-x86_64.sh b/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-ios-x86_64.sh
+index 10a58b8..b1eff00 100755
+--- a/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-ios-x86_64.sh
++++ b/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-ios-x86_64.sh
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env bash
++#!/usr/bin/bash
+ #
+ # Copyright (c) Facebook, Inc. and its affiliates.
+ # All rights reserved.
+diff --git a/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-local.sh b/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-local.sh
+index b429650..77f8cbf 100755
+--- a/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-local.sh
++++ b/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-local.sh
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env bash
++#!/usr/bin/bash
+ #
+ # Copyright (c) Facebook, Inc. and its affiliates.
+ # All rights reserved.
+diff --git a/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/test-android-arm64.sh b/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/test-android-arm64.sh
+index 4482dad..d11bd3e 100755
+--- a/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/test-android-arm64.sh
++++ b/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/test-android-arm64.sh
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env bash
++#!/usr/bin/bash
+ #
+ # Copyright (c) Facebook, Inc. and its affiliates.
+ # All rights reserved.
+diff --git a/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/test-android-armv7.sh b/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/test-android-armv7.sh
+index bc42fb1..eb2803f 100755
+--- a/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/test-android-armv7.sh
++++ b/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/test-android-armv7.sh
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env bash
++#!/usr/bin/bash
+ #
+ # Copyright (c) Facebook, Inc. and its affiliates.
+ # All rights reserved.
+diff --git a/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/test-android-x86.sh b/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/test-android-x86.sh
+index 32742b0..3ad15eb 100755
+--- a/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/test-android-x86.sh
++++ b/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/test-android-x86.sh
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env bash
++#!/usr/bin/bash
+ #
+ # Copyright (c) Facebook, Inc. and its affiliates.
+ # All rights reserved.
+diff --git a/binaries/bench_gen/bench_gen.py b/binaries/bench_gen/bench_gen.py
+index 579aae3..a6f294f 100755
+--- a/binaries/bench_gen/bench_gen.py
++++ b/binaries/bench_gen/bench_gen.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python
+ 
+ from __future__ import absolute_import
+ from __future__ import division
+diff --git a/caffe2/contrib/gloo/gloo_test.py b/caffe2/contrib/gloo/gloo_test.py
+index 91169e1..85f7cdd 100644
+--- a/caffe2/contrib/gloo/gloo_test.py
++++ b/caffe2/contrib/gloo/gloo_test.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python
+ 
+ from __future__ import absolute_import
+ from __future__ import division
+diff --git a/caffe2/core/nomnigraph/op_gen.py b/caffe2/core/nomnigraph/op_gen.py
+index 49cd2ab..6123bbc 100755
+--- a/caffe2/core/nomnigraph/op_gen.py
++++ b/caffe2/core/nomnigraph/op_gen.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python
+ 
+ from __future__ import absolute_import
+ from __future__ import division
+diff --git a/caffe2/python/allcompare_test.py b/caffe2/python/allcompare_test.py
+index 61579b3..a54d744 100644
+--- a/caffe2/python/allcompare_test.py
++++ b/caffe2/python/allcompare_test.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python
+ 
+ from __future__ import absolute_import
+ from __future__ import division
+diff --git a/caffe2/python/benchmark_generator.py b/caffe2/python/benchmark_generator.py
+index 8393ca7..d6cc531 100644
+--- a/caffe2/python/benchmark_generator.py
++++ b/caffe2/python/benchmark_generator.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python
+ 
+ from __future__ import absolute_import
+ from __future__ import division
+diff --git a/caffe2/python/caffe_translator.py b/caffe2/python/caffe_translator.py
+index 63392c7..f531a6d 100644
+--- a/caffe2/python/caffe_translator.py
++++ b/caffe2/python/caffe_translator.py
+@@ -1,6 +1,6 @@
+ ## @package caffe_translator
+ # Module caffe2.python.caffe_translator
+-#!/usr/bin/env python2
++#!/usr/bin/python2
+ 
+ import argparse
+ import copy
+diff --git a/caffe2/python/operator_test/alias_with_name_test.py b/caffe2/python/operator_test/alias_with_name_test.py
+index 6d62cb6..c1eed52 100644
+--- a/caffe2/python/operator_test/alias_with_name_test.py
++++ b/caffe2/python/operator_test/alias_with_name_test.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/python3
+ 
+ import caffe2.python.hypothesis_test_util as hu
+ import hypothesis.strategies as st
+diff --git a/caffe2/python/test/inference_lstm_op_test.py b/caffe2/python/test/inference_lstm_op_test.py
+index dc33f52..a1afa10 100644
+--- a/caffe2/python/test/inference_lstm_op_test.py
++++ b/caffe2/python/test/inference_lstm_op_test.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/python3
+ import inspect
+ 
+ import hypothesis.strategies as st
+diff --git a/debian/clog/configure.py b/debian/clog/configure.py
+index 3b6dff6..26e67dc 100755
+--- a/debian/clog/configure.py
++++ b/debian/clog/configure.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python
+ 
+ 
+ import confu
+diff --git a/docs/caffe2/process.py b/docs/caffe2/process.py
+index 9fa37e5..63363e9 100644
+--- a/docs/caffe2/process.py
++++ b/docs/caffe2/process.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python2
++#!/usr/bin/python2
+ ## @package process
+ # Module doxygen.process
+ # Script to insert preamble for doxygen and regen API docs
+diff --git a/scripts/build_tizen.sh b/scripts/build_tizen.sh
+index 38e90fa..38cdbf9 100755
+--- a/scripts/build_tizen.sh
++++ b/scripts/build_tizen.sh
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env bash
++#!/usr/bin/bash
+ ##############################################################################
+ #  Example command to build the Tizen target (RPi3).
+ ##############################################################################
+diff --git a/scripts/release/promote/common_utils.sh b/scripts/release/promote/common_utils.sh
+index 96ff10b..0ec7bb4 100644
+--- a/scripts/release/promote/common_utils.sh
++++ b/scripts/release/promote/common_utils.sh
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env bash
++#!/usr/bin/bash
+ 
+ exit_if_not_on_git_tag() {
+     # Have an override for debugging purposes
+diff --git a/scripts/release/promote/conda_to_conda.sh b/scripts/release/promote/conda_to_conda.sh
+index 121ca6e..8aeb404 100755
+--- a/scripts/release/promote/conda_to_conda.sh
++++ b/scripts/release/promote/conda_to_conda.sh
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env bash
++#!/usr/bin/bash
+ 
+ set -eou pipefail
+ 
+diff --git a/scripts/release/promote/libtorch_to_s3.sh b/scripts/release/promote/libtorch_to_s3.sh
+index 7a121a6..9e786cd 100755
+--- a/scripts/release/promote/libtorch_to_s3.sh
++++ b/scripts/release/promote/libtorch_to_s3.sh
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env bash
++#!/usr/bin/bash
+ 
+ set -eou pipefail
+ 
+diff --git a/scripts/release/promote/wheel_to_pypi.sh b/scripts/release/promote/wheel_to_pypi.sh
+index a53db5b..4638263 100755
+--- a/scripts/release/promote/wheel_to_pypi.sh
++++ b/scripts/release/promote/wheel_to_pypi.sh
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env bash
++#!/usr/bin/bash
+ 
+ set -eou pipefail
+ 
+diff --git a/scripts/release/promote/wheel_to_s3.sh b/scripts/release/promote/wheel_to_s3.sh
+index 526d24e..91db160 100755
+--- a/scripts/release/promote/wheel_to_s3.sh
++++ b/scripts/release/promote/wheel_to_s3.sh
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env bash
++#!/usr/bin/bash
+ 
+ set -eou pipefail
+ 
+diff --git a/scripts/run_mobilelab.py b/scripts/run_mobilelab.py
+index ce6dcac..3c678ba 100755
+--- a/scripts/run_mobilelab.py
++++ b/scripts/run_mobilelab.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python
+ 
+ """
+ Script to launch all caffe2 MobileLab tests
+diff --git a/test/distributed/rpc/jit/test_dist_autograd_spawn.py b/test/distributed/rpc/jit/test_dist_autograd_spawn.py
+index 2b121a2..4a504c7 100755
+--- a/test/distributed/rpc/jit/test_dist_autograd_spawn.py
++++ b/test/distributed/rpc/jit/test_dist_autograd_spawn.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/python3
+ import unittest
+ 
+ from torch.testing._internal.common_distributed import MultiProcessTestCase
+diff --git a/test/distributed/rpc/jit/test_rpc_spawn.py b/test/distributed/rpc/jit/test_rpc_spawn.py
+index 2fcc5c3..859155d 100755
+--- a/test/distributed/rpc/jit/test_rpc_spawn.py
++++ b/test/distributed/rpc/jit/test_rpc_spawn.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/python3
+ import unittest
+ 
+ from torch.testing._internal.common_distributed import MultiProcessTestCase
+diff --git a/test/distributed/rpc/test_dist_autograd_spawn.py b/test/distributed/rpc/test_dist_autograd_spawn.py
+index 8b2817c..0d25afc 100755
+--- a/test/distributed/rpc/test_dist_autograd_spawn.py
++++ b/test/distributed/rpc/test_dist_autograd_spawn.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/python3
+ import unittest
+ 
+ from torch.testing._internal.common_distributed import MultiProcessTestCase
+diff --git a/test/distributed/rpc/test_dist_optimizer_spawn.py b/test/distributed/rpc/test_dist_optimizer_spawn.py
+index 7f86586..c8360be 100755
+--- a/test/distributed/rpc/test_dist_optimizer_spawn.py
++++ b/test/distributed/rpc/test_dist_optimizer_spawn.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/python3
+ from __future__ import absolute_import, division, print_function, unicode_literals
+ 
+ from torch.testing._internal.distributed.rpc.dist_optimizer_test import DistOptimizerTest
+diff --git a/test/distributed/rpc/test_rpc_spawn.py b/test/distributed/rpc/test_rpc_spawn.py
+index 550872b..468d8ce 100755
+--- a/test/distributed/rpc/test_rpc_spawn.py
++++ b/test/distributed/rpc/test_rpc_spawn.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/python3
+ import unittest
+ 
+ from torch.testing._internal.common_distributed import MultiProcessTestCase
+diff --git a/test/run_test.py b/test/run_test.py
+index f9ffeae..8ac1f8f 100755
+--- a/test/run_test.py
++++ b/test/run_test.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python
+ 
+ from __future__ import print_function
+ 
+diff --git a/test/scripts/run_cuda_memcheck.py b/test/scripts/run_cuda_memcheck.py
+index 2541e4b..4dc031f 100755
+--- a/test/scripts/run_cuda_memcheck.py
++++ b/test/scripts/run_cuda_memcheck.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python
+ 
+ """This script runs cuda-memcheck on the specified unit test. Each test case
+ is run in its isolated process with a timeout so that:
+diff --git a/tools/amd_build/build_amd.py b/tools/amd_build/build_amd.py
+index 5346511..aed9c4c 100755
+--- a/tools/amd_build/build_amd.py
++++ b/tools/amd_build/build_amd.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python
+ 
+ from __future__ import absolute_import, division, print_function
+ import os
+diff --git a/tools/clang_format.py b/tools/clang_format.py
+index 21fafd7..db0d390 100755
+--- a/tools/clang_format.py
++++ b/tools/clang_format.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python
+ """
+ A script that runs clang-format on changes detected via git. It will
+ report if running clang-format generated any changes.
+diff --git a/tools/clang_format_new.py b/tools/clang_format_new.py
+index b9b2f75..cf1b648 100755
+--- a/tools/clang_format_new.py
++++ b/tools/clang_format_new.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python
+ """
+ A script that runs clang-format on all C/C++ files in CLANG_FORMAT_WHITELIST. There is
+ also a diff mode which simply checks if clang-format would make any changes, which is useful for 
+diff --git a/tools/clang_tidy.py b/tools/clang_tidy.py
+index 354aedc..f29bce3 100755
+--- a/tools/clang_tidy.py
++++ b/tools/clang_tidy.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python
+ """
+ A driver script to run clang-tidy on changes detected via git.
+ 
+diff --git a/tools/flake8_hook.py b/tools/flake8_hook.py
+index d1c3774..98afedc 100755
+--- a/tools/flake8_hook.py
++++ b/tools/flake8_hook.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python
+ 
+ import sys
+ 
+diff --git a/torch/utils/hipify/hipify_python.py b/torch/utils/hipify/hipify_python.py
+index 6153510..e47300f 100755
+--- a/torch/utils/hipify/hipify_python.py
++++ b/torch/utils/hipify/hipify_python.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python
+ """ The Python Hipify script.
+ ##
+ # Copyright (c) 2015-2016 Advanced Micro Devices, Inc. All rights reserved.

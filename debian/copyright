@@ -341,21 +341,20 @@ License: Apache-2.0
 
 ## test/ (nothing special
 
-## third_party/
+## third_party/ (+ debian/ embedded sources)
 
-Files: third_party/miniz*
+Files: third_party/miniz-2.0.8/*
 Copyright: 2010-2014, Rich Geldreich and Tenacious Software LLC
   2013-2014, RAD Game Tools and Valve Software
 License: Expat
 
-## tools/
-
-
-
-
-Files: tools/amd_build/pyHIPIFY/hipify_python.py
-Copyright: 2015-2016, Advanced Micro Devices, Inc.
+Files: ./debian/foxi/*
+Copyright: 2019, Lu Fang
 License: Expat
+
+## tools/ (nothing special
+
+## torch/
 
 Files: torch/_six.py
 Copyright: 2010-2017, Benjamin Peterson
@@ -373,23 +372,13 @@ Copyright: Boost contributors and Pytorch contributors
 License: BSL-1.0
 
 
-################################################################################################################################################
-
 Files: ./.circleci/docker/java/jni.h
  ./caffe2/mobile/contrib/nnapi/NeuralNetworks.h
 Copyright: 2006, The Android Open Source Project
   2017, The Android Open Source Project
 License: Apache-2.0
- FIXME
 
- FIXME
 
-Files: ./third_party/miniz-2.0.8/LICENSE
- ./third_party/miniz-2.0.8/miniz.c
-Copyright: 2010-2014, Rich Geldreich and Tenacious Software LLC
-  2013-2014, RAD Game Tools and Valve Software
-License: Expat
- FIXME
 
 Files: ./torch/csrc/api/include/torch/nn/modules/adaptive.h
  ./torch/nn/modules/adaptive.py
@@ -414,11 +403,6 @@ License: Expat
  FIXME
 
 
-Files: ./debian/foxi/LICENSE
-Copyright: 2019, Lu Fang
-License: Expat
- FIXME
-
 Files: ./cmake/Modules/FindLMDB.cmake
 Copyright: 2006, Laurent Montel, <montel@kde.org>
   2013, Conrad Steenberg <conrad.steenberg@gmail.com>
@@ -435,7 +419,7 @@ Copyright: 2001-2014, Python Software Foundation;
 License: UNKNOWN
  FIXME
 
-#######################################################################
+## LICENSES ###############################################################
 
 License: BSD-3-Clause
  Redistribution and use in source and binary forms, with or without

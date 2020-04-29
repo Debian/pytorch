@@ -287,36 +287,51 @@ Copyright: 2016, Facebook
            Tudor Bosman <tudorb@fb.com>
 License: Apache-2.0
 
-# cmake/
+## cmake/
 
-Files: cmake/Modules_CUDA_fix/upstream/FindCUDA/make2cmake.cmake
- cmake/Modules_CUDA_fix/upstream/FindCUDA/parse_cubin.cmake
- cmake/Modules_CUDA_fix/upstream/FindCUDA/run_nvcc.cmake
+Files: ./cmake/Modules_CUDA_fix/upstream/FindCUDA/run_nvcc.cmake
+       ./cmake/Modules_CUDA_fix/upstream/FindCUDA/make2cmake.cmake
+       ./cmake/Modules_CUDA_fix/upstream/FindCUDA/parse_cubin.cmake
+Copyright: 2007-2009, Scientific Computing and Imaging Institute, University of Utah
+  2008-2009, NVIDIA Corporation.
+License: Expat
 Copyright: 2008-2009 VIDIA Corporation
   2007-2009 Scientific Computing and Imaging Institute, University of Utah
 License: Expat
 
-# modules/
+## docker/ (nothing special
 
+## docs/ (nothing special
 
+## ios/ (nothing special
 
+## modules/
 
-
-
-
-Files: modules/detectron/batch_permutation_op.cc
- modules/module_test/module_test_dynamic.cc
- modules/rocksdb/rocksdb.cc
+Files: modules/detectron/*
 Copyright: 2016, -present, Facebook, Inc.
 License: Apache-2.0
 
 Files: modules/detectron/ps_roi_pool_op.cu
 Copyright: 2016, -present, Facebook, Inc.
-License: Apache-2.0 or BSD-2-Clause
+ Copyright (c) 2016 Microsoft
+ The Regents of the University of California
+License: Apache-2.0 AND BSD-2-Clause AND Expat
 
 Files: modules/detectron/upsample_nearest_op.cu
 Copyright: 2016, -present, Facebook, Inc.
-License: Apache-2.0 or BSD-3-Clause
+ Copyright holders for Files: * 
+License: Apache-2.0 AND BSD-3-Clause
+
+Files: modules/module_test/*
+Copyright: 2016, -present, Facebook, Inc.
+License: Apache-2.0
+
+Files: modules/rocksdb/rocksdb.cc
+Copyright: 2016, -present, Facebook, Inc.
+License: Apache-2.0
+
+## scripts/
+
 
 Files: scripts/apache_header.txt
        scripts/apache_python.txt
@@ -357,11 +372,6 @@ Copyright: 2006, The Android Open Source Project
 License: Apache-2.0
  FIXME
 
-Files: ./cmake/Modules_CUDA_fix/upstream/FindCUDA/make2cmake.cmake
- ./cmake/Modules_CUDA_fix/upstream/FindCUDA/parse_cubin.cmake
-Copyright: 2007-2009, Scientific Computing and Imaging Institute, University of Utah
-  2008-2009, NVIDIA Corporation.
-License: Expat
  FIXME
 
 Files: ./third_party/miniz-2.0.8/LICENSE
@@ -377,16 +387,6 @@ Copyright: David Grangier, and HervÃ© JÃ©gou.
 License: UNKNOWN
  FIXME
 
-
-Files: ./modules/detectron/ps_roi_pool_op.cu
-Copyright: 2016, -present, Facebook, Inc.
-License: Apache-2.0 and/or BSD-2-clause and/or Expat
- FIXME
-
-Files: ./modules/detectron/upsample_nearest_op.cu
-Copyright: 2016, -present, Facebook, Inc.
-License: Apache-2.0 and/or BSD-3-clause
- FIXME
 
 Files: ./torch/csrc/utils/hash.h
 Copyright: NONE
@@ -406,11 +406,6 @@ License: Expat
 
 Files: ./debian/foxi/LICENSE
 Copyright: 2019, Lu Fang
-License: Expat
- FIXME
-
-Files: ./cmake/Modules_CUDA_fix/upstream/FindCUDA/run_nvcc.cmake
-Copyright: 2008-2009, NVIDIA Corporation.
 License: Expat
  FIXME
 

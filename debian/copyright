@@ -43,9 +43,6 @@ Copyright: Facebook, Inc. and its affiliates.
  2013, 2014, 2015, the respective Caffe contributors
  2015, 2016 the respective contributors
 License: BSD-3-Clause
-Comment:
- 1. aten/src/ATen/native/Distributions.cpp contains a function borrowed
-    from an MIT-licensed project.
 
 ## android/
 
@@ -54,21 +51,7 @@ Copyright: Facebook, Inc. and its affiliates.
 License: Apache-2.0
 
 Files: ./android/*
-Copyright: Facebook, Inc. and its affiliates.
- 2016-     Facebook, Inc            (Adam Paszke)
- 2014-     Facebook, Inc            (Soumith Chintala)
- 2011-2014 Idiap Research Institute (Ronan Collobert)
- 2012-2014 Deepmind Technologies    (Koray Kavukcuoglu)
- 2011-2012 NEC Laboratories America (Koray Kavukcuoglu)
- 2011-2013 NYU                      (Clement Farabet)
- 2006-2010 NEC Laboratories America (Ronan Collobert, Leon Bottou, Iain Melvin, Jason Weston)
- 2006      Idiap Research Institute (Samy Bengio)
- 2001-2004 Idiap Research Institute (Ronan Collobert, Samy Bengio, Johnny Mariethoz)
- 2016-present, Facebook Inc. All rights reserved.
- 2015 Google Inc.
- 2015 Yangqing Jia
- 2013, 2014, 2015, the respective Caffe contributors
- 2015, 2016 the respective contributors
+Copyright: Copyright holders for Files: * (I don't want to copy them over here)
 License: BSD-3-Clause
 Comment: according to ./android/gradle.properties :: POM_LICENSE_NAME
  there are some "confidential/proprietary" claims in the java files
@@ -77,9 +60,107 @@ Comment: according to ./android/gradle.properties :: POM_LICENSE_NAME
 
 ## aten/
 
+Files: aten/src/ATen/cpu/tbb/CMakeLists.txt
+Copyright: Wenzel Jakob
+License: Apache-2.0
+Comment: https://github.com/wjakob/tbb/blob/master/CMakeLists.tx
+
+Files: aten/src/ATen/detail/FunctionTraits.h
+Copyright: 2011 kennytm (stackoverflow)
+ Copyright holders for Files: * (I don't want to copy them over here)
+License: CC-BY-SA-4.0
+
 Files: aten/src/ATen/native/cpu/avx_mathfun.h
 Copyright: 2012 Giovanni Garberoglio
+ Copyright holders for Files: * (I don't want to copy them over here)
 License: ZLIB
+
+Files: ./aten/src/ATen/native/LossCTC.cpp
+       ./aten/src/ATen/native/cuda/LossCTC.cu
+Copyright: 2018, MathInf GmbH, Thomas Viehmann
+License: BSD-3-Clause
+
+Files: ./aten/src/ATen/native/cuda/UpSampleLinear1d.cu
+       ./aten/src/ATen/native/cuda/UpSampleBilinear2d.cu
+       ./aten/src/ATen/native/cuda/UpSampleTrilinear3d.cu
+       ./aten/src/ATen/native/UpSampleTrilinear3d.cpp
+       ./aten/src/ATen/native/UpSampleLinear1d.cpp
+       ./aten/src/ATen/native/UpSampleBilinear2d.cpp
+Copyright: Caffe contributors
+           Pauline Luc
+           George Papandreou
+License: BSD-2-Clause
+Comment: https://github.com/BVLC/caffe/blob/master/LICENSE
+  
+Files: ./aten/src/ATen/native/quantized/cpu/qnnpack/deps/clog/*
+Copyright: Copyright (C) 2018 Marat Dukhan
+ Copyright (c) 2017-2018 Facebook Inc.
+ Copyright (c) 2017 Georgia Institute of Technology
+License: BSD-2-Clause
+
+Files: ./aten/src/ATen/native/quantized/cpu/qnnpack/*
+Copyright: Facebook, Inc. and its affiliates.
+License: BSD-3-Clause
+Comment: This is acknowledged by upstream as a forked copy of QNNPACK
+
+Files: ./aten/src/ATen/dlpack.h
+       ./caffe2/python/dlpack.h
+Copyright: 2017, DLPack Contributors
+License: Apache-2.0
+Comment: https://github.com/dmlc/dlpack/blob/master/LICENSE
+ DLPack contributors partly overlap with Pytorch contributors
+
+# ---
+
+
+Files: ./aten/src/ATen/native/quantized/cpu/qnnpack/deps/clog/LICENSE
+ ./debian/clog/LICENSE
+Copyright: 2017, Georgia Institute of Technology
+  2017-2018, Facebook Inc.
+  2018, Marat Dukhan
+License: BSD-2-clause
+ FIXME
+
+
+Files: ./aten/src/ATen/native/quantized/cpu/qnnpack/LICENSE
+Copyright: Facebook, Inc. and its affiliates.
+License: BSD-3-clause
+ FIXME
+
+Files: ./aten/src/ATen/native/cpu/avx_mathfun.h
+Copyright: 2012, Giovanni Garberoglio
+License: Zlib
+ FIXME
+
+Files: ./aten/src/ATen/native/Math.h
+Copyright: 2014, Indiana University
+License: BSD-3-clause
+ FIXME
+
+Files: ./aten/src/ATen/native/Distributions.h
+Copyright: 
+  2005, Robert Kern (robert.kern@gmail.com)
+License: UNKNOWN
+Comment:
+ 1. aten/src/ATen/native/Distributions.cpp contains a function borrowed
+    from an MIT-licensed project.
+
+Files: ./aten/src/ATen/native/cuda/Math.cuh
+Copyright: 1984, 1987, 1992, 2000, Stephen L. Moshier
+License: UNKNOWN
+ FIXME
+
+Files: ./aten/src/ATen/core/MT19937RNGEngine.h
+Copyright: 1997-2002, Makoto Matsumoto and Takuji Nishimura,
+License: UNKNOWN
+ FIXME
+
+Files: ./aten/src/ATen/native/Distributions.cpp
+Copyright: Copyright 2005 Robert Kern (robert.kern@gmail.com)
+License: Expat
+ FIXME
+
+##
 
 Files: binaries/*
 Copyright: 2016-present, Facebook, Inc.
@@ -108,73 +189,6 @@ Copyright: CryFS developers
 License: LGPL-3.0+
 
 Files: caffe2/contrib/aten/gen_op.py
-       caffe2/contrib/gloo/allgather_ops.cc
-       caffe2/contrib/gloo/allgather_ops.h
-       caffe2/contrib/gloo/reduce_scatter_ops.cc
-       caffe2/contrib/gloo/reduce_scatter_ops.h
-       caffe2/core/hip/common_miopen.h
-       caffe2/core/hip/common_miopen.hip
-       caffe2/core/net_async_tracing.cc
-       caffe2/core/net_async_tracing.h
-       caffe2/core/net_async_tracing_test.cc
-       caffe2/experiments/operators/fully_connected_op_decomposition.cc
-       caffe2/experiments/operators/fully_connected_op_decomposition.h
-       caffe2/experiments/operators/fully_connected_op_decomposition_gpu.cc
-       caffe2/experiments/operators/fully_connected_op_prune.cc
-       caffe2/experiments/operators/fully_connected_op_prune.h
-       caffe2/experiments/operators/fully_connected_op_sparse.cc
-       caffe2/experiments/operators/fully_connected_op_sparse.h
-       caffe2/experiments/operators/funhash_op.cc
-       caffe2/experiments/operators/funhash_op.h
-       caffe2/experiments/operators/sparse_funhash_op.cc
-       caffe2/experiments/operators/sparse_funhash_op.h
-       caffe2/experiments/operators/sparse_matrix_reshape_op.cc
-       caffe2/experiments/operators/sparse_matrix_reshape_op.h
-       caffe2/experiments/operators/tt_contraction_op.cc
-       caffe2/experiments/operators/tt_contraction_op.h
-       caffe2/experiments/operators/tt_contraction_op_gpu.cc
-       caffe2/experiments/operators/tt_pad_op.cc
-       caffe2/experiments/operators/tt_pad_op.h
-       caffe2/experiments/python/SparseTransformer.py
-       caffe2/experiments/python/convnet_benchmarks.py
-       caffe2/experiments/python/device_reduce_sum_bench.py
-       caffe2/experiments/python/funhash_op_test.py
-       caffe2/experiments/python/net_construct_bench.py
-       caffe2/experiments/python/sparse_funhash_op_test.py
-       caffe2/experiments/python/sparse_reshape_op_test.py
-       caffe2/experiments/python/tt_contraction_op_test.py
-       caffe2/experiments/python/tt_pad_op_test.py
-       caffe2/mobile/contrib/nnapi/dlnnapi.c
-       caffe2/mobile/contrib/nnapi/nnapi_benchmark.cc
-       caffe2/observers/profile_observer.cc
-       caffe2/observers/profile_observer.h
-       caffe2/operators/hip/conv_op_miopen.hip
-       caffe2/operators/hip/local_response_normalization_op_miopen.hip
-       caffe2/operators/hip/pool_op_miopen.hip
-       caffe2/operators/hip/spatial_batch_norm_op_miopen.hip
-       caffe2/operators/stump_func_op.cc
-       caffe2/operators/stump_func_op.cu
-       caffe2/operators/stump_func_op.h
-       caffe2/operators/unique_ops.cc
-       caffe2/operators/unique_ops.cu
-       caffe2/operators/unique_ops.h
-       caffe2/operators/upsample_op.cc
-       caffe2/operators/upsample_op.h
-       caffe2/opt/fusion.h
-       caffe2/python/layers/label_smooth.py
-       caffe2/python/modeling/get_entry_from_blobs.py
-       caffe2/python/modeling/get_entry_from_blobs_test.py
-       caffe2/python/modeling/gradient_clipping_test.py
-       caffe2/python/operator_test/unique_ops_test.py
-       caffe2/python/operator_test/upsample_op_test.py
-       caffe2/python/pybind_state_int8.cc
-       caffe2/python/transformations.py
-       caffe2/python/transformations_test.py
-       caffe2/quantization/server/batch_matmul_dnnlowp_op.cc
-       caffe2/quantization/server/batch_matmul_dnnlowp_op.h
-       caffe2/quantization/server/elementwise_linear_dnnlowp_op.cc
-       caffe2/quantization/server/elementwise_linear_dnnlowp_op.h
-       caffe2/quantization/server/elementwise_sum_relu_op.cc
        caffe2/quantization/server/fully_connected_fake_lowp_op.cc
        caffe2/quantization/server/fully_connected_fake_lowp_op.h
        caffe2/utils/bench_utils.h
@@ -225,39 +239,6 @@ Copyright: 2006, Google Inc.
 License: BSD-3-Clause
 
 Files: modules/detectron/batch_permutation_op.cc
- modules/detectron/batch_permutation_op.cu
- modules/detectron/batch_permutation_op.h
- modules/detectron/group_spatial_softmax_op.cc
- modules/detectron/group_spatial_softmax_op.cu
- modules/detectron/group_spatial_softmax_op.h
- modules/detectron/ps_roi_pool_op.cc
- modules/detectron/ps_roi_pool_op.h
- modules/detectron/roi_pool_f_op.cc
- modules/detectron/roi_pool_f_op.cu
- modules/detectron/roi_pool_f_op.h
- modules/detectron/sample_as_op.cc
- modules/detectron/sample_as_op.cu
- modules/detectron/sample_as_op.h
- modules/detectron/select_smooth_l1_loss_op.cc
- modules/detectron/select_smooth_l1_loss_op.cu
- modules/detectron/select_smooth_l1_loss_op.h
- modules/detectron/sigmoid_cross_entropy_loss_op.cc
- modules/detectron/sigmoid_cross_entropy_loss_op.cu
- modules/detectron/sigmoid_cross_entropy_loss_op.h
- modules/detectron/sigmoid_focal_loss_op.cc
- modules/detectron/sigmoid_focal_loss_op.cu
- modules/detectron/sigmoid_focal_loss_op.h
- modules/detectron/smooth_l1_loss_op.cc
- modules/detectron/smooth_l1_loss_op.cu
- modules/detectron/smooth_l1_loss_op.h
- modules/detectron/softmax_focal_loss_op.cc
- modules/detectron/softmax_focal_loss_op.cu
- modules/detectron/softmax_focal_loss_op.h
- modules/detectron/spatial_narrow_as_op.cc
- modules/detectron/spatial_narrow_as_op.cu
- modules/detectron/spatial_narrow_as_op.h
- modules/detectron/upsample_nearest_op.cc
- modules/detectron/upsample_nearest_op.h
  modules/module_test/module_test_dynamic.cc
  modules/rocksdb/rocksdb.cc
 Copyright: 2016, -present, Facebook, Inc.
@@ -356,46 +337,6 @@ Files: ./binaries/benchmark_args.h
  ./caffe2/core/net_async_tracing_test.cc
  ./caffe2/experiments/operators/fully_connected_op_decomposition.cc
  ./caffe2/experiments/operators/fully_connected_op_decomposition.h
- ./caffe2/experiments/operators/fully_connected_op_decomposition_gpu.cc
- ./caffe2/experiments/operators/fully_connected_op_prune.cc
- ./caffe2/experiments/operators/fully_connected_op_prune.h
- ./caffe2/experiments/operators/fully_connected_op_sparse.cc
- ./caffe2/experiments/operators/fully_connected_op_sparse.h
- ./caffe2/experiments/operators/funhash_op.cc
- ./caffe2/experiments/operators/funhash_op.h
- ./caffe2/experiments/operators/sparse_funhash_op.cc
- ./caffe2/experiments/operators/sparse_funhash_op.h
- ./caffe2/experiments/operators/sparse_matrix_reshape_op.cc
- ./caffe2/experiments/operators/sparse_matrix_reshape_op.h
- ./caffe2/experiments/operators/tt_contraction_op.cc
- ./caffe2/experiments/operators/tt_contraction_op.h
- ./caffe2/experiments/operators/tt_contraction_op_gpu.cc
- ./caffe2/experiments/operators/tt_pad_op.cc
- ./caffe2/experiments/operators/tt_pad_op.h
- ./caffe2/experiments/python/SparseTransformer.py
- ./caffe2/experiments/python/convnet_benchmarks.py
- ./caffe2/experiments/python/device_reduce_sum_bench.py
- ./caffe2/experiments/python/funhash_op_test.py
- ./caffe2/experiments/python/net_construct_bench.py
- ./caffe2/experiments/python/sparse_funhash_op_test.py
- ./caffe2/experiments/python/sparse_reshape_op_test.py
- ./caffe2/experiments/python/tt_contraction_op_test.py
- ./caffe2/experiments/python/tt_pad_op_test.py
- ./caffe2/mobile/contrib/nnapi/dlnnapi.c
- ./caffe2/mobile/contrib/nnapi/nnapi_benchmark.cc
- ./caffe2/observers/profile_observer.cc
- ./caffe2/observers/profile_observer.h
- ./caffe2/operators/hip/conv_op_miopen.hip
- ./caffe2/operators/hip/local_response_normalization_op_miopen.hip
- ./caffe2/operators/hip/pool_op_miopen.hip
- ./caffe2/operators/hip/spatial_batch_norm_op_miopen.hip
- ./caffe2/operators/stump_func_op.cc
- ./caffe2/operators/stump_func_op.cu
- ./caffe2/operators/stump_func_op.h
- ./caffe2/operators/unique_ops.cc
- ./caffe2/operators/unique_ops.cu
- ./caffe2/operators/unique_ops.h
- ./caffe2/operators/upsample_op.cc
  ./caffe2/operators/upsample_op.h
  ./caffe2/opt/fusion.h
  ./caffe2/python/layers/label_smooth.py
@@ -416,36 +357,6 @@ Files: ./binaries/benchmark_args.h
  ./caffe2/quantization/server/fully_connected_fake_lowp_op.h
  ./caffe2/quantization/server/spatial_batch_norm_relu_op.cc
  ./caffe2/utils/bench_utils.h
- ./modules/detectron/group_spatial_softmax_op.cc
- ./modules/detectron/group_spatial_softmax_op.cu
- ./modules/detectron/group_spatial_softmax_op.h
- ./modules/detectron/ps_roi_pool_op.cc
- ./modules/detectron/ps_roi_pool_op.h
- ./modules/detectron/roi_pool_f_op.cc
- ./modules/detectron/roi_pool_f_op.cu
- ./modules/detectron/roi_pool_f_op.h
- ./modules/detectron/sample_as_op.cc
- ./modules/detectron/sample_as_op.cu
- ./modules/detectron/sample_as_op.h
- ./modules/detectron/select_smooth_l1_loss_op.cc
- ./modules/detectron/select_smooth_l1_loss_op.cu
- ./modules/detectron/select_smooth_l1_loss_op.h
- ./modules/detectron/sigmoid_cross_entropy_loss_op.cc
- ./modules/detectron/sigmoid_cross_entropy_loss_op.cu
- ./modules/detectron/sigmoid_cross_entropy_loss_op.h
- ./modules/detectron/sigmoid_focal_loss_op.cc
- ./modules/detectron/sigmoid_focal_loss_op.cu
- ./modules/detectron/sigmoid_focal_loss_op.h
- ./modules/detectron/smooth_l1_loss_op.cc
- ./modules/detectron/smooth_l1_loss_op.cu
- ./modules/detectron/smooth_l1_loss_op.h
- ./modules/detectron/softmax_focal_loss_op.cc
- ./modules/detectron/softmax_focal_loss_op.cu
- ./modules/detectron/softmax_focal_loss_op.h
- ./modules/detectron/spatial_narrow_as_op.cc
- ./modules/detectron/spatial_narrow_as_op.cu
- ./modules/detectron/spatial_narrow_as_op.h
- ./modules/detectron/upsample_nearest_op.cc
  ./modules/detectron/upsample_nearest_op.h
  ./modules/module_test/module_test_dynamic.cc
  ./modules/rocksdb/rocksdb.cc
@@ -483,14 +394,6 @@ Copyright: 2014-2015, The Khronos Group Inc.
 License: Apache-2.0
  FIXME
 
-Files: ./aten/src/ATen/native/quantized/cpu/qnnpack/deps/clog/LICENSE
- ./debian/clog/LICENSE
-Copyright: 2017, Georgia Institute of Technology
-  2017-2018, Facebook Inc.
-  2018, Marat Dukhan
-License: BSD-2-clause
- FIXME
-
 Files: ./c10/util/flat_hash_map.h
  ./c10/util/order_preserving_flat_hash_map.h
 Copyright: Malte Skarupke 2017.
@@ -517,21 +420,9 @@ Copyright: 2010-2014, Rich Geldreich and Tenacious Software LLC
 License: Expat
  FIXME
 
-Files: ./aten/src/ATen/dlpack.h
- ./caffe2/python/dlpack.h
-Copyright: 2017, Contributors
-License: UNKNOWN
- FIXME
-
 Files: ./torch/csrc/api/include/torch/nn/modules/adaptive.h
  ./torch/nn/modules/adaptive.py
 Copyright: David Grangier, and HervÃ© JÃ©gou.
-License: UNKNOWN
- FIXME
-
-Files: ./aten/src/ATen/native/LossCTC.cpp
- ./aten/src/ATen/native/cuda/LossCTC.cu
-Copyright: 2018, MathInf GmbH, Thomas Viehmann
 License: UNKNOWN
  FIXME
 
@@ -577,18 +468,8 @@ Copyright: 2016, NVIDIA CORPORATION
 License: BSD-2-clause
  FIXME
 
-Files: ./aten/src/ATen/native/quantized/cpu/qnnpack/LICENSE
-Copyright: Facebook, Inc. and its affiliates.
-License: BSD-3-clause
- FIXME
-
 Files: ./caffe2/test/caffe2_gtest_main.cc
 Copyright: 2006, Google Inc.
-License: BSD-3-clause
- FIXME
-
-Files: ./aten/src/ATen/native/Math.h
-Copyright: 2014, Indiana University
 License: BSD-3-clause
  FIXME
 
@@ -617,10 +498,6 @@ Copyright: 2010-2017, Benjamin Peterson
 License: Expat
  FIXME
 
-Files: ./aten/src/ATen/native/Distributions.cpp
-Copyright: Copyright 2005 Robert Kern (robert.kern@gmail.com)
-License: Expat
- FIXME
 
 Files: ./caffe2/onnx/torch_ops/defs.cc
 Copyright: Facebook Inc. and Microsoft Corporation.
@@ -647,12 +524,6 @@ Copyright: 2001-2019, Free Software Foundation, Inc.
 License: GPL-3+ and/or NTP
  FIXME
 
-Files: ./aten/src/ATen/native/Distributions.h
-Copyright: 
-  2005, Robert Kern (robert.kern@gmail.com)
-License: UNKNOWN
- FIXME
-
 Files: ./cmake/Modules/FindLMDB.cmake
 Copyright: 2006, Laurent Montel, <montel@kde.org>
   2013, Conrad Steenberg <conrad.steenberg@gmail.com>
@@ -661,11 +532,6 @@ License: UNKNOWN
 
 Files: ./caffe2/core/scope_guard.h
 Copyright: 2016, Facebook
-License: UNKNOWN
- FIXME
-
-Files: ./aten/src/ATen/core/MT19937RNGEngine.h
-Copyright: 1997-2002, Makoto Matsumoto and Takuji Nishimura,
 License: UNKNOWN
  FIXME
 
@@ -684,11 +550,6 @@ Copyright: 2001-2014, Python Software Foundation;
 License: UNKNOWN
  FIXME
 
-Files: ./aten/src/ATen/native/cuda/Math.cuh
-Copyright: 1984, 1987, 1992, 2000, Stephen L. Moshier
-License: UNKNOWN
- FIXME
-
 Files: ./caffe2/mobile/contrib/libopencl-stub/LICENSE
 Copyright: interest in the
 License: UNKNOWN
@@ -697,11 +558,6 @@ License: UNKNOWN
 Files: ./caffe2/python/layers/conv.py
 Copyright: is needed
 License: UNKNOWN
- FIXME
-
-Files: ./aten/src/ATen/native/cpu/avx_mathfun.h
-Copyright: 2012, Giovanni Garberoglio
-License: Zlib
  FIXME
 
 License: BSD-3-Clause

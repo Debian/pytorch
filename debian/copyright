@@ -222,20 +222,21 @@ Comment: in the past facebook had merged caffe2 codebase into pytorch's
  and you can still see many files containing an Apache-2.0 banner
 
 Files: caffe2/contrib/opencl/OpenCL/cl.hpp
-       caffe2/mobile/contrib/libopencl-stub/include/CL/cl.h
-       caffe2/mobile/contrib/libopencl-stub/include/CL/cl.hpp
-       caffe2/mobile/contrib/libopencl-stub/include/CL/cl_ext.h
-       caffe2/mobile/contrib/libopencl-stub/include/CL/cl_gl.h
-       caffe2/mobile/contrib/libopencl-stub/include/CL/cl_gl_ext.h
-       caffe2/mobile/contrib/libopencl-stub/include/CL/cl_platform.h
-       caffe2/mobile/contrib/libopencl-stub/include/CL/opencl.h
+       caffe2/mobile/contrib/libopencl-stub/include/CL/*
 Copyright: 2008-2015, The Khronos Group Inc.
 License: Expat
 
-Files: ./caffe2/python/layers/conv.py
-Copyright: is needed
-License: UNKNOWN
- FIXME
+Files: ./caffe2/core/nomnigraph/include/nomnigraph/Support/Casting.h
+Copyright: LLVM Compiler Infrastructure contributors
+License: U-OF-I-BSD-LIKE
+
+Files: caffe2/image/transform_gpu.h
+Copyright: 2016, NVIDIA CORPORATION
+License: BSD-2-Clause
+
+Files: ./caffe2/mobile/contrib/libopencl-stub/*
+Copyright: libopencl-stub authors
+License: Public Domain
 
 Files: caffe2/mobile/contrib/libvulkan-stub/include/vulkan/vk_platform.h
        caffe2/mobile/contrib/libvulkan-stub/include/vulkan/vulkan.h
@@ -246,6 +247,17 @@ Files: caffe2/mobile/contrib/libvulkan-stub/include/libvulkan-stub.h
        caffe2/mobile/contrib/libvulkan-stub/src/libvulkan-stub.c
 Copyright: 2016-2017, ARM Limited and Contributors
 License: Expat
+
+
+
+
+
+
+Files: ./caffe2/python/layers/conv.py
+Copyright: is needed
+License: UNKNOWN
+ FIXME
+
 
 Files: caffe2/mobile/contrib/nnapi/NeuralNetworks.h
 Copyright: 2017, The Android Open Source Project
@@ -259,10 +271,6 @@ Files: caffe2/operators/deform_conv_op.cu
 Copyright: 
   2014-2017, The Regents of the University of California (Regents)
   2014-2017, the Caffe contributors
-License: BSD-2-Clause
-
-Files: caffe2/image/transform_gpu.h
-Copyright: 2016, NVIDIA CORPORATION
 License: BSD-2-Clause
 
 Files: caffe2/test/caffe2_gtest_main.cc

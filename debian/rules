@@ -1,16 +1,13 @@
 #!/usr/bin/make -f
-export DEB_BUILD_MAINT_OPTIONS   = hardening=+all
-export DEB_CFLAGS_MAINT_APPEND   = # -march=native
-export DEB_CXXFLAGS_MAINT_APPEND = # -march=native
-export DEB_LDFLAGS_MAINT_APPEND  = # -Wl,--as-needed
+export DEB_BUILD_MAINT_OPTIONS = hardening=+all
 export LC_ALL=C.UTF-8
 export PYBUILD_DISABLE_python2 = 1 # No more Python2 Packages
 export PYBUILD_NAME = torch
 
 # configurations
 export BLAS = OpenBLAS
-export CFLAGS = $(CPPFLAGS) $(shell dpkg-buildflags --get CFLAGS) -gsplit-dwarf
-export CXXFLAGS = $(CPPFLAGS) $(shell dpkg-buildflags --get CXXFLAGS) -gsplit-dwarf
+export CFLAGS = $(shell dpkg-buildflags --get CPPFLAGS) $(shell dpkg-buildflags --get CFLAGS) -gsplit-dwarf
+export CXXFLAGS = $(shell dpkg-buildflags --get CPPFLAGS) $(shell dpkg-buildflags --get CXXFLAGS) -gsplit-dwarf
 export NO_CUDA = 1 # Will never build CUDA version. Use Anaconda/Pip please.
 export REL_WITH_DEB_INFO = ON
 export USE_CUDA = OFF

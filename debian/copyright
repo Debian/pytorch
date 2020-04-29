@@ -20,6 +20,17 @@ Comment:
  Q: many BSD-3-Clause licensed files have their 3rd clause modified,
     why don't you reflect the changes in d/copyrgith?
  A: can we save some time and energy?
+ .
+ Q: why is Caffe2 here?
+ A: facebook merged the codebase of caffe2 into pytorch long time ago.
+    The github.com/caffe2/caffe2 project had already been archived.
+ .
+ Q: why not splitting the shared objects into different packages?
+ A: upstream may add or delete shared object in short future
+ .
+ Q: why not create a python3-caffe2 package?
+ A: torch and caffe2 are installed together with a single setup.py.
+    Let's treat them as a whole for now.
 
 ### Global
 
@@ -56,6 +67,10 @@ Copyright: Facebook, Inc. and its affiliates.
  2013, 2014, 2015, the respective Caffe contributors
  2015, 2016 the respective contributors
 License: BSD-3-Clause
+
+Files: debian/*
+Copyright: 2019-2020 Mo Zhou <lumin@debian.org>
+License: Expat
 
 ## android/
 
@@ -216,6 +231,11 @@ Files: caffe2/contrib/opencl/OpenCL/cl.hpp
 Copyright: 2008-2015, The Khronos Group Inc.
 License: Expat
 
+Files: ./caffe2/python/layers/conv.py
+Copyright: is needed
+License: UNKNOWN
+ FIXME
+
 Files: caffe2/mobile/contrib/libvulkan-stub/include/vulkan/vk_platform.h
        caffe2/mobile/contrib/libvulkan-stub/include/vulkan/vulkan.h
 Copyright: 2014-2016, The Khronos Group Inc.
@@ -247,6 +267,115 @@ License: BSD-2-Clause
 Files: caffe2/test/caffe2_gtest_main.cc
 Copyright: 2006, Google Inc.
 License: BSD-3-Clause
+
+
+Files: 
+ ./caffe2/contrib/aten/gen_op.py
+ ./modules/rocksdb/rocksdb.cc
+Copyright: 2016, -present, Facebook, Inc.
+  2017, -present, Facebook, Inc.
+  2018, -present, Facebook, Inc.
+License: Apache-2.0
+ FIXME
+
+Files: ./caffe2/contrib/opencl/OpenCL/cl.hpp
+ ./caffe2/mobile/contrib/libopencl-stub/include/CL/cl.h
+ ./caffe2/mobile/contrib/libopencl-stub/include/CL/cl.hpp
+ ./caffe2/mobile/contrib/libopencl-stub/include/CL/cl_ext.h
+ ./caffe2/mobile/contrib/libopencl-stub/include/CL/cl_gl.h
+ ./caffe2/mobile/contrib/libopencl-stub/include/CL/cl_gl_ext.h
+ ./caffe2/mobile/contrib/libopencl-stub/include/CL/cl_platform.h
+ ./caffe2/mobile/contrib/libopencl-stub/include/CL/opencl.h
+Copyright: 2008-2012, The Khronos Group Inc.
+  2008-2013, The Khronos Group Inc.
+  2008-2015, The Khronos Group Inc.
+License: Khronos
+ FIXME
+
+
+Files: ./caffe2/mobile/contrib/libvulkan-stub/include/vulkan/vk_platform.h
+ ./caffe2/mobile/contrib/libvulkan-stub/include/vulkan/vulkan.h
+Copyright: 2014-2015, The Khronos Group Inc.
+  2015-2016, The Khronos Group Inc.
+License: Apache-2.0
+ FIXME
+
+Files: ./caffe2/mobile/contrib/libvulkan-stub/include/libvulkan-stub.h
+ ./caffe2/mobile/contrib/libvulkan-stub/src/libvulkan-stub.c
+Copyright: 2016-2017, ARM Limited and Contributors
+License: Expat
+ FIXME
+
+
+Files: ./caffe2/utils/murmur_hash3.cc
+ ./caffe2/utils/murmur_hash3.h
+Copyright: NONE
+License: public-domain
+ FIXME
+
+Files: ./caffe2/python/mint/static/css/simple-sidebar.css
+Copyright: NONE
+License: Apache-2.0
+ FIXME
+
+Files: ./caffe2/operators/quantized/int8_utils.h
+Copyright: 2015, The Gemmlowp Authors.
+License: Apache-2.0
+ FIXME
+
+Files: ./caffe2/operators/deform_conv_op.cu
+Copyright: 
+  2014-2017, The Regents of the University of California (Regents)
+  2014-2017, the respective contributors
+  All contributions by the University of California:
+  details. If a contributor wants to further mark
+  model: each contributor holds copyright over
+  solely in the commit message of the change when it is
+License: Apache-2.0 and/or BSD-2-clause
+ FIXME
+
+
+
+Files: ./caffe2/image/transform_gpu.h
+Copyright: 2016, NVIDIA CORPORATION
+License: BSD-2-clause
+ FIXME
+
+Files: ./caffe2/test/caffe2_gtest_main.cc
+Copyright: 2006, Google Inc.
+License: BSD-3-clause
+ FIXME
+
+
+
+Files: ./caffe2/core/scope_guard.h
+Copyright: 2016, Facebook
+License: UNKNOWN
+ FIXME
+
+Files: ./caffe2/image/transform_gpu.cu
+Copyright: 2016, NVIDIA CORPORATION
+License: UNKNOWN
+ FIXME
+
+
+Files: ./caffe2/mobile/contrib/libopencl-stub/LICENSE
+Copyright: interest in the
+License: UNKNOWN
+ FIXME
+
+
+Files: ./caffe2/onnx/torch_ops/defs.cc
+Copyright: Facebook Inc. and Microsoft Corporation.
+License: Expat
+ FIXME
+
+
+
+
+
+
+
 
 Files: modules/detectron/batch_permutation_op.cc
  modules/module_test/module_test_dynamic.cc
@@ -292,86 +421,13 @@ Copyright: 2010-2014, Rich Geldreich and Tenacious Software LLC
 License: Expat
 
 
-Files: debian/*
-Copyright: 2019-2020 Mo Zhou <lumin@debian.org>
-License: Expat
-
 ################################################################################################################################################
-
-Files: 
- ./caffe2/contrib/aten/gen_op.py
- ./caffe2/contrib/gloo/allgather_ops.cc
- ./caffe2/contrib/gloo/allgather_ops.h
- ./caffe2/contrib/gloo/reduce_scatter_ops.cc
- ./caffe2/contrib/gloo/reduce_scatter_ops.h
- ./caffe2/core/hip/common_miopen.h
- ./caffe2/core/hip/common_miopen.hip
- ./caffe2/core/net_async_tracing.cc
- ./caffe2/core/net_async_tracing.h
- ./caffe2/core/net_async_tracing_test.cc
- ./caffe2/experiments/operators/fully_connected_op_decomposition.cc
- ./caffe2/experiments/operators/fully_connected_op_decomposition.h
- ./caffe2/operators/upsample_op.h
- ./caffe2/opt/fusion.h
- ./caffe2/python/layers/label_smooth.py
- ./caffe2/python/modeling/get_entry_from_blobs.py
- ./caffe2/python/modeling/get_entry_from_blobs_test.py
- ./caffe2/python/modeling/gradient_clipping_test.py
- ./caffe2/python/operator_test/unique_ops_test.py
- ./caffe2/python/operator_test/upsample_op_test.py
- ./caffe2/python/pybind_state_int8.cc
- ./caffe2/python/transformations.py
- ./caffe2/python/transformations_test.py
- ./caffe2/quantization/server/batch_matmul_dnnlowp_op.cc
- ./caffe2/quantization/server/batch_matmul_dnnlowp_op.h
- ./caffe2/quantization/server/elementwise_linear_dnnlowp_op.cc
- ./caffe2/quantization/server/elementwise_linear_dnnlowp_op.h
- ./caffe2/quantization/server/elementwise_sum_relu_op.cc
- ./caffe2/quantization/server/fully_connected_fake_lowp_op.cc
- ./caffe2/quantization/server/fully_connected_fake_lowp_op.h
- ./caffe2/quantization/server/spatial_batch_norm_relu_op.cc
- ./caffe2/utils/bench_utils.h
- ./modules/detectron/upsample_nearest_op.h
- ./modules/module_test/module_test_dynamic.cc
- ./modules/rocksdb/rocksdb.cc
-Copyright: 2016, -present, Facebook, Inc.
-  2017, -present, Facebook, Inc.
-  2018, -present, Facebook, Inc.
-License: Apache-2.0
- FIXME
-
-Files: ./caffe2/contrib/opencl/OpenCL/cl.hpp
- ./caffe2/mobile/contrib/libopencl-stub/include/CL/cl.h
- ./caffe2/mobile/contrib/libopencl-stub/include/CL/cl.hpp
- ./caffe2/mobile/contrib/libopencl-stub/include/CL/cl_ext.h
- ./caffe2/mobile/contrib/libopencl-stub/include/CL/cl_gl.h
- ./caffe2/mobile/contrib/libopencl-stub/include/CL/cl_gl_ext.h
- ./caffe2/mobile/contrib/libopencl-stub/include/CL/cl_platform.h
- ./caffe2/mobile/contrib/libopencl-stub/include/CL/opencl.h
-Copyright: 2008-2012, The Khronos Group Inc.
-  2008-2013, The Khronos Group Inc.
-  2008-2015, The Khronos Group Inc.
-License: Khronos
- FIXME
 
 Files: ./.circleci/docker/java/jni.h
  ./caffe2/mobile/contrib/nnapi/NeuralNetworks.h
 Copyright: 2006, The Android Open Source Project
   2017, The Android Open Source Project
 License: Apache-2.0
- FIXME
-
-Files: ./caffe2/mobile/contrib/libvulkan-stub/include/vulkan/vk_platform.h
- ./caffe2/mobile/contrib/libvulkan-stub/include/vulkan/vulkan.h
-Copyright: 2014-2015, The Khronos Group Inc.
-  2015-2016, The Khronos Group Inc.
-License: Apache-2.0
- FIXME
-
-Files: ./caffe2/mobile/contrib/libvulkan-stub/include/libvulkan-stub.h
- ./caffe2/mobile/contrib/libvulkan-stub/src/libvulkan-stub.c
-Copyright: 2016-2017, ARM Limited and Contributors
-License: Expat
  FIXME
 
 Files: ./cmake/Modules_CUDA_fix/upstream/FindCUDA/make2cmake.cmake
@@ -394,32 +450,6 @@ Copyright: David Grangier, and HervÃ© JÃ©gou.
 License: UNKNOWN
  FIXME
 
-Files: ./caffe2/utils/murmur_hash3.cc
- ./caffe2/utils/murmur_hash3.h
-Copyright: NONE
-License: public-domain
- FIXME
-
-Files: ./caffe2/python/mint/static/css/simple-sidebar.css
-Copyright: NONE
-License: Apache-2.0
- FIXME
-
-Files: ./caffe2/operators/quantized/int8_utils.h
-Copyright: 2015, The Gemmlowp Authors.
-License: Apache-2.0
- FIXME
-
-Files: ./caffe2/operators/deform_conv_op.cu
-Copyright: 
-  2014-2017, The Regents of the University of California (Regents)
-  2014-2017, the respective contributors
-  All contributions by the University of California:
-  details. If a contributor wants to further mark
-  model: each contributor holds copyright over
-  solely in the commit message of the change when it is
-License: Apache-2.0 and/or BSD-2-clause
- FIXME
 
 Files: ./modules/detectron/ps_roi_pool_op.cu
 Copyright: 2016, -present, Facebook, Inc.
@@ -429,16 +459,6 @@ License: Apache-2.0 and/or BSD-2-clause and/or Expat
 Files: ./modules/detectron/upsample_nearest_op.cu
 Copyright: 2016, -present, Facebook, Inc.
 License: Apache-2.0 and/or BSD-3-clause
- FIXME
-
-Files: ./caffe2/image/transform_gpu.h
-Copyright: 2016, NVIDIA CORPORATION
-License: BSD-2-clause
- FIXME
-
-Files: ./caffe2/test/caffe2_gtest_main.cc
-Copyright: 2006, Google Inc.
-License: BSD-3-clause
  FIXME
 
 Files: ./torch/csrc/utils/hash.h
@@ -457,11 +477,6 @@ License: Expat
  FIXME
 
 
-Files: ./caffe2/onnx/torch_ops/defs.cc
-Copyright: Facebook Inc. and Microsoft Corporation.
-License: Expat
- FIXME
-
 Files: ./debian/foxi/LICENSE
 Copyright: 2019, Lu Fang
 License: Expat
@@ -478,16 +493,6 @@ Copyright: 2006, Laurent Montel, <montel@kde.org>
 License: UNKNOWN
  FIXME
 
-Files: ./caffe2/core/scope_guard.h
-Copyright: 2016, Facebook
-License: UNKNOWN
- FIXME
-
-Files: ./caffe2/image/transform_gpu.cu
-Copyright: 2016, NVIDIA CORPORATION
-License: UNKNOWN
- FIXME
-
 Files: ./torch/csrc/utils/structseq.cpp
 Copyright: Python Software Foundation
 License: UNKNOWN
@@ -498,15 +503,7 @@ Copyright: 2001-2014, Python Software Foundation;
 License: UNKNOWN
  FIXME
 
-Files: ./caffe2/mobile/contrib/libopencl-stub/LICENSE
-Copyright: interest in the
-License: UNKNOWN
- FIXME
-
-Files: ./caffe2/python/layers/conv.py
-Copyright: is needed
-License: UNKNOWN
- FIXME
+#######################################################################
 
 License: BSD-3-Clause
  Redistribution and use in source and binary forms, with or without

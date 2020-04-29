@@ -360,62 +360,36 @@ Files: torch/_six.py
 Copyright: 2010-2017, Benjamin Peterson
 License: Expat
 
-Files: torch/csrc/jit/script/strtod.cpp
+Files: torch/csrc/utils/hash.h
+Copyright: Boost contributors and Pytorch contributors
+License: BSL-1.0
+
+Files: ./torch/utils/hipify/hipify_python.py
+Copyright: 2015-2016, Advanced Micro Devices, Inc.
+License: Expat
+
+Files: torch/csrc/jit/frontend/strtod.cpp
        torch/csrc/utils/structseq.cpp
 Copyright: 2001-2014, Python Software Foundation
 License: Python
  A copy of the python license can be found here:
  https://github.com/python/cpython/blob/master/LICENSE
 
-Files: torch/csrc/utils/hash.h
-Copyright: Boost contributors and Pytorch contributors
-License: BSL-1.0
-
+## hidden directories
 
 Files: ./.circleci/docker/java/jni.h
- ./caffe2/mobile/contrib/nnapi/NeuralNetworks.h
 Copyright: 2006, The Android Open Source Project
   2017, The Android Open Source Project
 License: Apache-2.0
 
 
 
-Files: ./torch/csrc/api/include/torch/nn/modules/adaptive.h
- ./torch/nn/modules/adaptive.py
-Copyright: David Grangier, and HervÃ© JÃ©gou.
-License: UNKNOWN
- FIXME
-
-
-Files: ./torch/csrc/utils/hash.h
-Copyright: NONE
-License: BSL-1.0
- FIXME
-
-Files: ./torch/utils/hipify/hipify_python.py
-Copyright: 2015-2016, Advanced Micro Devices, Inc.
-License: Expat
- FIXME
-
-Files: ./torch/_six.py
-Copyright: 2010-2017, Benjamin Peterson
-License: Expat
- FIXME
+##
 
 
 Files: ./cmake/Modules/FindLMDB.cmake
 Copyright: 2006, Laurent Montel, <montel@kde.org>
   2013, Conrad Steenberg <conrad.steenberg@gmail.com>
-License: UNKNOWN
- FIXME
-
-Files: ./torch/csrc/utils/structseq.cpp
-Copyright: Python Software Foundation
-License: UNKNOWN
- FIXME
-
-Files: ./torch/csrc/jit/frontend/strtod.cpp
-Copyright: 2001-2014, Python Software Foundation;
 License: UNKNOWN
  FIXME
 

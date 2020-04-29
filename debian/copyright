@@ -289,6 +289,13 @@ License: Apache-2.0
 
 # cmake/
 
+Files: cmake/Modules_CUDA_fix/upstream/FindCUDA/make2cmake.cmake
+ cmake/Modules_CUDA_fix/upstream/FindCUDA/parse_cubin.cmake
+ cmake/Modules_CUDA_fix/upstream/FindCUDA/run_nvcc.cmake
+Copyright: 2008-2009 VIDIA Corporation
+  2007-2009 Scientific Computing and Imaging Institute, University of Utah
+License: Expat
+
 # modules/
 
 

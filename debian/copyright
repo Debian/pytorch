@@ -248,7 +248,22 @@ Files: caffe2/mobile/contrib/libvulkan-stub/include/libvulkan-stub.h
 Copyright: 2016-2017, ARM Limited and Contributors
 License: Expat
 
+Files: ./caffe2/onnx/torch_ops/defs.cc
+Copyright: Facebook Inc. and Microsoft Corporation.
+License: Expat
 
+Files: caffe2/operators/quantized/int8_utils.h
+Copyright: 2015, The Gemmlowp Authors.
+           Copyright holders for Files: * 
+License: Apache-2.0
+Comment: Partially from https://github.com/google/gemmlowp
+
+Files: ./caffe2/operators/deform_conv_op.cu
+Copyright: 
+  2014-2017, The Regents of the University of California (Regents)
+  2014-2017, the respective Caffe contributors
+  2017 Microsoft
+License: Apache-2.0 AND BSD-2-clause
 
 
 
@@ -263,57 +278,9 @@ Files: caffe2/mobile/contrib/nnapi/NeuralNetworks.h
 Copyright: 2017, The Android Open Source Project
 License: Apache-2.0
 
-Files: caffe2/operators/quantized/int8_utils.h
-Copyright: 2015, The Gemmlowp Authors.
-License: Apache-2.0
-
-Files: caffe2/operators/deform_conv_op.cu
-Copyright: 
-  2014-2017, The Regents of the University of California (Regents)
-  2014-2017, the Caffe contributors
-License: BSD-2-Clause
-
 Files: caffe2/test/caffe2_gtest_main.cc
 Copyright: 2006, Google Inc.
 License: BSD-3-Clause
-
-
-Files: 
- ./caffe2/contrib/aten/gen_op.py
- ./modules/rocksdb/rocksdb.cc
-Copyright: 2016, -present, Facebook, Inc.
-  2017, -present, Facebook, Inc.
-  2018, -present, Facebook, Inc.
-License: Apache-2.0
- FIXME
-
-Files: ./caffe2/contrib/opencl/OpenCL/cl.hpp
- ./caffe2/mobile/contrib/libopencl-stub/include/CL/cl.h
- ./caffe2/mobile/contrib/libopencl-stub/include/CL/cl.hpp
- ./caffe2/mobile/contrib/libopencl-stub/include/CL/cl_ext.h
- ./caffe2/mobile/contrib/libopencl-stub/include/CL/cl_gl.h
- ./caffe2/mobile/contrib/libopencl-stub/include/CL/cl_gl_ext.h
- ./caffe2/mobile/contrib/libopencl-stub/include/CL/cl_platform.h
- ./caffe2/mobile/contrib/libopencl-stub/include/CL/opencl.h
-Copyright: 2008-2012, The Khronos Group Inc.
-  2008-2013, The Khronos Group Inc.
-  2008-2015, The Khronos Group Inc.
-License: Khronos
- FIXME
-
-
-Files: ./caffe2/mobile/contrib/libvulkan-stub/include/vulkan/vk_platform.h
- ./caffe2/mobile/contrib/libvulkan-stub/include/vulkan/vulkan.h
-Copyright: 2014-2015, The Khronos Group Inc.
-  2015-2016, The Khronos Group Inc.
-License: Apache-2.0
- FIXME
-
-Files: ./caffe2/mobile/contrib/libvulkan-stub/include/libvulkan-stub.h
- ./caffe2/mobile/contrib/libvulkan-stub/src/libvulkan-stub.c
-Copyright: 2016-2017, ARM Limited and Contributors
-License: Expat
- FIXME
 
 
 Files: ./caffe2/utils/murmur_hash3.cc
@@ -327,27 +294,6 @@ Copyright: NONE
 License: Apache-2.0
  FIXME
 
-Files: ./caffe2/operators/quantized/int8_utils.h
-Copyright: 2015, The Gemmlowp Authors.
-License: Apache-2.0
- FIXME
-
-Files: ./caffe2/operators/deform_conv_op.cu
-Copyright: 
-  2014-2017, The Regents of the University of California (Regents)
-  2014-2017, the respective contributors
-  All contributions by the University of California:
-  details. If a contributor wants to further mark
-  model: each contributor holds copyright over
-  solely in the commit message of the change when it is
-License: Apache-2.0 and/or BSD-2-clause
- FIXME
-
-
-
-Files: ./caffe2/image/transform_gpu.h
-Copyright: 2016, NVIDIA CORPORATION
-License: BSD-2-clause
  FIXME
 
 Files: ./caffe2/test/caffe2_gtest_main.cc
@@ -362,23 +308,8 @@ Copyright: 2016, Facebook
 License: UNKNOWN
  FIXME
 
-Files: ./caffe2/image/transform_gpu.cu
-Copyright: 2016, NVIDIA CORPORATION
-License: UNKNOWN
- FIXME
 
-
-Files: ./caffe2/mobile/contrib/libopencl-stub/LICENSE
-Copyright: interest in the
-License: UNKNOWN
- FIXME
-
-
-Files: ./caffe2/onnx/torch_ops/defs.cc
-Copyright: Facebook Inc. and Microsoft Corporation.
-License: Expat
- FIXME
-
+# modules/
 
 
 

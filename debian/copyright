@@ -1,12 +1,26 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Source: https://github.com/pytorch/pytorch
 Comment:
- The source package has been repacked with all source code of dependency
- projects embedded because it's difficult and worthless to get rid of all
- the recursively nested embedded sources. Even if somebody spent a week to
- get that done, upstream's volatile status will immediately destroy that
- hardwork. I fully understand that technical gracefulness is good to have,
- but at this point that is just not affordable.
+ .
+ Q: why the embedded debian/clog ?
+ A: it's not a independent project, but a little part of
+    https://github.com/pytorch/cpuinfo/tree/master/deps/clog
+    And the API/ABI of "clog" itself is never exported to any public space
+    It's pointless to package "clog" individually.
+ .
+ Q: why the embedded debian/foxi ?
+ A: (1) no project use foxi other than pytorch (2) pytorch only use a tiny
+    portion of foxi (3) foxi itself FTBFS (4) foxi provides some enhanced
+    functionalities based on the ONNX standard (5) it's pointless to package
+    foxi because src:onnx have already provided the standard functionalities
+ .
+ Q: why the embedded third_party/miniz ?
+ A: (1) It's a part of upstream source tarball (2) no other project seems
+    to use this "miniz" library.
+ .
+ Q: many files includes a BSD-3-Clause claim with a modified 3rd clause,
+    why don't you reflect the changes in d/copyrgith?
+ A: can we save some time and energy?
 
 ### Global
 
@@ -93,6 +107,7 @@ License: BSD-2-Clause
 Comment: https://github.com/BVLC/caffe/blob/master/LICENSE
   
 Files: ./aten/src/ATen/native/quantized/cpu/qnnpack/deps/clog/*
+       ./debian/clog/*
 Copyright: Copyright (C) 2018 Marat Dukhan
  Copyright (c) 2017-2018 Facebook Inc.
  Copyright (c) 2017 Georgia Institute of Technology
@@ -110,55 +125,24 @@ License: Apache-2.0
 Comment: https://github.com/dmlc/dlpack/blob/master/LICENSE
  DLPack contributors partly overlap with Pytorch contributors
 
-# ---
-
-
-Files: ./aten/src/ATen/native/quantized/cpu/qnnpack/deps/clog/LICENSE
- ./debian/clog/LICENSE
-Copyright: 2017, Georgia Institute of Technology
-  2017-2018, Facebook Inc.
-  2018, Marat Dukhan
-License: BSD-2-clause
- FIXME
-
-
-Files: ./aten/src/ATen/native/quantized/cpu/qnnpack/LICENSE
-Copyright: Facebook, Inc. and its affiliates.
-License: BSD-3-clause
- FIXME
-
-Files: ./aten/src/ATen/native/cpu/avx_mathfun.h
-Copyright: 2012, Giovanni Garberoglio
-License: Zlib
- FIXME
-
 Files: ./aten/src/ATen/native/Math.h
 Copyright: 2014, Indiana University
-License: BSD-3-clause
- FIXME
+License: BSD-3-Clause
 
 Files: ./aten/src/ATen/native/Distributions.h
-Copyright: 
-  2005, Robert Kern (robert.kern@gmail.com)
-License: UNKNOWN
-Comment:
- 1. aten/src/ATen/native/Distributions.cpp contains a function borrowed
-    from an MIT-licensed project.
+ ./aten/src/ATen/native/Distributions.cpp
+Copyright: 2005, Robert Kern (robert.kern@gmail.com)
+ Copyright holders for Files: * (I don't want to copy them over here)
+License: BSD-3-Clause
+Comment: these files includes MIT(Expat)-licensed function by Robert Kern
 
 Files: ./aten/src/ATen/native/cuda/Math.cuh
 Copyright: 1984, 1987, 1992, 2000, Stephen L. Moshier
-License: UNKNOWN
- FIXME
+License: BSD-3-Clause
 
 Files: ./aten/src/ATen/core/MT19937RNGEngine.h
 Copyright: 1997-2002, Makoto Matsumoto and Takuji Nishimura,
-License: UNKNOWN
- FIXME
-
-Files: ./aten/src/ATen/native/Distributions.cpp
-Copyright: Copyright 2005 Robert Kern (robert.kern@gmail.com)
-License: Expat
- FIXME
+License: BSD-3-Clause
 
 ##
 

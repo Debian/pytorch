@@ -236,7 +236,7 @@ License: BSD-2-Clause
 
 Files: ./caffe2/mobile/contrib/libopencl-stub/*
 Copyright: libopencl-stub authors
-License: Public Domain
+License: public-domain
 
 Files: caffe2/mobile/contrib/libvulkan-stub/include/vulkan/vk_platform.h
        caffe2/mobile/contrib/libvulkan-stub/include/vulkan/vulkan.h
@@ -265,49 +265,29 @@ Copyright:
   2017 Microsoft
 License: Apache-2.0 AND BSD-2-clause
 
+Files: ./caffe2/python/mint/static/css/simple-sidebar.css
+Copyright: Start Bootstrap https://startbootstrap.com/
+License: Apache-2.0
 
+Files: ./caffe2/test/caffe2_gtest_main.cc
+Copyright: 2006, Google Inc.
+License: BSD-3-clause
 
-
-Files: ./caffe2/python/layers/conv.py
-Copyright: is needed
-License: UNKNOWN
- FIXME
-
+Files: ./caffe2/utils/murmur_hash3.cc
+ ./caffe2/utils/murmur_hash3.h
+Copyright: Austin Appleby
+License: public-domain
 
 Files: caffe2/mobile/contrib/nnapi/NeuralNetworks.h
 Copyright: 2017, The Android Open Source Project
 License: Apache-2.0
 
-Files: caffe2/test/caffe2_gtest_main.cc
-Copyright: 2006, Google Inc.
-License: BSD-3-Clause
-
-
-Files: ./caffe2/utils/murmur_hash3.cc
- ./caffe2/utils/murmur_hash3.h
-Copyright: NONE
-License: public-domain
- FIXME
-
-Files: ./caffe2/python/mint/static/css/simple-sidebar.css
-Copyright: NONE
-License: Apache-2.0
- FIXME
-
- FIXME
-
-Files: ./caffe2/test/caffe2_gtest_main.cc
-Copyright: 2006, Google Inc.
-License: BSD-3-clause
- FIXME
-
-
-
 Files: ./caffe2/core/scope_guard.h
 Copyright: 2016, Facebook
-License: UNKNOWN
- FIXME
+           Tudor Bosman <tudorb@fb.com>
+License: Apache-2.0
 
+# cmake/
 
 # modules/
 

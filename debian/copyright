@@ -332,11 +332,26 @@ License: Apache-2.0
 
 ## scripts/
 
-
 Files: scripts/apache_header.txt
        scripts/apache_python.txt
 Copyright: 2016, -present, Facebook, Inc.
 License: Apache-2.0
+
+## submodules/ (nothing special, basically empty
+
+## test/ (nothing special
+
+## third_party/
+
+Files: third_party/miniz*
+Copyright: 2010-2014, Rich Geldreich and Tenacious Software LLC
+  2013-2014, RAD Game Tools and Valve Software
+License: Expat
+
+## tools/
+
+
+
 
 Files: tools/amd_build/pyHIPIFY/hipify_python.py
 Copyright: 2015-2016, Advanced Micro Devices, Inc.
@@ -356,11 +371,6 @@ License: Python
 Files: torch/csrc/utils/hash.h
 Copyright: Boost contributors and Pytorch contributors
 License: BSL-1.0
-
-Files: third_party/miniz*
-Copyright: 2010-2014, Rich Geldreich and Tenacious Software LLC
-  2013-2014, RAD Game Tools and Valve Software
-License: Expat
 
 
 ################################################################################################################################################

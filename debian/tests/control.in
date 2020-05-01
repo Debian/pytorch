@@ -1,7 +1,3 @@
 # Sanity test of python package
 Test-Command: python3 -c "import sys, torch as th; print(sys.version, th.__path__, th.__version__)"
 Depends: python3-torch,
-
-# Unit test of python package
-Test-Command: python3 test/run_test.py -v -pt
-Depends: @, python3-pytest, python3-hypothesis

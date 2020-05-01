@@ -2,10 +2,6 @@
 Test-Command: python3 -c "import sys, torch as th; print(sys.version, th.__path__, th.__version__)"
 Depends: python3-torch,
 
-# Unit test of python package
-Test-Command: python3 test/run_test.py -v -pt
-Depends: @, python3-pytest, python3-hypothesis
-
 # Generating Autopkgtest Test Cases for the C++ Testing Programs
 # Found 130 tests
 #
@@ -658,4 +654,249 @@ Features: test-name=wrapdim_test
 Test-Command: /usr/lib/libtorch-test/xla_tensor_test
 Depends: libtorch-test
 Features: test-name=xla_tensor_test
+
+
+# Generating Autopkgtest Test Cases for the Python Testing Programs
+# The tests are collected from test/run_test.py
+# Found 48 tests
+#
+# Py test 0/48
+Test-Command: pytest-3 test/test_autograd.py -v
+Depends: python3-torch, python3-pytest, python3-hypothesis
+Features: test-name=test_autograd
+
+# Py test 1/48
+Test-Command: pytest-3 test/test_cpp_api_parity.py -v
+Depends: python3-torch, python3-pytest, python3-hypothesis
+Features: test-name=test_cpp_api_parity
+
+# Py test 2/48
+Test-Command: pytest-3 test/test_cpp_extensions_aot_no_ninja.py -v
+Depends: python3-torch, python3-pytest, python3-hypothesis
+Features: test-name=test_cpp_extensions_aot_no_ninja
+
+# Py test 3/48
+Test-Command: pytest-3 test/test_cpp_extensions_aot_ninja.py -v
+Depends: python3-torch, python3-pytest, python3-hypothesis
+Features: test-name=test_cpp_extensions_aot_ninja
+
+# Py test 4/48
+Test-Command: pytest-3 test/test_cpp_extensions_jit.py -v
+Depends: python3-torch, python3-pytest, python3-hypothesis
+Features: test-name=test_cpp_extensions_jit
+
+# Py test 5/48
+Test-Command: pytest-3 test/distributed/test_c10d.py -v
+Depends: python3-torch, python3-pytest, python3-hypothesis
+Features: test-name=test_c10d
+
+# Py test 6/48
+Test-Command: pytest-3 test/distributed/test_c10d_spawn.py -v
+Depends: python3-torch, python3-pytest, python3-hypothesis
+Features: test-name=test_c10d_spawn
+
+# Py test 7/48
+Test-Command: pytest-3 test/test_cuda.py -v
+Depends: python3-torch, python3-pytest, python3-hypothesis
+Features: test-name=test_cuda
+
+# Py test 8/48
+Test-Command: pytest-3 test/test_cuda_primary_ctx.py -v
+Depends: python3-torch, python3-pytest, python3-hypothesis
+Features: test-name=test_cuda_primary_ctx
+
+# Py test 9/48
+Test-Command: pytest-3 test/test_dataloader.py -v
+Depends: python3-torch, python3-pytest, python3-hypothesis
+Features: test-name=test_dataloader
+
+# Py test 10/48
+Test-Command: pytest-3 test/distributed/test_data_parallel.py -v
+Depends: python3-torch, python3-pytest, python3-hypothesis
+Features: test-name=test_data_parallel
+
+# Py test 11/48
+Test-Command: pytest-3 test/distributed/test_distributed.py -v
+Depends: python3-torch, python3-pytest, python3-hypothesis
+Features: test-name=test_distributed
+
+# Py test 12/48
+Test-Command: pytest-3 test/test_distributions.py -v
+Depends: python3-torch, python3-pytest, python3-hypothesis
+Features: test-name=test_distributions
+
+# Py test 13/48
+Test-Command: pytest-3 test/test_docs_coverage.py -v
+Depends: python3-torch, python3-pytest, python3-hypothesis
+Features: test-name=test_docs_coverage
+
+# Py test 14/48
+Test-Command: pytest-3 test/test_expecttest.py -v
+Depends: python3-torch, python3-pytest, python3-hypothesis
+Features: test-name=test_expecttest
+
+# Py test 15/48
+Test-Command: pytest-3 test/test_fake_quant.py -v
+Depends: python3-torch, python3-pytest, python3-hypothesis
+Features: test-name=test_fake_quant
+
+# Py test 16/48
+Test-Command: pytest-3 test/test_indexing.py -v
+Depends: python3-torch, python3-pytest, python3-hypothesis
+Features: test-name=test_indexing
+
+# Py test 17/48
+Test-Command: pytest-3 test/test_jit.py -v
+Depends: python3-torch, python3-pytest, python3-hypothesis
+Features: test-name=test_jit
+
+# Py test 18/48
+Test-Command: pytest-3 test/test_logging.py -v
+Depends: python3-torch, python3-pytest, python3-hypothesis
+Features: test-name=test_logging
+
+# Py test 19/48
+Test-Command: pytest-3 test/test_mkldnn.py -v
+Depends: python3-torch, python3-pytest, python3-hypothesis
+Features: test-name=test_mkldnn
+
+# Py test 20/48
+Test-Command: pytest-3 test/test_multiprocessing.py -v
+Depends: python3-torch, python3-pytest, python3-hypothesis
+Features: test-name=test_multiprocessing
+
+# Py test 21/48
+Test-Command: pytest-3 test/test_multiprocessing_spawn.py -v
+Depends: python3-torch, python3-pytest, python3-hypothesis
+Features: test-name=test_multiprocessing_spawn
+
+# Py test 22/48
+Test-Command: pytest-3 test/distributed/test_nccl.py -v
+Depends: python3-torch, python3-pytest, python3-hypothesis
+Features: test-name=test_nccl
+
+# Py test 23/48
+Test-Command: pytest-3 test/test_nn.py -v
+Depends: python3-torch, python3-pytest, python3-hypothesis
+Features: test-name=test_nn
+
+# Py test 24/48
+Test-Command: pytest-3 test/test_numba_integration.py -v
+Depends: python3-torch, python3-pytest, python3-hypothesis
+Features: test-name=test_numba_integration
+
+# Py test 25/48
+Test-Command: pytest-3 test/test_optim.py -v
+Depends: python3-torch, python3-pytest, python3-hypothesis
+Features: test-name=test_optim
+
+# Py test 26/48
+Test-Command: pytest-3 test/test_qat.py -v
+Depends: python3-torch, python3-pytest, python3-hypothesis
+Features: test-name=test_qat
+
+# Py test 27/48
+Test-Command: pytest-3 test/test_quantization.py -v
+Depends: python3-torch, python3-pytest, python3-hypothesis
+Features: test-name=test_quantization
+
+# Py test 28/48
+Test-Command: pytest-3 test/test_quantized.py -v
+Depends: python3-torch, python3-pytest, python3-hypothesis
+Features: test-name=test_quantized
+
+# Py test 29/48
+Test-Command: pytest-3 test/test_quantized_tensor.py -v
+Depends: python3-torch, python3-pytest, python3-hypothesis
+Features: test-name=test_quantized_tensor
+
+# Py test 30/48
+Test-Command: pytest-3 test/test_quantized_nn_mods.py -v
+Depends: python3-torch, python3-pytest, python3-hypothesis
+Features: test-name=test_quantized_nn_mods
+
+# Py test 31/48
+Test-Command: pytest-3 test/test_sparse.py -v
+Depends: python3-torch, python3-pytest, python3-hypothesis
+Features: test-name=test_sparse
+
+# Py test 32/48
+Test-Command: pytest-3 test/test_serialization.py -v
+Depends: python3-torch, python3-pytest, python3-hypothesis
+Features: test-name=test_serialization
+
+# Py test 33/48
+Test-Command: pytest-3 test/test_torch.py -v
+Depends: python3-torch, python3-pytest, python3-hypothesis
+Features: test-name=test_torch
+
+# Py test 34/48
+Test-Command: pytest-3 test/test_type_info.py -v
+Depends: python3-torch, python3-pytest, python3-hypothesis
+Features: test-name=test_type_info
+
+# Py test 35/48
+Test-Command: pytest-3 test/test_type_hints.py -v
+Depends: python3-torch, python3-pytest, python3-hypothesis
+Features: test-name=test_type_hints
+
+# Py test 36/48
+Test-Command: pytest-3 test/test_utils.py -v
+Depends: python3-torch, python3-pytest, python3-hypothesis
+Features: test-name=test_utils
+
+# Py test 37/48
+Test-Command: pytest-3 test/test_namedtuple_return_api.py -v
+Depends: python3-torch, python3-pytest, python3-hypothesis
+Features: test-name=test_namedtuple_return_api
+
+# Py test 38/48
+Test-Command: pytest-3 test/test_jit_fuser.py -v
+Depends: python3-torch, python3-pytest, python3-hypothesis
+Features: test-name=test_jit_fuser
+
+# Py test 39/48
+Test-Command: pytest-3 test/test_jit_simple.py -v
+Depends: python3-torch, python3-pytest, python3-hypothesis
+Features: test-name=test_jit_simple
+
+# Py test 40/48
+Test-Command: pytest-3 test/test_jit_legacy.py -v
+Depends: python3-torch, python3-pytest, python3-hypothesis
+Features: test-name=test_jit_legacy
+
+# Py test 41/48
+Test-Command: pytest-3 test/test_jit_fuser_legacy.py -v
+Depends: python3-torch, python3-pytest, python3-hypothesis
+Features: test-name=test_jit_fuser_legacy
+
+# Py test 42/48
+Test-Command: pytest-3 test/test_tensorboard.py -v
+Depends: python3-torch, python3-pytest, python3-hypothesis
+Features: test-name=test_tensorboard
+
+# Py test 43/48
+Test-Command: pytest-3 test/test_namedtensor.py -v
+Depends: python3-torch, python3-pytest, python3-hypothesis
+Features: test-name=test_namedtensor
+
+# Py test 44/48
+Test-Command: pytest-3 test/test_type_promotion.py -v
+Depends: python3-torch, python3-pytest, python3-hypothesis
+Features: test-name=test_type_promotion
+
+# Py test 45/48
+Test-Command: pytest-3 test/test_jit_disabled.py -v
+Depends: python3-torch, python3-pytest, python3-hypothesis
+Features: test-name=test_jit_disabled
+
+# Py test 46/48
+Test-Command: pytest-3 test/test_function_schema.py -v
+Depends: python3-torch, python3-pytest, python3-hypothesis
+Features: test-name=test_function_schema
+
+# Py test 47/48
+Test-Command: pytest-3 test/test_overrides.py -v
+Depends: python3-torch, python3-pytest, python3-hypothesis
+Features: test-name=test_overrides
 

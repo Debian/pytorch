@@ -59,6 +59,7 @@ for (( i = 0; i < ${#FILES[@]}; i++ )); do
 	echo "# Py test ${i}/${#FILES[@]}"
 	echo "Test-Command: pytest-3 test/${FILES[$i]}.py -v"
 	echo "Depends: python3-torch, python3-pytest, python3-hypothesis"
-	echo "Features: test-name=${i}_of_${#FILES[@]}___$(basename ${FILES[$i]})"
+	echo "Features: test-name=$((${i}+1))_of_${#FILES[@]}___$(basename ${FILES[$i]})"
+	echo "Restrictions: allow-stderr"
 	echo ""
 done

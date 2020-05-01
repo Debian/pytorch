@@ -10,5 +10,6 @@ for (( i = 0; i < ${#FILES[@]}; i++ )); do
 	echo "Test-Command: ${FILES[$i]}"
 	echo "Depends: libtorch-test"
 	echo "Features: test-name=$((${i}+1))_of_${#FILES[@]}___$(basename ${FILES[$i]})"
+	echo "Restrictions: allow-stderr"
 	echo ""
 done

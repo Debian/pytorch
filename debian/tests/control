@@ -6,6 +6,656 @@ Depends: python3-torch,
 Test-Command: python3 test/run_test.py -v -pt
 Depends: @, python3-pytest, python3-hypothesis
 
-# Unit test of the low level C++ libraries
-Test-Command: find /usr/lib/libtorch-test -type f -executable -exec '{}' \;
-Depends: libtorch-test,
+# Generating Autopkgtest Test Cases for the C++ Testing Programs
+# Found 130 tests
+#
+# C++ test 0/130
+Test-Command: /usr/lib/libtorch-test/AlgorithmsTest
+Depends: libtorch-test
+Features: test-name=AlgorithmsTest
+
+# C++ test 1/130
+Test-Command: /usr/lib/libtorch-test/BinaryMatchImplTest
+Depends: libtorch-test
+Features: test-name=BinaryMatchImplTest
+
+# C++ test 2/130
+Test-Command: /usr/lib/libtorch-test/Dict_test
+Depends: libtorch-test
+Features: test-name=Dict_test
+
+# C++ test 3/130
+Test-Command: /usr/lib/libtorch-test/Dimname_test
+Depends: libtorch-test
+Features: test-name=Dimname_test
+
+# C++ test 4/130
+Test-Command: /usr/lib/libtorch-test/GraphTest
+Depends: libtorch-test
+Features: test-name=GraphTest
+
+# C++ test 5/130
+Test-Command: /usr/lib/libtorch-test/KernelFunction_test
+Depends: libtorch-test
+Features: test-name=KernelFunction_test
+
+# C++ test 6/130
+Test-Command: /usr/lib/libtorch-test/List_test
+Depends: libtorch-test
+Features: test-name=List_test
+
+# C++ test 7/130
+Test-Command: /usr/lib/libtorch-test/MatchTest
+Depends: libtorch-test
+Features: test-name=MatchTest
+
+# C++ test 8/130
+Test-Command: /usr/lib/libtorch-test/NamedTensor_test
+Depends: libtorch-test
+Features: test-name=NamedTensor_test
+
+# C++ test 9/130
+Test-Command: /usr/lib/libtorch-test/NeuralNetTest
+Depends: libtorch-test
+Features: test-name=NeuralNetTest
+
+# C++ test 10/130
+Test-Command: /usr/lib/libtorch-test/SubgraphMatcherTest
+Depends: libtorch-test
+Features: test-name=SubgraphMatcherTest
+
+# C++ test 11/130
+Test-Command: /usr/lib/libtorch-test/TarjansImplTest
+Depends: libtorch-test
+Features: test-name=TarjansImplTest
+
+# C++ test 12/130
+Test-Command: /usr/lib/libtorch-test/TensorImpl_test
+Depends: libtorch-test
+Features: test-name=TensorImpl_test
+
+# C++ test 13/130
+Test-Command: /usr/lib/libtorch-test/TopoSortTest
+Depends: libtorch-test
+Features: test-name=TopoSortTest
+
+# C++ test 14/130
+Test-Command: /usr/lib/libtorch-test/apply_utils_test
+Depends: libtorch-test
+Features: test-name=apply_utils_test
+
+# C++ test 15/130
+Test-Command: /usr/lib/libtorch-test/atest
+Depends: libtorch-test
+Features: test-name=atest
+
+# C++ test 16/130
+Test-Command: /usr/lib/libtorch-test/backend_cutting_test
+Depends: libtorch-test
+Features: test-name=backend_cutting_test
+
+# C++ test 17/130
+Test-Command: /usr/lib/libtorch-test/backend_fallback_test
+Depends: libtorch-test
+Features: test-name=backend_fallback_test
+
+# C++ test 18/130
+Test-Command: /usr/lib/libtorch-test/basic
+Depends: libtorch-test
+Features: test-name=basic
+
+# C++ test 19/130
+Test-Command: /usr/lib/libtorch-test/batch_matmul_op_test
+Depends: libtorch-test
+Features: test-name=batch_matmul_op_test
+
+# C++ test 20/130
+Test-Command: /usr/lib/libtorch-test/blob_test
+Depends: libtorch-test
+Features: test-name=blob_test
+
+# C++ test 21/130
+Test-Command: /usr/lib/libtorch-test/boolean_unmask_ops_test
+Depends: libtorch-test
+Features: test-name=boolean_unmask_ops_test
+
+# C++ test 22/130
+Test-Command: /usr/lib/libtorch-test/bound_shape_inference_test
+Depends: libtorch-test
+Features: test-name=bound_shape_inference_test
+
+# C++ test 23/130
+Test-Command: /usr/lib/libtorch-test/broadcast_test
+Depends: libtorch-test
+Features: test-name=broadcast_test
+
+# C++ test 24/130
+Test-Command: /usr/lib/libtorch-test/c10_Array_test
+Depends: libtorch-test
+Features: test-name=c10_Array_test
+
+# C++ test 25/130
+Test-Command: /usr/lib/libtorch-test/c10_C++17_test
+Depends: libtorch-test
+Features: test-name=c10_C++17_test
+
+# C++ test 26/130
+Test-Command: /usr/lib/libtorch-test/c10_ConstexprCrc_test
+Depends: libtorch-test
+Features: test-name=c10_ConstexprCrc_test
+
+# C++ test 27/130
+Test-Command: /usr/lib/libtorch-test/c10_DeviceGuard_test
+Depends: libtorch-test
+Features: test-name=c10_DeviceGuard_test
+
+# C++ test 28/130
+Test-Command: /usr/lib/libtorch-test/c10_DispatchKeySet_test
+Depends: libtorch-test
+Features: test-name=c10_DispatchKeySet_test
+
+# C++ test 29/130
+Test-Command: /usr/lib/libtorch-test/c10_Half_test
+Depends: libtorch-test
+Features: test-name=c10_Half_test
+
+# C++ test 30/130
+Test-Command: /usr/lib/libtorch-test/c10_InlineDeviceGuard_test
+Depends: libtorch-test
+Features: test-name=c10_InlineDeviceGuard_test
+
+# C++ test 31/130
+Test-Command: /usr/lib/libtorch-test/c10_InlineStreamGuard_test
+Depends: libtorch-test
+Features: test-name=c10_InlineStreamGuard_test
+
+# C++ test 32/130
+Test-Command: /usr/lib/libtorch-test/c10_LeftRight_test
+Depends: libtorch-test
+Features: test-name=c10_LeftRight_test
+
+# C++ test 33/130
+Test-Command: /usr/lib/libtorch-test/c10_Metaprogramming_test
+Depends: libtorch-test
+Features: test-name=c10_Metaprogramming_test
+
+# C++ test 34/130
+Test-Command: /usr/lib/libtorch-test/c10_StreamGuard_test
+Depends: libtorch-test
+Features: test-name=c10_StreamGuard_test
+
+# C++ test 35/130
+Test-Command: /usr/lib/libtorch-test/c10_TypeIndex_test
+Depends: libtorch-test
+Features: test-name=c10_TypeIndex_test
+
+# C++ test 36/130
+Test-Command: /usr/lib/libtorch-test/c10_TypeList_test
+Depends: libtorch-test
+Features: test-name=c10_TypeList_test
+
+# C++ test 37/130
+Test-Command: /usr/lib/libtorch-test/c10_TypeTraits_test
+Depends: libtorch-test
+Features: test-name=c10_TypeTraits_test
+
+# C++ test 38/130
+Test-Command: /usr/lib/libtorch-test/c10_bfloat16_test
+Depends: libtorch-test
+Features: test-name=c10_bfloat16_test
+
+# C++ test 39/130
+Test-Command: /usr/lib/libtorch-test/c10_either_test
+Depends: libtorch-test
+Features: test-name=c10_either_test
+
+# C++ test 40/130
+Test-Command: /usr/lib/libtorch-test/c10_exception_test
+Depends: libtorch-test
+Features: test-name=c10_exception_test
+
+# C++ test 41/130
+Test-Command: /usr/lib/libtorch-test/c10_flags_test
+Depends: libtorch-test
+Features: test-name=c10_flags_test
+
+# C++ test 42/130
+Test-Command: /usr/lib/libtorch-test/c10_intrusive_ptr_benchmark
+Depends: libtorch-test
+Features: test-name=c10_intrusive_ptr_benchmark
+
+# C++ test 43/130
+Test-Command: /usr/lib/libtorch-test/c10_intrusive_ptr_test
+Depends: libtorch-test
+Features: test-name=c10_intrusive_ptr_test
+
+# C++ test 44/130
+Test-Command: /usr/lib/libtorch-test/c10_logging_test
+Depends: libtorch-test
+Features: test-name=c10_logging_test
+
+# C++ test 45/130
+Test-Command: /usr/lib/libtorch-test/c10_ordered_preserving_dict_test
+Depends: libtorch-test
+Features: test-name=c10_ordered_preserving_dict_test
+
+# C++ test 46/130
+Test-Command: /usr/lib/libtorch-test/c10_registry_test
+Depends: libtorch-test
+Features: test-name=c10_registry_test
+
+# C++ test 47/130
+Test-Command: /usr/lib/libtorch-test/c10_string_view_test
+Depends: libtorch-test
+Features: test-name=c10_string_view_test
+
+# C++ test 48/130
+Test-Command: /usr/lib/libtorch-test/c10_tempfile_test
+Depends: libtorch-test
+Features: test-name=c10_tempfile_test
+
+# C++ test 49/130
+Test-Command: /usr/lib/libtorch-test/c10_typeid_test
+Depends: libtorch-test
+Features: test-name=c10_typeid_test
+
+# C++ test 50/130
+Test-Command: /usr/lib/libtorch-test/cast_test
+Depends: libtorch-test
+Features: test-name=cast_test
+
+# C++ test 51/130
+Test-Command: /usr/lib/libtorch-test/common_subexpression_elimination_test
+Depends: libtorch-test
+Features: test-name=common_subexpression_elimination_test
+
+# C++ test 52/130
+Test-Command: /usr/lib/libtorch-test/common_test
+Depends: libtorch-test
+Features: test-name=common_test
+
+# C++ test 53/130
+Test-Command: /usr/lib/libtorch-test/context_test
+Depends: libtorch-test
+Features: test-name=context_test
+
+# C++ test 54/130
+Test-Command: /usr/lib/libtorch-test/conv_to_nnpack_transform_test
+Depends: libtorch-test
+Features: test-name=conv_to_nnpack_transform_test
+
+# C++ test 55/130
+Test-Command: /usr/lib/libtorch-test/conv_transpose_op_mobile_test
+Depends: libtorch-test
+Features: test-name=conv_transpose_op_mobile_test
+
+# C++ test 56/130
+Test-Command: /usr/lib/libtorch-test/converter_nomigraph_test
+Depends: libtorch-test
+Features: test-name=converter_nomigraph_test
+
+# C++ test 57/130
+Test-Command: /usr/lib/libtorch-test/cpu_generator_test
+Depends: libtorch-test
+Features: test-name=cpu_generator_test
+
+# C++ test 58/130
+Test-Command: /usr/lib/libtorch-test/cpu_rng_test
+Depends: libtorch-test
+Features: test-name=cpu_rng_test
+
+# C++ test 59/130
+Test-Command: /usr/lib/libtorch-test/cpuid_test
+Depends: libtorch-test
+Features: test-name=cpuid_test
+
+# C++ test 60/130
+Test-Command: /usr/lib/libtorch-test/data_filler_test
+Depends: libtorch-test
+Features: test-name=data_filler_test
+
+# C++ test 61/130
+Test-Command: /usr/lib/libtorch-test/dead_code_elim_test
+Depends: libtorch-test
+Features: test-name=dead_code_elim_test
+
+# C++ test 62/130
+Test-Command: /usr/lib/libtorch-test/depthwise3x3_conv_op_test
+Depends: libtorch-test
+Features: test-name=depthwise3x3_conv_op_test
+
+# C++ test 63/130
+Test-Command: /usr/lib/libtorch-test/device_test
+Depends: libtorch-test
+Features: test-name=device_test
+
+# C++ test 64/130
+Test-Command: /usr/lib/libtorch-test/distributed_test
+Depends: libtorch-test
+Features: test-name=distributed_test
+
+# C++ test 65/130
+Test-Command: /usr/lib/libtorch-test/dlconvertor_test
+Depends: libtorch-test
+Features: test-name=dlconvertor_test
+
+# C++ test 66/130
+Test-Command: /usr/lib/libtorch-test/elementwise_op_test
+Depends: libtorch-test
+Features: test-name=elementwise_op_test
+
+# C++ test 67/130
+Test-Command: /usr/lib/libtorch-test/event_test
+Depends: libtorch-test
+Features: test-name=event_test
+
+# C++ test 68/130
+Test-Command: /usr/lib/libtorch-test/extension_backend_test
+Depends: libtorch-test
+Features: test-name=extension_backend_test
+
+# C++ test 69/130
+Test-Command: /usr/lib/libtorch-test/fatal_signal_asan_no_sig_test
+Depends: libtorch-test
+Features: test-name=fatal_signal_asan_no_sig_test
+
+# C++ test 70/130
+Test-Command: /usr/lib/libtorch-test/fixed_divisor_test
+Depends: libtorch-test
+Features: test-name=fixed_divisor_test
+
+# C++ test 71/130
+Test-Command: /usr/lib/libtorch-test/generate_proposals_op_test
+Depends: libtorch-test
+Features: test-name=generate_proposals_op_test
+
+# C++ test 72/130
+Test-Command: /usr/lib/libtorch-test/generate_proposals_op_util_boxes_test
+Depends: libtorch-test
+Features: test-name=generate_proposals_op_util_boxes_test
+
+# C++ test 73/130
+Test-Command: /usr/lib/libtorch-test/generate_proposals_op_util_nms_test
+Depends: libtorch-test
+Features: test-name=generate_proposals_op_util_nms_test
+
+# C++ test 74/130
+Test-Command: /usr/lib/libtorch-test/graph_test
+Depends: libtorch-test
+Features: test-name=graph_test
+
+# C++ test 75/130
+Test-Command: /usr/lib/libtorch-test/half_float_ops_test
+Depends: libtorch-test
+Features: test-name=half_float_ops_test
+
+# C++ test 76/130
+Test-Command: /usr/lib/libtorch-test/half_test
+Depends: libtorch-test
+Features: test-name=half_test
+
+# C++ test 77/130
+Test-Command: /usr/lib/libtorch-test/init_test
+Depends: libtorch-test
+Features: test-name=init_test
+
+# C++ test 78/130
+Test-Command: /usr/lib/libtorch-test/inline_container_test
+Depends: libtorch-test
+Features: test-name=inline_container_test
+
+# C++ test 79/130
+Test-Command: /usr/lib/libtorch-test/kernel_function_legacy_test
+Depends: libtorch-test
+Features: test-name=kernel_function_legacy_test
+
+# C++ test 80/130
+Test-Command: /usr/lib/libtorch-test/kernel_function_test
+Depends: libtorch-test
+Features: test-name=kernel_function_test
+
+# C++ test 81/130
+Test-Command: /usr/lib/libtorch-test/kernel_functor_test
+Depends: libtorch-test
+Features: test-name=kernel_functor_test
+
+# C++ test 82/130
+Test-Command: /usr/lib/libtorch-test/kernel_lambda_legacy_test
+Depends: libtorch-test
+Features: test-name=kernel_lambda_legacy_test
+
+# C++ test 83/130
+Test-Command: /usr/lib/libtorch-test/kernel_lambda_test
+Depends: libtorch-test
+Features: test-name=kernel_lambda_test
+
+# C++ test 84/130
+Test-Command: /usr/lib/libtorch-test/kernel_stackbased_test
+Depends: libtorch-test
+Features: test-name=kernel_stackbased_test
+
+# C++ test 85/130
+Test-Command: /usr/lib/libtorch-test/math_test
+Depends: libtorch-test
+Features: test-name=math_test
+
+# C++ test 86/130
+Test-Command: /usr/lib/libtorch-test/memory_format_test
+Depends: libtorch-test
+Features: test-name=memory_format_test
+
+# C++ test 87/130
+Test-Command: /usr/lib/libtorch-test/memory_overlapping_test
+Depends: libtorch-test
+Features: test-name=memory_overlapping_test
+
+# C++ test 88/130
+Test-Command: /usr/lib/libtorch-test/mobile_test
+Depends: libtorch-test
+Features: test-name=mobile_test
+
+# C++ test 89/130
+Test-Command: /usr/lib/libtorch-test/module_test
+Depends: libtorch-test
+Features: test-name=module_test
+
+# C++ test 90/130
+Test-Command: /usr/lib/libtorch-test/mpi_test
+Depends: libtorch-test
+Features: test-name=mpi_test
+
+# C++ test 91/130
+Test-Command: /usr/lib/libtorch-test/native_test
+Depends: libtorch-test
+Features: test-name=native_test
+
+# C++ test 92/130
+Test-Command: /usr/lib/libtorch-test/net_async_tracing_test
+Depends: libtorch-test
+Features: test-name=net_async_tracing_test
+
+# C++ test 93/130
+Test-Command: /usr/lib/libtorch-test/net_dag_utils_test
+Depends: libtorch-test
+Features: test-name=net_dag_utils_test
+
+# C++ test 94/130
+Test-Command: /usr/lib/libtorch-test/net_simple_refcount_test
+Depends: libtorch-test
+Features: test-name=net_simple_refcount_test
+
+# C++ test 95/130
+Test-Command: /usr/lib/libtorch-test/net_test
+Depends: libtorch-test
+Features: test-name=net_test
+
+# C++ test 96/130
+Test-Command: /usr/lib/libtorch-test/observer_test
+Depends: libtorch-test
+Features: test-name=observer_test
+
+# C++ test 97/130
+Test-Command: /usr/lib/libtorch-test/op_registration_test
+Depends: libtorch-test
+Features: test-name=op_registration_test
+
+# C++ test 98/130
+Test-Command: /usr/lib/libtorch-test/operator_schema_test
+Depends: libtorch-test
+Features: test-name=operator_schema_test
+
+# C++ test 99/130
+Test-Command: /usr/lib/libtorch-test/operator_test
+Depends: libtorch-test
+Features: test-name=operator_test
+
+# C++ test 100/130
+Test-Command: /usr/lib/libtorch-test/parallel_net_test
+Depends: libtorch-test
+Features: test-name=parallel_net_test
+
+# C++ test 101/130
+Test-Command: /usr/lib/libtorch-test/pattern_net_transform_test
+Depends: libtorch-test
+Features: test-name=pattern_net_transform_test
+
+# C++ test 102/130
+Test-Command: /usr/lib/libtorch-test/pow_test
+Depends: libtorch-test
+Features: test-name=pow_test
+
+# C++ test 103/130
+Test-Command: /usr/lib/libtorch-test/predictor_test
+Depends: libtorch-test
+Features: test-name=predictor_test
+
+# C++ test 104/130
+Test-Command: /usr/lib/libtorch-test/proto_utils_test
+Depends: libtorch-test
+Features: test-name=proto_utils_test
+
+# C++ test 105/130
+Test-Command: /usr/lib/libtorch-test/quantized_test
+Depends: libtorch-test
+Features: test-name=quantized_test
+
+# C++ test 106/130
+Test-Command: /usr/lib/libtorch-test/reduce_ops_test
+Depends: libtorch-test
+Features: test-name=reduce_ops_test
+
+# C++ test 107/130
+Test-Command: /usr/lib/libtorch-test/scalar_tensor_test
+Depends: libtorch-test
+Features: test-name=scalar_tensor_test
+
+# C++ test 108/130
+Test-Command: /usr/lib/libtorch-test/scalar_test
+Depends: libtorch-test
+Features: test-name=scalar_test
+
+# C++ test 109/130
+Test-Command: /usr/lib/libtorch-test/simple_queue_test
+Depends: libtorch-test
+Features: test-name=simple_queue_test
+
+# C++ test 110/130
+Test-Command: /usr/lib/libtorch-test/smart_tensor_printer_test
+Depends: libtorch-test
+Features: test-name=smart_tensor_printer_test
+
+# C++ test 111/130
+Test-Command: /usr/lib/libtorch-test/ssa_test
+Depends: libtorch-test
+Features: test-name=ssa_test
+
+# C++ test 112/130
+Test-Command: /usr/lib/libtorch-test/stats_test
+Depends: libtorch-test
+Features: test-name=stats_test
+
+# C++ test 113/130
+Test-Command: /usr/lib/libtorch-test/string_ops_test
+Depends: libtorch-test
+Features: test-name=string_ops_test
+
+# C++ test 114/130
+Test-Command: /usr/lib/libtorch-test/tensor_interop_test
+Depends: libtorch-test
+Features: test-name=tensor_interop_test
+
+# C++ test 115/130
+Test-Command: /usr/lib/libtorch-test/tensor_iterator_test
+Depends: libtorch-test
+Features: test-name=tensor_iterator_test
+
+# C++ test 116/130
+Test-Command: /usr/lib/libtorch-test/test_parallel
+Depends: libtorch-test
+Features: test-name=test_parallel
+
+# C++ test 117/130
+Test-Command: /usr/lib/libtorch-test/text_file_reader_utils_test
+Depends: libtorch-test
+Features: test-name=text_file_reader_utils_test
+
+# C++ test 118/130
+Test-Command: /usr/lib/libtorch-test/thread_init_test
+Depends: libtorch-test
+Features: test-name=thread_init_test
+
+# C++ test 119/130
+Test-Command: /usr/lib/libtorch-test/time_observer_test
+Depends: libtorch-test
+Features: test-name=time_observer_test
+
+# C++ test 120/130
+Test-Command: /usr/lib/libtorch-test/timer_test
+Depends: libtorch-test
+Features: test-name=timer_test
+
+# C++ test 121/130
+Test-Command: /usr/lib/libtorch-test/transform_test
+Depends: libtorch-test
+Features: test-name=transform_test
+
+# C++ test 122/130
+Test-Command: /usr/lib/libtorch-test/undefined_tensor_test
+Depends: libtorch-test
+Features: test-name=undefined_tensor_test
+
+# C++ test 123/130
+Test-Command: /usr/lib/libtorch-test/utility_ops_test
+Depends: libtorch-test
+Features: test-name=utility_ops_test
+
+# C++ test 124/130
+Test-Command: /usr/lib/libtorch-test/variant_test
+Depends: libtorch-test
+Features: test-name=variant_test
+
+# C++ test 125/130
+Test-Command: /usr/lib/libtorch-test/verify_api_visibility
+Depends: libtorch-test
+Features: test-name=verify_api_visibility
+
+# C++ test 126/130
+Test-Command: /usr/lib/libtorch-test/weakref_test
+Depends: libtorch-test
+Features: test-name=weakref_test
+
+# C++ test 127/130
+Test-Command: /usr/lib/libtorch-test/workspace_test
+Depends: libtorch-test
+Features: test-name=workspace_test
+
+# C++ test 128/130
+Test-Command: /usr/lib/libtorch-test/wrapdim_test
+Depends: libtorch-test
+Features: test-name=wrapdim_test
+
+# C++ test 129/130
+Test-Command: /usr/lib/libtorch-test/xla_tensor_test
+Depends: libtorch-test
+Features: test-name=xla_tensor_test
+

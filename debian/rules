@@ -36,6 +36,13 @@ ifneq (,$(filter parallel=%,$(DEB_BUILD_OPTIONS)))
 export MAX_JOBS := $(patsubst parallel=%,%,$(filter parallel=%,$(DEB_BUILD_OPTIONS)))
 endif
 
+# Customization options (You may want to rebuild this package locally)
+NATIVE :=
+ifneq (,$(NATIVE))
+export CFLAGS = $(shell dpkg-buildflags --get CPPFLAGS) $(shell dpkg-buildflags --get CFLAGS) -gsplit-dwarf -march=native
+export CXXFLAGS = $(shell dpkg-buildflags --get CPPFLAGS) $(shell dpkg-buildflags --get CXXFLAGS) -gsplit-dwarf -march=native
+endif
+
 
 %:
 	dh $@ -Spybuild --with python3

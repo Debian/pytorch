@@ -3929,6 +3929,17 @@ for shape in [(1,), ()]:
         foo = MyFn.apply(base, True)
         self.assertEqual(foo.grad_fn.__class__.__name__, "MyFnBackward")
 
+    def test_integer_outputs(self):
+        inp = torch.rand(4, requires_grad=True)
+
+        out = inp.argmax()
+        self.assertFalse(out.dtype.is_floating_point)
+        self.assertFalse(out.requires_grad)
+
+        out = inp.argmin()
+        self.assertFalse(out.dtype.is_floating_point)
+        self.assertFalse(out.requires_grad)
+
 
 def index_variable(shape, max_indices):
     if not isinstance(shape, tuple):
@@ -5367,6 +5378,8 @@ class TestAutogradDeviceType(TestCase):
         gradgradcheck(where, [cond, x, y], [torch.randn(5, 5, 5, device=device)])
 
     @skipCUDAIfRocm
+    @unittest.skipIf(IS_WINDOWS, """Test is flaky on Windows:
+            https://github.com/pytorch/pytorch/issues/34870""")
     def test_ctc_loss(self, device):
         batch_size = 64
         num_labels = 101
@@ -5451,6 +5464,14 @@ class TestAutogradDeviceType(TestCase):
         b = torch.nn.functional.rrelu_(a.clone(), -5.0, 1.0)
         with self.assertRaisesRegex(RuntimeError, "call out-of-place version"):
             b.backward(torch.ones(2, device=device))
+
+    @skipCUDAIfRocm
+    def test_leaky_relu_inplace_with_zero_slope(self, device):
+        a = torch.tensor([-2., 0., 2.], device=device, requires_grad=True)
+        b = torch.nn.functional.leaky_relu_(a.clone(), 0.0)
+        b.backward(torch.ones(3, device=device))
+        expected = torch.tensor([0., 0., 1.], device=device)
+        self.assertEqual(a.grad, expected)
 
     @onlyCUDA
     def test_free_unneeded_tensor(self, device):

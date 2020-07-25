@@ -2877,6 +2877,22 @@ class _TestTorchMixin(object):
                         expected[tuple(ii)] = src
         self.assertEqual(actual, expected, 0)
 
+        # should throw an error when self.dtype != src.dtype.
+        # we ignore the case when src is Scalar, as it gets
+        # cast via src.to<scalar_t>.
+        if not is_scalar:
+            err_pattern = 'Expected (self.dtype to be equal to src.dtype|object of scalar type Int but got scalar type \\w+)'
+            with self.assertRaisesRegex(RuntimeError, err_pattern):
+                getattr(base.clone().type(torch.int), method)(dim, idx, src)
+
+            err_pattern = 'Expected (self.dtype to be equal to src.dtype|object of scalar type \\w+ but got scalar type Int)'
+            with self.assertRaisesRegex(RuntimeError, err_pattern):
+                getattr(base.clone(), method)(dim, idx, src.type(torch.int))
+
+        # should throw an error when index dtype is not long
+        with self.assertRaisesRegex(RuntimeError, 'Expected (dtype int64|object of scalar type Long)'):
+            getattr(base.clone(), method)(dim, idx.type(torch.int), src)
+
         if test_bounds:
             idx[0][0][0] = 34
             with self.assertRaises(RuntimeError):
@@ -3666,6 +3682,13 @@ class _TestTorchMixin(object):
         serialized = pickle.dumps(a)
         b = pickle.loads(serialized)
         self.assertTrue(isinstance(b, torch.Size))
+        self.assertEqual(a, b)
+
+    def test_pickle_function(self):
+        # https://github.com/pytorch/pytorch/issues/37703
+        a = torch.tanh
+        serialized = pickle.dumps(a)
+        b = pickle.loads(serialized)
         self.assertEqual(a, b)
 
     def test_norm_fastpaths(self):
@@ -5587,6 +5610,18 @@ def add_neg_dim_tests():
 class TestTorchDeviceType(TestCase):
     exact_dtype = True
 
+    # Verifies that the inplace dunders (like idiv) actually are in place
+    @onlyOnCPUAndCUDA
+    def test_inplace_dunders(self, device):
+        t = torch.randn((1,), device=device)
+        expected = t.data_ptr()
+        t += 1
+        t -= 1
+        t *= 1
+        t /= 1
+        t //= 1
+        self.assertEqual(expected, t.data_ptr())
+
     def check_internal_mem_overlap(self, inplace_op, num_inputs,
                                    dtype, device,
                                    expected_failure=False):
@@ -7067,6 +7102,30 @@ class TestTorchDeviceType(TestCase):
         A = random_symmetric_pd_matrix(*A_dims, dtype=dtype, device=device)
         L = torch.cholesky(A, upper=upper)
         return b, A, L
+
+    # Assert for illegal type would not be raised on XLA
+    @onlyOnCPUAndCUDA
+    def test_minmax_illegal_dtype(self, device):
+        x = torch.randn(5, 5, dtype=torch.float32, device=device)
+        valid_values = torch.empty(5, dtype=torch.float32, device=device)
+        valid_indices = torch.empty(5, dtype=torch.long, device=device)
+        illegal_values = torch.empty(5, dtype=torch.int, device=device)
+        illegal_indices = torch.empty(5, dtype=torch.double, device=device)
+        torch.max(x, dim=0, out=(valid_values, valid_indices))
+        torch.min(x, dim=0, out=(valid_values, valid_indices))
+        rmsg = r'scalar type|dtype'
+        with self.assertRaisesRegex(RuntimeError, rmsg):
+            torch.max(x, dim=0, out=(illegal_values, valid_indices))
+        with self.assertRaisesRegex(RuntimeError, rmsg):
+            torch.min(x, dim=0, out=(illegal_values, valid_indices))
+        with self.assertRaisesRegex(RuntimeError, rmsg):
+            torch.max(x, dim=0, out=(valid_values, illegal_indices))
+        with self.assertRaisesRegex(RuntimeError, rmsg):
+            torch.min(x, dim=0, out=(valid_values, illegal_indices))
+        with self.assertRaisesRegex(RuntimeError, rmsg):
+            torch.max(x, dim=0, out=(illegal_values, illegal_indices))
+        with self.assertRaisesRegex(RuntimeError, rmsg):
+            torch.min(x, dim=0, out=(illegal_values, illegal_indices))
 
     @skipCUDAIfNoMagma
     @skipCPUIfNoLapack
@@ -8648,6 +8707,15 @@ class TestTorchDeviceType(TestCase):
             expected = fn(y, 1, keepdim=False)
             self.assertEqual(x[:, 1], expected, '{} with out= kwarg'.format(fn_name))
 
+    @largeCUDATensorTest('10GB')
+    def test_reduction_split(self, device):
+        # Test reduction when there is a 32bit-indexing split
+        # https://github.com/pytorch/pytorch/issues/37583
+        input_ = torch.randn(5, 14400, 14400, device=device)
+        result = input_.sum(dim=0)
+        expect = input_[0] + input_[1] + input_[2] + input_[3] + input_[4]
+        self.assertEqual(result, expect)
+
     @slowTest
     def test_argminmax_large_axis(self, device):
         # Regression test for gh-32863
@@ -9790,6 +9858,14 @@ class TestTorchDeviceType(TestCase):
                                          device=device).as_strided(shape, strides)
                 self.assertEqual(empty_strided.shape, as_strided.shape)
                 self.assertEqual(empty_strided.stride(), as_strided.stride())
+
+    def test_strided_mismatched_stride_shape(self, device):
+        for shape, strides in [((1, ), ()), ((1, 2), (1, ))]:
+            with self.assertRaisesRegex(RuntimeError, "mismatch in length of strides and shape"):
+                torch.tensor(0.42, device=device).as_strided(shape, strides)
+
+            with self.assertRaisesRegex(RuntimeError, "mismatch in length of strides and shape"):
+                torch.tensor(0.42, device=device).as_strided_(shape, strides)
 
     def test_sign(self, device):
         for dtype in torch.testing.get_all_math_dtypes(device):
@@ -13271,6 +13347,24 @@ class TestTorchDeviceType(TestCase):
             self.assertEqual(sample_indices.dim(), 1, "wrong number of dimensions")
             self.assertEqual(prob_dist.dim(), 1, "wrong number of prob_dist dimensions")
             self.assertEqual(sample_indices.size(0), n_sample, "wrong number of samples")
+
+    @slowTest
+    @dtypes(torch.float)
+    def test_multinomial_rng_state_advance(self, device, dtype):
+        corpus_size = 100000
+        freqs = torch.ones(corpus_size, dtype=torch.float, device=device)
+        n_sample = 100
+        samples1 = torch.multinomial(freqs, n_sample, replacement=True)
+        samples2 = torch.multinomial(freqs, n_sample, replacement=True)
+        samples = torch.cat([samples1, samples2])
+        # expect no more than 1 repeating elements generated in 2 attempts
+        # the probability of at least element being repeated is surprisingly large, 18%
+        self.assertLessEqual(2 * n_sample - samples.unique().size(0), 2)
+        samples1 = torch.multinomial(freqs, n_sample, replacement=False)
+        samples2 = torch.multinomial(freqs, n_sample, replacement=False)
+        samples = torch.cat([samples1, samples2])
+        # expect no more than 1 repeating elements generated in 2 attempts
+        self.assertLessEqual(2 * n_sample - samples.unique().size(0), 1)
 
     def test_var_unbiased(self, device):
         tensor = torch.randn(100, device=device)

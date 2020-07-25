@@ -638,7 +638,7 @@ void TensorIterator::narrow(int dim, int64_t start, int64_t size) {
   for (auto& op : operands_) {
     op.data = ((char*)op.data) + op.stride_bytes[dim] * start;
   }
-  if (size == 1) {
+  if (size == 1 && !is_reduction_) {
     coalesce_dimensions();
   }
 }
@@ -891,10 +891,13 @@ std::unique_ptr<TensorIterator> TensorIterator::split(int dim) {
 }
 
 int TensorIterator::get_dim_to_split() const {
-  TORCH_INTERNAL_ASSERT(ndim() >= 1 && shape()[ndim() - 1] >= 2);
+  TORCH_INTERNAL_ASSERT(ndim() >= 1);
   int64_t max_extent = -1;
   int dim_to_split = -1;
   for (int dim = ndim() - 1; dim >= 0; dim--) {
+    if (shape_[dim] == 0) {
+      continue;
+    }
     int64_t size = shape_[dim];
     for (auto& op : operands_) {
       int64_t extent = (size - 1) * op.stride_bytes[dim];

@@ -1,3 +1,16 @@
+pytorch (1.5.1-1) UNRELEASED; urgency=medium
+
+  * New upstream version 1.5.1
+  * Fix a small part of copyright that lintian complains about.
+  * Rewrite autopkgtest: use script to automatically generate control file.
+  * Automatically generate autopkgtest cases for upstream python tests.
+  * Add the ordinal number to the name of autopkgtest cases.
+  * Rules: add option to allow users to rebuild to -march=native.
+  * Patch a python test case lest it break the /dev/null file.
+  * Add build-essential and libtorch-dev to autopkgtest deps.
+
+ -- Mo Zhou <lumin@debian.org>  Sat, 25 Jul 2020 13:49:35 +0800
+
 pytorch (1.5.0-2) experimental; urgency=medium
 
   * Install NOTICE to the binary files

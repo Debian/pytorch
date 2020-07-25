@@ -21,8 +21,8 @@ PyTorch is an optimized tensor library for deep learning using GPUs and CPUs.
    :maxdepth: 1
    :caption: Language Bindings
 
-   C++ API <https://pytorch.org/cppdocs/>
-   packages
+   cpp_index
+   Javadoc <https://pytorch.org/javadoc/>
 
 .. toctree::
    :maxdepth: 1

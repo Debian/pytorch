@@ -1,4 +1,4 @@
-pytorch (1.5.1-1) UNRELEASED; urgency=medium
+pytorch (1.5.1-1) experimental; urgency=medium
 
   * New upstream version 1.5.1
   * Fix a small part of copyright that lintian complains about.
@@ -8,8 +8,9 @@ pytorch (1.5.1-1) UNRELEASED; urgency=medium
   * Rules: add option to allow users to rebuild to -march=native.
   * Patch a python test case lest it break the /dev/null file.
   * Add build-essential and libtorch-dev to autopkgtest deps.
+  * Refresh symbols control file.
 
- -- Mo Zhou <lumin@debian.org>  Sat, 25 Jul 2020 13:49:35 +0800
+ -- Mo Zhou <lumin@debian.org>  Sun, 26 Jul 2020 21:28:04 +0800
 
 pytorch (1.5.0-2) experimental; urgency=medium
 

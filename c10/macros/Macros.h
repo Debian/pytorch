@@ -18,17 +18,19 @@
 // file.
 
 #ifndef C10_USING_CUSTOM_GENERATED_MACROS
-#include "c10/macros/cmake_macros.h"
+#include <c10/macros/cmake_macros.h>
 #endif // C10_USING_CUSTOM_GENERATED_MACROS
 
-#include "c10/macros/Export.h"
+#include <c10/macros/Export.h>
 
 #if defined(__clang__)
   #define __ubsan_ignore_float_divide_by_zero__ __attribute__((no_sanitize("float-divide-by-zero")))
-  #define __ubsan_ignore_float_cast_overflow__ __attribute__((no_sanitize("float-cast-overflow")))
+  #define __ubsan_ignore_undefined__ __attribute__((no_sanitize("undefined")))
+  #define __ubsan_ignore_signed_int_overflow__ __attribute__((no_sanitize("signed-integer-overflow")))
 #else
   #define __ubsan_ignore_float_divide_by_zero__
-  #define __ubsan_ignore_float_cast_overflow__
+  #define __ubsan_ignore_undefined__
+  #define __ubsan_ignore_signed_int_overflow__
 #endif
 
 // Disable the copy and assignment operator for a class. Note that this will
@@ -41,6 +43,9 @@
 #define C10_CONCATENATE(s1, s2) C10_CONCATENATE_IMPL(s1, s2)
 
 #define C10_MACRO_EXPAND(args) args
+
+#define C10_STRINGIZE_IMPL(x) #x
+#define C10_STRINGIZE(x) C10_STRINGIZE_IMPL(x)
 
 /**
  * C10_ANONYMOUS_VARIABLE(str) introduces an identifier starting with
@@ -206,8 +211,8 @@ constexpr uint32_t CUDA_THREADS_PER_BLOCK_FALLBACK = 256;
 
 // CUDA_KERNEL_ASSERT checks the assertion
 // even when NDEBUG is defined. This is useful for important assertions in CUDA
-// code that when building Release.
-#if defined(__APPLE__) || defined(__HIP_PLATFORM_HCC__)
+// code that would otherwise be suppressed when building Release.
+#if defined(__ANDROID__) || defined(__APPLE__) || defined(__HIP_PLATFORM_HCC__)
 // Those platforms do not support assert()
 #define CUDA_KERNEL_ASSERT(cond)
 #elif defined(_MSC_VER)
@@ -230,9 +235,6 @@ extern "C" {
 #else // __APPLE__, _MSC_VER
 #if defined(NDEBUG)
 extern "C" {
-#if !defined(__CUDA_ARCH__)  || !defined(__clang__)
-  [[noreturn]]
-#endif
 #if (defined(__CUDA_ARCH__) && !(defined(__clang__) && defined(__CUDA__))) || \
     defined(__HIP_ARCH__) || defined(__HIP__)
 __host__ __device__
@@ -264,9 +266,7 @@ __host__ __device__
     (TARGET_IPHONE_SIMULATOR || TARGET_OS_SIMULATOR || TARGET_OS_IPHONE))
 #define C10_IOS 1
 #define C10_MOBILE 1
-#elif (defined(__APPLE__) && TARGET_OS_MAC)
-#define C10_IOS 1
-#endif // ANDROID / IOS / MACOS
+#endif // ANDROID / IOS
 
 // Portably determine if a type T is trivially copyable or not.
 #if defined(__GNUG__) && __GNUC__ < 5

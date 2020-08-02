@@ -4,8 +4,8 @@ import warnings
 import torch
 import torch.backends.cudnn as cudnn
 
-from torch._six import PY2, PY37
-from ..nn.modules.utils import _single, _pair, _triple, _quadruple
+from torch._six import PY37
+from ..nn.modules.utils import _single, _pair, _triple, _quadruple, _list_with_default
 
 from collections import OrderedDict
 
@@ -20,6 +20,7 @@ _builtin_ops = [
     (_quadruple, "aten::_quadruple"),
     (_single, "aten::_single"),
     (_triple, "aten::_triple"),
+    (_list_with_default, "aten::list_with_default"),
     (OrderedDict, "aten::dict"),
     (dict, "aten::dict"),
     (cudnn.is_acceptable, "aten::cudnn_is_acceptable"),
@@ -78,9 +79,11 @@ _builtin_ops = [
     (torch._C._get_tracing_state, "aten::_get_tracing_state"),
     (warnings.warn, "aten::warn"),
     (torch._VF.stft, "aten::stft"),
+    (torch._VF.istft, "aten::istft"),
     (torch._VF.cdist, "aten::cdist"),
     (torch._VF.norm, "aten::norm"),
     (torch._VF.unique_dim, "aten::unique_dim"),
+    (torch._VF.unique_consecutive, "aten::unique_consecutive"),
     (torch._VF.nuclear_norm, "aten::nuclear_norm"),
     (torch._VF.frobenius_norm, "aten::frobenius_norm"),
 ]
@@ -94,7 +97,7 @@ def _gen_torch_functional_registered_ops():
     # but we are currently only able to compile some of the functions. additionally,
     # some functions directly map to their aten:: implementations.
     # TODO: add support for more ops
-    ops = ["stft", "lu", "lu_unpack", "cdist", "norm", "unique"]
+    ops = ["stft", "istft", "lu", "lu_unpack", "cdist", "norm", "unique", "unique_consecutive"]
     return set(getattr(torch.functional, name) for name in ops)
 
 _functional_registered_ops = _gen_torch_functional_registered_ops()
@@ -117,15 +120,15 @@ def _get_builtin_table():
     for mod in _modules_containing_builtins:
         register_all(mod)
 
-    if not PY2:
-        _builtin_ops.append((math.gcd, "aten::gcd"))
-        _builtin_ops.append((math.isfinite, "aten::isfinite"))
+    _builtin_ops.append((math.gcd, "aten::gcd"))
+    _builtin_ops.append((math.isfinite, "aten::isfinite"))
     if PY37:
         _builtin_ops.append((math.remainder, "aten::mathremainder"))
 
     import torch.distributed.autograd as dist_autograd
     if dist_autograd.is_available():
         _builtin_ops.append((dist_autograd.get_gradients, "aten::get_gradients"))
+        _builtin_ops.append((dist_autograd.backward, "aten::dist_backward"))
 
     # populate the _builtin_table from _builtin_ops
     for builtin, aten_op in _builtin_ops:

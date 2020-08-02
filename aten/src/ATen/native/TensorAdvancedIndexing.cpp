@@ -130,28 +130,6 @@ static Tensor reshape_indexer(const Tensor& index, int64_t dims_before, int64_t 
   return index.reshape(shape);
 }
 
-// checks whether index.dtype == int64
-// and self.dtyp == src.dtype if src is a Tensor
-static void scatter_gather_dtype_check(
-  const std::string& method_name,
-  const Tensor& self,
-  const Tensor& index,
-  const c10::optional<const Tensor>& src_opt = c10::nullopt
-) {
-  TORCH_CHECK(
-    index.scalar_type() == at::ScalarType::Long,
-    method_name, "(): Expected dtype int64 for index"
-  );
-
-  if (src_opt.has_value()) {
-    auto src = src_opt.value();
-    TORCH_CHECK(
-      self.scalar_type() == src.scalar_type(),
-      method_name, "(): Expected self.dtype to be equal to src.dtype"
-    );
-  }
-}
-
 AdvancedIndex::AdvancedIndex(const Tensor& src, TensorList indices_list)
 {
   int64_t element_size_bytes = src.element_size();
@@ -235,28 +213,42 @@ static AdvancedIndex make_info(Tensor self, TensorList orig) {
 static TensorIterator make_index_put_iterator(const AdvancedIndex& info, const Tensor& value) {
   TORCH_CHECK(is_expandable_to(value.sizes(), info.src.sizes()), "shape mismatch: value tensor of shape ", value.sizes(),
              " cannot be broadcast to indexing result of shape ", info.src.sizes());
-  auto iter = TensorIterator();
-  iter.dont_compute_common_dtype();
-  iter.dont_resize_outputs();
-  iter.add_output(info.src);
-  iter.add_input(value, info.src.device(), info.src.scalar_type());
+  TORCH_CHECK(value.scalar_type() == info.src.scalar_type(),
+              "Index put requires the source and destination dtypes match, "
+              "got ", info.src.scalar_type(), " for the destination "
+              "and ", value.scalar_type(), " for the source.");
+  TensorIteratorConfig config;
+  config.resize_outputs(false);
+  config.check_all_same_dtype(false);
+  config.add_output(info.src);
+  config.add_input(value);
   for (auto& index : info.indices) {
-    iter.add_input(index);
+    config.add_input(index);
   }
-  iter.build();
-  return iter;
+  return config.build();
 }
 
 static TensorIterator make_index_iterator(const AdvancedIndex& info) {
-  auto iter = TensorIterator();
-  iter.dont_compute_common_dtype();
-  iter.add_output(Tensor(), info.src.device(), info.src.scalar_type());
-  iter.add_input(info.src);
+  TensorIteratorConfig config;
+  config.check_all_same_dtype(false)
+        .declare_static_dtype_and_device(info.src.scalar_type(), info.src.device())
+        .add_output(Tensor())
+        .add_input(info.src);
   for (auto& index : info.indices) {
-    iter.add_input(index);
+    config.add_input(index);
   }
-  iter.build();
-  return iter;
+  return config.build();
+}
+
+static TensorIterator make_index_out_iterator(const AdvancedIndex& info, Tensor& result) {
+  TensorIteratorConfig config;
+  config.check_all_same_dtype(false)
+        .add_output(result)
+        .add_input(info.src);
+  for (auto& index : info.indices) {
+    config.add_input(index);
+  }
+  return config.build();
 }
 
 Tensor index(const Tensor & self, TensorList indices) {
@@ -266,6 +258,15 @@ Tensor index(const Tensor & self, TensorList indices) {
   auto iter = make_index_iterator(info);
   index_stub(iter.device_type(), iter, info.indexed_sizes, info.indexed_strides);
   return iter.output();
+}
+
+Tensor& index_out(Tensor& result, const Tensor & self, TensorList indices) {
+  TORCH_CHECK_INDEX(indices.size() <= (size_t)self.dim(), "too many indices for tensor of dimension ", self.dim(), " (got ", indices.size(), ")");
+
+  auto info = make_info(self, indices);
+  auto iter = make_index_out_iterator(info, result);
+  index_stub(iter.device_type(), iter, info.indexed_sizes, info.indexed_strides);
+  return result;
 }
 
 Tensor index_put(const Tensor & self, TensorList indices, const Tensor & value, bool accumulate) {
@@ -435,12 +436,12 @@ Tensor & index_select_out_cpu_(Tensor & result, const Tensor & self, int64_t dim
     auto self_dim_size = self.size(dim);
     auto slice_size = selfSlice.numel();
 
-    auto iter = TensorIterator();
-    iter.dont_compute_common_dtype();
-    iter.dont_resize_outputs();
-    iter.add_output(resultSlice);
-    iter.add_input(selfSlice);
-    iter.build();
+    auto iter = TensorIteratorConfig()
+      .check_all_same_dtype(false)
+      .resize_outputs(false)
+      .add_output(resultSlice)
+      .add_input(selfSlice)
+      .build();
 
     auto grain_size = at::internal::GRAIN_SIZE;
     auto outer_loop = [&](int64_t start, int64_t end) {
@@ -483,11 +484,15 @@ Tensor & index_select_out_cpu_(Tensor & result, const Tensor & self, int64_t dim
     AT_DISPATCH_ALL_TYPES_AND(at::ScalarType::Bool, self.scalar_type(), "index_select", [&] {
       auto self_stride = self.dim() == 0 ? 1 : self.stride(dim);
       auto result_stride = result.dim() == 0 ? 1 : result.stride(dim);
+
+      auto self_data_ptr = self.data_ptr<scalar_t>();
+      auto result_data_ptr = result.data_ptr<scalar_t>();
+      auto self_numel = self.numel();
       for (auto i = 0; i < numel; i++) {
         auto self_i = index_data[i];
-        TORCH_CHECK_INDEX((self_i >= 0) && (self_i < self.numel()), "index out of range in self");
-        scalar_t *self_ip = self.data_ptr<scalar_t>() + self_i * self_stride;
-        *(result.data_ptr<scalar_t>() + i * result_stride) = *self_ip;
+        TORCH_CHECK_INDEX((self_i >= 0) && (self_i < self_numel), "index out of range in self");
+        scalar_t *self_ip = self_data_ptr + self_i * self_stride;
+        *(result_data_ptr + i * result_stride) = *self_ip;
       }
     });
   }
@@ -514,49 +519,41 @@ Tensor index_fill(const Tensor & self, int64_t dim, const Tensor & index, const 
   return self.clone(at::MemoryFormat::Preserve).index_fill_(dim, index, source);
 }
 
-Tensor & gather_out_cpu(Tensor & result, const Tensor & self, int64_t dim, const Tensor & index, bool sparse_grad) {
-  scatter_gather_dtype_check("gather_out_cpu", self, index, result);
+Tensor & gather_out_cpu_cuda(Tensor & result, const Tensor & self, int64_t dim, const Tensor & index, bool sparse_grad) {
   result.resize_(index.sizes());
   gather_stub(result.device().type(), result, self, dim, index);
   return result;
 }
 
-Tensor gather_cpu(const Tensor & self, int64_t dim, const Tensor & index, bool sparse_grad) {
-  scatter_gather_dtype_check("gather_cpu", self, index);
+Tensor gather(const Tensor & self, int64_t dim, const Tensor & index, bool sparse_grad) {
   Tensor result = at::empty({0}, self.options());
-  return gather_out_cpu(result, self, dim, index, sparse_grad);
+  return gather_out_cpu_cuda(result, self, dim, index, sparse_grad);
 }
 
-Tensor & scatter_cpu_(Tensor & self, int64_t dim, const Tensor & index, const Tensor & src) {
-  scatter_gather_dtype_check("scatter_cpu", self, index, src);
-  scatter_stub(self.device().type(), self, dim, index, src);
+Tensor & scatter_(Tensor & self, int64_t dim, const Tensor & index, const Tensor & source) {
+  scatter_stub(self.device().type(), self, dim, index, source);
   return self;
 }
 
-Tensor & scatter_fill_cpu_(Tensor & self, int64_t dim, const Tensor & index, Scalar src) {
-  scatter_gather_dtype_check("scatter_fill_cpu", self, index);
-  scatter_fill_stub(self.device().type(), self, dim, index, src);
+Tensor & scatter_fill_(Tensor & self, int64_t dim, const Tensor & index, Scalar source) {
+  scatter_fill_stub(self.device().type(), self, dim, index, source);
   return self;
 }
 
 Tensor scatter(const Tensor & self, int64_t dim, const Tensor & index, const Tensor & source) {
-  scatter_gather_dtype_check("scatter", self, index, source);
   return self.clone(at::MemoryFormat::Preserve).scatter_(dim, index, source);
 }
 
 Tensor scatter(const Tensor & self, int64_t dim, const Tensor & index, Scalar source) {
-  scatter_gather_dtype_check("scatter", self, index);
   return self.clone(at::MemoryFormat::Preserve).scatter_(dim, index, source);
 }
 
-Tensor & scatter_add_cpu_(Tensor & self, int64_t dim, const Tensor & index, const Tensor & src) {
-  scatter_gather_dtype_check("scatter_add_cpu", self, index, src);
+Tensor & scatter_add_(Tensor & self, int64_t dim, const Tensor & index, const Tensor & src) {
   scatter_add_stub(self.device().type(), self, dim, index, src);
   return self;
 }
 
 Tensor scatter_add(const Tensor & self, int64_t dim, const Tensor & index, const Tensor & source) {
-  scatter_gather_dtype_check("scatter_add", self, index, source);
   return self.clone(at::MemoryFormat::Preserve).scatter_add_(dim, index, source);
 }
 
@@ -573,12 +570,12 @@ static Tensor & masked_fill_impl_cpu(Tensor & self, const Tensor & mask, Scalar 
             "please use a mask with dtype torch.bool instead.");
   }
 
-  auto iter = TensorIterator();
-  iter.dont_compute_common_dtype();
-  iter.dont_resize_outputs();
-  iter.add_output(self);
-  iter.add_input(mask);
-  iter.build();
+  auto iter = TensorIteratorConfig()
+    .check_all_same_dtype(false)
+    .resize_outputs(false)
+    .add_output(self)
+    .add_input(mask)
+    .build();
 
   masked_fill_stub(iter.device_type(), iter, value);
   return self;

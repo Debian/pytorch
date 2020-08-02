@@ -27,7 +27,7 @@ import os
 import yaml
 import re
 from collections import defaultdict
-from .utils import YamlLoader, split_name_params
+from .utils import YamlLoader, split_name_params, signature_without_args
 
 # See NOTE [ Autograd View Variables ] in variable.h for details.
 # If you update list VIEW_FUNCTIONS or RETURNS_VIEWS_OF_INPUT,
@@ -36,6 +36,9 @@ from .utils import YamlLoader, split_name_params
 # e.g alias & sparse_coo_tensor_with_dims_and_tensors.
 #
 # A map: function name => name of the argument that all outputs are view of
+
+VIEW_FUNCTIONS_WITH_METADATA_CHANGE = ['view_as_real', 'view_as_complex']
+
 VIEW_FUNCTIONS = {
     'numpy_T': 'self',
     'alias': 'self',
@@ -64,11 +67,14 @@ VIEW_FUNCTIONS = {
     'sparse_coo_tensor_with_dims_and_tensors': 'values',
 }
 
+for key in VIEW_FUNCTIONS_WITH_METADATA_CHANGE:
+    VIEW_FUNCTIONS[key] = 'self'
+
 # note: some VIEW_FUNCTIONS are just compositions of the view functions above
 # this list contains both the root view functions and any that are purely composed
 # of viewing functions, and is used by the JIT to determine when an operator
 # returns a view of its inputs
-RETURNS_VIEWS_OF_INPUT = set(VIEW_FUNCTIONS.keys()).union({'chunk', 'split'})
+RETURNS_VIEWS_OF_INPUT = set(VIEW_FUNCTIONS.keys()).union({'chunk', 'split', 'real', 'imag'})
 
 def format_return_type(returns):
     if len(returns) == 0:
@@ -109,9 +115,6 @@ def load_aten_declarations(path):
         declaration['formals'] = [arg['type'] + ' ' + arg['name']
                                   for arg in declaration['arguments']]
         declaration['args'] = [arg['name'] for arg in declaration['arguments']]
-        declaration['type_method_formals'] = [arg['type'] + ' ' + arg['name']
-                                              for arg in declaration['arguments']]
-        declaration['type_method_args'] = [arg['name'] for arg in declaration['arguments']]
         declaration['api_name'] = declaration['name']
         # NB: keep this in sync with common_with_cwrap.py
         if declaration.get('overload_name'):
@@ -119,6 +122,8 @@ def load_aten_declarations(path):
                 declaration['name'], declaration['overload_name'])
         else:
             declaration['type_wrapper_name'] = declaration['name']
+        declaration['operator_name_with_overload'] = declaration['schema_string'].split('(')[0]
+        declaration['unqual_operator_name_with_overload'] = declaration['operator_name_with_overload'].split('::')[1]
         declaration['return_type'] = format_return_type(declaration['returns'])
 
         declaration['base_name'] = declaration['name']
@@ -189,20 +194,27 @@ def load_deprecated_signatures(aten_decls, deprecated_path):
     return declarations
 
 
-def gen_autograd(aten_path, out, autograd_dir, disable_autograd=False, disable_trace=False):
-    aten_decls = load_aten_declarations(aten_path)
+def gen_autograd(aten_path, out, autograd_dir, disable_autograd=False, selected_op_list=None):
+    full_aten_decls = load_aten_declarations(aten_path)
+
+    def filter_decls(aten_decls, selected_op_list):
+        if selected_op_list is None:
+            return aten_decls
+        return [decl for decl in aten_decls if signature_without_args(decl) in selected_op_list]
+
+    aten_decls = filter_decls(full_aten_decls, selected_op_list)
 
     # Parse and load derivatives.yaml
     from .load_derivatives import load_derivatives
     autograd_functions = load_derivatives(
-        os.path.join(autograd_dir, 'derivatives.yaml'), aten_decls)
+        os.path.join(autograd_dir, 'derivatives.yaml'), full_aten_decls)
 
     template_path = os.path.join(autograd_dir, 'templates')
 
     # Generate VariableType.h/cpp
     if not disable_autograd:
         from .gen_variable_type import gen_variable_type
-        gen_variable_type(out, aten_decls, template_path, disable_trace)
+        gen_variable_type(out, aten_decls, template_path)
 
     # Generate Functions.h/cpp
     from .gen_autograd_functions import gen_autograd_functions_lib
@@ -211,9 +223,7 @@ def gen_autograd(aten_path, out, autograd_dir, disable_autograd=False, disable_t
 
     # Generate variable_factories.h
     from .gen_variable_factories import gen_variable_factories
-    gen_variable_factories(
-        out, aten_decls, template_path, disable_autograd=disable_autograd,
-        disable_trace=disable_trace)
+    gen_variable_factories(out, aten_decls, template_path)
 
 
 def gen_autograd_python(aten_path, out, autograd_dir):

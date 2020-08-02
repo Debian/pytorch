@@ -19,6 +19,7 @@ Build-Depends:
  libbenchmark-dev,
  libcpuinfo-dev,
  libeigen3-dev,
+ libfmt-dev,
  libfp16-dev,
  libfxdiv-dev,
  libgflags-dev,

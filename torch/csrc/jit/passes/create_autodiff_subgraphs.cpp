@@ -1,11 +1,11 @@
 #include <torch/csrc/jit/passes/create_autodiff_subgraphs.h>
 
 #include <c10/util/Exception.h>
-#include <torch/csrc/jit/runtime/autodiff.h>
-#include <torch/csrc/jit/ir/ir.h>
 #include <torch/csrc/jit/ir/alias_analysis.h>
+#include <torch/csrc/jit/ir/ir.h>
 #include <torch/csrc/jit/passes/common_subexpression_elimination.h>
 #include <torch/csrc/jit/passes/utils/subgraph_utils.h>
+#include <torch/csrc/jit/runtime/autodiff.h>
 
 namespace torch {
 namespace jit {
@@ -110,12 +110,31 @@ class SubgraphSlicer {
     return result;
   }
 
+  bool isViewOp(Node* n) {
+    switch (n->kind()) {
+      case aten::view:
+      case aten::view_as:
+      case aten::reshape:
+      case aten::reshape_as:
+      case aten::transpose:
+      case aten::expand:
+      case aten::expand_as:
+        return true;
+    }
+    return false;
+  }
+
   bool shouldConsiderForMerge(Node* node) {
     // if we're already in the process of merging
     if (node->kind() == prim::DifferentiableGraph) {
       return true;
     }
     if (node->kind() == prim::Constant) {
+      return false;
+    }
+    // view ops as outputs of differentiable subgraphs can cause incorrect
+    // differentiation for now, do not include them in the subgraph
+    if (isViewOp(node)) {
       return false;
     }
     return isDifferentiable(node);

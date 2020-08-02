@@ -6,7 +6,7 @@
 #include <TH/TH.h>
 #include <ATen/ATen.h>
 #include <ATen/cuda/CUDAContext.h>
-#include <ATen/CUDAGenerator.h>
+#include <ATen/CUDAGeneratorImpl.h>
 #include <c10/cuda/CUDAFunctions.h>
 #include <c10/cuda/CUDACachingAllocator.h>
 #ifdef USE_NCCL
@@ -35,7 +35,7 @@ static bool in_bad_fork = false;  // True for children forked after cuda init
 // Called in the forked child if cuda has already been initialized
 static void forked_child() {
   in_bad_fork = true;
-  utils::set_run_yet_variable_to_false();
+  torch::utils::set_run_yet_variable_to_false();
   state = nullptr;
 }
 #endif
@@ -87,6 +87,19 @@ PyObject * THCPModule_getDeviceCount_wrap(PyObject *self, PyObject *noargs)
   HANDLE_TH_ERRORS
   poison_fork();
   return PyLong_FromLong(at::cuda::device_count());
+  END_HANDLE_TH_ERRORS
+}
+
+PyObject * THCPModule_getArchFlags(PyObject *self, PyObject *noargs)
+{
+  HANDLE_TH_ERRORS
+  poison_fork();
+#ifdef CUDA_ARCH_FLAGS
+  static const char* flags = C10_STRINGIZE(CUDA_ARCH_FLAGS);
+  return THPUtils_packString(flags);
+#else
+  Py_RETURN_NONE;
+#endif
   END_HANDLE_TH_ERRORS
 }
 
@@ -396,8 +409,8 @@ PyObject * THCPModule_memorySnapshot(PyObject *_unused, PyObject *noargs)
 // Cuda module initialization
 ////////////////////////////////////////////////////////////////////////////////
 
-static void bindCudaDeviceProperties(PyObject* module) {
-  // Add class and method to torch.cuda
+static void registerCudaDeviceProperties(PyObject* module) {
+  // Add _cudaDevicePropertires class to torch._C
   auto m = py::handle(module).cast<py::module>();
   py::class_<cudaDeviceProp>(m, "_CudaDeviceProperties")
     .def_readonly("name", &cudaDeviceProp::name)
@@ -414,6 +427,11 @@ static void bindCudaDeviceProperties(PyObject* module) {
              << "MB, multi_processor_count=" << prop.multiProcessorCount << ")";
       return stream.str();
     });
+}
+
+static void bindGetDeviceProperties(PyObject* module) {
+  // Add method to torch.cuda
+  auto m = py::handle(module).cast<py::module>();
   m.def("_get_device_properties", [](int device) -> cudaDeviceProp * {
     return at::cuda::getDeviceProperties(device);
   }, py::return_value_policy::reference);
@@ -441,6 +459,8 @@ static PyObject * THCPModule_initExtension(PyObject *self, PyObject *noargs)
   THCPByteStorage_postInit(m);
   THCPBoolStorage_postInit(m);
   THCPBFloat16Storage_postInit(m);
+  THCPComplexDoubleStorage_postInit(m);
+  THCPComplexFloatStorage_postInit(m);
 
   bool has_half = true;
 
@@ -467,8 +487,7 @@ static PyObject * THCPModule_initExtension(PyObject *self, PyObject *noargs)
     PyTuple_SetItem(default_cuda_generators, i, (PyObject*)cast_gen);
   }
   set_module_attr("default_generators", default_cuda_generators);
-
-  bindCudaDeviceProperties(m);
+  bindGetDeviceProperties(m);
 
   Py_RETURN_NONE;
   END_HANDLE_TH_ERRORS
@@ -487,6 +506,7 @@ static struct PyMethodDef _THCPModule_methods[] = {
   {"_cuda_setDevice",   (PyCFunction)THCPModule_setDevice_wrap,   METH_O,       nullptr},
   {"_cuda_getDevice",   (PyCFunction)THCPModule_getDevice_wrap,   METH_NOARGS,  nullptr},
   {"_cuda_getDeviceCount", (PyCFunction)THCPModule_getDeviceCount_wrap, METH_NOARGS, nullptr},
+  {"_cuda_getArchFlags", (PyCFunction)THCPModule_getArchFlags, METH_NOARGS, nullptr},
   {"_cuda_isInBadFork", (PyCFunction)THCPModule_isInBadFork, METH_NOARGS, nullptr},
   {"_cuda_getCurrentStream",
     (PyCFunction)THCPModule_getCurrentStream_wrap, METH_O, nullptr},
@@ -546,9 +566,10 @@ void initModule(PyObject *module) {
   // so this condition might not always be true...
   shared::initCudartBindings(module);
   shared::initNvtxBindings(module);
-#ifdef USE_CUDNN
+#if defined(USE_CUDNN) || defined(__HIP_PLATFORM_HCC__)
   shared::initCudnnBindings(module);
 #endif
+  registerCudaDeviceProperties(module);
 }
 
 }}

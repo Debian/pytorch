@@ -44,7 +44,6 @@ Tensor& eye_out_cuda(Tensor& result, int64_t n, int64_t m) {
 }
 
 Tensor empty_cuda(IntArrayRef size, const TensorOptions& options, c10::optional<MemoryFormat> optional_memory_format) {
-  TORCH_CHECK(!isComplexType(at::typeMetaToScalarType(options.dtype())), "Complex dtype not supported.");
   AT_ASSERT(options.device().type() == at::DeviceType::CUDA);
   TORCH_INTERNAL_ASSERT(impl::variable_excluded_from_dispatch());
   TORCH_CHECK(!options.pinned_memory(), "Only dense CPU tensors can be pinned");
@@ -53,14 +52,16 @@ Tensor empty_cuda(IntArrayRef size, const TensorOptions& options, c10::optional<
   auto* allocator = at::cuda::getCUDADeviceAllocator();
   int64_t nelements = prod_intlist(size);
   auto dtype = options.dtype();
+  int64_t size_bytes = nelements * dtype.itemsize();
   auto storage_impl = c10::make_intrusive<StorageImpl>(
-    dtype,
-    nelements,
-    allocator->allocate(nelements * dtype.itemsize()),
-    allocator,
-    /*resizeable=*/true);
+      c10::StorageImpl::use_byte_size_t(),
+      size_bytes,
+      allocator->allocate(size_bytes),
+      allocator,
+      /*resizeable=*/true);
 
-  auto tensor = detail::make_tensor<TensorImpl>(storage_impl, DispatchKey::CUDATensorId);
+  auto tensor =
+      detail::make_tensor<TensorImpl>(storage_impl, DispatchKey::CUDA, dtype);
   // Default TensorImpl has size [0]
   if (size.size() != 1 || size[0] != 0) {
     tensor.unsafeGetTensorImpl()->set_sizes_contiguous(size);
@@ -81,7 +82,7 @@ Tensor empty_strided_cuda(IntArrayRef size, IntArrayRef stride, const TensorOpti
   return t;
 }
 
-Tensor& randperm_out_cuda(Tensor& result, int64_t n, Generator* generator) {
+Tensor& randperm_out_cuda(Tensor& result, int64_t n, c10::optional<Generator> generator) {
   TORCH_CHECK(n >= 0, "n must be non-negative, got", n);
   check_supported_max_int_with_precision(n, result);
 

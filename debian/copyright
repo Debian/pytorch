@@ -79,7 +79,7 @@ Copyright: Facebook, Inc. and its affiliates.
 License: Apache-2.0
 
 Files: android/*
-Copyright: Copyright holders for Files: * 
+Copyright: Copyright holders for Files: *
 License: BSD-3-Clause
 Comment: according to android/gradle.properties :: POM_LICENSE_NAME
  there are some "confidential/proprietary" claims in the java files
@@ -95,12 +95,12 @@ Comment: https://github.com/wjakob/tbb/blob/master/CMakeLists.tx
 
 Files: aten/src/ATen/detail/FunctionTraits.h
 Copyright: 2011 kennytm (stackoverflow)
- Copyright holders for Files: * 
+ Copyright holders for Files: *
 License: CC-BY-SA-4.0
 
 Files: aten/src/ATen/native/cpu/avx_mathfun.h
 Copyright: 2012 Giovanni Garberoglio
- Copyright holders for Files: * 
+ Copyright holders for Files: *
 License: ZLIB
 
 Files: aten/src/ATen/native/LossCTC.cpp
@@ -119,7 +119,7 @@ Copyright: Caffe contributors
            George Papandreou
 License: BSD-2-Clause
 Comment: https://github.com/BVLC/caffe/blob/master/LICENSE
-  
+
 Files: aten/src/ATen/native/quantized/cpu/qnnpack/*
 Copyright: Facebook, Inc. and its affiliates.
 License: BSD-3-Clause
@@ -139,7 +139,7 @@ License: BSD-3-Clause
 Files: aten/src/ATen/native/Distributions.h
  aten/src/ATen/native/Distributions.cpp
 Copyright: 2005, Robert Kern (robert.kern@gmail.com)
- Copyright holders for Files: * 
+ Copyright holders for Files: *
 License: BSD-3-Clause
 Comment: these files includes MIT(Expat)-licensed function by Robert Kern
 
@@ -166,14 +166,14 @@ Files: c10/util/AlignOf.h
        c10/util/SmallVector.h
        c10/util/FunctionRef.h
 Copyright: LLVM Compiler Infrastructure contributors
- Copyright holders for Files: * 
+ Copyright holders for Files: *
 License: U-OF-I-BSD-LIKE
 
 Files: c10/util/FunctionRef.h
        c10/util/llvmMathExtras.h
        c10/util/sparse_bitset.h
 Copyright: LLVM Compiler Infrastructure contributors
- Copyright holders for Files: * 
+ Copyright holders for Files: *
 License: Apache-2.0
 Comment: Apache-2.0 WITH LLVM-exception
 
@@ -247,12 +247,12 @@ License: Expat
 
 Files: caffe2/operators/quantized/int8_utils.h
 Copyright: 2015, The Gemmlowp Authors.
-           Copyright holders for Files: * 
+           Copyright holders for Files: *
 License: Apache-2.0
 Comment: Partially from https://github.com/google/gemmlowp
 
 Files: caffe2/operators/deform_conv_op.cu
-Copyright: 
+Copyright:
   2014-2017, The Regents of the University of California (Regents)
   2014-2017, the respective Caffe contributors
   2017 Microsoft
@@ -314,7 +314,7 @@ License: Apache-2.0 AND BSD-2-Clause AND Expat
 
 Files: modules/detectron/upsample_nearest_op.cu
 Copyright: 2016, -present, Facebook, Inc.
- Copyright holders for Files: * 
+ Copyright holders for Files: *
 License: Apache-2.0 AND BSD-3-Clause
 
 Files: modules/module_test/*
@@ -399,15 +399,15 @@ License: BSD-3-Clause
     without specific prior written permission.
  .
  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
- ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT 
- LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR 
+ ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+ LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
  A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE HOLDERS OR
- CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, 
- EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, 
- PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
- PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF 
- LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING 
- NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS 
+ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+ EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+ PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+ PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+ LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 License: BSD-2-Clause
@@ -514,8 +514,8 @@ License: Expat
  OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
  MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
  IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
- CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, 
- TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE 
+ CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+ TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 License: BSL-1.0

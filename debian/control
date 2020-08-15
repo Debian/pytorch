@@ -6,57 +6,60 @@ Standards-Version: 4.5.0
 Vcs-Git: https://salsa.debian.org/deeplearning-team/pytorch.git
 Vcs-Browser: https://salsa.debian.org/deeplearning-team/pytorch
 Maintainer: Debian Deep Learning Team <debian-science-maintainers@lists.alioth.debian.org>
-Uploaders: Mo Zhou <lumin@debian.org>,
+Uploaders: Mo Zhou <lumin@debian.org>
 Rules-Requires-Root: no
-Build-Depends:
- cmake,
- debhelper-compat (= 12),
- dh-exec,
- dh-python,
- googletest,
- libasio-dev,
- libavcodec-dev,
- libbenchmark-dev,
- libcpuinfo-dev,
- libeigen3-dev,
- libfmt-dev,
- libfp16-dev,
- libfxdiv-dev,
- libgflags-dev,
- libgloo-dev,
- libgoogle-glog-dev,
- libleveldb-dev,
- liblmdb-dev,
- libonnx-dev,
- libopenblas-dev | libblas-dev,
- libopencv-dev,
- libopenmpi-dev,
- libprotobuf-dev,
- libprotoc-dev,
- libpsimd-dev,
- libpthreadpool-dev,
- libsleef-dev,
- libsnappy-dev,
- libxnnpack-dev,
- libzmq3-dev,
- ninja-build,
- protobuf-compiler,
- pybind11-dev,
- python3,
- python3-all,
- python3-all-dev,
- python3-cffi,
- python3-numpy,
- python3-onnx,
- python3-pybind11,
- python3-setuptools,
- python3-yaml,
+Build-Depends: cmake,
+               debhelper-compat (= 12),
+               dh-exec,
+               dh-python,
+               googletest,
+               libasio-dev,
+               libavcodec-dev,
+               libbenchmark-dev,
+               libcpuinfo-dev,
+               libeigen3-dev,
+               libfmt-dev,
+               libfp16-dev,
+               libfxdiv-dev,
+               libgflags-dev,
+               libgloo-dev,
+               libgoogle-glog-dev,
+               libleveldb-dev,
+               liblmdb-dev,
+               libonnx-dev,
+               libopenblas-dev | libblas-dev,
+               libopencv-dev,
+               libopenmpi-dev,
+               libprotobuf-dev,
+               libprotoc-dev,
+               libpsimd-dev,
+               libpthreadpool-dev,
+               libsleef-dev,
+               libsnappy-dev,
+               libxnnpack-dev,
+               libzmq3-dev,
+               ninja-build,
+               protobuf-compiler,
+               pybind11-dev,
+               python3,
+               python3-all,
+               python3-all-dev,
+               python3-cffi,
+               python3-distutils,
+               python3-numpy,
+               python3-onnx,
+               python3-pybind11,
+               python3-setuptools,
+               python3-yaml
 
 Package: python3-torch
 Section: python
 Architecture: any
-Depends: ${misc:Depends}, ${shlibs:Depends}, ${python3:Depends}, libtorch1 (= ${binary:Version}),
-Suggests: python3-pytest, python3-hypothesis, libtorch-dev,
+Depends: libtorch1 (= ${binary:Version}),
+         ${misc:Depends},
+         ${python3:Depends},
+         ${shlibs:Depends}
+Suggests: libtorch-dev, python3-hypothesis, python3-pytest
 Description: Tensors and Dynamic neural networks in Python with strong GPU acceleration
  PyTorch is a Python package that provides two high-level features:
  .
@@ -71,7 +74,11 @@ Description: Tensors and Dynamic neural networks in Python with strong GPU accel
 Package: libtorch-dev
 Section: libdevel
 Architecture: any
-Depends: ${misc:Depends}, libtorch1 (= ${binary:Version}), libgoogle-glog-dev, libgflags-dev, python3-all-dev
+Depends: libgflags-dev,
+         libgoogle-glog-dev,
+         libtorch1 (= ${binary:Version}),
+         python3-all-dev,
+         ${misc:Depends}
 Description: Tensors and Dynamic neural networks in Python with strong GPU acceleration
  PyTorch is a Python package that provides two high-level features:
  .
@@ -86,7 +93,7 @@ Description: Tensors and Dynamic neural networks in Python with strong GPU accel
 Package: libtorch1
 Section: libs
 Architecture: any
-Depends: ${misc:Depends}, ${shlibs:Depends},
+Depends: ${misc:Depends}, ${shlibs:Depends}
 Description: Tensors and Dynamic neural networks in Python with strong GPU acceleration
  PyTorch is a Python package that provides two high-level features:
  .
@@ -100,7 +107,7 @@ Description: Tensors and Dynamic neural networks in Python with strong GPU accel
 
 Package: libtorch-test
 Architecture: any
-Depends: ${misc:Depends}, ${shlibs:Depends}, libtorch1 (= ${binary:Version}),
+Depends: libtorch1 (= ${binary:Version}), ${misc:Depends}, ${shlibs:Depends}
 Description: Tensors and Dynamic neural networks in Python with strong GPU acceleration
  PyTorch is a Python package that provides two high-level features:
  .

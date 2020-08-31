@@ -1,8 +1,14 @@
 #!/usr/bin/make -f
 export DEB_BUILD_MAINT_OPTIONS = hardening=+all
 export LC_ALL=C.UTF-8
-export PYBUILD_DISABLE_python2 = 1 # No more Python2 Packages
+export PYBUILD_DISABLE_python2 = 1
 export PYBUILD_NAME = torch
+export SOVERSION=1.6
+export PATCH=0
+
+# [for debugging purpose]
+#export CC=/usr/lib/ccache/gcc
+#export CXX=/usr/lib/ccache/g++
 
 # configurations
 export BLAS = OpenBLAS
@@ -29,7 +35,7 @@ export USE_REDIS = OFF
 export USE_ROCM = OFF
 export USE_SYSTEM_LIBS = ON
 export USE_SYSTEM_NCCL = OFF
-export USE_TENSORPIPE = OFF
+export USE_TENSORPIPE = ON
 export USE_XNNPACK = ON
 export USE_ZMQ = ON
 export USE_ZSTD = OFF
@@ -66,41 +72,43 @@ override_dh_auto_test:
 override_dh_auto_install:
 	python3 setup.py install --install-layout=deb \
 		--root=$(shell pwd)/debian/python3-torch/
-	# move the headers out of the python package
-	mkdir -p debian/libtorch-dev/usr/include
-	-mv debian/python3-torch/usr/lib/python3*/dist-packages/torch/include/* \
+	# [python3-torch::headers -> libtorch-dev] move the headers out of the python package
+	mkdir -pv debian/libtorch-dev/usr/include
+	-mv -v debian/python3-torch/usr/lib/python3*/dist-packages/torch/include/* \
 		debian/libtorch-dev/usr/include/
 	-cd debian/python3-torch/usr/lib/python3*/dist-packages/torch/include/; \
-		ln -s /usr/include/torch . ;\
-		ln -s /usr/include/caffe2 . ;\
-		ln -s /usr/include/ATen . ;\
-		ln -s /usr/include/c10 . ;\
-		ln -s /usr/include/TH .
-	# move the (public) shared libs out of the python package
-	mkdir -p debian/libtorch1/usr/lib/$(DEB_HOST_MULTIARCH)/
-	-mv debian/python3-torch/usr/lib/python3*/dist-packages/torch/lib/*.so.* \
-		debian/libtorch1/usr/lib/$(DEB_HOST_MULTIARCH)/
-	# move the links to shared libs out of the python package
-	mkdir -p debian/libtorch-dev/usr/lib/$(DEB_HOST_MULTIARCH)/
+		ln -sv /usr/include/torch . ;\
+		ln -sv /usr/include/caffe2 . ;\
+		ln -sv /usr/include/ATen . ;\
+		ln -sv /usr/include/c10 . ;\
+		ln -sv /usr/include/TH .
+	# [python3-torch::shlibs -> libtorch$(SOVERSION)] move the (public) shared libs out of the python package
+	mkdir -pv debian/libtorch$(SOVERSION)/usr/lib/$(DEB_HOST_MULTIARCH)/
+	-mv -v debian/python3-torch/usr/lib/python3*/dist-packages/torch/lib/*.so.* \
+		debian/libtorch$(SOVERSION)/usr/lib/$(DEB_HOST_MULTIARCH)/
+	# [python3-torch::symlinks -> libtorch-dev] move the links to shared libs out of the python package
+	mkdir -pv debian/libtorch-dev/usr/lib/$(DEB_HOST_MULTIARCH)/
 	-cd debian/python3-torch/usr/lib/python3*/dist-packages/torch/lib ; \
-		$(RM) libc10.so libcaffe2_detectron_ops.so libcaffe2_module_test_dynamic.so \
-			libcaffe2_observers.so libshm.so libtorch_cpu.so libtorch_python.so libtorch.so # don't remove libtorch_global_deps.so 
+		$(RM) -v libc10.so libcaffe2_detectron_ops.so libcaffe2_module_test_dynamic.so \
+			libcaffe2_observers.so libshm.so libtorch_cpu.so libtorch_python.so libtorch.so libtorch_global_deps.so 
 	-cd debian/libtorch-dev/usr/lib/$(DEB_HOST_MULTIARCH)/; \
-		ln -s libc10.so.1 libc10.so ;\
-		ln -s libcaffe2_detectron_ops.so.1 libcaffe2_detectron_ops.so ;\
-		ln -s libcaffe2_module_test_dynamic.so.1 libcaffe2_module_test_dynamic.so ;\
-		ln -s libcaffe2_observers.so.1 libcaffe2_observers.so ;\
-		ln -s libshm.so.1 libshm.so ;\
-		ln -s libtorch_cpu.so.1 libtorch_cpu.so ;\
-		ln -s libtorch_python.so.1 libtorch_python.so ;\
-		ln -s libtorch.so.1 libtorch.so
-	# move the cmake files out of the python package
-	mkdir -p debian/libtorch-dev/usr/lib/$(DEB_HOST_MULTIARCH)/
-	-mv debian/python3-torch/usr/lib/python3*/dist-packages/torch/share/cmake \
+		ln -sv libc10.so.$(SOVERSION) libc10.so ;\
+		ln -sv libcaffe2_detectron_ops.so.$(SOVERSION) libcaffe2_detectron_ops.so ;\
+		ln -sv libcaffe2_module_test_dynamic.so.$(SOVERSION) libcaffe2_module_test_dynamic.so ;\
+		ln -sv libcaffe2_observers.so.$(SOVERSION) libcaffe2_observers.so ;\
+		ln -sv libshm.so.$(SOVERSION) libshm.so ;\
+		ln -sv libtorch_cpu.so.$(SOVERSION) libtorch_cpu.so ;\
+		ln -sv libtorch_python.so.$(SOVERSION) libtorch_python.so ;\
+		ln -sv libtorch.so.$(SOVERSION) libtorch.so
+	-mv -v torch/libs/lib*$(SOVERSION) debian/libtorch$(SOVERSION)/usr/lib/$(DEB_HOST_MULTIARCH)/
+	-mv -v torch/libs/lib*$(SOVERSION).$(PATCH) debian/libtorch$(SOVERSION)/usr/lib/$(DEB_HOST_MULTIARCH)/
+	# [python3-torch::cmake -> libtorch-dev] move the cmake files out of the python package
+	mkdir -pv debian/libtorch-dev/usr/lib/$(DEB_HOST_MULTIARCH)/
+	-mv -v debian/python3-torch/usr/lib/python3*/dist-packages/torch/share/cmake \
 		debian/libtorch-dev/usr/lib/$(DEB_HOST_MULTIARCH)/
-	# move the test binaries out of the python packaage
-	mkdir -p debian/libtorch-test/usr/lib/libtorch-test/
-	-mv debian/python3-torch/usr/lib/python3*/dist-packages/torch/test/* \
+	# [python3-torch::testbin -> libtorch-test] move the test binaries out of the python packaage
+	mkdir -pv debian/libtorch-test/usr/lib/libtorch-test/
+	-mv -v debian/python3-torch/usr/lib/python3*/dist-packages/torch/test/* \
 		debian/libtorch-test/usr/lib/libtorch-test/
 
 override_dh_python3:

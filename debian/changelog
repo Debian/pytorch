@@ -4,8 +4,16 @@ pytorch (1.6.0-1) UNRELEASED; urgency=medium
   * Refresh shebang.patch.
   * Significantly rebase dirtyhack.patch as most changes have been upstreamed.
   * Remove dont-break-dev-null.patch. fixed upstream.
+  * Add some missing Depends for libtorch-dev.
+  * Stripping the quotes in ONNX_NAMESPACE to fix build failure.
+  * Add libtensorpipe-dev to Build-Depends.
+  * Rename libtorch1 -> libtorch1.6 and refresh symbols control file.
+  * dirtyhack.patch: Deal with the fmt and tensorpipe libraries.
+  * rules: use SOVERSION variable and update the install target.
+  * Update d/copyright and apply wrap-and-sort.
+  * Put proper symlinks to usr/lib/python3*/dist-packages/torch/lib.
 
- -- Mo Zhou <lumin@debian.org>  Sun, 02 Aug 2020 13:27:03 +0800
+ -- Mo Zhou <lumin@debian.org>  Mon, 31 Aug 2020 19:41:10 +0800
 
 pytorch (1.5.1-1) experimental; urgency=medium
 

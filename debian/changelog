@@ -1,4 +1,4 @@
-pytorch (1.6.0-1) UNRELEASED; urgency=medium
+pytorch (1.6.0-1) experimental; urgency=medium
 
   * New upstream version 1.6.0
   * Refresh shebang.patch.
@@ -13,7 +13,7 @@ pytorch (1.6.0-1) UNRELEASED; urgency=medium
   * Update d/copyright and apply wrap-and-sort.
   * Put proper symlinks to usr/lib/python3*/dist-packages/torch/lib.
 
- -- Mo Zhou <lumin@debian.org>  Mon, 31 Aug 2020 19:41:10 +0800
+ -- Mo Zhou <lumin@debian.org>  Mon, 31 Aug 2020 19:41:58 +0800
 
 pytorch (1.5.1-1) experimental; urgency=medium
 

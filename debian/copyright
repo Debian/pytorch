@@ -30,7 +30,7 @@ Comment:
  .
  Q: why not create a python3-caffe2 package?
  A: torch and caffe2 are installed together with a single setup.py.
-    Let's treat them as a whole for now.
+    they are regarded as a whole by the upstream.
 
 ### Global
 
@@ -38,9 +38,7 @@ Files: *
  android/*
  aten/*
  benchmarks/*
- binaries/*
  c10/*
- caffe2/*
  cmake/*
  docker/*
  docs/*
@@ -67,6 +65,11 @@ Copyright: Facebook, Inc. and its affiliates.
  2013, 2014, 2015, the respective Caffe contributors
  2015, 2016 the respective contributors
 License: BSD-3-Clause
+Comment: according to android/gradle.properties :: POM_LICENSE_NAME
+ there are some "confidential/proprietary" claims in the java files.
+ The upstream forgot to remove them:
+ https://github.com/pytorch/pytorch/issues/37475
+
 
 Files: debian/*
 Copyright: 2019-2020 Mo Zhou <lumin@debian.org>
@@ -77,14 +80,6 @@ License: Expat
 Files: android/pytorch_android/host/build.gradle
 Copyright: Facebook, Inc. and its affiliates.
 License: Apache-2.0
-
-Files: android/*
-Copyright: Copyright holders for Files: *
-License: BSD-3-Clause
-Comment: according to android/gradle.properties :: POM_LICENSE_NAME
- there are some "confidential/proprietary" claims in the java files
- I guess upstream forgot to remove it, hence asked here:
- https://github.com/pytorch/pytorch/issues/37475
 
 ## aten/
 
@@ -164,7 +159,6 @@ License: Apache-2.0
 Files: c10/util/AlignOf.h
        c10/util/SmallVector.cpp
        c10/util/SmallVector.h
-       c10/util/FunctionRef.h
 Copyright: LLVM Compiler Infrastructure contributors
  Copyright holders for Files: *
 License: U-OF-I-BSD-LIKE
@@ -215,9 +209,14 @@ Comment: in the past facebook had merged caffe2 codebase into pytorch's
  and you can still see many files containing an Apache-2.0 banner
 
 Files: caffe2/contrib/opencl/OpenCL/cl.hpp
-       caffe2/mobile/contrib/libopencl-stub/include/CL/*
+       caffe2/mobile/contrib/libopencl-stub/*
 Copyright: 2008-2015, The Khronos Group Inc.
 License: Expat
+  Some files under libopencl-stub/ except for
+    caffe2/mobile/contrib/libopencl-stub/include/CL/*
+  are released under public domain.
+  Copyright: libopencl-stub authors
+  License: public-domain
 
 Files: caffe2/core/nomnigraph/include/nomnigraph/Support/Casting.h
 Copyright: LLVM Compiler Infrastructure contributors
@@ -226,10 +225,6 @@ License: U-OF-I-BSD-LIKE
 Files: caffe2/image/transform_gpu.h
 Copyright: 2016, NVIDIA CORPORATION
 License: BSD-2-Clause
-
-Files: caffe2/mobile/contrib/libopencl-stub/*
-Copyright: libopencl-stub authors
-License: public-domain
 
 Files: caffe2/mobile/contrib/libvulkan-stub/include/vulkan/vk_platform.h
        caffe2/mobile/contrib/libvulkan-stub/include/vulkan/vulkan.h

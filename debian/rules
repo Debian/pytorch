@@ -100,8 +100,16 @@ override_dh_auto_install:
 		ln -sfv libtorch_global_deps.so.$(SOVERSION).$(PATCH) libtorch_global_deps.so.$(SOVERSION)
 	# [python3-torch::symlinks -> libtorch-dev] move the links to shared libs out of the python package
 	mkdir -pv debian/libtorch-dev/usr/lib/$(DEB_HOST_MULTIARCH)/
-	-cd debian/python3-torch/usr/lib/python3*/dist-packages/torch/lib ; \
-		$(RM) -v *.so
+	-cd debian/python3-torch/usr/lib/python3*/dist-packages/torch/lib ; $(RM) -v *.so;\
+		ln -sv  ../../../../$(DEB_HOST_MULTIARCH)/libc10.so.$(SOVERSION) libc10.so ;\
+		ln -sv  ../../../../$(DEB_HOST_MULTIARCH)/libcaffe2_detectron_ops.so.$(SOVERSION) libcaffe2_detectron_ops.so ;\
+		ln -sv  ../../../../$(DEB_HOST_MULTIARCH)/libcaffe2_module_test_dynamic.so.$(SOVERSION) libcaffe2_module_test_dynamic.so ;\
+		ln -sv  ../../../../$(DEB_HOST_MULTIARCH)/libcaffe2_observers.so.$(SOVERSION) libcaffe2_observers.so ;\
+		ln -sv  ../../../../$(DEB_HOST_MULTIARCH)/libshm.so.$(SOVERSION) libshm.so ;\
+		ln -sv  ../../../../$(DEB_HOST_MULTIARCH)/libtorch_cpu.so.$(SOVERSION) libtorch_cpu.so ;\
+		ln -sv  ../../../../$(DEB_HOST_MULTIARCH)/libtorch_python.so.$(SOVERSION) libtorch_python.so ;\
+		ln -sv  ../../../../$(DEB_HOST_MULTIARCH)/libtorch.so.$(SOVERSION) libtorch.so ;\
+		ln -sv  ../../../../$(DEB_HOST_MULTIARCH)/libtorch_global_deps.so.$(SOVERSION) libtorch_global_deps.so
 	-cd debian/libtorch-dev/usr/lib/$(DEB_HOST_MULTIARCH)/; \
 		ln -sfv libc10.so.$(SOVERSION) libc10.so ;\
 		ln -sfv libcaffe2_detectron_ops.so.$(SOVERSION) libcaffe2_detectron_ops.so ;\

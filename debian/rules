@@ -86,22 +86,32 @@ override_dh_auto_install:
 	mkdir -pv debian/libtorch$(SOVERSION)/usr/lib/$(DEB_HOST_MULTIARCH)/
 	-mv -v debian/python3-torch/usr/lib/python3*/dist-packages/torch/lib/*.so.* \
 		debian/libtorch$(SOVERSION)/usr/lib/$(DEB_HOST_MULTIARCH)/
+	#-mv -v torch/libs/lib*$(SOVERSION) debian/libtorch$(SOVERSION)/usr/lib/$(DEB_HOST_MULTIARCH)/
+	#-mv -v torch/libs/lib*$(SOVERSION).$(PATCH) debian/libtorch$(SOVERSION)/usr/lib/$(DEB_HOST_MULTIARCH)/
+	-cd debian/libtorch$(SOVERSION)/usr/lib/$(DEB_HOST_MULTIARCH)/; \
+		ln -sfv libc10.so.$(SOVERSION).$(PATCH) libc10.so.$(SOVERSION) ;\
+		ln -sfv libcaffe2_detectron_ops.so.$(SOVERSION).$(PATCH) libcaffe2_detectron_ops.so.$(SOVERSION) ;\
+		ln -sfv libcaffe2_module_test_dynamic.so.$(SOVERSION).$(PATCH) libcaffe2_module_test_dynamic.so.$(SOVERSION) ;\
+		ln -sfv libcaffe2_observers.so.$(SOVERSION).$(PATCH) libcaffe2_observers.so.$(SOVERSION) ;\
+		ln -sfv libshm.so.$(SOVERSION).$(PATCH) libshm.so.$(SOVERSION) ;\
+		ln -sfv libtorch_cpu.so.$(SOVERSION).$(PATCH) libtorch_cpu.so.$(SOVERSION) ;\
+		ln -sfv libtorch_python.so.$(SOVERSION).$(PATCH) libtorch_python.so.$(SOVERSION) ;\
+		ln -sfv libtorch.so.$(SOVERSION).$(PATCH) libtorch.so.$(SOVERSION) ;\
+		ln -sfv libtorch_global_deps.so.$(SOVERSION).$(PATCH) libtorch_global_deps.so.$(SOVERSION)
 	# [python3-torch::symlinks -> libtorch-dev] move the links to shared libs out of the python package
 	mkdir -pv debian/libtorch-dev/usr/lib/$(DEB_HOST_MULTIARCH)/
 	-cd debian/python3-torch/usr/lib/python3*/dist-packages/torch/lib ; \
-		$(RM) -v libc10.so libcaffe2_detectron_ops.so libcaffe2_module_test_dynamic.so \
-			libcaffe2_observers.so libshm.so libtorch_cpu.so libtorch_python.so libtorch.so libtorch_global_deps.so 
+		$(RM) -v *.so
 	-cd debian/libtorch-dev/usr/lib/$(DEB_HOST_MULTIARCH)/; \
-		ln -sv libc10.so.$(SOVERSION) libc10.so ;\
-		ln -sv libcaffe2_detectron_ops.so.$(SOVERSION) libcaffe2_detectron_ops.so ;\
-		ln -sv libcaffe2_module_test_dynamic.so.$(SOVERSION) libcaffe2_module_test_dynamic.so ;\
-		ln -sv libcaffe2_observers.so.$(SOVERSION) libcaffe2_observers.so ;\
-		ln -sv libshm.so.$(SOVERSION) libshm.so ;\
-		ln -sv libtorch_cpu.so.$(SOVERSION) libtorch_cpu.so ;\
-		ln -sv libtorch_python.so.$(SOVERSION) libtorch_python.so ;\
-		ln -sv libtorch.so.$(SOVERSION) libtorch.so
-	-mv -v torch/libs/lib*$(SOVERSION) debian/libtorch$(SOVERSION)/usr/lib/$(DEB_HOST_MULTIARCH)/
-	-mv -v torch/libs/lib*$(SOVERSION).$(PATCH) debian/libtorch$(SOVERSION)/usr/lib/$(DEB_HOST_MULTIARCH)/
+		ln -sfv libc10.so.$(SOVERSION) libc10.so ;\
+		ln -sfv libcaffe2_detectron_ops.so.$(SOVERSION) libcaffe2_detectron_ops.so ;\
+		ln -sfv libcaffe2_module_test_dynamic.so.$(SOVERSION) libcaffe2_module_test_dynamic.so ;\
+		ln -sfv libcaffe2_observers.so.$(SOVERSION) libcaffe2_observers.so ;\
+		ln -sfv libshm.so.$(SOVERSION) libshm.so ;\
+		ln -sfv libtorch_cpu.so.$(SOVERSION) libtorch_cpu.so ;\
+		ln -sfv libtorch_python.so.$(SOVERSION) libtorch_python.so ;\
+		ln -sfv libtorch.so.$(SOVERSION) libtorch.so ;\
+		ln -sfv libtorch_global_deps.so.$(SOVERSION) libtorch_global_deps.so
 	# [python3-torch::cmake -> libtorch-dev] move the cmake files out of the python package
 	mkdir -pv debian/libtorch-dev/usr/lib/$(DEB_HOST_MULTIARCH)/
 	-mv -v debian/python3-torch/usr/lib/python3*/dist-packages/torch/share/cmake \

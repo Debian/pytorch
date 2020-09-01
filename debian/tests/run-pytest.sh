@@ -60,5 +60,5 @@ sleep 1
 
 for (( i = 0; i < ${#FILES[@]}; i++ )); do
 	echo "# Py test ${i}/${#FILES[@]} ${FILES[$i]}"
-	pytest-3 test/${FILES[$i]}.py -v
+	python3 run_test.py -pt -i ${FILES[$i]} -v
 done

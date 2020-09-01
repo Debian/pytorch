@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-echo "# Generating Autopkgtest Test Cases for the Python Testing Programs"
+echo "# Running Python Testing Programs"
 echo "# The tests are collected from test/run_test.py"
 FILES=(
 	'test_autograd'
@@ -56,12 +56,9 @@ FILES=(
 )
 echo "# Found" ${#FILES[@]} "tests"
 echo "#"
+sleep 1
 
 for (( i = 0; i < ${#FILES[@]}; i++ )); do
-	echo "# Py test ${i}/${#FILES[@]}"
-	echo "Test-Command: pytest-3 test/${FILES[$i]}.py -v"
-	echo "Depends: build-essential libtorch-dev python3-torch python3-pytest python3-hypothesis"
-	echo "Features: test-name=$((${i}+1))_of_${#FILES[@]}__pytest__$(basename ${FILES[$i]})"
-	echo "Restrictions: allow-stderr"
-	echo ""
+	echo "# Py test ${i}/${#FILES[@]} ${FILES[$i]}"
+	pytest-3 test/${FILES[$i]}.py -v
 done

@@ -27,12 +27,8 @@ Author: Mo Zhou
  cmake_dependent_option(
      USE_NUMA "Use NUMA. Only available on Linux." ON
      "LINUX" OFF)
-@@ -178,16 +179,16 @@
- option(USE_NUMPY "Use NumPy" ON)
- option(USE_OBSERVERS "Use observers module." OFF)
- option(USE_OPENCL "Use OpenCL" OFF)
--option(USE_OPENCV "Use OpenCV" OFF)
-+option(USE_OPENCV "Use OpenCV" ON)
+@@ -181,13 +182,13 @@
+ option(USE_OPENCV "Use OpenCV" OFF)
  option(USE_OPENMP "Use OpenMP for parallel code" ON)
  option(USE_PROF "Use profiling" OFF)
 -option(USE_QNNPACK "Use QNNPACK (quantized 8-bit operators)" ON)

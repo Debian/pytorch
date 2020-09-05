@@ -1,0 +1,47 @@
+--- a/cmake/public/mkldnn.cmake
++++ b/cmake/public/mkldnn.cmake
+@@ -1,6 +1,8 @@
+ set(MKLDNN_USE_NATIVE_ARCH ${USE_NATIVE_ARCH})
+ 
+ find_package(MKLDNN QUIET)
++find_library(MKLDNN_LIBRARIES dnnl)
++set(MKLDNN_FOUND TRUE)
+ 
+ if(NOT TARGET caffe2::mkldnn)
+   add_library(caffe2::mkldnn INTERFACE IMPORTED)
+--- a/cmake/Modules/FindMKLDNN.cmake
++++ b/cmake/Modules/FindMKLDNN.cmake
+@@ -17,8 +17,10 @@
+ SET(MKLDNN_LIBRARIES)
+ SET(MKLDNN_INCLUDE_DIR)
+ 
+-SET(IDEEP_ROOT "${PROJECT_SOURCE_DIR}/third_party/ideep")
+-SET(MKLDNN_ROOT "${IDEEP_ROOT}/mkl-dnn")
++SET(IDEEP_ROOT "/usr")
++SET(MKLDNN_ROOT "/usr")
++SET(IDEEP_INCLUDE_DIR "/usr/include")
++SET(MKLDNN_INCLUDE_DIR "/usr/include")
+ 
+ FIND_PACKAGE(BLAS)
+ FIND_PATH(IDEEP_INCLUDE_DIR ideep.hpp PATHS ${IDEEP_ROOT} PATH_SUFFIXES include)
+@@ -78,17 +80,14 @@
+   ENDIF()
+ ENDIF()
+ 
+-ADD_SUBDIRECTORY(${MKLDNN_ROOT})
++#ADD_SUBDIRECTORY(${MKLDNN_ROOT})
++find_package(dnnl REQUIRED)
++add_library(dnnl ALIAS DNNL::dnnl)
+ IF(NOT TARGET dnnl)
+   MESSAGE("Failed to include MKL-DNN target")
+   RETURN()
+ ENDIF(NOT TARGET dnnl)
+ 
+-IF(NOT APPLE AND CMAKE_COMPILER_IS_GNUCC)
+-  TARGET_COMPILE_OPTIONS(dnnl PRIVATE -Wno-maybe-uninitialized)
+-  TARGET_COMPILE_OPTIONS(dnnl PRIVATE -Wno-strict-overflow)
+-  TARGET_COMPILE_OPTIONS(dnnl PRIVATE -Wno-error=strict-overflow)
+-ENDIF(NOT APPLE AND CMAKE_COMPILER_IS_GNUCC)
+ LIST(APPEND MKLDNN_LIBRARIES dnnl)
+ 
+ SET(MKLDNN_FOUND TRUE)

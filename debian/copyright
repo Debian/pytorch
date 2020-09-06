@@ -121,7 +121,6 @@ License: BSD-3-Clause
 Comment: This is acknowledged by upstream as a forked copy of QNNPACK
 
 Files: aten/src/ATen/dlpack.h
-       caffe2/python/dlpack.h
 Copyright: 2017, DLPack Contributors
 License: Apache-2.0
 Comment: https://github.com/dmlc/dlpack/blob/master/LICENSE
@@ -207,6 +206,12 @@ Comment: in the past facebook had merged caffe2 codebase into pytorch's
  https://github.com/facebookarchive/caffe2/blob/master/LICENSE
  The global license for caffe2 project is Apache-2.0
  and you can still see many files containing an Apache-2.0 banner
+ .
+ Files: caffe2/python/dlpack.h
+ Copyright: 2017, DLPack Contributors
+ License: Apache-2.0
+ Comment: https://github.com/dmlc/dlpack/blob/master/LICENSE
+  DLPack contributors partly overlap with Pytorch contributors
 
 Files: caffe2/contrib/opencl/OpenCL/cl.hpp
        caffe2/mobile/contrib/libopencl-stub/*

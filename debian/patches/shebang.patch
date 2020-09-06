@@ -324,14 +324,6 @@ Author: Mo Zhou
  import inspect
  
  import hypothesis.strategies as st
---- a/debian/clog/configure.py
-+++ b/debian/clog/configure.py
-@@ -1,4 +1,4 @@
--#!/usr/bin/env python
-+#!/usr/bin/python
- 
- 
- import confu
 --- a/docs/caffe2/process.py
 +++ b/docs/caffe2/process.py
 @@ -1,4 +1,4 @@

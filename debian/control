@@ -65,7 +65,7 @@ Depends: libtorch1.6 (= ${binary:Version}),
          ${shlibs:Depends}
 # PyTorch's JIT (C++ Extension) functionality needs development files/tools.
 Recommends: libtorch-dev (= ${binary:Version}), ninja-build,
-Suggests: libtorch-dev, python3-hypothesis, python3-pytest
+Suggests: python3-hypothesis, python3-pytest
 Description: Tensors and Dynamic neural networks in Python with strong GPU acceleration
  PyTorch is a Python package that provides two high-level features:
  .

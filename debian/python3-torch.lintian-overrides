@@ -3,3 +3,4 @@ broken-zip usr/lib/python3/dist-packages/caffe2/python/serialized_test/data/*
 shared-lib-without-dependency-information usr/lib/python3/dist-packages/torch/_dl.*.so
 spelling-error-in-binary
 breakout-link
+script-uses-bin-env

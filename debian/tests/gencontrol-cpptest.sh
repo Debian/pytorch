@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 echo "# Generating Autopkgtest Test Cases for the C++ Testing Programs"
-FILES=( $(find /usr/lib/libtorch-test/ -type f -executable) )
+FILES=( $(find /usr/lib/libtorch-test/ -type f -executable | sort) )
 echo "# Found" ${#FILES[@]} "tests"
 echo "#"
 

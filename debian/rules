@@ -74,9 +74,9 @@ override_dh_auto_install:
 		--root=$(shell pwd)/debian/python3-torch/
 	# [python3-torch::headers -> libtorch-dev] move the headers out of the python package
 	mkdir -pv debian/libtorch-dev/usr/include
-	-mv -v debian/python3-torch/usr/lib/python3*/dist-packages/torch/include/* \
+	mv -v debian/python3-torch/usr/lib/python3*/dist-packages/torch/include/* \
 		debian/libtorch-dev/usr/include/
-	-cd debian/python3-torch/usr/lib/python3*/dist-packages/torch/include/; \
+	cd debian/python3-torch/usr/lib/python3*/dist-packages/torch/include/; \
 		ln -sv /usr/include/torch . ;\
 		ln -sv /usr/include/caffe2 . ;\
 		ln -sv /usr/include/ATen . ;\
@@ -84,11 +84,9 @@ override_dh_auto_install:
 		ln -sv /usr/include/TH .
 	# [python3-torch::shlibs -> libtorch$(SOVERSION)] move the (public) shared libs out of the python package
 	mkdir -pv debian/libtorch$(SOVERSION)/usr/lib/$(DEB_HOST_MULTIARCH)/
-	-mv -v debian/python3-torch/usr/lib/python3*/dist-packages/torch/lib/*.so.* \
+	mv -v debian/python3-torch/usr/lib/python3*/dist-packages/torch/lib/*.so.* \
 		debian/libtorch$(SOVERSION)/usr/lib/$(DEB_HOST_MULTIARCH)/
-	#-mv -v torch/libs/lib*$(SOVERSION) debian/libtorch$(SOVERSION)/usr/lib/$(DEB_HOST_MULTIARCH)/
-	#-mv -v torch/libs/lib*$(SOVERSION).$(PATCH) debian/libtorch$(SOVERSION)/usr/lib/$(DEB_HOST_MULTIARCH)/
-	-cd debian/libtorch$(SOVERSION)/usr/lib/$(DEB_HOST_MULTIARCH)/; \
+	cd debian/libtorch$(SOVERSION)/usr/lib/$(DEB_HOST_MULTIARCH)/; \
 		ln -sfv libc10.so.$(SOVERSION).$(PATCH) libc10.so.$(SOVERSION) ;\
 		ln -sfv libcaffe2_detectron_ops.so.$(SOVERSION).$(PATCH) libcaffe2_detectron_ops.so.$(SOVERSION) ;\
 		ln -sfv libcaffe2_module_test_dynamic.so.$(SOVERSION).$(PATCH) libcaffe2_module_test_dynamic.so.$(SOVERSION) ;\
@@ -100,7 +98,7 @@ override_dh_auto_install:
 		ln -sfv libtorch_global_deps.so.$(SOVERSION).$(PATCH) libtorch_global_deps.so.$(SOVERSION)
 	# [python3-torch::symlinks -> libtorch-dev] move the links to shared libs out of the python package
 	mkdir -pv debian/libtorch-dev/usr/lib/$(DEB_HOST_MULTIARCH)/
-	-cd debian/python3-torch/usr/lib/python3*/dist-packages/torch/lib ; $(RM) -v *.so;\
+	cd debian/python3-torch/usr/lib/python3*/dist-packages/torch/lib ; $(RM) -v *.so;\
 		ln -sv  ../../../../$(DEB_HOST_MULTIARCH)/libc10.so.$(SOVERSION) libc10.so ;\
 		ln -sv  ../../../../$(DEB_HOST_MULTIARCH)/libcaffe2_detectron_ops.so.$(SOVERSION) libcaffe2_detectron_ops.so ;\
 		ln -sv  ../../../../$(DEB_HOST_MULTIARCH)/libcaffe2_module_test_dynamic.so.$(SOVERSION) libcaffe2_module_test_dynamic.so ;\
@@ -110,7 +108,7 @@ override_dh_auto_install:
 		ln -sv  ../../../../$(DEB_HOST_MULTIARCH)/libtorch_python.so.$(SOVERSION) libtorch_python.so ;\
 		ln -sv  ../../../../$(DEB_HOST_MULTIARCH)/libtorch.so.$(SOVERSION) libtorch.so ;\
 		ln -sv  ../../../../$(DEB_HOST_MULTIARCH)/libtorch_global_deps.so.$(SOVERSION) libtorch_global_deps.so
-	-cd debian/libtorch-dev/usr/lib/$(DEB_HOST_MULTIARCH)/; \
+	cd debian/libtorch-dev/usr/lib/$(DEB_HOST_MULTIARCH)/; \
 		ln -sfv libc10.so.$(SOVERSION) libc10.so ;\
 		ln -sfv libcaffe2_detectron_ops.so.$(SOVERSION) libcaffe2_detectron_ops.so ;\
 		ln -sfv libcaffe2_module_test_dynamic.so.$(SOVERSION) libcaffe2_module_test_dynamic.so ;\
@@ -122,12 +120,16 @@ override_dh_auto_install:
 		ln -sfv libtorch_global_deps.so.$(SOVERSION) libtorch_global_deps.so
 	# [python3-torch::cmake -> libtorch-dev] move the cmake files out of the python package
 	mkdir -pv debian/libtorch-dev/usr/lib/$(DEB_HOST_MULTIARCH)/
-	-mv -v debian/python3-torch/usr/lib/python3*/dist-packages/torch/share/cmake \
+	mv -v debian/python3-torch/usr/lib/python3*/dist-packages/torch/share/cmake \
 		debian/libtorch-dev/usr/lib/$(DEB_HOST_MULTIARCH)/
 	# [python3-torch::testbin -> libtorch-test] move the test binaries out of the python packaage
 	mkdir -pv debian/libtorch-test/usr/lib/libtorch-test/
-	-mv -v debian/python3-torch/usr/lib/python3*/dist-packages/torch/test/* \
+	mv -v debian/python3-torch/usr/lib/python3*/dist-packages/torch/test/* \
 		debian/libtorch-test/usr/lib/libtorch-test/
+	rmdir -v debian/python3-torch/usr/lib/python3*/dist-packages/torch/test
+	cd debian/python3-torch/usr/lib/python3*/dist-packages/torch/ ;\
+		ln -s /usr/lib/libtorch-test test
+
 
 override_dh_python3:
 	dh_python3 --requires=requirements.txt --no-ext-rename

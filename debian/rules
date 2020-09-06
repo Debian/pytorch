@@ -27,7 +27,11 @@ export USE_GLOG = ON
 export USE_LEVELDB = ON
 export USE_LMDB = ON
 export USE_MIOPEN = OFF
+ifneq (,$(filter $(DEB_HOST_ARCH), amd64 arm64 ppc64el))
 export USE_MKLDNN = ON
+else
+export USE_MKLDNN = OFF
+endif
 export USE_NNPACK = OFF
 export USE_OPENCV = ON
 export USE_QNNPACK = OFF

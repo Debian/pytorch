@@ -2,8 +2,6 @@ Description: change shebang
   find . -type f -name '*.py' -exec sed -i -e 's@#!/usr/bin/env @#!/usr/bin/@g' '{}' \;
   find . -type f -name '*.sh' -exec sed -i -e 's@#!/usr/bin/env @#!/usr/bin/@g' '{}' \;   
 Author: Mo Zhou
-diff --git a/.circleci/codegen_validation/normalize_yaml_fragment.py b/.circleci/codegen_validation/normalize_yaml_fragment.py
-index 0778404..ab4a353 100755
 --- a/.circleci/codegen_validation/normalize_yaml_fragment.py
 +++ b/.circleci/codegen_validation/normalize_yaml_fragment.py
 @@ -1,4 +1,4 @@
@@ -12,8 +10,6 @@ index 0778404..ab4a353 100755
  
  import os
  import sys
-diff --git a/.circleci/ecr_gc_docker/docker_hub.py b/.circleci/ecr_gc_docker/docker_hub.py
-index cac6fb4..03f20ea 100755
 --- a/.circleci/ecr_gc_docker/docker_hub.py
 +++ b/.circleci/ecr_gc_docker/docker_hub.py
 @@ -1,4 +1,4 @@
@@ -22,8 +18,6 @@ index cac6fb4..03f20ea 100755
  
  from collections import namedtuple
  
-diff --git a/.circleci/ecr_gc_docker/gc.py b/.circleci/ecr_gc_docker/gc.py
-index f215ab4..4a26459 100755
 --- a/.circleci/ecr_gc_docker/gc.py
 +++ b/.circleci/ecr_gc_docker/gc.py
 @@ -1,4 +1,4 @@
@@ -32,8 +26,6 @@ index f215ab4..4a26459 100755
  
  import argparse
  import datetime
-diff --git a/.circleci/ensure-consistency.py b/.circleci/ensure-consistency.py
-index 972eded..f47cb57 100755
 --- a/.circleci/ensure-consistency.py
 +++ b/.circleci/ensure-consistency.py
 @@ -1,4 +1,4 @@
@@ -42,8 +34,6 @@ index 972eded..f47cb57 100755
  
  import os
  import subprocess
-diff --git a/.circleci/generate_config_yml.py b/.circleci/generate_config_yml.py
-index 7be8713..7dbb10e 100755
 --- a/.circleci/generate_config_yml.py
 +++ b/.circleci/generate_config_yml.py
 @@ -1,4 +1,4 @@
@@ -52,8 +42,6 @@ index 7be8713..7dbb10e 100755
  
  """
  This script is the source of truth for config.yml.
-diff --git a/.circleci/scripts/build_android_gradle.sh b/.circleci/scripts/build_android_gradle.sh
-index 3d97a4f..b40c767 100755
 --- a/.circleci/scripts/build_android_gradle.sh
 +++ b/.circleci/scripts/build_android_gradle.sh
 @@ -1,4 +1,4 @@
@@ -62,8 +50,6 @@ index 3d97a4f..b40c767 100755
  set -eux -o pipefail
  
  export ANDROID_NDK_HOME=/opt/ndk
-diff --git a/.circleci/scripts/publish_android_snapshot.sh b/.circleci/scripts/publish_android_snapshot.sh
-index b309f17..a722c4f 100755
 --- a/.circleci/scripts/publish_android_snapshot.sh
 +++ b/.circleci/scripts/publish_android_snapshot.sh
 @@ -1,4 +1,4 @@
@@ -72,8 +58,6 @@ index b309f17..a722c4f 100755
  # DO NOT ADD 'set -x' not to reveal CircleCI secret context environment variables
  set -eu -o pipefail
  
-diff --git a/.circleci/scripts/setup_ci_environment.sh b/.circleci/scripts/setup_ci_environment.sh
-index 189ad64..8bc7ec1 100755
 --- a/.circleci/scripts/setup_ci_environment.sh
 +++ b/.circleci/scripts/setup_ci_environment.sh
 @@ -1,4 +1,4 @@
@@ -82,8 +66,6 @@ index 189ad64..8bc7ec1 100755
  set -ex -o pipefail
  
  # Set up NVIDIA docker repo
-diff --git a/.circleci/scripts/setup_linux_system_environment.sh b/.circleci/scripts/setup_linux_system_environment.sh
-index 3e592e0..3eab815 100755
 --- a/.circleci/scripts/setup_linux_system_environment.sh
 +++ b/.circleci/scripts/setup_linux_system_environment.sh
 @@ -1,4 +1,4 @@
@@ -92,8 +74,6 @@ index 3e592e0..3eab815 100755
  set -eux -o pipefail
  
  # Set up CircleCI GPG keys for apt, if needed
-diff --git a/.circleci/validate-docker-version.py b/.circleci/validate-docker-version.py
-index ac04e45..2760c77 100755
 --- a/.circleci/validate-docker-version.py
 +++ b/.circleci/validate-docker-version.py
 @@ -1,4 +1,4 @@
@@ -102,8 +82,6 @@ index ac04e45..2760c77 100755
  import cimodel.data.caffe2_build_definitions as caffe2_build_definitions
  import cimodel.data.simple.util.docker_constants as pytorch_docker_constants
  
-diff --git a/.jenkins/pytorch/build-mobile-code-analysis.sh b/.jenkins/pytorch/build-mobile-code-analysis.sh
-index 5868b9b..36710b9 100755
 --- a/.jenkins/pytorch/build-mobile-code-analysis.sh
 +++ b/.jenkins/pytorch/build-mobile-code-analysis.sh
 @@ -1,4 +1,4 @@
@@ -112,8 +90,6 @@ index 5868b9b..36710b9 100755
  # DO NOT ADD 'set -x' not to reveal CircleCI secret context environment variables
  set -eu -o pipefail
  
-diff --git a/.jenkins/pytorch/build-mobile.sh b/.jenkins/pytorch/build-mobile.sh
-index 186c453..d3d4aaf 100755
 --- a/.jenkins/pytorch/build-mobile.sh
 +++ b/.jenkins/pytorch/build-mobile.sh
 @@ -1,4 +1,4 @@
@@ -122,8 +98,6 @@ index 186c453..d3d4aaf 100755
  # DO NOT ADD 'set -x' not to reveal CircleCI secret context environment variables
  set -eu -o pipefail
  
-diff --git a/.jenkins/pytorch/win-test-helpers/run_python_nn_smoketests.py b/.jenkins/pytorch/win-test-helpers/run_python_nn_smoketests.py
-index c96900d..f2cc1da 100755
 --- a/.jenkins/pytorch/win-test-helpers/run_python_nn_smoketests.py
 +++ b/.jenkins/pytorch/win-test-helpers/run_python_nn_smoketests.py
 @@ -1,4 +1,4 @@
@@ -132,8 +106,6 @@ index c96900d..f2cc1da 100755
  
  from __future__ import print_function
  
-diff --git a/aten/src/ATen/native/quantized/cpu/qnnpack/configure.py b/aten/src/ATen/native/quantized/cpu/qnnpack/configure.py
-index 9869ffd..0d84b21 100755
 --- a/aten/src/ATen/native/quantized/cpu/qnnpack/configure.py
 +++ b/aten/src/ATen/native/quantized/cpu/qnnpack/configure.py
 @@ -1,4 +1,4 @@
@@ -142,8 +114,6 @@ index 9869ffd..0d84b21 100755
  #
  # Copyright (c) Facebook, Inc. and its affiliates.
  # All rights reserved.
-diff --git a/aten/src/ATen/native/quantized/cpu/qnnpack/deps/clog/configure.py b/aten/src/ATen/native/quantized/cpu/qnnpack/deps/clog/configure.py
-index d6b829c..27c2749 100755
 --- a/aten/src/ATen/native/quantized/cpu/qnnpack/deps/clog/configure.py
 +++ b/aten/src/ATen/native/quantized/cpu/qnnpack/deps/clog/configure.py
 @@ -1,4 +1,4 @@
@@ -152,8 +122,6 @@ index d6b829c..27c2749 100755
  #
  # Copyright (c) Facebook, Inc. and its affiliates.
  # All rights reserved.
-diff --git a/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-android-arm64.sh b/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-android-arm64.sh
-index 389430b..adaa907 100755
 --- a/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-android-arm64.sh
 +++ b/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-android-arm64.sh
 @@ -1,4 +1,4 @@
@@ -162,8 +130,6 @@ index 389430b..adaa907 100755
  #
  # Copyright (c) Facebook, Inc. and its affiliates.
  # All rights reserved.
-diff --git a/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-android-armv7.sh b/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-android-armv7.sh
-index 6f32950..c74c894 100755
 --- a/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-android-armv7.sh
 +++ b/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-android-armv7.sh
 @@ -1,4 +1,4 @@
@@ -172,8 +138,6 @@ index 6f32950..c74c894 100755
  #
  # Copyright (c) Facebook, Inc. and its affiliates.
  # All rights reserved.
-diff --git a/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-android-x86.sh b/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-android-x86.sh
-index 5f19db5..3138ca1 100755
 --- a/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-android-x86.sh
 +++ b/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-android-x86.sh
 @@ -1,4 +1,4 @@
@@ -182,8 +146,6 @@ index 5f19db5..3138ca1 100755
  #
  # Copyright (c) Facebook, Inc. and its affiliates.
  # All rights reserved.
-diff --git a/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-ios-arm64.sh b/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-ios-arm64.sh
-index d155d6f..a54d87b 100755
 --- a/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-ios-arm64.sh
 +++ b/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-ios-arm64.sh
 @@ -1,4 +1,4 @@
@@ -192,8 +154,6 @@ index d155d6f..a54d87b 100755
  #
  # Copyright (c) Facebook, Inc. and its affiliates.
  # All rights reserved.
-diff --git a/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-ios-arm64e.sh b/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-ios-arm64e.sh
-index 985315f..0fb2b8a 100755
 --- a/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-ios-arm64e.sh
 +++ b/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-ios-arm64e.sh
 @@ -1,4 +1,4 @@
@@ -202,8 +162,6 @@ index 985315f..0fb2b8a 100755
  #
  # Copyright (c) Facebook, Inc. and its affiliates.
  # All rights reserved.
-diff --git a/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-ios-armv7.sh b/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-ios-armv7.sh
-index 0431c09..dc1d187 100755
 --- a/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-ios-armv7.sh
 +++ b/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-ios-armv7.sh
 @@ -1,4 +1,4 @@
@@ -212,8 +170,6 @@ index 0431c09..dc1d187 100755
  #
  # Copyright (c) Facebook, Inc. and its affiliates.
  # All rights reserved.
-diff --git a/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-ios-armv7s.sh b/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-ios-armv7s.sh
-index e3f3d6b..6443245 100755
 --- a/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-ios-armv7s.sh
 +++ b/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-ios-armv7s.sh
 @@ -1,4 +1,4 @@
@@ -222,8 +178,6 @@ index e3f3d6b..6443245 100755
  #
  # Copyright (c) Facebook, Inc. and its affiliates.
  # All rights reserved.
-diff --git a/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-ios-i386.sh b/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-ios-i386.sh
-index e895214..aaaf1bf 100755
 --- a/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-ios-i386.sh
 +++ b/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-ios-i386.sh
 @@ -1,4 +1,4 @@
@@ -232,8 +186,6 @@ index e895214..aaaf1bf 100755
  #
  # Copyright (c) Facebook, Inc. and its affiliates.
  # All rights reserved.
-diff --git a/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-ios-x86_64.sh b/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-ios-x86_64.sh
-index 10a58b8..b1eff00 100755
 --- a/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-ios-x86_64.sh
 +++ b/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-ios-x86_64.sh
 @@ -1,4 +1,4 @@
@@ -242,8 +194,6 @@ index 10a58b8..b1eff00 100755
  #
  # Copyright (c) Facebook, Inc. and its affiliates.
  # All rights reserved.
-diff --git a/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-local.sh b/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-local.sh
-index b429650..77f8cbf 100755
 --- a/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-local.sh
 +++ b/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-local.sh
 @@ -1,4 +1,4 @@
@@ -252,8 +202,6 @@ index b429650..77f8cbf 100755
  #
  # Copyright (c) Facebook, Inc. and its affiliates.
  # All rights reserved.
-diff --git a/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/test-android-arm64.sh b/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/test-android-arm64.sh
-index 4482dad..d11bd3e 100755
 --- a/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/test-android-arm64.sh
 +++ b/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/test-android-arm64.sh
 @@ -1,4 +1,4 @@
@@ -262,8 +210,6 @@ index 4482dad..d11bd3e 100755
  #
  # Copyright (c) Facebook, Inc. and its affiliates.
  # All rights reserved.
-diff --git a/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/test-android-armv7.sh b/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/test-android-armv7.sh
-index bc42fb1..eb2803f 100755
 --- a/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/test-android-armv7.sh
 +++ b/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/test-android-armv7.sh
 @@ -1,4 +1,4 @@
@@ -272,8 +218,6 @@ index bc42fb1..eb2803f 100755
  #
  # Copyright (c) Facebook, Inc. and its affiliates.
  # All rights reserved.
-diff --git a/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/test-android-x86.sh b/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/test-android-x86.sh
-index 32742b0..3ad15eb 100755
 --- a/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/test-android-x86.sh
 +++ b/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/test-android-x86.sh
 @@ -1,4 +1,4 @@
@@ -282,8 +226,6 @@ index 32742b0..3ad15eb 100755
  #
  # Copyright (c) Facebook, Inc. and its affiliates.
  # All rights reserved.
-diff --git a/aten/src/ATen/native/vulkan/gen_glsl.py b/aten/src/ATen/native/vulkan/gen_glsl.py
-index 7be2aee..07a7a33 100644
 --- a/aten/src/ATen/native/vulkan/gen_glsl.py
 +++ b/aten/src/ATen/native/vulkan/gen_glsl.py
 @@ -1,4 +1,4 @@
@@ -292,8 +234,6 @@ index 7be2aee..07a7a33 100644
  
  import argparse
  import sys
-diff --git a/aten/src/ATen/native/vulkan/gen_spv.py b/aten/src/ATen/native/vulkan/gen_spv.py
-index 47d1d24..3525b9e 100644
 --- a/aten/src/ATen/native/vulkan/gen_spv.py
 +++ b/aten/src/ATen/native/vulkan/gen_spv.py
 @@ -1,4 +1,4 @@
@@ -302,8 +242,6 @@ index 47d1d24..3525b9e 100644
  
  import argparse
  import array
-diff --git a/benchmarks/distributed/ddp/benchmark.py b/benchmarks/distributed/ddp/benchmark.py
-index 4567749..35f69d3 100644
 --- a/benchmarks/distributed/ddp/benchmark.py
 +++ b/benchmarks/distributed/ddp/benchmark.py
 @@ -1,4 +1,4 @@
@@ -312,8 +250,6 @@ index 4567749..35f69d3 100644
  #
  # Measure distributed training iteration time.
  #
-diff --git a/benchmarks/distributed/ddp/diff.py b/benchmarks/distributed/ddp/diff.py
-index 59cd5b5..5b23d74 100644
 --- a/benchmarks/distributed/ddp/diff.py
 +++ b/benchmarks/distributed/ddp/diff.py
 @@ -1,4 +1,4 @@
@@ -322,8 +258,6 @@ index 59cd5b5..5b23d74 100644
  #
  # Computes difference between measurements produced by ./benchmark.py.
  #
-diff --git a/binaries/bench_gen/bench_gen.py b/binaries/bench_gen/bench_gen.py
-index 579aae3..a6f294f 100755
 --- a/binaries/bench_gen/bench_gen.py
 +++ b/binaries/bench_gen/bench_gen.py
 @@ -1,4 +1,4 @@
@@ -332,8 +266,6 @@ index 579aae3..a6f294f 100755
  
  from __future__ import absolute_import
  from __future__ import division
-diff --git a/caffe2/contrib/gloo/gloo_test.py b/caffe2/contrib/gloo/gloo_test.py
-index 91169e1..85f7cdd 100644
 --- a/caffe2/contrib/gloo/gloo_test.py
 +++ b/caffe2/contrib/gloo/gloo_test.py
 @@ -1,4 +1,4 @@
@@ -342,8 +274,6 @@ index 91169e1..85f7cdd 100644
  
  from __future__ import absolute_import
  from __future__ import division
-diff --git a/caffe2/core/nomnigraph/op_gen.py b/caffe2/core/nomnigraph/op_gen.py
-index 49cd2ab..6123bbc 100755
 --- a/caffe2/core/nomnigraph/op_gen.py
 +++ b/caffe2/core/nomnigraph/op_gen.py
 @@ -1,4 +1,4 @@
@@ -352,8 +282,6 @@ index 49cd2ab..6123bbc 100755
  
  from __future__ import absolute_import
  from __future__ import division
-diff --git a/caffe2/python/allcompare_test.py b/caffe2/python/allcompare_test.py
-index 61579b3..a54d744 100644
 --- a/caffe2/python/allcompare_test.py
 +++ b/caffe2/python/allcompare_test.py
 @@ -1,4 +1,4 @@
@@ -362,8 +290,6 @@ index 61579b3..a54d744 100644
  
  from __future__ import absolute_import
  from __future__ import division
-diff --git a/caffe2/python/benchmark_generator.py b/caffe2/python/benchmark_generator.py
-index 8393ca7..d6cc531 100644
 --- a/caffe2/python/benchmark_generator.py
 +++ b/caffe2/python/benchmark_generator.py
 @@ -1,4 +1,4 @@
@@ -372,8 +298,6 @@ index 8393ca7..d6cc531 100644
  
  from __future__ import absolute_import
  from __future__ import division
-diff --git a/caffe2/python/caffe_translator.py b/caffe2/python/caffe_translator.py
-index 63392c7..f531a6d 100644
 --- a/caffe2/python/caffe_translator.py
 +++ b/caffe2/python/caffe_translator.py
 @@ -1,6 +1,6 @@
@@ -384,8 +308,6 @@ index 63392c7..f531a6d 100644
  
  import argparse
  import copy
-diff --git a/caffe2/python/operator_test/alias_with_name_test.py b/caffe2/python/operator_test/alias_with_name_test.py
-index 6d62cb6..c1eed52 100644
 --- a/caffe2/python/operator_test/alias_with_name_test.py
 +++ b/caffe2/python/operator_test/alias_with_name_test.py
 @@ -1,4 +1,4 @@
@@ -394,8 +316,6 @@ index 6d62cb6..c1eed52 100644
  
  import caffe2.python.hypothesis_test_util as hu
  import hypothesis.strategies as st
-diff --git a/caffe2/python/test/inference_lstm_op_test.py b/caffe2/python/test/inference_lstm_op_test.py
-index dc33f52..a1afa10 100644
 --- a/caffe2/python/test/inference_lstm_op_test.py
 +++ b/caffe2/python/test/inference_lstm_op_test.py
 @@ -1,4 +1,4 @@
@@ -404,8 +324,14 @@ index dc33f52..a1afa10 100644
  import inspect
  
  import hypothesis.strategies as st
-diff --git a/docs/caffe2/process.py b/docs/caffe2/process.py
-index 9fa37e5..63363e9 100644
+--- a/debian/clog/configure.py
++++ b/debian/clog/configure.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python
+ 
+ 
+ import confu
 --- a/docs/caffe2/process.py
 +++ b/docs/caffe2/process.py
 @@ -1,4 +1,4 @@
@@ -414,8 +340,6 @@ index 9fa37e5..63363e9 100644
  ## @package process
  # Module doxygen.process
  # Script to insert preamble for doxygen and regen API docs
-diff --git a/scripts/build_tizen.sh b/scripts/build_tizen.sh
-index 38e90fa..38cdbf9 100755
 --- a/scripts/build_tizen.sh
 +++ b/scripts/build_tizen.sh
 @@ -1,4 +1,4 @@
@@ -424,8 +348,6 @@ index 38e90fa..38cdbf9 100755
  ##############################################################################
  #  Example command to build the Tizen target (RPi3).
  ##############################################################################
-diff --git a/scripts/release/promote/common_utils.sh b/scripts/release/promote/common_utils.sh
-index e50ccb1..60710e9 100644
 --- a/scripts/release/promote/common_utils.sh
 +++ b/scripts/release/promote/common_utils.sh
 @@ -1,4 +1,4 @@
@@ -434,8 +356,6 @@ index e50ccb1..60710e9 100644
  
  exit_if_not_on_git_tag() {
      # Have an override for debugging purposes
-diff --git a/scripts/release/promote/conda_to_conda.sh b/scripts/release/promote/conda_to_conda.sh
-index c890f9c..ef0bb68 100755
 --- a/scripts/release/promote/conda_to_conda.sh
 +++ b/scripts/release/promote/conda_to_conda.sh
 @@ -1,4 +1,4 @@
@@ -444,8 +364,6 @@ index c890f9c..ef0bb68 100755
  
  set -eou pipefail
  
-diff --git a/scripts/release/promote/s3_to_s3.sh b/scripts/release/promote/s3_to_s3.sh
-index 21495ac..ed54826 100755
 --- a/scripts/release/promote/s3_to_s3.sh
 +++ b/scripts/release/promote/s3_to_s3.sh
 @@ -1,4 +1,4 @@
@@ -454,8 +372,6 @@ index 21495ac..ed54826 100755
  
  set -eou pipefail
  
-diff --git a/scripts/release/promote/wheel_to_pypi.sh b/scripts/release/promote/wheel_to_pypi.sh
-index a53db5b..4638263 100755
 --- a/scripts/release/promote/wheel_to_pypi.sh
 +++ b/scripts/release/promote/wheel_to_pypi.sh
 @@ -1,4 +1,4 @@
@@ -464,8 +380,6 @@ index a53db5b..4638263 100755
  
  set -eou pipefail
  
-diff --git a/scripts/release/restore-backup.sh b/scripts/release/restore-backup.sh
-index 6cf7954..e7ceedb 100755
 --- a/scripts/release/restore-backup.sh
 +++ b/scripts/release/restore-backup.sh
 @@ -1,4 +1,4 @@
@@ -474,8 +388,6 @@ index 6cf7954..e7ceedb 100755
  
  set -eou pipefail
  
-diff --git a/test/distributed/nn/api/test_remote_module_spawn.py b/test/distributed/nn/api/test_remote_module_spawn.py
-index d8548f8..1e77589 100644
 --- a/test/distributed/nn/api/test_remote_module_spawn.py
 +++ b/test/distributed/nn/api/test_remote_module_spawn.py
 @@ -1,4 +1,4 @@
@@ -484,8 +396,6 @@ index d8548f8..1e77589 100644
  import unittest
  
  from torch.testing._internal.common_distributed import MultiProcessTestCase
-diff --git a/test/distributed/nn/jit/test_instantiator.py b/test/distributed/nn/jit/test_instantiator.py
-index 4019378..e68c41d 100644
 --- a/test/distributed/nn/jit/test_instantiator.py
 +++ b/test/distributed/nn/jit/test_instantiator.py
 @@ -1,4 +1,4 @@
@@ -494,8 +404,6 @@ index 4019378..e68c41d 100644
  import pathlib
  import unittest
  from typing import Tuple
-diff --git a/test/distributed/rpc/faulty_agent/test_dist_autograd_spawn.py b/test/distributed/rpc/faulty_agent/test_dist_autograd_spawn.py
-index 034b8b0..ed16280 100644
 --- a/test/distributed/rpc/faulty_agent/test_dist_autograd_spawn.py
 +++ b/test/distributed/rpc/faulty_agent/test_dist_autograd_spawn.py
 @@ -1,4 +1,4 @@
@@ -504,8 +412,6 @@ index 034b8b0..ed16280 100644
  import unittest
  
  from torch.testing._internal.common_distributed import MultiProcessTestCase
-diff --git a/test/distributed/rpc/faulty_agent/test_rpc_spawn.py b/test/distributed/rpc/faulty_agent/test_rpc_spawn.py
-index b8809f6..b42ea04 100644
 --- a/test/distributed/rpc/faulty_agent/test_rpc_spawn.py
 +++ b/test/distributed/rpc/faulty_agent/test_rpc_spawn.py
 @@ -1,4 +1,4 @@
@@ -514,8 +420,6 @@ index b8809f6..b42ea04 100644
  import unittest
  
  from torch.testing._internal.common_distributed import MultiProcessTestCase
-diff --git a/test/distributed/rpc/jit/faulty_agent/test_rpc_spawn.py b/test/distributed/rpc/jit/faulty_agent/test_rpc_spawn.py
-index 4ae86da..33ae224 100644
 --- a/test/distributed/rpc/jit/faulty_agent/test_rpc_spawn.py
 +++ b/test/distributed/rpc/jit/faulty_agent/test_rpc_spawn.py
 @@ -1,4 +1,4 @@
@@ -524,8 +428,6 @@ index 4ae86da..33ae224 100644
  import unittest
  
  from torch.testing._internal.common_distributed import MultiProcessTestCase
-diff --git a/test/distributed/rpc/jit/test_dist_autograd_spawn.py b/test/distributed/rpc/jit/test_dist_autograd_spawn.py
-index 2b121a2..4a504c7 100755
 --- a/test/distributed/rpc/jit/test_dist_autograd_spawn.py
 +++ b/test/distributed/rpc/jit/test_dist_autograd_spawn.py
 @@ -1,4 +1,4 @@
@@ -534,8 +436,6 @@ index 2b121a2..4a504c7 100755
  import unittest
  
  from torch.testing._internal.common_distributed import MultiProcessTestCase
-diff --git a/test/distributed/rpc/jit/test_rpc_spawn.py b/test/distributed/rpc/jit/test_rpc_spawn.py
-index 2fcc5c3..859155d 100755
 --- a/test/distributed/rpc/jit/test_rpc_spawn.py
 +++ b/test/distributed/rpc/jit/test_rpc_spawn.py
 @@ -1,4 +1,4 @@
@@ -544,8 +444,6 @@ index 2fcc5c3..859155d 100755
  import unittest
  
  from torch.testing._internal.common_distributed import MultiProcessTestCase
-diff --git a/test/distributed/rpc/tensorpipe/test_ddp_under_dist_autograd.py b/test/distributed/rpc/tensorpipe/test_ddp_under_dist_autograd.py
-index 32c28d9..25b7efe 100644
 --- a/test/distributed/rpc/tensorpipe/test_ddp_under_dist_autograd.py
 +++ b/test/distributed/rpc/tensorpipe/test_ddp_under_dist_autograd.py
 @@ -1,4 +1,4 @@
@@ -554,8 +452,6 @@ index 32c28d9..25b7efe 100644
  import unittest
  
  from torch.testing._internal.common_utils import TEST_WITH_ASAN, run_tests
-diff --git a/test/distributed/rpc/tensorpipe/test_dist_autograd_spawn.py b/test/distributed/rpc/tensorpipe/test_dist_autograd_spawn.py
-index 3dc3863..868f4d2 100644
 --- a/test/distributed/rpc/tensorpipe/test_dist_autograd_spawn.py
 +++ b/test/distributed/rpc/tensorpipe/test_dist_autograd_spawn.py
 @@ -1,4 +1,4 @@
@@ -564,8 +460,6 @@ index 3dc3863..868f4d2 100644
  import unittest
  
  from torch.testing._internal.common_distributed import MultiProcessTestCase
-diff --git a/test/distributed/rpc/tensorpipe/test_dist_optimizer_spawn.py b/test/distributed/rpc/tensorpipe/test_dist_optimizer_spawn.py
-index 8dcdc36..ff35b0a 100644
 --- a/test/distributed/rpc/tensorpipe/test_dist_optimizer_spawn.py
 +++ b/test/distributed/rpc/tensorpipe/test_dist_optimizer_spawn.py
 @@ -1,4 +1,4 @@
@@ -574,8 +468,6 @@ index 8dcdc36..ff35b0a 100644
  from __future__ import absolute_import, division, print_function, unicode_literals
  
  from torch.testing._internal.common_distributed import MultiProcessTestCase
-diff --git a/test/distributed/rpc/tensorpipe/test_rpc_spawn.py b/test/distributed/rpc/tensorpipe/test_rpc_spawn.py
-index f632f55..798ea23 100644
 --- a/test/distributed/rpc/tensorpipe/test_rpc_spawn.py
 +++ b/test/distributed/rpc/tensorpipe/test_rpc_spawn.py
 @@ -1,4 +1,4 @@
@@ -584,8 +476,6 @@ index f632f55..798ea23 100644
  import unittest
  
  from torch.testing._internal.common_distributed import MultiProcessTestCase
-diff --git a/test/distributed/rpc/test_dist_autograd_spawn.py b/test/distributed/rpc/test_dist_autograd_spawn.py
-index 8b2817c..0d25afc 100755
 --- a/test/distributed/rpc/test_dist_autograd_spawn.py
 +++ b/test/distributed/rpc/test_dist_autograd_spawn.py
 @@ -1,4 +1,4 @@
@@ -594,8 +484,6 @@ index 8b2817c..0d25afc 100755
  import unittest
  
  from torch.testing._internal.common_distributed import MultiProcessTestCase
-diff --git a/test/distributed/rpc/test_dist_optimizer_spawn.py b/test/distributed/rpc/test_dist_optimizer_spawn.py
-index 7f86586..c8360be 100755
 --- a/test/distributed/rpc/test_dist_optimizer_spawn.py
 +++ b/test/distributed/rpc/test_dist_optimizer_spawn.py
 @@ -1,4 +1,4 @@
@@ -604,8 +492,6 @@ index 7f86586..c8360be 100755
  from __future__ import absolute_import, division, print_function, unicode_literals
  
  from torch.testing._internal.distributed.rpc.dist_optimizer_test import DistOptimizerTest
-diff --git a/test/distributed/rpc/test_rpc_spawn.py b/test/distributed/rpc/test_rpc_spawn.py
-index 550872b..468d8ce 100755
 --- a/test/distributed/rpc/test_rpc_spawn.py
 +++ b/test/distributed/rpc/test_rpc_spawn.py
 @@ -1,4 +1,4 @@
@@ -614,8 +500,6 @@ index 550872b..468d8ce 100755
  import unittest
  
  from torch.testing._internal.common_distributed import MultiProcessTestCase
-diff --git a/test/distributed/test_ddp_under_dist_autograd.py b/test/distributed/test_ddp_under_dist_autograd.py
-index f721629..14ad5a2 100644
 --- a/test/distributed/test_ddp_under_dist_autograd.py
 +++ b/test/distributed/test_ddp_under_dist_autograd.py
 @@ -1,4 +1,4 @@
@@ -624,8 +508,6 @@ index f721629..14ad5a2 100644
  
  from torch.testing._internal.distributed import ddp_under_dist_autograd_test
  from torch.testing._internal.common_utils import (
-diff --git a/test/print_test_stats.py b/test/print_test_stats.py
-index ad56501..b8fee81 100755
 --- a/test/print_test_stats.py
 +++ b/test/print_test_stats.py
 @@ -1,4 +1,4 @@
@@ -634,8 +516,6 @@ index ad56501..b8fee81 100755
  # -*- coding: utf-8 -*-
  # Read and print test results statistics
  from xml.dom import minidom
-diff --git a/test/run_test.py b/test/run_test.py
-index 2ce09f0..0b8707b 100755
 --- a/test/run_test.py
 +++ b/test/run_test.py
 @@ -1,4 +1,4 @@
@@ -644,8 +524,6 @@ index 2ce09f0..0b8707b 100755
  
  from __future__ import print_function
  
-diff --git a/test/scripts/run_cuda_memcheck.py b/test/scripts/run_cuda_memcheck.py
-index 2541e4b..4dc031f 100755
 --- a/test/scripts/run_cuda_memcheck.py
 +++ b/test/scripts/run_cuda_memcheck.py
 @@ -1,4 +1,4 @@
@@ -654,8 +532,6 @@ index 2541e4b..4dc031f 100755
  
  """This script runs cuda-memcheck on the specified unit test. Each test case
  is run in its isolated process with a timeout so that:
-diff --git a/test/test_bundled_inputs.py b/test/test_bundled_inputs.py
-index 7a630fd..b4557ad 100644
 --- a/test/test_bundled_inputs.py
 +++ b/test/test_bundled_inputs.py
 @@ -1,4 +1,4 @@
@@ -664,8 +540,6 @@ index 7a630fd..b4557ad 100644
  import io
  import torch
  import torch.utils.bundled_inputs
-diff --git a/tools/amd_build/build_amd.py b/tools/amd_build/build_amd.py
-index a975cc0..31a481d 100755
 --- a/tools/amd_build/build_amd.py
 +++ b/tools/amd_build/build_amd.py
 @@ -1,4 +1,4 @@
@@ -674,8 +548,6 @@ index a975cc0..31a481d 100755
  
  from __future__ import absolute_import, division, print_function
  import os
-diff --git a/tools/clang_format_all.py b/tools/clang_format_all.py
-index 710a21e..e4f31d4 100755
 --- a/tools/clang_format_all.py
 +++ b/tools/clang_format_all.py
 @@ -1,4 +1,4 @@
@@ -684,8 +556,6 @@ index 710a21e..e4f31d4 100755
  """
  A script that runs clang-format on all C/C++ files in CLANG_FORMAT_WHITELIST. There is
  also a diff mode which simply checks if clang-format would make any changes, which is useful for
-diff --git a/tools/clang_tidy.py b/tools/clang_tidy.py
-index 354aedc..f29bce3 100755
 --- a/tools/clang_tidy.py
 +++ b/tools/clang_tidy.py
 @@ -1,4 +1,4 @@
@@ -694,8 +564,6 @@ index 354aedc..f29bce3 100755
  """
  A driver script to run clang-tidy on changes detected via git.
  
-diff --git a/tools/flake8_hook.py b/tools/flake8_hook.py
-index d1c3774..98afedc 100755
 --- a/tools/flake8_hook.py
 +++ b/tools/flake8_hook.py
 @@ -1,4 +1,4 @@
@@ -704,8 +572,6 @@ index d1c3774..98afedc 100755
  
  import sys
  
-diff --git a/torch/_appdirs.py b/torch/_appdirs.py
-index fc87e0a..0971a6c 100644
 --- a/torch/_appdirs.py
 +++ b/torch/_appdirs.py
 @@ -1,4 +1,4 @@
@@ -714,8 +580,6 @@ index fc87e0a..0971a6c 100644
  # -*- coding: utf-8 -*-
  # Copyright (c) 2005-2010 ActiveState Software Inc.
  # Copyright (c) 2013 Eddy Petrișor
-diff --git a/torch/distributed/rpc/_testing/faulty_agent_backend_registry.py b/torch/distributed/rpc/_testing/faulty_agent_backend_registry.py
-index 759b18b..88c8d38 100644
 --- a/torch/distributed/rpc/_testing/faulty_agent_backend_registry.py
 +++ b/torch/distributed/rpc/_testing/faulty_agent_backend_registry.py
 @@ -1,4 +1,4 @@
@@ -724,8 +588,6 @@ index 759b18b..88c8d38 100644
  
  import torch.distributed as dist
  import torch.distributed.rpc as rpc
-diff --git a/torch/testing/_internal/distributed/ddp_under_dist_autograd_test.py b/torch/testing/_internal/distributed/ddp_under_dist_autograd_test.py
-index 83e189f..0b959ee 100644
 --- a/torch/testing/_internal/distributed/ddp_under_dist_autograd_test.py
 +++ b/torch/testing/_internal/distributed/ddp_under_dist_autograd_test.py
 @@ -1,4 +1,4 @@
@@ -734,8 +596,6 @@ index 83e189f..0b959ee 100644
  
  from typing import NamedTuple
  import enum
-diff --git a/torch/utils/bundled_inputs.py b/torch/utils/bundled_inputs.py
-index 9679d92..129cb23 100644
 --- a/torch/utils/bundled_inputs.py
 +++ b/torch/utils/bundled_inputs.py
 @@ -1,4 +1,4 @@
@@ -744,11 +604,9 @@ index 9679d92..129cb23 100644
  from typing import Any, TypeVar, Optional, Tuple, List, NamedTuple
  import textwrap
  import torch
-diff --git a/torch/utils/data/dataloader.py b/torch/utils/data/dataloader.py
-index bba2787..5501f8f 100644
 --- a/torch/utils/data/dataloader.py
 +++ b/torch/utils/data/dataloader.py
-@@ -840,7 +840,7 @@ class _MultiProcessingDataLoaderIter(_BaseDataLoaderIter):
+@@ -840,7 +840,7 @@
  # this is rare and seems to be nondeterministic.
  #
  #
@@ -757,8 +615,6 @@ index bba2787..5501f8f 100644
  #   import sys
  #   import socket
  #   import os
-diff --git a/torch/utils/hipify/hipify_python.py b/torch/utils/hipify/hipify_python.py
-index 7aa7f6d..7a411fc 100755
 --- a/torch/utils/hipify/hipify_python.py
 +++ b/torch/utils/hipify/hipify_python.py
 @@ -1,4 +1,4 @@
@@ -767,8 +623,6 @@ index 7aa7f6d..7a411fc 100755
  """ The Python Hipify script.
  ##
  # Copyright (c) 2015-2016 Advanced Micro Devices, Inc. All rights reserved.
-diff --git a/torch/utils/show_pickle.py b/torch/utils/show_pickle.py
-index 51d524d..22046e7 100644
 --- a/torch/utils/show_pickle.py
 +++ b/torch/utils/show_pickle.py
 @@ -1,4 +1,4 @@

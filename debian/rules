@@ -38,7 +38,7 @@ export USE_SYSTEM_NCCL = OFF
 export USE_TENSORPIPE = ON
 export USE_XNNPACK = ON
 export USE_ZMQ = ON
-export USE_ZSTD = OFF
+export USE_ZSTD = ON
 
 ifneq (,$(filter parallel=%,$(DEB_BUILD_OPTIONS)))
 export MAX_JOBS := $(patsubst parallel=%,%,$(filter parallel=%,$(DEB_BUILD_OPTIONS)))

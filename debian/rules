@@ -70,7 +70,7 @@ override_dh_auto_test:
 	:
 
 override_dh_auto_install:
-	python3 setup.py install --install-layout=deb \
+	$(shell py3versions -d) setup.py install --install-layout=deb \
 		--root=$(shell pwd)/debian/python3-torch/
 	# [python3-torch::headers -> libtorch-dev] move the headers out of the python package
 	mkdir -pv debian/libtorch-dev/usr/include

@@ -1,0 +1,9 @@
+Registry:
+ - Name: SciCrunch
+   Entry: SCR_018536
+ - Name: conda:conda-forge
+   Entry: pytorch-cpu
+ - Name: conda:pytorch
+   Entry: pytorch
+ - Name: bio.tools
+   Entry: NA

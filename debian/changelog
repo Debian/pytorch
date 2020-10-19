@@ -1,3 +1,13 @@
+pytorch (1.6.0-3) unstable; urgency=medium
+
+  * Change maintainer mail address into debian-ai@l.d.o
+  * d/rules: Explicitly specify build with default python3.
+  * Refresh symbols control file.
+  * Use those defined-but-unused control variables.
+  * Upload to unstable.
+
+ -- Mo Zhou <lumin@debian.org>  Mon, 19 Oct 2020 16:12:46 +0800
+
 pytorch (1.6.0-2) experimental; urgency=medium
 
   * Let python3-torch recommend libtorch-dev (= ${binary:Version}).

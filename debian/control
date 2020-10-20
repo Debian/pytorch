@@ -86,7 +86,6 @@ Depends: libgflags-dev,
          libgoogle-glog-dev,
          libtorch1.6 (= ${binary:Version}),
          python3-all-dev,
-         ${python3:Depends},
          ${misc:Depends}
 Description: Tensors and Dynamic neural networks in Python with strong GPU acceleration
  PyTorch is a Python package that provides two high-level features:
@@ -102,7 +101,7 @@ Description: Tensors and Dynamic neural networks in Python with strong GPU accel
 Package: libtorch1.6
 Section: libs
 Architecture: any
-Depends: ${misc:Depends}, ${shlibs:Depends}, ${python3:Depends},
+Depends: ${misc:Depends}, ${shlibs:Depends},
 Description: Tensors and Dynamic neural networks in Python with strong GPU acceleration
  PyTorch is a Python package that provides two high-level features:
  .
@@ -116,7 +115,7 @@ Description: Tensors and Dynamic neural networks in Python with strong GPU accel
 
 Package: libtorch-test
 Architecture: any
-Depends: libtorch1.6 (= ${binary:Version}), ${misc:Depends}, ${shlibs:Depends}, ${python3:Depends},
+Depends: libtorch1.6 (= ${binary:Version}), ${misc:Depends}, ${shlibs:Depends},
 Description: Tensors and Dynamic neural networks in Python with strong GPU acceleration
  PyTorch is a Python package that provides two high-level features:
  .

@@ -851,283 +851,283 @@ Restrictions: allow-stderr
 # Found 47 tests
 #
 # Py test 0/47
-Test-Command: python3 test/run_test.py -pt -i test_autograd -v
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_autograd -v
 Depends: build-essential, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis,
 Features: test-name=1_of_47__pytest__test_autograd
 Restrictions: allow-stderr
 
 # Py test 1/47
-Test-Command: python3 test/run_test.py -pt -i test_bundled_inputs -v
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_bundled_inputs -v
 Depends: build-essential, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis,
 Features: test-name=2_of_47__pytest__test_bundled_inputs
 Restrictions: allow-stderr
 
 # Py test 2/47
-Test-Command: python3 test/run_test.py -pt -i test_complex -v
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_complex -v
 Depends: build-essential, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis,
 Features: test-name=3_of_47__pytest__test_complex
 Restrictions: allow-stderr
 
 # Py test 3/47
-Test-Command: python3 test/run_test.py -pt -i test_cpp_api_parity -v
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_cpp_api_parity -v
 Depends: build-essential, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis,
 Features: test-name=4_of_47__pytest__test_cpp_api_parity
 Restrictions: allow-stderr
 
 # Py test 4/47
-Test-Command: python3 test/run_test.py -pt -i test_cpp_extensions_aot_no_ninja -v
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_cpp_extensions_aot_no_ninja -v
 Depends: build-essential, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis,
 Features: test-name=5_of_47__pytest__test_cpp_extensions_aot_no_ninja
 Restrictions: allow-stderr
 
 # Py test 5/47
-Test-Command: python3 test/run_test.py -pt -i test_cpp_extensions_aot_ninja -v
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_cpp_extensions_aot_ninja -v
 Depends: build-essential, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis,
 Features: test-name=6_of_47__pytest__test_cpp_extensions_aot_ninja
 Restrictions: allow-stderr
 
 # Py test 6/47
-Test-Command: python3 test/run_test.py -pt -i test_cpp_extensions_jit -v
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_cpp_extensions_jit -v
 Depends: build-essential, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis,
 Features: test-name=7_of_47__pytest__test_cpp_extensions_jit
 Restrictions: allow-stderr
 
 # Py test 7/47
-Test-Command: python3 test/run_test.py -pt -i distributed/test_c10d -v
+Test-Command: cd test/ ; python3 run_test.py -pt -i distributed/test_c10d -v
 Depends: build-essential, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis,
 Features: test-name=8_of_47__pytest__test_c10d
 Restrictions: allow-stderr
 
 # Py test 8/47
-Test-Command: python3 test/run_test.py -pt -i distributed/test_c10d_spawn -v
+Test-Command: cd test/ ; python3 run_test.py -pt -i distributed/test_c10d_spawn -v
 Depends: build-essential, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis,
 Features: test-name=9_of_47__pytest__test_c10d_spawn
 Restrictions: allow-stderr
 
 # Py test 9/47
-Test-Command: python3 test/run_test.py -pt -i test_dataloader -v
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_dataloader -v
 Depends: build-essential, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis,
 Features: test-name=10_of_47__pytest__test_dataloader
 Restrictions: allow-stderr
 
 # Py test 10/47
-Test-Command: python3 test/run_test.py -pt -i distributed/test_data_parallel -v
+Test-Command: cd test/ ; python3 run_test.py -pt -i distributed/test_data_parallel -v
 Depends: build-essential, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis,
 Features: test-name=11_of_47__pytest__test_data_parallel
 Restrictions: allow-stderr
 
 # Py test 11/47
-Test-Command: python3 test/run_test.py -pt -i distributed/test_distributed -v
+Test-Command: cd test/ ; python3 run_test.py -pt -i distributed/test_distributed -v
 Depends: build-essential, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis,
 Features: test-name=12_of_47__pytest__test_distributed
 Restrictions: allow-stderr
 
 # Py test 12/47
-Test-Command: python3 test/run_test.py -pt -i test_distributions -v
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_distributions -v
 Depends: build-essential, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis,
 Features: test-name=13_of_47__pytest__test_distributions
 Restrictions: allow-stderr
 
 # Py test 13/47
-Test-Command: python3 test/run_test.py -pt -i test_expecttest -v
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_expecttest -v
 Depends: build-essential, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis,
 Features: test-name=14_of_47__pytest__test_expecttest
 Restrictions: allow-stderr
 
 # Py test 14/47
-Test-Command: python3 test/run_test.py -pt -i test_indexing -v
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_indexing -v
 Depends: build-essential, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis,
 Features: test-name=15_of_47__pytest__test_indexing
 Restrictions: allow-stderr
 
 # Py test 15/47
-Test-Command: python3 test/run_test.py -pt -i test_jit -v
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_jit -v
 Depends: build-essential, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis,
 Features: test-name=16_of_47__pytest__test_jit
 Restrictions: allow-stderr
 
 # Py test 16/47
-Test-Command: python3 test/run_test.py -pt -i test_logging -v
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_logging -v
 Depends: build-essential, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis,
 Features: test-name=17_of_47__pytest__test_logging
 Restrictions: allow-stderr
 
 # Py test 17/47
-Test-Command: python3 test/run_test.py -pt -i test_mkldnn -v
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_mkldnn -v
 Depends: build-essential, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis,
 Features: test-name=18_of_47__pytest__test_mkldnn
 Restrictions: allow-stderr
 
 # Py test 18/47
-Test-Command: python3 test/run_test.py -pt -i test_multiprocessing -v
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_multiprocessing -v
 Depends: build-essential, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis,
 Features: test-name=19_of_47__pytest__test_multiprocessing
 Restrictions: allow-stderr
 
 # Py test 19/47
-Test-Command: python3 test/run_test.py -pt -i test_multiprocessing_spawn -v
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_multiprocessing_spawn -v
 Depends: build-essential, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis,
 Features: test-name=20_of_47__pytest__test_multiprocessing_spawn
 Restrictions: allow-stderr
 
 # Py test 20/47
-Test-Command: python3 test/run_test.py -pt -i distributed/test_nccl -v
+Test-Command: cd test/ ; python3 run_test.py -pt -i distributed/test_nccl -v
 Depends: build-essential, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis,
 Features: test-name=21_of_47__pytest__test_nccl
 Restrictions: allow-stderr
 
 # Py test 21/47
-Test-Command: python3 test/run_test.py -pt -i test_nn -v
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_nn -v
 Depends: build-essential, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis,
 Features: test-name=22_of_47__pytest__test_nn
 Restrictions: allow-stderr
 
 # Py test 22/47
-Test-Command: python3 test/run_test.py -pt -i test_numba_integration -v
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_numba_integration -v
 Depends: build-essential, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis,
 Features: test-name=23_of_47__pytest__test_numba_integration
 Restrictions: allow-stderr
 
 # Py test 23/47
-Test-Command: python3 test/run_test.py -pt -i test_optim -v
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_optim -v
 Depends: build-essential, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis,
 Features: test-name=24_of_47__pytest__test_optim
 Restrictions: allow-stderr
 
 # Py test 24/47
-Test-Command: python3 test/run_test.py -pt -i test_mobile_optimizer -v
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_mobile_optimizer -v
 Depends: build-essential, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis,
 Features: test-name=25_of_47__pytest__test_mobile_optimizer
 Restrictions: allow-stderr
 
 # Py test 25/47
-Test-Command: python3 test/run_test.py -pt -i test_xnnpack_integration -v
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_xnnpack_integration -v
 Depends: build-essential, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis,
 Features: test-name=26_of_47__pytest__test_xnnpack_integration
 Restrictions: allow-stderr
 
 # Py test 26/47
-Test-Command: python3 test/run_test.py -pt -i test_vulkan -v
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_vulkan -v
 Depends: build-essential, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis,
 Features: test-name=27_of_47__pytest__test_vulkan
 Restrictions: allow-stderr
 
 # Py test 27/47
-Test-Command: python3 test/run_test.py -pt -i test_quantization -v
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_quantization -v
 Depends: build-essential, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis,
 Features: test-name=28_of_47__pytest__test_quantization
 Restrictions: allow-stderr
 
 # Py test 28/47
-Test-Command: python3 test/run_test.py -pt -i test_sparse -v
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_sparse -v
 Depends: build-essential, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis,
 Features: test-name=29_of_47__pytest__test_sparse
 Restrictions: allow-stderr
 
 # Py test 29/47
-Test-Command: python3 test/run_test.py -pt -i test_serialization -v
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_serialization -v
 Depends: build-essential, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis,
 Features: test-name=30_of_47__pytest__test_serialization
 Restrictions: allow-stderr
 
 # Py test 30/47
-Test-Command: python3 test/run_test.py -pt -i test_show_pickle -v
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_show_pickle -v
 Depends: build-essential, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis,
 Features: test-name=31_of_47__pytest__test_show_pickle
 Restrictions: allow-stderr
 
 # Py test 31/47
-Test-Command: python3 test/run_test.py -pt -i test_torch -v
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_torch -v
 Depends: build-essential, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis,
 Features: test-name=32_of_47__pytest__test_torch
 Restrictions: allow-stderr
 
 # Py test 32/47
-Test-Command: python3 test/run_test.py -pt -i test_type_info -v
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_type_info -v
 Depends: build-essential, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis,
 Features: test-name=33_of_47__pytest__test_type_info
 Restrictions: allow-stderr
 
 # Py test 33/47
-Test-Command: python3 test/run_test.py -pt -i test_type_hints -v
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_type_hints -v
 Depends: build-essential, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis,
 Features: test-name=34_of_47__pytest__test_type_hints
 Restrictions: allow-stderr
 
 # Py test 34/47
-Test-Command: python3 test/run_test.py -pt -i test_utils -v
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_utils -v
 Depends: build-essential, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis,
 Features: test-name=35_of_47__pytest__test_utils
 Restrictions: allow-stderr
 
 # Py test 35/47
-Test-Command: python3 test/run_test.py -pt -i test_namedtuple_return_api -v
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_namedtuple_return_api -v
 Depends: build-essential, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis,
 Features: test-name=36_of_47__pytest__test_namedtuple_return_api
 Restrictions: allow-stderr
 
 # Py test 36/47
-Test-Command: python3 test/run_test.py -pt -i test_jit_profiling -v
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_jit_profiling -v
 Depends: build-essential, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis,
 Features: test-name=37_of_47__pytest__test_jit_profiling
 Restrictions: allow-stderr
 
 # Py test 37/47
-Test-Command: python3 test/run_test.py -pt -i test_jit_legacy -v
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_jit_legacy -v
 Depends: build-essential, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis,
 Features: test-name=38_of_47__pytest__test_jit_legacy
 Restrictions: allow-stderr
 
 # Py test 38/47
-Test-Command: python3 test/run_test.py -pt -i test_jit_fuser_legacy -v
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_jit_fuser_legacy -v
 Depends: build-essential, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis,
 Features: test-name=39_of_47__pytest__test_jit_fuser_legacy
 Restrictions: allow-stderr
 
 # Py test 39/47
-Test-Command: python3 test/run_test.py -pt -i test_tensorboard -v
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_tensorboard -v
 Depends: build-essential, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis,
 Features: test-name=40_of_47__pytest__test_tensorboard
 Restrictions: allow-stderr
 
 # Py test 40/47
-Test-Command: python3 test/run_test.py -pt -i test_namedtensor -v
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_namedtensor -v
 Depends: build-essential, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis,
 Features: test-name=41_of_47__pytest__test_namedtensor
 Restrictions: allow-stderr
 
 # Py test 41/47
-Test-Command: python3 test/run_test.py -pt -i test_type_promotion -v
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_type_promotion -v
 Depends: build-essential, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis,
 Features: test-name=42_of_47__pytest__test_type_promotion
 Restrictions: allow-stderr
 
 # Py test 42/47
-Test-Command: python3 test/run_test.py -pt -i test_jit_disabled -v
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_jit_disabled -v
 Depends: build-essential, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis,
 Features: test-name=43_of_47__pytest__test_jit_disabled
 Restrictions: allow-stderr
 
 # Py test 43/47
-Test-Command: python3 test/run_test.py -pt -i test_function_schema -v
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_function_schema -v
 Depends: build-essential, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis,
 Features: test-name=44_of_47__pytest__test_function_schema
 Restrictions: allow-stderr
 
 # Py test 44/47
-Test-Command: python3 test/run_test.py -pt -i test_overrides -v
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_overrides -v
 Depends: build-essential, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis,
 Features: test-name=45_of_47__pytest__test_overrides
 Restrictions: allow-stderr
 
 # Py test 45/47
-Test-Command: python3 test/run_test.py -pt -i test_jit_fuser_te -v
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_jit_fuser_te -v
 Depends: build-essential, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis,
 Features: test-name=46_of_47__pytest__test_jit_fuser_te
 Restrictions: allow-stderr
 
 # Py test 46/47
-Test-Command: python3 test/run_test.py -pt -i test_tensorexpr -v
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_tensorexpr -v
 Depends: build-essential, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis,
 Features: test-name=47_of_47__pytest__test_tensorexpr
 Restrictions: allow-stderr

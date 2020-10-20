@@ -1,10 +1,12 @@
-pytorch (1.6.0-5) UNRELEASED; urgency=medium
+pytorch (1.6.0-5) unstable; urgency=medium
 
   * Revert introduction of unnecessary python3 dependencies.
   * Mute dh_auto_configure which triggers incorrect mixed python{3.8,3.9} build.
   * Refresh symbols control file.
+  * Fix autopkgtest regenerator and refresh d/tests/control.
+  * Let python3-torch also Recommend build-essential (for JIT functionality).
 
- -- Mo Zhou <lumin@debian.org>  Tue, 20 Oct 2020 23:25:42 +0800
+ -- Mo Zhou <lumin@debian.org>  Wed, 21 Oct 2020 00:16:57 +0800
 
 pytorch (1.6.0-4) unstable; urgency=medium
 

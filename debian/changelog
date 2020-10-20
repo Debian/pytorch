@@ -1,3 +1,14 @@
+pytorch (1.6.0-4) unstable; urgency=medium
+
+  [ Steffen Möller ]
+  * Added d/u/metadata file
+
+  [ Mo Zhou ]
+  * Address regression bug in dependency data. (Closes: #972540)
+  * Add LaTeX bibliography information to upstream/metadata.
+
+ -- Mo Zhou <lumin@debian.org>  Tue, 20 Oct 2020 17:59:38 +0800
+
 pytorch (1.6.0-3) unstable; urgency=medium
 
   * Change maintainer mail address into debian-ai@l.d.o

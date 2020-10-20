@@ -61,7 +61,6 @@ override_dh_auto_clean:
 
 override_dh_auto_configure:
 	cd third_party/; rmdir googletest; ln -s /usr/src/googletest .
-	dh_auto_configure
 
 override_dh_auto_build:
 	: # In order to avoid building everything twice.

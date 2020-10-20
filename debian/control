@@ -63,7 +63,6 @@ Architecture: any
 Depends: libtorch1.6 (= ${binary:Version}),
          ${misc:Depends},
          ${python3:Depends},
-         ${python3:Versions},
          ${shlibs:Depends}
 # PyTorch's JIT (C++ Extension) functionality needs development files/tools.
 Recommends: libtorch-dev (= ${binary:Version}), ninja-build,

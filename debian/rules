@@ -3,6 +3,7 @@ export DEB_BUILD_MAINT_OPTIONS = hardening=+all
 export LC_ALL=C.UTF-8
 export PYBUILD_DISABLE_python2 = 1
 export PYBUILD_NAME = torch
+export PYBUILD_DISABLE = 3.9
 export SOVERSION=1.6
 export PATCH=0
 

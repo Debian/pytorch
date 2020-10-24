@@ -60,7 +60,7 @@ echo "#"
 for (( i = 0; i < ${#FILES[@]}; i++ )); do
 	echo "# Py test ${i}/${#FILES[@]}"
 	echo "Test-Command: cd test/ ; python3 run_test.py -pt -i ${FILES[$i]} -v"
-	echo "Depends: build-essential, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis,"
+	echo "Depends: build-essential, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools,"
 	echo "Features: test-name=$((${i}+1))_of_${#FILES[@]}__pytest__$(basename ${FILES[$i]})"
 	echo "Restrictions: allow-stderr"
 	echo ""

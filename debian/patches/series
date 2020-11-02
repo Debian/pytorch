@@ -2,3 +2,4 @@ shebang.patch
 dirtyhack.patch
 mkldnn.patch
 zstd.patch
+cmake-strip-3rdparty.patch

@@ -1,0 +1,21 @@
+diff --git a/caffe2/CMakeLists.txt b/caffe2/CMakeLists.txt
+index 584d56e..39a761f 100644
+--- a/caffe2/CMakeLists.txt
++++ b/caffe2/CMakeLists.txt
+@@ -87,16 +87,6 @@ endif()
+ # Note: the folders that are being commented out have not been properly
+ # addressed yet.
+ 
+-if(NOT MSVC AND USE_XNNPACK)
+-  if(NOT TARGET fxdiv)
+-    set(FXDIV_BUILD_TESTS OFF CACHE BOOL "")
+-    set(FXDIV_BUILD_BENCHMARKS OFF CACHE BOOL "")
+-    add_subdirectory(
+-      "${FXDIV_SOURCE_DIR}"
+-      "${CMAKE_BINARY_DIR}/FXdiv")
+-  endif()
+-endif()
+-
+ add_subdirectory(core)
+ add_subdirectory(serialize)
+ add_subdirectory(utils)

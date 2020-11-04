@@ -148,8 +148,7 @@ TEST(OperatorRegistrationTest, whenCallingOpWithWrongDispatchKey_thenFails) {
   expectThrows<c10::Error>([&] {
     callOp(*op, dummyTensor(c10::DispatchKey::CUDA));
   }, "Could not run '_test::dummy' with arguments from the 'CUDA'"
-  " backend. '_test::dummy' is only available for these backends:"
-  " [CPU].");
+  " backend.");
 }
 
 TEST(OperatorRegistrationTest, givenOpWithCatchallKernel_whenCallingOp_thenCallsCatchallKernel) {
@@ -237,7 +236,7 @@ TEST(OperatorRegistrationTest, givenOpWithoutKernels_whenRegisteringWithSchema_t
   expectThrows<c10::Error>([&] {
     callOp(*op, dummyTensor(c10::DispatchKey::CPU));
   }, "Could not run '_test::dummy' with arguments from the 'CPU'"
-  " backend. '_test::dummy' is only available for these backends: [].");
+  " backend.");
 }
 
 TEST(OperatorRegistrationTest, givenOpWithoutKernels_whenRegisteringWithoutSchema_thenFails) {
@@ -288,7 +287,7 @@ TEST(OperatorRegistrationTest, givenOpWithoutKernels_whenRegisteringKernelAfterw
   expectThrows<c10::Error>([&] {
     callOp(*op, dummyTensor(c10::DispatchKey::CPU));
   }, "Could not run '_test::dummy' with arguments from the 'CPU'"
-  " backend. '_test::dummy' is only available for these backends: [].");
+  " backend.");
 }
 
 TEST(OperatorRegistrationTest, givenOpWithoutKernelsWithoutTensorInputs_whenRegistering_thenRegisters) {
@@ -455,7 +454,7 @@ TEST(OperatorRegistrationTest, givenMultipleKernelsWithSameDispatchKey_whenOlder
   expectThrows<c10::Error>([&] {
     callOp(*op, dummyTensor(c10::DispatchKey::CPU));
   }, "Could not run '_test::dummy' with arguments from the 'CPU'"
-  " backend. '_test::dummy' is only available for these backends: [].");
+  " backend.");
 }
 
 TEST(OperatorRegistrationTest, givenMultipleCatchallKernels_whenOlderAndThenNewerKernelDeletedAndOpCalled_thenFails) {
@@ -474,7 +473,7 @@ TEST(OperatorRegistrationTest, givenMultipleCatchallKernels_whenOlderAndThenNewe
   expectThrows<c10::Error>([&] {
     callOp(*op, dummyTensor(c10::DispatchKey::CPU));
   }, "Could not run '_test::dummy' with arguments from the 'CPU'"
-  " backend. '_test::dummy' is only available for these backends: [].");
+  " backend.");
 }
 
 TEST(OperatorRegistrationTest, givenMultipleKernelsWithSameDispatchKey_whenNewerAndThenOlderKernelDeletedAndOpCalled_thenFails) {
@@ -493,7 +492,7 @@ TEST(OperatorRegistrationTest, givenMultipleKernelsWithSameDispatchKey_whenNewer
   expectThrows<c10::Error>([&] {
     callOp(*op, dummyTensor(c10::DispatchKey::CPU));
   }, "Could not run '_test::dummy' with arguments from the 'CPU'"
-  " backend. '_test::dummy' is only available for these backends: [].");
+  " backend.");
 }
 
 TEST(OperatorRegistrationTest, givenMultipleCatchallKernels_whenNewerAndThenOlderKernelDeletedAndOpCalled_thenFails) {
@@ -512,7 +511,7 @@ TEST(OperatorRegistrationTest, givenMultipleCatchallKernels_whenNewerAndThenOlde
   expectThrows<c10::Error>([&] {
     callOp(*op, dummyTensor(c10::DispatchKey::CPU));
   }, "Could not run '_test::dummy' with arguments from the 'CPU'"
-  " backend. '_test::dummy' is only available for these backends: [].");
+  " backend.");
 }
 
 TEST(OperatorRegistrationTest, whenRegisteringCPUTensorType_thenCanOnlyCallUnboxedWithCPUDispatchKey) {
@@ -533,7 +532,7 @@ TEST(OperatorRegistrationTest, whenRegisteringCPUTensorType_thenCanOnlyCallUnbox
   expectThrows<c10::Error>([&] {
     callOpUnboxedWithDispatchKey<void, Tensor>(*op, c10::DispatchKey::CUDA, dummyTensor(c10::DispatchKey::CPU));
   }, "Could not run '_test::dummy' with arguments from the 'CUDA'"
-  " backend. '_test::dummy' is only available for these backends: [CPU].");
+  " backend.");
 }
 
 TEST(OperatorRegistrationTest, whenRegisteringMultipleKernelsInSameOpCallAndCalling_thenCallsCorrectKernel) {
@@ -559,7 +558,7 @@ TEST(OperatorRegistrationTest, whenRegisteringMultipleKernelsInSameOpCallAndCall
   expectThrows<c10::Error>([&] {
     callOp(*op, dummyTensor(c10::DispatchKey::XLA));
   }, "Could not run '_test::dummy' with arguments from the 'XLA'"
-  " backend. '_test::dummy' is only available for these backends: [");
+  " backend.");
 
   // also assert that the error message contains the available tensor type ids, but don't assert their order
   expectThrows<c10::Error>([&] {
@@ -586,17 +585,17 @@ TEST(OperatorRegistrationTest, whenRegisteringMultipleKernelsInSameOpCallOutOfSc
   expectThrows<c10::Error>([&] {
     callOp(*op, dummyTensor(c10::DispatchKey::CPU));
   }, "Could not run '_test::dummy' with arguments from the 'CPU'"
-  " backend. '_test::dummy' is only available for these backends: [].");
+  " backend.");
 
   expectThrows<c10::Error>([&] {
     callOp(*op, dummyTensor(c10::DispatchKey::CUDA));
   }, "Could not run '_test::dummy' with arguments from the 'CUDA'"
-  " backend. '_test::dummy' is only available for these backends: [].");
+  " backend.");
 
   expectThrows<c10::Error>([&] {
     callOp(*op, dummyTensor(c10::DispatchKey::XLA));
   }, "Could not run '_test::dummy' with arguments from the 'XLA'"
-  " backend. '_test::dummy' is only available for these backends: [].");
+  " backend.");
 }
 
 bool called_stackbased_kernel = false;
@@ -727,7 +726,7 @@ TEST(OperatorRegistrationTest, whenRegisteringBackendFallbackKernelForWrongBacke
   ASSERT_TRUE(op.has_value());
   expectThrows<c10::Error>([&] {
     auto stack = callOp(*op, dummyTensor(c10::DispatchKey::CPU), "hello ");
-  }, "Could not run '_test::dummy' with arguments from the 'CPU' backend. '_test::dummy' is only available for these backends: [].");
+  }, "Could not run '_test::dummy' with arguments from the 'CPU' backend.");
 }
 
 bool called = false;
@@ -807,40 +806,44 @@ void autograd_kernel(Tensor a) {
 
 TEST(OperatorRegistrationTest, whenRegisteringAutogradKernel_thenCanCallAutogradKernel) {
   auto registrar = c10::RegisterOperators().op("_test::dummy(Tensor dummy) -> ()", c10::RegisterOperators::options()
-    .impl_unboxedOnlyKernel<decltype(autograd_kernel), &autograd_kernel>(DispatchKey::Autograd));
+    .kernel<decltype(autograd_kernel), &autograd_kernel>(DispatchKey::Autograd));
 
   auto op = Dispatcher::singleton().findSchema({"_test::dummy", ""});
   ASSERT_TRUE(op.has_value());
 
   called_autograd = false;
-  op->typed<void(Tensor)>().call(dummyTensor(DispatchKey::CPU)); // note: all tensors have VariableTypeId set
+  expectThrows<c10::Error>([&] {
+    callOp(*op, dummyTensor(c10::DispatchKey::CPU));
+  }, "Could not run '_test::dummy' with arguments from the 'CPU'"
+  " backend.");
+
+  op->typed<void(Tensor)>().call(dummyTensor(DispatchKey::CPU, /*requires_grad=*/true));
   EXPECT_TRUE(called_autograd);
 }
 
 TEST(OperatorRegistrationTest, whenRegisteringAutogradKernelWithRegularKernel_thenCanCallAutogradKernel) {
   auto registrar = c10::RegisterOperators().op("_test::dummy(Tensor dummy) -> ()", c10::RegisterOperators::options()
-    .impl_unboxedOnlyKernel<decltype(nonautograd_kernel), nonautograd_kernel>(DispatchKey::CPU)
-    .impl_unboxedOnlyKernel<decltype(autograd_kernel), &autograd_kernel>(DispatchKey::Autograd));
+    .kernel<decltype(nonautograd_kernel), nonautograd_kernel>(DispatchKey::CPU)
+    .kernel<decltype(autograd_kernel), &autograd_kernel>(DispatchKey::Autograd));
 
   auto op = Dispatcher::singleton().findSchema({"_test::dummy", ""});
   ASSERT_TRUE(op.has_value());
 
   called_nonautograd = called_autograd = false;
-  op->typed<void (Tensor)>().call(dummyTensor(DispatchKey::CPU)); // note: all tensors have VariableTypeId set
+  op->typed<void (Tensor)>().call(dummyTensor(DispatchKey::CPU, /*requires_grad=*/true));
   EXPECT_FALSE(called_nonautograd);
   EXPECT_TRUE(called_autograd);
 }
 
 TEST(OperatorRegistrationTest, whenRegisteringAutogradKernelWithRegularKernel_thenCanCallRegularKernel) {
   auto registrar = c10::RegisterOperators().op("_test::dummy(Tensor dummy) -> ()", c10::RegisterOperators::options()
-    .impl_unboxedOnlyKernel<decltype(nonautograd_kernel), nonautograd_kernel>(DispatchKey::CPU)
-    .impl_unboxedOnlyKernel<decltype(autograd_kernel), &autograd_kernel>(DispatchKey::Autograd));
+    .kernel<decltype(nonautograd_kernel), nonautograd_kernel>(DispatchKey::CPU)
+    .kernel<decltype(autograd_kernel), &autograd_kernel>(DispatchKey::Autograd));
 
   auto op = Dispatcher::singleton().findSchema({"_test::dummy", ""});
   ASSERT_TRUE(op.has_value());
 
   called_nonautograd = called_autograd = false;
-  at::AutoNonVariableTypeMode _var_guard(true);
   op->typed<void (Tensor)>().call(dummyTensor(DispatchKey::CPU));
   EXPECT_TRUE(called_nonautograd);
   EXPECT_FALSE(called_autograd);
@@ -848,48 +851,118 @@ TEST(OperatorRegistrationTest, whenRegisteringAutogradKernelWithRegularKernel_th
 
 TEST(OperatorRegistrationTest, whenRegisteringAutogradKernelWithCatchAllKernel_thenCanCallAutogradKernel) {
   auto registrar = c10::RegisterOperators().op("_test::dummy(Tensor dummy) -> ()", c10::RegisterOperators::options()
-    .impl_unboxedOnlyCatchAllKernel<decltype(nonautograd_kernel), nonautograd_kernel>()
-    .impl_unboxedOnlyKernel<decltype(autograd_kernel), &autograd_kernel>(DispatchKey::Autograd));
+    .catchAllKernel<decltype(nonautograd_kernel), nonautograd_kernel>()
+    .kernel<decltype(autograd_kernel), &autograd_kernel>(DispatchKey::Autograd));
 
   auto op = Dispatcher::singleton().findSchema({"_test::dummy", ""});
   ASSERT_TRUE(op.has_value());
 
   called_nonautograd = called_autograd = false;
-  op->typed<void (Tensor)>().call(dummyTensor(DispatchKey::CPU));  // note: all tensors have VariableTypeId set
+  op->typed<void (Tensor)>().call(dummyTensor(DispatchKey::CPU, /*requires_grad=*/true));
   EXPECT_FALSE(called_nonautograd);
   EXPECT_TRUE(called_autograd);
 }
 
 TEST(OperatorRegistrationTest, whenRegisteringAutogradKernelWithCatchAllKernel_thenCanCallCatchallKernel) {
   auto registrar = c10::RegisterOperators().op("_test::dummy(Tensor dummy) -> ()", c10::RegisterOperators::options()
-    .impl_unboxedOnlyCatchAllKernel<decltype(nonautograd_kernel), nonautograd_kernel>()
-    .impl_unboxedOnlyKernel<decltype(autograd_kernel), &autograd_kernel>(DispatchKey::Autograd));
+    .catchAllKernel<decltype(nonautograd_kernel), nonautograd_kernel>()
+    .kernel<decltype(autograd_kernel), &autograd_kernel>(DispatchKey::Autograd));
 
   auto op = Dispatcher::singleton().findSchema({"_test::dummy", ""});
   ASSERT_TRUE(op.has_value());
 
   called_nonautograd = called_autograd = false;
-  at::AutoNonVariableTypeMode _var_guard(true);
   op->typed<void (Tensor)>().call(dummyTensor(DispatchKey::CPU));
   EXPECT_TRUE(called_nonautograd);
   EXPECT_FALSE(called_autograd);
 }
 
-TEST(OperatorRegistrationTest, xlaPreAutogradOverridesAutogradKernel) {
+TEST(OperatorRegistrationTest, AutogradBackendOverridesAutogradKernel) {
   auto registrar = c10::RegisterOperators().op("_test::dummy(Tensor dummy) -> ()", c10::RegisterOperators::options()
-    .impl_unboxedOnlyKernel<decltype(nonautograd_kernel), &nonautograd_kernel>(DispatchKey::XLAPreAutograd)
-    .impl_unboxedOnlyKernel<decltype(autograd_kernel), &autograd_kernel>(DispatchKey::Autograd));
+    .kernel<decltype(nonautograd_kernel), &nonautograd_kernel>(DispatchKey::AutogradCPU)
+    .kernel<decltype(autograd_kernel), &autograd_kernel>(DispatchKey::Autograd));
+
+  auto op = Dispatcher::singleton().findSchema({"_test::dummy", ""});
+  ASSERT_TRUE(op.has_value());
+
+  expectThrows<c10::Error>([&] {
+    callOp(*op, dummyTensor(c10::DispatchKey::CPU));
+  }, "Could not run '_test::dummy' with arguments from the 'CPU'"
+  " backend.");
+
+  expectThrows<c10::Error>([&] {
+    callOp(*op, dummyTensor(c10::DispatchKey::CUDA));
+  }, "Could not run '_test::dummy' with arguments from the 'CUDA'"
+  " backend.");
+
+  called_nonautograd = called_autograd = false;
+  op->typed<void (Tensor)>().call(dummyTensor(DispatchKey::CPU, /*requires_grad=*/true));
+  EXPECT_TRUE(called_nonautograd);
+  EXPECT_FALSE(called_autograd);
+
+  called_nonautograd = called_autograd = false;
+  op->typed<void (Tensor)>().call(dummyTensor(DispatchKey::CUDA, /*requires_grad=*/true));
+  EXPECT_TRUE(called_autograd);
+  EXPECT_FALSE(called_nonautograd);
+}
+
+TEST(OperatorRegistrationTest, AutogradXLAOverridesAutogradKernel) {
+  auto registrar = c10::RegisterOperators().op("_test::dummy(Tensor dummy) -> ()", c10::RegisterOperators::options()
+    .kernel<decltype(nonautograd_kernel), &nonautograd_kernel>(DispatchKey::AutogradXLA)
+    .kernel<decltype(autograd_kernel), &autograd_kernel>(DispatchKey::Autograd));
+
+  auto op = Dispatcher::singleton().findSchema({"_test::dummy", ""});
+  ASSERT_TRUE(op.has_value());
+
+  expectThrows<c10::Error>([&] {
+    callOp(*op, dummyTensor(c10::DispatchKey::XLA));
+  }, "Could not run '_test::dummy' with arguments from the 'XLA'"
+  " backend.");
+
+  called_nonautograd = called_autograd = false;
+  op->typed<void (Tensor)>().call(dummyTensor(DispatchKey::XLA, /*requires_grad=*/true));
+  EXPECT_TRUE(called_nonautograd);
+  EXPECT_FALSE(called_autograd);
+
+  called_nonautograd = called_autograd = false;
+  op->typed<void (Tensor)>().call(dummyTensor(DispatchKey::CPU, /*requires_grad=*/true));
+  EXPECT_TRUE(called_autograd);
+  EXPECT_FALSE(called_nonautograd);
+}
+
+TEST(OperatorRegistrationTest, whenRegisterWithXLAKernelAndCatchAll_AutogradXLAIsNotFilled) {
+  auto registrar = c10::RegisterOperators().op("_test::dummy(Tensor dummy) -> ()", c10::RegisterOperators::options()
+    .catchAllKernel<decltype(nonautograd_kernel), nonautograd_kernel>());
 
   auto op = Dispatcher::singleton().findSchema({"_test::dummy", ""});
   ASSERT_TRUE(op.has_value());
 
   called_nonautograd = called_autograd = false;
-  op->typed<void (Tensor)>().call(dummyTensor(c10::DispatchKeySet{DispatchKey::XLA, DispatchKey::XLAPreAutograd}));
+  op->typed<void (Tensor)>().call(dummyTensor(DispatchKey::XLA, /*requires_grad=*/true));
   EXPECT_TRUE(called_nonautograd);
   EXPECT_FALSE(called_autograd);
 
   called_nonautograd = called_autograd = false;
-  op->typed<void (Tensor)>().call(dummyTensor(DispatchKey::CPU));
+  op->typed<void (Tensor)>().call(dummyTensor(DispatchKey::XLA));
+  EXPECT_FALSE(called_autograd);
+  EXPECT_TRUE(called_nonautograd);
+
+  auto registrar1 = c10::RegisterOperators().op("_test::dummy(Tensor dummy) -> ()", c10::RegisterOperators::options()
+    .kernel<decltype(autograd_kernel), &autograd_kernel>(DispatchKey::XLA));
+
+  op = Dispatcher::singleton().findSchema({"_test::dummy", ""});
+  ASSERT_TRUE(op.has_value());
+
+  // When there's direct registration to XLA backend, AutogradXLA doesn't pick up catchAll
+  // kernel in precompute but just keep fallthrough kernel from backend fallback.
+  // Thus it falls through AutogradXLA and reaches the kernel at XLA key.
+  called_nonautograd = called_autograd = false;
+  op->typed<void (Tensor)>().call(dummyTensor(DispatchKey::XLA, /*requires_grad=*/true));
+  EXPECT_FALSE(called_nonautograd);
+  EXPECT_TRUE(called_autograd);
+
+  called_nonautograd = called_autograd = false;
+  op->typed<void (Tensor)>().call(dummyTensor(DispatchKey::XLA));
   EXPECT_TRUE(called_autograd);
   EXPECT_FALSE(called_nonautograd);
 }
@@ -1554,6 +1627,181 @@ TEST(NewOperatorRegistrationTest, schema) {
   ASSERT_TRUE(Dispatcher::singleton().findSchema({"test::def4", ""})->schema().isDefaultAliasAnalysisKind());
 }
 
+TEST(NewOperatorRegistrationTest, dispatchWithMathKernel) {
+  bool math_called = false;
+  auto m = MAKE_TORCH_LIBRARY(test);
+  m.def("fn", torch::dispatch(c10::DispatchKey::Math, [&](const Tensor& x) { math_called = true; return x; }));
+
+  auto op = Dispatcher::singleton().findSchema({"test::fn", ""});
+  ASSERT_TRUE(op.has_value());
+
+  {
+    ASSERT_FALSE(math_called);
+    callOp(*op, dummyTensor(c10::DispatchKey::CPU));
+    ASSERT_TRUE(math_called);
+  }
+
+  {
+    math_called = false;
+    callOp(*op, dummyTensor(c10::DispatchKey::CPU, /*requires_grad=*/true));
+    ASSERT_TRUE(math_called);
+  }
+
+  {
+    math_called = false;
+    callOp(*op, dummyTensor(c10::DispatchKey::XLA));
+    ASSERT_TRUE(math_called);
+  }
+
+  {
+    math_called = false;
+    callOp(*op, dummyTensor(c10::DispatchKey::XLA, /*requires_grad=*/true));
+    ASSERT_TRUE(math_called);
+  }
+
+  {
+    math_called = false;
+    callOp(*op, dummyTensor(c10::DispatchKey::SparseCPU));
+    ASSERT_TRUE(math_called);
+  }
+
+  {
+    math_called = false;
+    callOp(*op, dummyTensor(c10::DispatchKey::SparseCPU, /*requires_grad=*/true));
+    ASSERT_TRUE(math_called);
+  }
+}
+
+TEST(NewOperatorRegistrationTest, dispatchWithMathAndAutogradKernel) {
+  bool math_called = false;
+  bool autograd_called = false;
+  auto m = MAKE_TORCH_LIBRARY(test);
+  m.def("fn", torch::dispatch(c10::DispatchKey::Math, [&](const Tensor& x) { math_called = true; return x; }));
+  m.impl("fn", c10::DispatchKey::Autograd, [&](const Tensor& x) { autograd_called = true; return x; });
+
+  auto op = Dispatcher::singleton().findSchema({"test::fn", ""});
+  ASSERT_TRUE(op.has_value());
+
+  // Math has higher precedence than Autograd
+  {
+    math_called = autograd_called = false;
+    callOp(*op, dummyTensor(c10::DispatchKey::CPU, /*requires_grad=*/true));
+    ASSERT_TRUE(math_called);
+    ASSERT_FALSE(autograd_called);
+  }
+
+  {
+    math_called = autograd_called = false;
+    callOp(*op, dummyTensor(c10::DispatchKey::CPU));
+    ASSERT_TRUE(math_called);
+    ASSERT_FALSE(autograd_called);
+  }
+}
+
+TEST(NewOperatorRegistrationTest, dispatchWithMathAndCatchAllKernel) {
+  bool math_called = false;
+  bool catchall_called = false;
+  auto m = MAKE_TORCH_LIBRARY(test);
+  m.def("fn", torch::dispatch(c10::DispatchKey::Math, [&](const Tensor& x) { math_called = true; return x; }));
+  m.impl("fn", [&](const Tensor& x) { catchall_called = true; return x; });
+
+  auto op = Dispatcher::singleton().findSchema({"test::fn", ""});
+  ASSERT_TRUE(op.has_value());
+
+  {
+    catchall_called = math_called = false;
+    callOp(*op, dummyTensor(c10::DispatchKey::CPU));
+    ASSERT_TRUE(math_called);
+    ASSERT_FALSE(catchall_called);
+  }
+
+  {
+    catchall_called = math_called = false;
+    callOp(*op, dummyTensor(c10::DispatchKey::CPU, /*requires_grad=*/true));
+    ASSERT_TRUE(math_called);
+    ASSERT_FALSE(catchall_called);
+  }
+}
+
+TEST(NewOperatorRegistrationTest, AutogradBackendOverridesMathKernel) {
+  bool math_called = false;
+  bool autograd_called = false;
+  auto m = MAKE_TORCH_LIBRARY(test);
+  m.def("fn", torch::dispatch(c10::DispatchKey::Math, [&](const Tensor& x) { math_called = true; return x; }));
+  m.impl("fn", c10::DispatchKey::AutogradCPU, [&](const Tensor& x) { autograd_called = true; return x; });
+
+  auto op = Dispatcher::singleton().findSchema({"test::fn", ""});
+  ASSERT_TRUE(op.has_value());
+
+  {
+    math_called = autograd_called = false;
+    callOp(*op, dummyTensor(c10::DispatchKey::CPU));
+    ASSERT_TRUE(math_called);
+    ASSERT_FALSE(autograd_called);
+  }
+
+  {
+    math_called = autograd_called = false;
+    callOp(*op, dummyTensor(c10::DispatchKey::CPU, /*requires_grad=*/true));
+    ASSERT_TRUE(autograd_called);
+    ASSERT_FALSE(math_called);
+  }
+
+  {
+    math_called = autograd_called = false;
+    callOp(*op, dummyTensor(c10::DispatchKey::CUDA));
+    ASSERT_TRUE(math_called);
+    ASSERT_FALSE(autograd_called);
+  }
+
+  {
+    math_called = autograd_called = false;
+    callOp(*op, dummyTensor(c10::DispatchKey::CUDA, /*requires_grad=*/true));
+    ASSERT_TRUE(math_called);
+    ASSERT_FALSE(autograd_called);
+  }
+}
+
+TEST(NewOperatorRegistrationTest, BackendOverridesMathKernel) {
+  bool math_called = false;
+  bool backend_called = false;
+  auto m = MAKE_TORCH_LIBRARY(test);
+  m.def("fn", torch::dispatch(c10::DispatchKey::Math, [&](const Tensor& x) { math_called = true; return x; }));
+  m.impl("fn", c10::DispatchKey::CPU, [&](const Tensor& x) { backend_called = true; return x; });
+
+  auto op = Dispatcher::singleton().findSchema({"test::fn", ""});
+  ASSERT_TRUE(op.has_value());
+
+  {
+    math_called = backend_called = false;
+    callOp(*op, dummyTensor(c10::DispatchKey::CPU));
+    ASSERT_TRUE(backend_called);
+    ASSERT_FALSE(math_called);
+  }
+
+  {
+    // Fallthrough AutogradCPU and reaches CPU
+    math_called = backend_called = false;
+    callOp(*op, dummyTensor(c10::DispatchKey::CPU, /*requires_grad=*/true));
+    ASSERT_TRUE(backend_called);
+    ASSERT_FALSE(math_called);
+  }
+
+  {
+    math_called = backend_called = false;
+    callOp(*op, dummyTensor(c10::DispatchKey::CUDA));
+    ASSERT_TRUE(math_called);
+    ASSERT_FALSE(backend_called);
+  }
+
+  {
+    math_called = backend_called = false;
+    callOp(*op, dummyTensor(c10::DispatchKey::CUDA, /*requires_grad=*/true));
+    ASSERT_TRUE(math_called);
+    ASSERT_FALSE(backend_called);
+  }
+}
+
 TEST(NewOperatorRegistrationTest, dispatch) {
   bool cpu_called = false;
   bool cuda_called = false;
@@ -1583,8 +1831,139 @@ TEST(NewOperatorRegistrationTest, dispatch) {
     auto op = Dispatcher::singleton().findSchema({"test::fn_autograd", ""});
     ASSERT_TRUE(op.has_value());
     ASSERT_FALSE(autograd_called);
-    callOp(*op, dummyTensor(c10::DispatchKey::Autograd));
+    callOp(*op, dummyTensor(c10::DispatchKey::CPU, /*requires_grad=*/true));
     ASSERT_TRUE(autograd_called);
+  }
+
+  {
+    autograd_called = false;
+    auto op = Dispatcher::singleton().findSchema({"test::fn_autograd", ""});
+    ASSERT_TRUE(op.has_value());
+    callOp(*op, dummyTensor(c10::DispatchKey::XLA, /*requires_grad=*/true));
+    ASSERT_TRUE(autograd_called);
+  }
+}
+
+TEST(NewOperatorRegistrationTest, dispatchAutogradPrecedence) {
+  bool cpu_called = false;
+  auto m = MAKE_TORCH_LIBRARY(test);
+  m.def("fn", torch::dispatch(c10::DispatchKey::CPU, [&](const Tensor& x) { cpu_called = true; return x; }));
+
+  {
+    auto op = Dispatcher::singleton().findSchema({"test::fn", ""});
+    ASSERT_TRUE(op.has_value());
+    ASSERT_FALSE(cpu_called);
+    callOp(*op, dummyTensor(c10::DispatchKey::CPU));
+    ASSERT_TRUE(cpu_called);
+  }
+
+  {
+    // AutogradCPU is fallthrough, use CPU kernel
+    cpu_called = false;
+    auto op = Dispatcher::singleton().findSchema({"test::fn", ""});
+    callOp(*op, dummyTensor(c10::DispatchKey::CPU, /*requires_grad=*/true));
+    ASSERT_TRUE(cpu_called);
+  }
+
+  bool autograd_called = false;
+  m.def("fn", torch::dispatch(c10::kAutograd, [&](const Tensor& x) { autograd_called = true; return x; }));
+
+  {
+    auto op = Dispatcher::singleton().findSchema({"test::fn", ""});
+    callOp(*op, dummyTensor(c10::DispatchKey::CPU, /*requires_grad=*/true));
+    ASSERT_TRUE(autograd_called);
+  }
+
+  // Autograd backend kernel has higher precedence than Autograd alias.
+  bool autogradcpu_called = false;
+  m.def("fn", torch::dispatch(c10::DispatchKey::AutogradCPU, [&](const Tensor& x) { autogradcpu_called = true; return x; }));
+
+  {
+    auto op = Dispatcher::singleton().findSchema({"test::fn", ""});
+    callOp(*op, dummyTensor(c10::DispatchKey::CPU, /*requires_grad=*/true));
+    ASSERT_TRUE(autogradcpu_called);
+  }
+}
+
+TEST(NewOperatorRegistrationTest, throwsWhenRegisterToBackendMapsToAutogradOther) {
+  bool sparsecpu_called, math_called = false;
+  auto m = MAKE_TORCH_LIBRARY(test);
+  m.def("fn", torch::dispatch(c10::DispatchKey::SparseCPU, [&](const Tensor& x) { sparsecpu_called = true; return x; }));
+  m.impl("fn", c10::DispatchKey::Math, [&](const Tensor& x) { math_called = true; return x; });
+
+  auto op = Dispatcher::singleton().findSchema({"test::fn", ""});
+  ASSERT_TRUE(op.has_value());
+
+  {
+    callOp(*op, dummyTensor(c10::DispatchKey::SparseCPU));
+    ASSERT_TRUE(sparsecpu_called);
+  }
+
+  {
+    expectThrows<c10::Error>([&] {
+      callOp(*op, dummyTensor(c10::DispatchKey::SparseCPU, /*requires_grad=*/true));
+    }, "test::fn has kernels registered to both Math and a backend mapped to AutogradOther.");
+  }
+}
+
+TEST(NewOperatorRegistrationTest, dispatchMultipleTensors) {
+  bool privateuse1_called = false;
+  bool catchall_called = false;
+
+  auto m = MAKE_TORCH_LIBRARY(test);
+  m.def("fn", torch::dispatch(c10::DispatchKey::PrivateUse1, [&](const Tensor& x, const Tensor& y) { privateuse1_called = true; return x; }));
+  m.impl("fn", [&](const Tensor& x, const Tensor& y) { catchall_called = true; return x; });
+
+  {
+    auto op = Dispatcher::singleton().findOp({"test::fn", ""});
+    ASSERT_TRUE(op.has_value());
+    callOp(*op, dummyTensor(c10::DispatchKey::PrivateUse1), dummyTensor(c10::DispatchKey::CPU));
+    ASSERT_TRUE(privateuse1_called);
+  }
+
+  {
+    auto op = Dispatcher::singleton().findOp({"test::fn", ""});
+    ASSERT_TRUE(op.has_value());
+    ASSERT_FALSE(catchall_called);
+    callOp(*op, dummyTensor(c10::DispatchKey::CPU), dummyTensor(c10::DispatchKey::CPU));
+    ASSERT_TRUE(catchall_called);
+  }
+
+  {
+    auto op = Dispatcher::singleton().findOp({"test::fn", ""});
+    ASSERT_TRUE(op.has_value());
+    catchall_called = false;
+    callOp(*op,
+           dummyTensor(c10::DispatchKey::CPU, /*requires_grad=*/true),
+           dummyTensor(c10::DispatchKey::CPU, /*requires_grad=*/true));
+    ASSERT_TRUE(catchall_called);
+  }
+
+  {
+    // TODO(#43908): currently this will fallthrough AutogradPrivateUse1 then call catchall kernel
+    // at AutogradCPU, while backend extenders are indeed expecting to call PrivateUse1 kernel.
+    // This confusing behavior is caused by we registering fallthrough as backend fallback for
+    // Autograd keys. Note users could always work around this by registering the same kernel to
+    // AutogradPrivateUse1 as shown below until we support it.
+    auto op = Dispatcher::singleton().findOp({"test::fn", ""});
+    ASSERT_TRUE(op.has_value());
+    catchall_called = false;
+    callOp(*op,
+           dummyTensor(c10::DispatchKey::PrivateUse1, /*requires_grad=*/true),
+           dummyTensor(c10::DispatchKey::CPU, /*requires_grad=*/true));
+    ASSERT_TRUE(catchall_called);
+  }
+
+  m.impl("fn", c10::DispatchKey::AutogradPrivateUse1, [&](const Tensor& x, const Tensor& y) { privateuse1_called = true; return x; });
+
+  {
+    auto op = Dispatcher::singleton().findOp({"test::fn", ""});
+    ASSERT_TRUE(op.has_value());
+    privateuse1_called = false;
+    callOp(*op,
+           dummyTensor(c10::DispatchKey::PrivateUse1, /*requires_grad=*/true),
+           dummyTensor(c10::DispatchKey::CPU, /*requires_grad=*/true));
+    ASSERT_TRUE(privateuse1_called);
   }
 }
 
@@ -1604,7 +1983,6 @@ TEST(NewOperatorRegistrationTest, dispatchMultiple) {
   ASSERT_TRUE(op.has_value());
 
   {
-    at::AutoNonVariableTypeMode _var_guard;
     ASSERT_FALSE(cpu_called);
     callOp(*op, dummyTensor(c10::DispatchKey::CPU));
     ASSERT_TRUE(cpu_called);
@@ -1614,9 +1992,15 @@ TEST(NewOperatorRegistrationTest, dispatchMultiple) {
     ASSERT_TRUE(cuda_called);
   }
 
-  ASSERT_FALSE(autograd_called);
-  callOp(*op, dummyTensor(c10::DispatchKey::Autograd));
-  ASSERT_TRUE(autograd_called);
+  {
+    ASSERT_FALSE(autograd_called);
+    callOp(*op, dummyTensor(c10::DispatchKey::CPU, /*requires_grad=*/true));
+    ASSERT_TRUE(autograd_called);
+
+    autograd_called = false;
+    callOp(*op, dummyTensor(c10::DispatchKey::CUDA, /*requires_grad=*/true));
+    ASSERT_TRUE(autograd_called);
+  }
 }
 
 TEST(NewOperatorRegistrationTest, fallback) {

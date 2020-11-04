@@ -13,12 +13,14 @@
 #include <llvm/IR/Verifier.h>
 #include <llvm/Support/TargetSelect.h>
 #include <llvm/Target/TargetMachine.h>
+#include <llvm/Transforms/IPO/AlwaysInliner.h>
 #include <llvm/Transforms/IPO/PassManagerBuilder.h>
+#include <llvm/Transforms/Scalar.h>
 
-#include <torch/csrc/jit/tensorexpr/buffer.h>
 #include <torch/csrc/jit/tensorexpr/execution_counter.h>
 #include <torch/csrc/jit/tensorexpr/ir.h>
 #include <torch/csrc/jit/tensorexpr/ir_printer.h>
+#include <torch/csrc/jit/tensorexpr/tensor.h>
 #include <torch/csrc/jit/tensorexpr/types.h>
 
 #define DEBUG_PRINT 0
@@ -31,6 +33,48 @@ DEFINE_TRIGGER(llvm_codegen_executed);
 namespace torch {
 namespace jit {
 namespace tensorexpr {
+namespace {
+
+bool is_unsigned_integral(const ScalarType& type) {
+  switch (type) {
+    case ScalarType::Bool:
+    case ScalarType::Byte:
+      return true;
+    default:
+      return false;
+  }
+
+  return false;
+}
+
+llvm::CmpInst::Predicate llvm_comparison_predicate(
+    CompareSelectOperation compare_op,
+    const ScalarType& type) {
+  switch (compare_op) {
+    case CompareSelectOperation::kEQ:
+      return llvm::ICmpInst::ICMP_EQ;
+    case CompareSelectOperation::kNE:
+      return llvm::ICmpInst::ICMP_NE;
+    case CompareSelectOperation::kGT:
+      return is_unsigned_integral(type) ? llvm::ICmpInst::ICMP_UGT
+                                        : llvm::ICmpInst::ICMP_SGT;
+    case CompareSelectOperation::kGE:
+      return is_unsigned_integral(type) ? llvm::ICmpInst::ICMP_UGE
+                                        : llvm::ICmpInst::ICMP_SGE;
+    case CompareSelectOperation::kLT:
+      return is_unsigned_integral(type) ? llvm::ICmpInst::ICMP_ULT
+                                        : llvm::ICmpInst::ICMP_SLT;
+    case CompareSelectOperation::kLE:
+      return is_unsigned_integral(type) ? llvm::ICmpInst::ICMP_ULE
+                                        : llvm::ICmpInst::ICMP_SLE;
+    default:
+      // TODO: change to a proper error report
+      throw std::runtime_error("invalid operator type");
+  }
+}
+
+} // namespace
+
 class LLVMCodeGenImpl : public IRVisitor {
  private:
   llvm::orc::ThreadSafeContext context_;
@@ -50,6 +94,8 @@ class LLVMCodeGenImpl : public IRVisitor {
 
   std::unordered_map<const Var*, int> varToArg_;
   std::unordered_map<const Var*, llvm::Value*> varToVal_;
+  std::unordered_map<const Block*, std::vector<const Var*>> scopeToVar_;
+  const Block* scope_;
 
  private:
   llvm::LLVMContext& getContext();
@@ -101,6 +147,7 @@ class LLVMCodeGenImpl : public IRVisitor {
   void visit(const FunctionCall* v) override;
   void visit(const Allocate* v) override;
   void visit(const Free* v) override;
+  void visit(const Let* v) override;
   void visit(const Cond* v) override;
 
   llvm::Value* emitUnmaskedLoad(llvm::Value* addr, llvm::Value* idx);
@@ -254,6 +301,9 @@ LLVMCodeGenImpl::LLVMCodeGenImpl(
   llvm::FunctionType* fntype = llvm::FunctionType::get(retTy, params, false);
   fn_ = llvm::Function::Create(
       fntype, llvm::Function::PrivateLinkage, "pytorch", module_.get());
+  fn_->addAttribute(
+      llvm::AttributeList::AttrIndex::FunctionIndex,
+      llvm::Attribute::AlwaysInline);
   for (size_t i = 0; i < args.size(); i++) {
     if (!args[i].isVar()) {
       fn_->addParamAttr(i, llvm::Attribute::NoAlias);
@@ -605,7 +655,18 @@ void LLVMCodeGenImpl::visit(const Rshift* v) {
 }
 
 void LLVMCodeGenImpl::visit(const Mod* v) {
-  throw std::runtime_error("Mod unsupported in LLVM codegen yet");
+  v->lhs()->accept(this);
+  auto lhs = this->value_;
+  bool lfp = lhs->getType()->isFPOrFPVectorTy();
+  v->rhs()->accept(this);
+  auto rhs = this->value_;
+  bool rfp = rhs->getType()->isFPOrFPVectorTy();
+
+  if (!lfp && !rfp) {
+    value_ = irb_.CreateSRem(lhs, rhs);
+  } else {
+    throw malformed_input("llvm_codgen: bad type in Mod", v);
+  }
 }
 
 void LLVMCodeGenImpl::visit(const Max* v) {
@@ -620,13 +681,14 @@ void LLVMCodeGenImpl::visit(const Max* v) {
     return;
   }
 
-  if (v->propagate_nans()) {
-    value_ = irb_.CreateBinaryIntrinsic(llvm::Intrinsic::maximum, lhs, rhs);
-    return;
-  }
-
   value_ = irb_.CreateSelect(
-      irb_.CreateFCmp(llvm::FCmpInst::FCMP_OGT, lhs, rhs), lhs, rhs);
+      irb_.CreateFCmp(
+          llvm::FCmpInst::FCMP_UNO,
+          lhs,
+          llvm::ConstantFP::get(lhs->getType(), 0.0)),
+      lhs,
+      irb_.CreateSelect(
+          irb_.CreateFCmp(llvm::FCmpInst::FCMP_OGT, lhs, rhs), lhs, rhs));
 }
 
 void LLVMCodeGenImpl::visit(const Min* v) {
@@ -641,13 +703,14 @@ void LLVMCodeGenImpl::visit(const Min* v) {
     return;
   }
 
-  if (v->propagate_nans()) {
-    value_ = irb_.CreateBinaryIntrinsic(llvm::Intrinsic::minimum, lhs, rhs);
-    return;
-  }
-
   value_ = irb_.CreateSelect(
-      irb_.CreateFCmp(llvm::FCmpInst::FCMP_OLT, lhs, rhs), lhs, rhs);
+      irb_.CreateFCmp(
+          llvm::FCmpInst::FCMP_UNO,
+          lhs,
+          llvm::ConstantFP::get(lhs->getType(), 0.0)),
+      lhs,
+      irb_.CreateSelect(
+          irb_.CreateFCmp(llvm::FCmpInst::FCMP_OLT, lhs, rhs), lhs, rhs));
 }
 
 void LLVMCodeGenImpl::visit(const CompareSelect* v) {
@@ -666,29 +729,8 @@ void LLVMCodeGenImpl::visit(const CompareSelect* v) {
   CompareSelectOperation cmp_op_ = v->compare_select_op();
 
   if (is_integral(type_used)) {
-    switch (cmp_op_) {
-      case CompareSelectOperation::kEQ:
-        cmp_ = irb_.CreateICmpEQ(lhs, rhs);
-        break;
-      case CompareSelectOperation::kNE:
-        cmp_ = irb_.CreateICmpNE(lhs, rhs);
-        break;
-      case CompareSelectOperation::kGT:
-        cmp_ = irb_.CreateICmpSGT(lhs, rhs);
-        break;
-      case CompareSelectOperation::kGE:
-        cmp_ = irb_.CreateICmpSGE(lhs, rhs);
-        break;
-      case CompareSelectOperation::kLT:
-        cmp_ = irb_.CreateICmpSLT(lhs, rhs);
-        break;
-      case CompareSelectOperation::kLE:
-        cmp_ = irb_.CreateICmpSLE(lhs, rhs);
-        break;
-      default:
-        // TODO: change to a proper error report
-        throw std::runtime_error("invalid operator type");
-    }
+    cmp_ = irb_.CreateICmp(
+        llvm_comparison_predicate(cmp_op_, type_used), lhs, rhs);
   } else if (is_floating_point(type_used)) { // FP32
     switch (cmp_op_) {
       case CompareSelectOperation::kEQ:
@@ -1011,24 +1053,21 @@ void LLVMCodeGenImpl::visit(const For* v) {
 }
 
 void LLVMCodeGenImpl::visit(const Block* v) {
-  for (auto pair : v->varBindings()) {
-    const Var* v = pair.first;
-    pair.second->accept(this);
-    if (!varToVal_.count(v)) {
-      varToVal_.emplace(v, value_);
-    } else {
-      throw std::runtime_error("var should not exist before");
-    }
-  }
+  const Block* last = scope_;
+  scope_ = v;
 
   for (Stmt* s : *v) {
     s->accept(this);
   }
 
-  for (auto pair : v->varBindings()) {
-    const Var* v = pair.first;
-    if (varToVal_.erase(v) != 1) {
-      throw std::runtime_error("erasing var that doesn't exist");
+  scope_ = last;
+
+  auto it = scopeToVar_.find(v);
+  if (it != scopeToVar_.end()) {
+    for (const Var* e : it->second) {
+      if (varToVal_.erase(e) != 1) {
+        throw std::runtime_error("erasing var that doesn't exist");
+      }
     }
   }
 }
@@ -1255,6 +1294,7 @@ void LLVMCodeGenImpl::visit(const Intrinsics* v) {
 #endif
         SIMD_UNARY_MATH_CASE(kLog10, "log10f", FloatTy_)
         SIMD_UNARY_MATH_CASE(kLog, "logf", FloatTy_)
+        SIMD_UNARY_MATH_CASE(kLog1p, "log1pf", FloatTy_)
         SIMD_UNARY_MATH_CASE(kLog2, "log2f", FloatTy_)
         SIMD_UNARY_MATH_CASE(kExp, "expf", FloatTy_)
         SIMD_UNARY_MATH_CASE(kCos, "cosf", FloatTy_)
@@ -1399,6 +1439,7 @@ void LLVMCodeGenImpl::visit(const Intrinsics* v) {
 #endif
       SIMD_UNARY_MATH_CASE(kLog10, "log10", DoubleTy_)
       SIMD_UNARY_MATH_CASE(kLog, "log", DoubleTy_)
+      SIMD_UNARY_MATH_CASE(kLog1p, "log1p", DoubleTy_)
       SIMD_UNARY_MATH_CASE(kLog2, "log2", DoubleTy_)
       SIMD_UNARY_MATH_CASE(kExp, "exp", DoubleTy_)
       SIMD_UNARY_MATH_CASE(kCos, "cos", DoubleTy_)
@@ -1573,6 +1614,16 @@ void LLVMCodeGenImpl::visit(const Free* v) {
   }
 }
 
+void LLVMCodeGenImpl::visit(const Let* v) {
+  v->value()->accept(this);
+  if (!varToVal_.count(v->var())) {
+    varToVal_.emplace(v->var(), value_);
+    scopeToVar_[scope_].push_back(v->var());
+  } else {
+    throw std::runtime_error("var should not exist before");
+  }
+}
+
 void LLVMCodeGenImpl::visit(const Cond* v) {
   throw unimplemented_lowering(v);
 }
@@ -1596,6 +1647,8 @@ void LLVMCodeGenImpl::optimize(llvm::Module& M) {
   PMB.populateFunctionPassManager(FPM);
   PMB.populateModulePassManager(PM);
   FPM.doInitialization();
+  PM.add(llvm::createDeadCodeEliminationPass());
+  PM.add(llvm::createAlwaysInlinerLegacyPass());
   PM.run(M);
   for (auto& FF : M) {
     FPM.run(FF);

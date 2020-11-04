@@ -2,6 +2,8 @@ Description: change shebang
   find . -type f -name '*.py' -exec sed -i -e 's@#!/usr/bin/env @#!/usr/bin/@g' '{}' \;
   find . -type f -name '*.sh' -exec sed -i -e 's@#!/usr/bin/env @#!/usr/bin/@g' '{}' \;   
 Author: Mo Zhou
+diff --git a/.circleci/codegen_validation/normalize_yaml_fragment.py b/.circleci/codegen_validation/normalize_yaml_fragment.py
+index 0778404..ab4a353 100755
 --- a/.circleci/codegen_validation/normalize_yaml_fragment.py
 +++ b/.circleci/codegen_validation/normalize_yaml_fragment.py
 @@ -1,4 +1,4 @@
@@ -10,6 +12,8 @@ Author: Mo Zhou
  
  import os
  import sys
+diff --git a/.circleci/ecr_gc_docker/docker_hub.py b/.circleci/ecr_gc_docker/docker_hub.py
+index cac6fb4..03f20ea 100755
 --- a/.circleci/ecr_gc_docker/docker_hub.py
 +++ b/.circleci/ecr_gc_docker/docker_hub.py
 @@ -1,4 +1,4 @@
@@ -18,6 +22,8 @@ Author: Mo Zhou
  
  from collections import namedtuple
  
+diff --git a/.circleci/ecr_gc_docker/gc.py b/.circleci/ecr_gc_docker/gc.py
+index 77e2e35..6e586cd 100755
 --- a/.circleci/ecr_gc_docker/gc.py
 +++ b/.circleci/ecr_gc_docker/gc.py
 @@ -1,4 +1,4 @@
@@ -26,6 +32,8 @@ Author: Mo Zhou
  
  import argparse
  import datetime
+diff --git a/.circleci/ensure-consistency.py b/.circleci/ensure-consistency.py
+index 972eded..f47cb57 100755
 --- a/.circleci/ensure-consistency.py
 +++ b/.circleci/ensure-consistency.py
 @@ -1,4 +1,4 @@
@@ -34,6 +42,8 @@ Author: Mo Zhou
  
  import os
  import subprocess
+diff --git a/.circleci/generate_config_yml.py b/.circleci/generate_config_yml.py
+index f1af924..e8be53e 100755
 --- a/.circleci/generate_config_yml.py
 +++ b/.circleci/generate_config_yml.py
 @@ -1,4 +1,4 @@
@@ -42,6 +52,18 @@ Author: Mo Zhou
  
  """
  This script is the source of truth for config.yml.
+diff --git a/.circleci/scripts/binary_upload.sh b/.circleci/scripts/binary_upload.sh
+index 9282674..6782c5d 100755
+--- a/.circleci/scripts/binary_upload.sh
++++ b/.circleci/scripts/binary_upload.sh
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env bash
++#!/usr/bin/bash
+ 
+ set -euo pipefail
+ 
+diff --git a/.circleci/scripts/build_android_gradle.sh b/.circleci/scripts/build_android_gradle.sh
+index e2cdc94..146c9af 100755
 --- a/.circleci/scripts/build_android_gradle.sh
 +++ b/.circleci/scripts/build_android_gradle.sh
 @@ -1,4 +1,4 @@
@@ -49,7 +71,9 @@ Author: Mo Zhou
 +#!/usr/bin/bash
  set -eux -o pipefail
  
- export ANDROID_NDK_HOME=/opt/ndk
+ env
+diff --git a/.circleci/scripts/publish_android_snapshot.sh b/.circleci/scripts/publish_android_snapshot.sh
+index b309f17..a722c4f 100755
 --- a/.circleci/scripts/publish_android_snapshot.sh
 +++ b/.circleci/scripts/publish_android_snapshot.sh
 @@ -1,4 +1,4 @@
@@ -57,7 +81,7 @@ Author: Mo Zhou
 +#!/usr/bin/bash
  # DO NOT ADD 'set -x' not to reveal CircleCI secret context environment variables
  set -eu -o pipefail
- 
+ diff --git a/.circleci/scripts/setup_ci_environment.sh b/.circleci/scripts/setup_ci_environment.sh index f6c398a..1e91324 100755
 --- a/.circleci/scripts/setup_ci_environment.sh
 +++ b/.circleci/scripts/setup_ci_environment.sh
 @@ -1,4 +1,4 @@
@@ -65,7 +89,9 @@ Author: Mo Zhou
 +#!/usr/bin/bash
  set -ex -o pipefail
  
- # Set up NVIDIA docker repo
+ # Remove unnecessary sources
+diff --git a/.circleci/scripts/setup_linux_system_environment.sh b/.circleci/scripts/setup_linux_system_environment.sh
+index ce64076..fe1baf3 100755
 --- a/.circleci/scripts/setup_linux_system_environment.sh
 +++ b/.circleci/scripts/setup_linux_system_environment.sh
 @@ -1,4 +1,4 @@
@@ -74,14 +100,8 @@ Author: Mo Zhou
  set -eux -o pipefail
  
  # Set up CircleCI GPG keys for apt, if needed
---- a/.circleci/validate-docker-version.py
-+++ b/.circleci/validate-docker-version.py
-@@ -1,4 +1,4 @@
--#!/usr/bin/env python3
-+#!/usr/bin/python3
- import cimodel.data.caffe2_build_definitions as caffe2_build_definitions
- import cimodel.data.simple.util.docker_constants as pytorch_docker_constants
- 
+diff --git a/.jenkins/pytorch/build-mobile-code-analysis.sh b/.jenkins/pytorch/build-mobile-code-analysis.sh
+index 982ab25..ade2599 100755
 --- a/.jenkins/pytorch/build-mobile-code-analysis.sh
 +++ b/.jenkins/pytorch/build-mobile-code-analysis.sh
 @@ -1,4 +1,4 @@
@@ -90,6 +110,8 @@ Author: Mo Zhou
  # DO NOT ADD 'set -x' not to reveal CircleCI secret context environment variables
  set -eu -o pipefail
  
+diff --git a/.jenkins/pytorch/build-mobile.sh b/.jenkins/pytorch/build-mobile.sh
+index b1234f2..95678fd 100755
 --- a/.jenkins/pytorch/build-mobile.sh
 +++ b/.jenkins/pytorch/build-mobile.sh
 @@ -1,4 +1,4 @@
@@ -98,14 +120,38 @@ Author: Mo Zhou
  # DO NOT ADD 'set -x' not to reveal CircleCI secret context environment variables
  set -eu -o pipefail
  
+diff --git a/.jenkins/pytorch/win-test-helpers/run_python_nn_smoketests.py b/.jenkins/pytorch/win-test-helpers/run_python_nn_smoketests.py
+index 8adcadb..aaac8f4 100755
 --- a/.jenkins/pytorch/win-test-helpers/run_python_nn_smoketests.py
 +++ b/.jenkins/pytorch/win-test-helpers/run_python_nn_smoketests.py
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python
 +#!/usr/bin/python
  
- from __future__ import print_function
+ import subprocess
+ import os
+diff --git a/aten/src/ATen/gen_vulkan_glsl.py b/aten/src/ATen/gen_vulkan_glsl.py
+index f2c823a..0480cbd 100644
+--- a/aten/src/ATen/gen_vulkan_glsl.py
++++ b/aten/src/ATen/gen_vulkan_glsl.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/python3
  
+ import argparse
+ import sys
+diff --git a/aten/src/ATen/gen_vulkan_spv.py b/aten/src/ATen/gen_vulkan_spv.py
+index 64a8784..d1a0f79 100644
+--- a/aten/src/ATen/gen_vulkan_spv.py
++++ b/aten/src/ATen/gen_vulkan_spv.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/python3
+ 
+ import argparse
+ import array
+diff --git a/aten/src/ATen/native/quantized/cpu/qnnpack/configure.py b/aten/src/ATen/native/quantized/cpu/qnnpack/configure.py
+index 9869ffd..0d84b21 100755
 --- a/aten/src/ATen/native/quantized/cpu/qnnpack/configure.py
 +++ b/aten/src/ATen/native/quantized/cpu/qnnpack/configure.py
 @@ -1,4 +1,4 @@
@@ -114,6 +160,8 @@ Author: Mo Zhou
  #
  # Copyright (c) Facebook, Inc. and its affiliates.
  # All rights reserved.
+diff --git a/aten/src/ATen/native/quantized/cpu/qnnpack/deps/clog/configure.py b/aten/src/ATen/native/quantized/cpu/qnnpack/deps/clog/configure.py
+index d6b829c..27c2749 100755
 --- a/aten/src/ATen/native/quantized/cpu/qnnpack/deps/clog/configure.py
 +++ b/aten/src/ATen/native/quantized/cpu/qnnpack/deps/clog/configure.py
 @@ -1,4 +1,4 @@
@@ -122,6 +170,8 @@ Author: Mo Zhou
  #
  # Copyright (c) Facebook, Inc. and its affiliates.
  # All rights reserved.
+diff --git a/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-android-arm64.sh b/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-android-arm64.sh
+index 389430b..adaa907 100755
 --- a/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-android-arm64.sh
 +++ b/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-android-arm64.sh
 @@ -1,4 +1,4 @@
@@ -130,6 +180,8 @@ Author: Mo Zhou
  #
  # Copyright (c) Facebook, Inc. and its affiliates.
  # All rights reserved.
+diff --git a/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-android-armv7.sh b/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-android-armv7.sh
+index 6f32950..c74c894 100755
 --- a/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-android-armv7.sh
 +++ b/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-android-armv7.sh
 @@ -1,4 +1,4 @@
@@ -138,6 +190,8 @@ Author: Mo Zhou
  #
  # Copyright (c) Facebook, Inc. and its affiliates.
  # All rights reserved.
+diff --git a/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-android-x86.sh b/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-android-x86.sh
+index 5f19db5..3138ca1 100755
 --- a/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-android-x86.sh
 +++ b/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-android-x86.sh
 @@ -1,4 +1,4 @@
@@ -146,6 +200,8 @@ Author: Mo Zhou
  #
  # Copyright (c) Facebook, Inc. and its affiliates.
  # All rights reserved.
+diff --git a/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-ios-arm64.sh b/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-ios-arm64.sh
+index d155d6f..a54d87b 100755
 --- a/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-ios-arm64.sh
 +++ b/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-ios-arm64.sh
 @@ -1,4 +1,4 @@
@@ -154,6 +210,8 @@ Author: Mo Zhou
  #
  # Copyright (c) Facebook, Inc. and its affiliates.
  # All rights reserved.
+diff --git a/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-ios-arm64e.sh b/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-ios-arm64e.sh
+index 985315f..0fb2b8a 100755
 --- a/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-ios-arm64e.sh
 +++ b/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-ios-arm64e.sh
 @@ -1,4 +1,4 @@
@@ -162,6 +220,8 @@ Author: Mo Zhou
  #
  # Copyright (c) Facebook, Inc. and its affiliates.
  # All rights reserved.
+diff --git a/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-ios-armv7.sh b/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-ios-armv7.sh
+index 0431c09..dc1d187 100755
 --- a/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-ios-armv7.sh
 +++ b/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-ios-armv7.sh
 @@ -1,4 +1,4 @@
@@ -170,6 +230,8 @@ Author: Mo Zhou
  #
  # Copyright (c) Facebook, Inc. and its affiliates.
  # All rights reserved.
+diff --git a/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-ios-armv7s.sh b/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-ios-armv7s.sh
+index e3f3d6b..6443245 100755
 --- a/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-ios-armv7s.sh
 +++ b/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-ios-armv7s.sh
 @@ -1,4 +1,4 @@
@@ -178,6 +240,8 @@ Author: Mo Zhou
  #
  # Copyright (c) Facebook, Inc. and its affiliates.
  # All rights reserved.
+diff --git a/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-ios-i386.sh b/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-ios-i386.sh
+index e895214..aaaf1bf 100755
 --- a/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-ios-i386.sh
 +++ b/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-ios-i386.sh
 @@ -1,4 +1,4 @@
@@ -186,6 +250,8 @@ Author: Mo Zhou
  #
  # Copyright (c) Facebook, Inc. and its affiliates.
  # All rights reserved.
+diff --git a/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-ios-x86_64.sh b/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-ios-x86_64.sh
+index 10a58b8..b1eff00 100755
 --- a/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-ios-x86_64.sh
 +++ b/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-ios-x86_64.sh
 @@ -1,4 +1,4 @@
@@ -194,6 +260,8 @@ Author: Mo Zhou
  #
  # Copyright (c) Facebook, Inc. and its affiliates.
  # All rights reserved.
+diff --git a/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-local.sh b/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-local.sh
+index b429650..77f8cbf 100755
 --- a/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-local.sh
 +++ b/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/build-local.sh
 @@ -1,4 +1,4 @@
@@ -202,6 +270,8 @@ Author: Mo Zhou
  #
  # Copyright (c) Facebook, Inc. and its affiliates.
  # All rights reserved.
+diff --git a/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/test-android-arm64.sh b/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/test-android-arm64.sh
+index 4482dad..d11bd3e 100755
 --- a/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/test-android-arm64.sh
 +++ b/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/test-android-arm64.sh
 @@ -1,4 +1,4 @@
@@ -210,6 +280,8 @@ Author: Mo Zhou
  #
  # Copyright (c) Facebook, Inc. and its affiliates.
  # All rights reserved.
+diff --git a/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/test-android-armv7.sh b/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/test-android-armv7.sh
+index bc42fb1..eb2803f 100755
 --- a/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/test-android-armv7.sh
 +++ b/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/test-android-armv7.sh
 @@ -1,4 +1,4 @@
@@ -218,6 +290,8 @@ Author: Mo Zhou
  #
  # Copyright (c) Facebook, Inc. and its affiliates.
  # All rights reserved.
+diff --git a/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/test-android-x86.sh b/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/test-android-x86.sh
+index 32742b0..3ad15eb 100755
 --- a/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/test-android-x86.sh
 +++ b/aten/src/ATen/native/quantized/cpu/qnnpack/scripts/test-android-x86.sh
 @@ -1,4 +1,4 @@
@@ -226,22 +300,8 @@ Author: Mo Zhou
  #
  # Copyright (c) Facebook, Inc. and its affiliates.
  # All rights reserved.
---- a/aten/src/ATen/native/vulkan/gen_glsl.py
-+++ b/aten/src/ATen/native/vulkan/gen_glsl.py
-@@ -1,4 +1,4 @@
--#!/usr/bin/env python3
-+#!/usr/bin/python3
- 
- import argparse
- import sys
---- a/aten/src/ATen/native/vulkan/gen_spv.py
-+++ b/aten/src/ATen/native/vulkan/gen_spv.py
-@@ -1,4 +1,4 @@
--#!/usr/bin/env python3
-+#!/usr/bin/python3
- 
- import argparse
- import array
+diff --git a/benchmarks/distributed/ddp/benchmark.py b/benchmarks/distributed/ddp/benchmark.py
+index 4567749..35f69d3 100644
 --- a/benchmarks/distributed/ddp/benchmark.py
 +++ b/benchmarks/distributed/ddp/benchmark.py
 @@ -1,4 +1,4 @@
@@ -250,6 +310,8 @@ Author: Mo Zhou
  #
  # Measure distributed training iteration time.
  #
+diff --git a/benchmarks/distributed/ddp/diff.py b/benchmarks/distributed/ddp/diff.py
+index 59cd5b5..5b23d74 100644
 --- a/benchmarks/distributed/ddp/diff.py
 +++ b/benchmarks/distributed/ddp/diff.py
 @@ -1,4 +1,4 @@
@@ -258,46 +320,58 @@ Author: Mo Zhou
  #
  # Computes difference between measurements produced by ./benchmark.py.
  #
+diff --git a/binaries/bench_gen/bench_gen.py b/binaries/bench_gen/bench_gen.py
+index 14c2494..aa4953a 100755
 --- a/binaries/bench_gen/bench_gen.py
 +++ b/binaries/bench_gen/bench_gen.py
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python
 +#!/usr/bin/python
  
- from __future__ import absolute_import
- from __future__ import division
+ import argparse
+ import ast
+diff --git a/caffe2/contrib/gloo/gloo_test.py b/caffe2/contrib/gloo/gloo_test.py
+index fbca9b8..8ed8bed 100644
 --- a/caffe2/contrib/gloo/gloo_test.py
 +++ b/caffe2/contrib/gloo/gloo_test.py
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python
 +#!/usr/bin/python
  
- from __future__ import absolute_import
- from __future__ import division
+ 
+ 
+diff --git a/caffe2/core/nomnigraph/op_gen.py b/caffe2/core/nomnigraph/op_gen.py
+index fbe1c8d..e194479 100755
 --- a/caffe2/core/nomnigraph/op_gen.py
 +++ b/caffe2/core/nomnigraph/op_gen.py
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python
 +#!/usr/bin/python
  
- from __future__ import absolute_import
- from __future__ import division
+ 
+ 
+diff --git a/caffe2/python/allcompare_test.py b/caffe2/python/allcompare_test.py
+index 2203871..dd50d04 100644
 --- a/caffe2/python/allcompare_test.py
 +++ b/caffe2/python/allcompare_test.py
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python
 +#!/usr/bin/python
  
- from __future__ import absolute_import
- from __future__ import division
+ 
+ 
+diff --git a/caffe2/python/benchmark_generator.py b/caffe2/python/benchmark_generator.py
+index 84d0d46..7bcd745 100644
 --- a/caffe2/python/benchmark_generator.py
 +++ b/caffe2/python/benchmark_generator.py
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python
 +#!/usr/bin/python
  
- from __future__ import absolute_import
- from __future__ import division
+ 
+ 
+diff --git a/caffe2/python/caffe_translator.py b/caffe2/python/caffe_translator.py
+index 63392c7..f531a6d 100644
 --- a/caffe2/python/caffe_translator.py
 +++ b/caffe2/python/caffe_translator.py
 @@ -1,6 +1,6 @@
@@ -308,6 +382,28 @@ Author: Mo Zhou
  
  import argparse
  import copy
+diff --git a/caffe2/python/fakefp16_transform_lib.py b/caffe2/python/fakefp16_transform_lib.py
+index c3f1420..960194e 100644
+--- a/caffe2/python/fakefp16_transform_lib.py
++++ b/caffe2/python/fakefp16_transform_lib.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/python3
+ 
+ 
+ 
+diff --git a/caffe2/python/lazy_dyndep_test.py b/caffe2/python/lazy_dyndep_test.py
+index 1441fac..b20f933 100644
+--- a/caffe2/python/lazy_dyndep_test.py
++++ b/caffe2/python/lazy_dyndep_test.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python
+ 
+ 
+ 
+diff --git a/caffe2/python/operator_test/alias_with_name_test.py b/caffe2/python/operator_test/alias_with_name_test.py
+index 6d62cb6..c1eed52 100644
 --- a/caffe2/python/operator_test/alias_with_name_test.py
 +++ b/caffe2/python/operator_test/alias_with_name_test.py
 @@ -1,4 +1,4 @@
@@ -316,6 +412,8 @@ Author: Mo Zhou
  
  import caffe2.python.hypothesis_test_util as hu
  import hypothesis.strategies as st
+diff --git a/caffe2/python/test/inference_lstm_op_test.py b/caffe2/python/test/inference_lstm_op_test.py
+index 20caab9..b389946 100644
 --- a/caffe2/python/test/inference_lstm_op_test.py
 +++ b/caffe2/python/test/inference_lstm_op_test.py
 @@ -1,4 +1,4 @@
@@ -324,6 +422,8 @@ Author: Mo Zhou
  import inspect
  
  import hypothesis.strategies as st
+diff --git a/docs/caffe2/process.py b/docs/caffe2/process.py
+index 9fa37e5..63363e9 100644
 --- a/docs/caffe2/process.py
 +++ b/docs/caffe2/process.py
 @@ -1,4 +1,4 @@
@@ -332,6 +432,8 @@ Author: Mo Zhou
  ## @package process
  # Module doxygen.process
  # Script to insert preamble for doxygen and regen API docs
+diff --git a/scripts/build_tizen.sh b/scripts/build_tizen.sh
+index 38e90fa..38cdbf9 100755
 --- a/scripts/build_tizen.sh
 +++ b/scripts/build_tizen.sh
 @@ -1,4 +1,4 @@
@@ -340,6 +442,28 @@ Author: Mo Zhou
  ##############################################################################
  #  Example command to build the Tizen target (RPi3).
  ##############################################################################
+diff --git a/scripts/release/anaconda-prune/prune.sh b/scripts/release/anaconda-prune/prune.sh
+index f3b377d..5442f84 100755
+--- a/scripts/release/anaconda-prune/prune.sh
++++ b/scripts/release/anaconda-prune/prune.sh
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env bash
++#!/usr/bin/bash
+ 
+ grab_prune_version() {
+     conda search -c "${CHANNEL}" --platform "${platform}" "${PKG}" 2>/dev/null | \
+diff --git a/scripts/release/anaconda-prune/run.sh b/scripts/release/anaconda-prune/run.sh
+index 284c882..8b4dc98 100755
+--- a/scripts/release/anaconda-prune/run.sh
++++ b/scripts/release/anaconda-prune/run.sh
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env bash
++#!/usr/bin/bash
+ 
+ set -euo pipefail
+ 
+diff --git a/scripts/release/promote/common_utils.sh b/scripts/release/promote/common_utils.sh
+index e50ccb1..60710e9 100644
 --- a/scripts/release/promote/common_utils.sh
 +++ b/scripts/release/promote/common_utils.sh
 @@ -1,4 +1,4 @@
@@ -348,6 +472,8 @@ Author: Mo Zhou
  
  exit_if_not_on_git_tag() {
      # Have an override for debugging purposes
+diff --git a/scripts/release/promote/conda_to_conda.sh b/scripts/release/promote/conda_to_conda.sh
+index c890f9c..ef0bb68 100755
 --- a/scripts/release/promote/conda_to_conda.sh
 +++ b/scripts/release/promote/conda_to_conda.sh
 @@ -1,4 +1,4 @@
@@ -356,6 +482,8 @@ Author: Mo Zhou
  
  set -eou pipefail
  
+diff --git a/scripts/release/promote/s3_to_s3.sh b/scripts/release/promote/s3_to_s3.sh
+index 21495ac..ed54826 100755
 --- a/scripts/release/promote/s3_to_s3.sh
 +++ b/scripts/release/promote/s3_to_s3.sh
 @@ -1,4 +1,4 @@
@@ -364,6 +492,8 @@ Author: Mo Zhou
  
  set -eou pipefail
  
+diff --git a/scripts/release/promote/wheel_to_pypi.sh b/scripts/release/promote/wheel_to_pypi.sh
+index a53db5b..4638263 100755
 --- a/scripts/release/promote/wheel_to_pypi.sh
 +++ b/scripts/release/promote/wheel_to_pypi.sh
 @@ -1,4 +1,4 @@
@@ -372,6 +502,8 @@ Author: Mo Zhou
  
  set -eou pipefail
  
+diff --git a/scripts/release/restore-backup.sh b/scripts/release/restore-backup.sh
+index 6cf7954..e7ceedb 100755
 --- a/scripts/release/restore-backup.sh
 +++ b/scripts/release/restore-backup.sh
 @@ -1,4 +1,4 @@
@@ -380,14 +512,8 @@ Author: Mo Zhou
  
  set -eou pipefail
  
---- a/test/distributed/nn/api/test_remote_module_spawn.py
-+++ b/test/distributed/nn/api/test_remote_module_spawn.py
-@@ -1,4 +1,4 @@
--#!/usr/bin/env python3
-+#!/usr/bin/python3
- import unittest
- 
- from torch.testing._internal.common_distributed import MultiProcessTestCase
+diff --git a/test/distributed/nn/jit/test_instantiator.py b/test/distributed/nn/jit/test_instantiator.py
+index 4019378..e68c41d 100644
 --- a/test/distributed/nn/jit/test_instantiator.py
 +++ b/test/distributed/nn/jit/test_instantiator.py
 @@ -1,4 +1,4 @@
@@ -396,110 +522,38 @@ Author: Mo Zhou
  import pathlib
  import unittest
  from typing import Tuple
---- a/test/distributed/rpc/faulty_agent/test_dist_autograd_spawn.py
-+++ b/test/distributed/rpc/faulty_agent/test_dist_autograd_spawn.py
-@@ -1,4 +1,4 @@
--#!/usr/bin/env python3
-+#!/usr/bin/python3
- import unittest
- 
- from torch.testing._internal.common_distributed import MultiProcessTestCase
---- a/test/distributed/rpc/faulty_agent/test_rpc_spawn.py
-+++ b/test/distributed/rpc/faulty_agent/test_rpc_spawn.py
-@@ -1,4 +1,4 @@
--#!/usr/bin/env python3
-+#!/usr/bin/python3
- import unittest
- 
- from torch.testing._internal.common_distributed import MultiProcessTestCase
---- a/test/distributed/rpc/jit/faulty_agent/test_rpc_spawn.py
-+++ b/test/distributed/rpc/jit/faulty_agent/test_rpc_spawn.py
-@@ -1,4 +1,4 @@
--#!/usr/bin/env python3
-+#!/usr/bin/python3
- import unittest
- 
- from torch.testing._internal.common_distributed import MultiProcessTestCase
---- a/test/distributed/rpc/jit/test_dist_autograd_spawn.py
-+++ b/test/distributed/rpc/jit/test_dist_autograd_spawn.py
-@@ -1,4 +1,4 @@
--#!/usr/bin/env python3
-+#!/usr/bin/python3
- import unittest
- 
- from torch.testing._internal.common_distributed import MultiProcessTestCase
---- a/test/distributed/rpc/jit/test_rpc_spawn.py
-+++ b/test/distributed/rpc/jit/test_rpc_spawn.py
-@@ -1,4 +1,4 @@
--#!/usr/bin/env python3
-+#!/usr/bin/python3
- import unittest
- 
- from torch.testing._internal.common_distributed import MultiProcessTestCase
---- a/test/distributed/rpc/tensorpipe/test_ddp_under_dist_autograd.py
-+++ b/test/distributed/rpc/tensorpipe/test_ddp_under_dist_autograd.py
-@@ -1,4 +1,4 @@
--#!/usr/bin/env python3
-+#!/usr/bin/python3
- import unittest
- 
- from torch.testing._internal.common_utils import TEST_WITH_ASAN, run_tests
---- a/test/distributed/rpc/tensorpipe/test_dist_autograd_spawn.py
-+++ b/test/distributed/rpc/tensorpipe/test_dist_autograd_spawn.py
-@@ -1,4 +1,4 @@
--#!/usr/bin/env python3
-+#!/usr/bin/python3
- import unittest
- 
- from torch.testing._internal.common_distributed import MultiProcessTestCase
---- a/test/distributed/rpc/tensorpipe/test_dist_optimizer_spawn.py
-+++ b/test/distributed/rpc/tensorpipe/test_dist_optimizer_spawn.py
-@@ -1,4 +1,4 @@
--#!/usr/bin/env python3
-+#!/usr/bin/python3
- from __future__ import absolute_import, division, print_function, unicode_literals
- 
- from torch.testing._internal.common_distributed import MultiProcessTestCase
---- a/test/distributed/rpc/tensorpipe/test_rpc_spawn.py
-+++ b/test/distributed/rpc/tensorpipe/test_rpc_spawn.py
-@@ -1,4 +1,4 @@
--#!/usr/bin/env python3
-+#!/usr/bin/python3
- import unittest
- 
- from torch.testing._internal.common_distributed import MultiProcessTestCase
---- a/test/distributed/rpc/test_dist_autograd_spawn.py
-+++ b/test/distributed/rpc/test_dist_autograd_spawn.py
-@@ -1,4 +1,4 @@
--#!/usr/bin/env python3
-+#!/usr/bin/python3
- import unittest
- 
- from torch.testing._internal.common_distributed import MultiProcessTestCase
---- a/test/distributed/rpc/test_dist_optimizer_spawn.py
-+++ b/test/distributed/rpc/test_dist_optimizer_spawn.py
-@@ -1,4 +1,4 @@
--#!/usr/bin/env python3
-+#!/usr/bin/python3
- from __future__ import absolute_import, division, print_function, unicode_literals
- 
- from torch.testing._internal.distributed.rpc.dist_optimizer_test import DistOptimizerTest
---- a/test/distributed/rpc/test_rpc_spawn.py
-+++ b/test/distributed/rpc/test_rpc_spawn.py
-@@ -1,4 +1,4 @@
--#!/usr/bin/env python3
-+#!/usr/bin/python3
- import unittest
- 
- from torch.testing._internal.common_distributed import MultiProcessTestCase
---- a/test/distributed/test_ddp_under_dist_autograd.py
-+++ b/test/distributed/test_ddp_under_dist_autograd.py
+diff --git a/test/distributed/rpc/test_faulty_agent.py b/test/distributed/rpc/test_faulty_agent.py
+index f060cda..ecd57df 100644
+--- a/test/distributed/rpc/test_faulty_agent.py
++++ b/test/distributed/rpc/test_faulty_agent.py
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python3
 +#!/usr/bin/python3
  
- from torch.testing._internal.distributed import ddp_under_dist_autograd_test
- from torch.testing._internal.common_utils import (
+ from torch.testing._internal.common_utils import run_tests
+ from torch.testing._internal.distributed.rpc.faulty_rpc_agent_test_fixture import (
+diff --git a/test/distributed/rpc/test_process_group_agent.py b/test/distributed/rpc/test_process_group_agent.py
+index 63e69c5..8ef039b 100644
+--- a/test/distributed/rpc/test_process_group_agent.py
++++ b/test/distributed/rpc/test_process_group_agent.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/python3
+ 
+ from torch.testing._internal.common_utils import run_tests
+ from torch.testing._internal.distributed.rpc.process_group_agent_test_fixture import (
+diff --git a/test/distributed/rpc/test_tensorpipe_agent.py b/test/distributed/rpc/test_tensorpipe_agent.py
+index 3d709f5..8a27f68 100644
+--- a/test/distributed/rpc/test_tensorpipe_agent.py
++++ b/test/distributed/rpc/test_tensorpipe_agent.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/python3
+ 
+ from torch.testing._internal.common_utils import run_tests
+ from torch.testing._internal.distributed.rpc.tensorpipe_rpc_agent_test_fixture import (
+diff --git a/test/print_test_stats.py b/test/print_test_stats.py
+index 339f680..d8fd95f 100755
 --- a/test/print_test_stats.py
 +++ b/test/print_test_stats.py
 @@ -1,4 +1,4 @@
@@ -508,14 +562,18 @@ Author: Mo Zhou
  # -*- coding: utf-8 -*-
  # Read and print test results statistics
  from xml.dom import minidom
+diff --git a/test/run_test.py b/test/run_test.py
+index 4309e65..208eeb2 100755
 --- a/test/run_test.py
 +++ b/test/run_test.py
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python
 +#!/usr/bin/python
  
- from __future__ import print_function
- 
+ import argparse
+ from datetime import datetime
+diff --git a/test/scripts/run_cuda_memcheck.py b/test/scripts/run_cuda_memcheck.py
+index 2541e4b..4dc031f 100755
 --- a/test/scripts/run_cuda_memcheck.py
 +++ b/test/scripts/run_cuda_memcheck.py
 @@ -1,4 +1,4 @@
@@ -524,6 +582,18 @@ Author: Mo Zhou
  
  """This script runs cuda-memcheck on the specified unit test. Each test case
  is run in its isolated process with a timeout so that:
+diff --git a/test/test_bundled_images.py b/test/test_bundled_images.py
+index 4199456..275a3d3 100644
+--- a/test/test_bundled_images.py
++++ b/test/test_bundled_images.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/python3
+ import torch
+ import torch.utils.bundled_inputs
+ import io
+diff --git a/test/test_bundled_inputs.py b/test/test_bundled_inputs.py
+index f57407c..6dd85b5 100644
 --- a/test/test_bundled_inputs.py
 +++ b/test/test_bundled_inputs.py
 @@ -1,4 +1,4 @@
@@ -532,14 +602,18 @@ Author: Mo Zhou
  import io
  import torch
  import torch.utils.bundled_inputs
+diff --git a/tools/amd_build/build_amd.py b/tools/amd_build/build_amd.py
+index 026293a..be1d3c2 100755
 --- a/tools/amd_build/build_amd.py
 +++ b/tools/amd_build/build_amd.py
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python
 +#!/usr/bin/python
  
- from __future__ import absolute_import, division, print_function
+ 
  import os
+diff --git a/tools/clang_format_all.py b/tools/clang_format_all.py
+index 710a21e..e4f31d4 100755
 --- a/tools/clang_format_all.py
 +++ b/tools/clang_format_all.py
 @@ -1,4 +1,4 @@
@@ -548,6 +622,8 @@ Author: Mo Zhou
  """
  A script that runs clang-format on all C/C++ files in CLANG_FORMAT_WHITELIST. There is
  also a diff mode which simply checks if clang-format would make any changes, which is useful for
+diff --git a/tools/clang_tidy.py b/tools/clang_tidy.py
+index f8e8e61..f9c3e4c 100755
 --- a/tools/clang_tidy.py
 +++ b/tools/clang_tidy.py
 @@ -1,4 +1,4 @@
@@ -556,6 +632,18 @@ Author: Mo Zhou
  """
  A driver script to run clang-tidy on changes detected via git.
  
+diff --git a/tools/code_coverage/oss_coverage.py b/tools/code_coverage/oss_coverage.py
+index 13bb6c8..5ccf951 100644
+--- a/tools/code_coverage/oss_coverage.py
++++ b/tools/code_coverage/oss_coverage.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python
+ import time
+ 
+ from package.oss.cov_json import get_json_report
+diff --git a/tools/flake8_hook.py b/tools/flake8_hook.py
+index d1c3774..98afedc 100755
 --- a/tools/flake8_hook.py
 +++ b/tools/flake8_hook.py
 @@ -1,4 +1,4 @@
@@ -564,6 +652,18 @@ Author: Mo Zhou
  
  import sys
  
+diff --git a/tools/nightly.py b/tools/nightly.py
+index a6dc185..7d48303 100755
+--- a/tools/nightly.py
++++ b/tools/nightly.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/python3
+ # Much of the logging code here was forked from https://github.com/ezyang/ghstack
+ # Copyright (c) Edward Z. Yang <ezyang@mit.edu>
+ """Checks out the nightly development version of PyTorch and installs pre-built
+diff --git a/torch/_appdirs.py b/torch/_appdirs.py
+index fc87e0a..0971a6c 100644
 --- a/torch/_appdirs.py
 +++ b/torch/_appdirs.py
 @@ -1,4 +1,4 @@
@@ -572,6 +672,8 @@ Author: Mo Zhou
  # -*- coding: utf-8 -*-
  # Copyright (c) 2005-2010 ActiveState Software Inc.
  # Copyright (c) 2013 Eddy Petrișor
+diff --git a/torch/distributed/rpc/_testing/faulty_agent_backend_registry.py b/torch/distributed/rpc/_testing/faulty_agent_backend_registry.py
+index 759b18b..88c8d38 100644
 --- a/torch/distributed/rpc/_testing/faulty_agent_backend_registry.py
 +++ b/torch/distributed/rpc/_testing/faulty_agent_backend_registry.py
 @@ -1,4 +1,4 @@
@@ -580,25 +682,41 @@ Author: Mo Zhou
  
  import torch.distributed as dist
  import torch.distributed.rpc as rpc
+diff --git a/torch/testing/_internal/distributed/ddp_under_dist_autograd_test.py b/torch/testing/_internal/distributed/ddp_under_dist_autograd_test.py
+index 305b0fc..2cf05a6 100644
 --- a/torch/testing/_internal/distributed/ddp_under_dist_autograd_test.py
 +++ b/torch/testing/_internal/distributed/ddp_under_dist_autograd_test.py
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python3
 +#!/usr/bin/python3
  
- from typing import NamedTuple
+ import contextlib
  import enum
+diff --git a/torch/testing/_internal/distributed/rpc_utils.py b/torch/testing/_internal/distributed/rpc_utils.py
+index a039947..e1778e4 100644
+--- a/torch/testing/_internal/distributed/rpc_utils.py
++++ b/torch/testing/_internal/distributed/rpc_utils.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/python3
+ import unittest
+ from enum import Flag, auto
+ from typing import Dict, List, Type
+diff --git a/torch/utils/bundled_inputs.py b/torch/utils/bundled_inputs.py
+index c5d6038..5727d9f 100644
 --- a/torch/utils/bundled_inputs.py
 +++ b/torch/utils/bundled_inputs.py
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python3
 +#!/usr/bin/python3
- from typing import Any, TypeVar, Optional, Tuple, List, NamedTuple
+ from typing import Any, TypeVar, Optional, Tuple, List, NamedTuple, Union
  import textwrap
  import torch
+diff --git a/torch/utils/data/dataloader.py b/torch/utils/data/dataloader.py
+index f784817..fab782a 100644
 --- a/torch/utils/data/dataloader.py
 +++ b/torch/utils/data/dataloader.py
-@@ -840,7 +840,7 @@
+@@ -933,7 +933,7 @@ class _MultiProcessingDataLoaderIter(_BaseDataLoaderIter):
  # this is rare and seems to be nondeterministic.
  #
  #
@@ -607,6 +725,8 @@ Author: Mo Zhou
  #   import sys
  #   import socket
  #   import os
+diff --git a/torch/utils/hipify/hipify_python.py b/torch/utils/hipify/hipify_python.py
+index 1ce4a94..a938edf 100755
 --- a/torch/utils/hipify/hipify_python.py
 +++ b/torch/utils/hipify/hipify_python.py
 @@ -1,4 +1,4 @@
@@ -615,6 +735,8 @@ Author: Mo Zhou
  """ The Python Hipify script.
  ##
  # Copyright (c) 2015-2016 Advanced Micro Devices, Inc. All rights reserved.
+diff --git a/torch/utils/show_pickle.py b/torch/utils/show_pickle.py
+index 0e2498d..dc6cef4 100644
 --- a/torch/utils/show_pickle.py
 +++ b/torch/utils/show_pickle.py
 @@ -1,4 +1,4 @@

@@ -1,8 +1,6 @@
-diff --git a/caffe2/CMakeLists.txt b/caffe2/CMakeLists.txt
-index 584d56e..39a761f 100644
 --- a/caffe2/CMakeLists.txt
 +++ b/caffe2/CMakeLists.txt
-@@ -87,16 +87,6 @@ endif()
+@@ -98,16 +98,6 @@
  # Note: the folders that are being commented out have not been properly
  # addressed yet.
  

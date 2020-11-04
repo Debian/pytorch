@@ -24,7 +24,7 @@
  
  FIND_PACKAGE(BLAS)
  FIND_PATH(IDEEP_INCLUDE_DIR ideep.hpp PATHS ${IDEEP_ROOT} PATH_SUFFIXES include)
-@@ -78,17 +80,14 @@
+@@ -76,17 +78,14 @@
    ENDIF()
  ENDIF()
  

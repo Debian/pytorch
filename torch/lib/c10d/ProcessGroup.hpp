@@ -11,6 +11,15 @@
 
 #include <c10d/Types.hpp>
 
+// *************************************************************************
+// PROCESS GROUP collective communication API IS BEING CHANGED BETWEEN
+// versions 1.7 and 1.8.
+// PLEASE DO NOT ADD ANY DEPENDENCIES.
+// SEE RFC: https://github.com/pytorch/pytorch/issues/39662
+// *************************************************************************
+
+constexpr auto kNoTimeout = std::chrono::milliseconds(0);
+
 namespace c10d {
 
 // ProcessGroup is a base class that captures collective and point to
@@ -35,6 +44,11 @@ namespace c10d {
 //
 class ProcessGroup {
  public:
+
+  // Please do not use ProcessGroup::Work API, it is going away, to be
+  // replaced by ivalue::Future.
+  // Python binding for this class might change, please do not assume
+  // this will be bound using pybind.
   class Work {
    public:
     virtual ~Work();
@@ -53,7 +67,7 @@ class ProcessGroup {
     virtual int sourceRank() const;
 
     // Returns result tensors, if applicable.
-    virtual std::vector<at::Tensor> result() const;
+    virtual std::vector<at::Tensor> result();
 
     // Ensures that operations on the output tensors that are invoked
     // after this function returns are correctly sequenced after the
@@ -83,12 +97,22 @@ class ProcessGroup {
     //   if (!success) { std::rethrow_exception(exception()); }
     //   return success;
     //
-    virtual bool wait();
+    virtual bool wait(std::chrono::milliseconds timeout = kNoTimeout);
 
     virtual void abort();
 
+    // Returns a Future object that will be associated with the completion of
+    // work. Only NCCL backend is currently supported.
+    virtual c10::intrusive_ptr<c10::ivalue::Future> getFuture();
+
    protected:
+    // Completes the work object and optionally sets the exception in a
+    // thread-safe manner. Notifies all waiting condition variables as well.
     void finish(std::exception_ptr exception = nullptr);
+
+    // Similar to finish, but throws an exception if one is already set or
+    // provided by the user.
+    void finishAndThrow(std::exception_ptr exception);
 
     mutable std::mutex mutex_;
     std::condition_variable cv_;

@@ -283,7 +283,8 @@ class ShapePropagator {
     bool changed = false;
     for (size_t i = 0; i < lhs.size(); ++i) {
       auto old_output_type = outputs[i]->type();
-      auto new_type = unifyTypes(lhs[i]->type(), rhs[i]->type());
+      auto new_type =
+          unifyTypes(lhs[i]->type(), rhs[i]->type(), /*default_to_any=*/true);
       AT_ASSERT(new_type);
       outputs[i]->setType(*new_type);
       if (*old_output_type != *outputs[i]->type())
@@ -414,7 +415,7 @@ class ShapePropagator {
     // is to uncover any mistakes we could make when editing this code,
     // and eventually it shouldn't matter, because this phase should be
     // preceded by schema checking.
-    op(stack);
+    op(&stack);
 
     AT_ASSERT(stack.size() == node->outputs().size());
     for (size_t i = 0; i < stack.size(); ++i) {
@@ -811,13 +812,14 @@ class ShapePropagator {
             "aten::neg(Tensor self) -> Tensor",
             "aten::t(Tensor self) -> Tensor",
             "aten::sigmoid(Tensor self) -> Tensor",
+            "aten::logit(Tensor self, float? eps=None) -> Tensor",
             "aten::tanh(Tensor self) -> Tensor",
             "aten::relu(Tensor self) -> Tensor",
             "aten::asin(Tensor self) -> Tensor",
             "aten::atan(Tensor self) -> Tensor",
             "aten::ceil(Tensor self) -> Tensor",
             "aten::clone(Tensor self, *, MemoryFormat? memory_format=None) -> Tensor",
-            "aten::contiguous(Tensor self, *, MemoryFormat memory_format=contiguous_format) -> Tensor",
+            "aten::contiguous(Tensor(a) self, *, MemoryFormat memory_format=contiguous_format) -> Tensor(a)",
             "aten::bernoulli(Tensor self, *, Generator? generator) -> Tensor",
             "aten::celu(Tensor self, Scalar alpha) -> Tensor",
             "aten::clamp(Tensor self, Scalar? min, Scalar? max) -> Tensor",
@@ -855,7 +857,7 @@ class ShapePropagator {
             "aten::normal(float mean, Tensor std, *, Generator? generator) -> Tensor",
             "aten::normal(Tensor mean, float std, *, Generator? generator) -> Tensor",
             "aten::permute(Tensor self, int[] dims) -> Tensor",
-            "aten::pin_memory(Tensor self) -> Tensor",
+            "aten::pin_memory(Tensor(a) self) -> Tensor(a)",
             "aten::pinverse(Tensor self, float rcond) -> Tensor",
             "aten::reciprocal(Tensor self) -> Tensor",
             "aten::relu(Tensor self) -> Tensor",
@@ -1158,7 +1160,8 @@ class ShapePropagator {
             "aten::conv_transpose2d(Tensor input, Tensor weight, Tensor? bias, int[] stride, int[] padding, int[] output_padding, int groups, int[] dilation) -> Tensor",
             "aten::conv_transpose3d(Tensor input, Tensor weight, Tensor? bias, int[] stride, int[] padding, int[] output_padding, int groups, int[] dilation) -> Tensor",
             "aten::convolution(Tensor input, Tensor weight, Tensor? bias, int[] stride, int[] padding, int[] dilation, bool transposed, int[] output_padding, int groups) -> Tensor",
-            "aten::_convolution(Tensor input, Tensor weight, Tensor? bias, int[] stride, int[] padding, int[] dilation, bool transposed, int[] output_padding, int groups, bool benchmark, bool deterministic, bool cudnn_enabled) -> Tensor",
+            "aten::_convolution(Tensor input, Tensor weight, Tensor? bias, int[] stride, int[] padding, int[] dilation, bool transposed, int[] output_padding, int groups, bool benchmark, bool deterministic, bool cudnn_enabled) -> Tensor", // deprecated _convolution
+            "aten::_convolution(Tensor input, Tensor weight, Tensor? bias, int[] stride, int[] padding, int[] dilation, bool transposed, int[] output_padding, int groups, bool benchmark, bool deterministic, bool cudnn_enabled, bool allow_tf32) -> Tensor",
             "aten::adaptive_avg_pool1d(Tensor self, int[] output_size) -> Tensor",
             "aten::adaptive_avg_pool2d(Tensor self, int[] output_size) -> Tensor",
             "aten::adaptive_avg_pool3d(Tensor self, int[] output_size) -> Tensor",
@@ -1611,7 +1614,7 @@ class ShapePropagator {
         node->output()->setType(type->withDim(1));
         return true;
       }
-    } else if (node->matches("aten::detach(Tensor self) -> Tensor")) {
+    } else if (node->matches("aten::detach(Tensor(a) self) -> Tensor(a)")) {
       if (auto type = input_type(0)) {
         node->output()->setType(type->withRequiresGrad(false));
         return true;
@@ -1738,11 +1741,12 @@ class ShapePropagator {
         return tensor_types.at(0)->withScalarType(
             tensor_types.at(1)->scalarType());
       } else if (
-          node->matches("aten::view_as(Tensor self, Tensor other) -> Tensor") ||
           node->matches(
-              "aten::expand_as(Tensor self, Tensor other) -> Tensor") ||
+              "aten::view_as(Tensor(a) self, Tensor other) -> Tensor(a)") ||
           node->matches(
-              "aten::reshape_as(Tensor self, Tensor other) -> Tensor")) {
+              "aten::expand_as(Tensor(a) self, Tensor other) -> Tensor(a)") ||
+          node->matches(
+              "aten::reshape_as(Tensor(a) self, Tensor other) -> Tensor(a)")) {
         return tensor_types.at(0)->withDim(tensor_types.at(1)->dim());
       } else if (
           node->matches("aten::view(Tensor self, int[] size) -> Tensor") ||
@@ -1787,8 +1791,9 @@ class ShapePropagator {
           }
         }
         return nullptr;
-      } else if (node->matches(
-                     "aten::reshape(Tensor self, int[] shape) -> Tensor")) {
+      } else if (
+          node->matches(
+              "aten::reshape(Tensor(a) self, int[] shape) -> Tensor(a)")) {
         return reshape_prop(node, attr::shape, tensor_types);
       } else if (node->matches(
                      "aten::repeat(Tensor self, int[] repeats) -> Tensor")) {
@@ -1962,6 +1967,8 @@ class ShapePropagator {
       broadcastBinary(node, tensor_types, 0, 1);
       return PropagateShapeOnNodeByRunningIt(node);
     } else if (
+        node->matches(
+            "aten::logit(Tensor self, float? eps = None) -> Tensor") ||
         node->matches("aten::neg(Tensor self) -> Tensor") ||
         node->matches("aten::sigmoid(Tensor self) -> Tensor") ||
         node->matches("aten::tanh(Tensor self) -> Tensor")) {

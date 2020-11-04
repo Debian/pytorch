@@ -18,6 +18,7 @@ from torch.serialization import check_module_version_greater_or_equal
 
 from torch.testing._internal.common_utils import TestCase, IS_WINDOWS, \
     TEST_DILL, run_tests, download_file, BytesIOContext
+from torch.testing._internal.common_device_type import instantiate_device_type_tests
 
 # These tests were all copied from `test/test_torch.py` at some point, so see
 # the actual blame, see this revision
@@ -274,6 +275,45 @@ class SerializationMixin(object):
             b = torch.load(f)
         self.assertTrue(torch.equal(a, b))
         self.assertEqual(i, j)
+
+    @unittest.skipIf(IS_WINDOWS, "NamedTemporaryFile on windows")
+    def test_serialization_sparse(self):
+        x = torch.zeros(3, 3)
+        x[1][1] = 1
+        x = x.to_sparse()
+        with tempfile.NamedTemporaryFile() as f:
+            torch.save({"tensor": x}, f.name)
+            y = torch.load(f.name)
+            self.assertEqual(x, y["tensor"])
+
+    @unittest.skipIf(IS_WINDOWS, "NamedTemporaryFile on windows")
+    def test_serialization_sparse_invalid(self):
+        x = torch.zeros(3, 3)
+        x[1][1] = 1
+        x = x.to_sparse()
+
+        class TensorSerializationSpoofer(object):
+            def __init__(self, tensor):
+                self.tensor = tensor
+
+            def __reduce_ex__(self, proto):
+                invalid_indices = self.tensor._indices().clone()
+                invalid_indices[0][0] = 3
+                return (
+                    torch._utils._rebuild_sparse_tensor,
+                    (
+                        self.tensor.layout,
+                        (
+                            invalid_indices,
+                            self.tensor._values(),
+                            self.tensor.size())))
+
+        with tempfile.NamedTemporaryFile() as f:
+            torch.save({"spoofed": TensorSerializationSpoofer(x)}, f.name)
+            with self.assertRaisesRegex(
+                    RuntimeError,
+                    "size is inconsistent with indices"):
+                y = torch.load(f.name)
 
     def test_serialize_device(self):
         device_str = ['cpu', 'cpu:0', 'cuda', 'cuda:0']
@@ -544,17 +584,22 @@ class serialization_method(object):
     def __exit__(self, *args, **kwargs):
         torch.save = self.torch_save
 
-class TestBothSerialization(TestCase, SerializationMixin):
-    def test_serialization_new_format_old_format_compat(self):
-        x = [torch.ones(200, 200) for i in range(30)]
-        torch.save(x, "big_tensor.zip", _use_new_zipfile_serialization=True)
-        x_new_load = torch.load("big_tensor.zip")
-        self.assertEqual(x, x_new_load)
+class TestBothSerialization(TestCase):
+    @unittest.skipIf(IS_WINDOWS, "NamedTemporaryFile on windows")
+    def test_serialization_new_format_old_format_compat(self, device):
+        x = [torch.ones(200, 200, device=device) for i in range(30)]
 
-        torch.save(x, "big_tensor.zip", _use_new_zipfile_serialization=False)
-        x_old_load = torch.load("big_tensor.zip")
-        self.assertEqual(x_old_load, x_new_load)
-        os.remove("big_tensor.zip")
+        def test(filename):
+            torch.save(x, filename, _use_new_zipfile_serialization=True)
+            x_new_load = torch.load(filename)
+            self.assertEqual(x, x_new_load)
+
+            torch.save(x, filename, _use_new_zipfile_serialization=False)
+            x_old_load = torch.load(filename)
+            self.assertEqual(x_old_load, x_new_load)
+
+        with tempfile.NamedTemporaryFile() as f:
+            test(f.name)
 
 
 class TestOldSerialization(TestCase, SerializationMixin):
@@ -703,6 +748,7 @@ class TestSerialization(TestCase, SerializationMixin):
         with serialization_method(use_zip=True):
             return super(TestSerialization, self).run(*args, **kwargs)
 
+instantiate_device_type_tests(TestBothSerialization, globals())
 
 if __name__ == '__main__':
     run_tests()

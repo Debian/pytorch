@@ -138,6 +138,7 @@ def full_0_4(size:List[int], fill_value:number, *, dtype:Optional[int]=None,
              pin_memory:Optional[bool]=None) -> Tensor:
   if dtype is None:
     fill_value = float(fill_value)
+
   return torch.full(size, fill_value, dtype=dtype, layout=layout, device=device, pin_memory=pin_memory)
 )SCRIPT";
 

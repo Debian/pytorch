@@ -12,7 +12,6 @@ export PATCH = 0
 #export CXX=/usr/lib/ccache/g++
 
 # configurations
-export PYTORCH_BUILD_VERSION = 1.7.0_Debian
 export BLAS = OpenBLAS
 export CFLAGS = $(shell dpkg-buildflags --get CPPFLAGS) $(shell dpkg-buildflags --get CFLAGS) -gsplit-dwarf
 export CXXFLAGS = $(shell dpkg-buildflags --get CPPFLAGS) $(shell dpkg-buildflags --get CXXFLAGS) -gsplit-dwarf

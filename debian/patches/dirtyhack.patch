@@ -113,11 +113,10 @@ Author: Mo Zhou
  
    add_definitions(-DONNX_NAMESPACE=${ONNX_NAMESPACE})
    if(NOT USE_SYSTEM_ONNX)
-@@ -1730,16 +1735,3 @@
- #
+@@ -1731,15 +1736,4 @@
  # End ATen checks
  #
--
+ 
 -add_subdirectory(${PROJECT_SOURCE_DIR}/third_party/fmt)
 -
 -# Disable compiler feature checks for `fmt`.
@@ -130,6 +129,7 @@ Author: Mo Zhou
 -set_target_properties(fmt-header-only PROPERTIES INTERFACE_COMPILE_FEATURES "")
 -
 -list(APPEND Caffe2_DEPENDENCY_LIBS fmt::fmt-header-only)
++find_package(fmt REQUIRED)
 --- a/aten/src/ATen/native/quantized/cpu/qnnpack/CMakeLists.txt
 +++ b/aten/src/ATen/native/quantized/cpu/qnnpack/CMakeLists.txt
 @@ -298,7 +298,7 @@
@@ -192,6 +192,24 @@ Author: Mo Zhou
  
 --- a/caffe2/CMakeLists.txt
 +++ b/caffe2/CMakeLists.txt
+@@ -298,7 +298,7 @@
+     # up being empty. Downstream targets should also add a #ifdef guard.
+     if(NOT WIN32)
+       add_library(process_group_agent "${TORCH_SRC_DIR}/csrc/distributed/rpc/process_group_agent.cpp" "${TORCH_SRC_DIR}/csrc/distributed/rpc/process_group_agent.h")
+-      target_link_libraries(process_group_agent PRIVATE torch c10d fmt::fmt-header-only)
++	  target_link_libraries(process_group_agent PRIVATE torch c10d)
+       add_dependencies(process_group_agent torch c10d)
+ 
+       add_library(tensorpipe_agent
+@@ -307,7 +307,7 @@
+         "${TORCH_SRC_DIR}/csrc/distributed/rpc/tensorpipe_utils.cpp"
+         "${TORCH_SRC_DIR}/csrc/distributed/rpc/tensorpipe_utils.h"
+         )
+-      target_link_libraries(tensorpipe_agent PRIVATE torch c10d tensorpipe fmt::fmt-header-only)
++      target_link_libraries(tensorpipe_agent PRIVATE torch c10d tensorpipe)
+       add_dependencies(tensorpipe_agent torch c10d)
+       if(USE_TENSORPIPE)
+         target_compile_definitions(tensorpipe_agent PUBLIC USE_TENSORPIPE)
 @@ -701,6 +701,12 @@
        VERSION ${TORCH_VERSION} SOVERSION ${TORCH_SOVERSION})
  endif()

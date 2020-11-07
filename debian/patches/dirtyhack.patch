@@ -223,3 +223,14 @@ Author: Mo Zhou
  
  if(USE_LLVM AND LLVM_FOUND)
    llvm_map_components_to_libnames(LLVM_LINK_LIBS
+@@ -769,10 +775,6 @@
+ endif()
+ 
+ 
+-if(NOT MSVC AND USE_XNNPACK)
+-  TARGET_LINK_LIBRARIES(torch_cpu PRIVATE fxdiv)
+-endif()
+-
+ # ==========================================================
+ # formerly-libtorch flags
+ # ==========================================================

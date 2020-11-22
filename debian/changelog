@@ -1,15 +1,20 @@
 pytorch (1.7.0-1) UNRELEASED; urgency=medium
 
   * New upstream version 1.7.0
-  * d/rules: Explicitly disable python 3.9 for pybuild.
   * Add missing python deps for the autopkgtest :: python cases.
-  * Mark libideep-dev/libdnnl-dev as amd64,arm64,ppc64el arch-specific.
+  * Mark libideep-dev/libdnnl-dev & USE_MKLDNN as amd64,arm64,ppc64el-specific.
   * Patch cmake to strip third-party directory includes/checks.
   * Turn off USE_PYTORCH_QNNPACK on non-amd64 architectures.
   * Update embedded foxi to snapshot 4aba696ec8f31794fd42880346dc586486205e0a.
-  * d/rules: Also export PYTORCH_BUILD_VERSION.
+  * Rebase and refresh existing patches.
+  * Rename binary packages following the SOVERSION bump.
+  * Update dirtyhack.patch and add new B-D libnop-dev.
+  * Refresh symbols control file for amd64.
+  * Autopkgtest: refresh C++ unit test list.
+  * Autopkgtest: refresh the list of python unit tests.
+  * Refresh d/copyright for the new upstream release.
 
- -- Mo Zhou <lumin@debian.org>  Wed, 04 Nov 2020 14:27:29 +0800
+ -- Mo Zhou <lumin@debian.org>  Sun, 22 Nov 2020 14:27:52 +0800
 
 pytorch (1.6.0-5) unstable; urgency=medium
 

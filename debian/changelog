@@ -1,4 +1,4 @@
-pytorch (1.7.0-1) UNRELEASED; urgency=medium
+pytorch (1.7.0-1~exp1) experimental; urgency=medium
 
   * New upstream version 1.7.0
   * Add missing python deps for the autopkgtest :: python cases.
@@ -14,7 +14,7 @@ pytorch (1.7.0-1) UNRELEASED; urgency=medium
   * Autopkgtest: refresh the list of python unit tests.
   * Refresh d/copyright for the new upstream release.
 
- -- Mo Zhou <lumin@debian.org>  Sun, 22 Nov 2020 14:27:52 +0800
+ -- Mo Zhou <lumin@debian.org>  Sun, 22 Nov 2020 14:30:28 +0800
 
 pytorch (1.6.0-5) unstable; urgency=medium
 

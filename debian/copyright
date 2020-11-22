@@ -127,7 +127,10 @@ Comment: https://github.com/dmlc/dlpack/blob/master/LICENSE
  DLPack contributors partly overlap with Pytorch contributors
 
 Files: aten/src/ATen/native/Math.h
+       aten/src/ATen/native/cuda/Math.cuh
 Copyright: 2014, Indiana University
+           2018, Steven Moshier
+           1984, 1987, 1992, 2000, Stephen L. Moshier
 License: BSD-3-Clause
 
 Files: aten/src/ATen/native/Distributions.h
@@ -135,15 +138,17 @@ Files: aten/src/ATen/native/Distributions.h
 Copyright: 2005, Robert Kern (robert.kern@gmail.com)
  Copyright holders for Files: *
 License: BSD-3-Clause
-Comment: these files includes MIT(Expat)-licensed function by Robert Kern
-
-Files: aten/src/ATen/native/cuda/Math.cuh
-Copyright: 1984, 1987, 1992, 2000, Stephen L. Moshier
-License: BSD-3-Clause
+Comment: these files includes BSD-3-Clause licensed function by Robert Kern.
+ Specifically, this function is derived from the implementation of the digamma
+ function in the Cephes Math Library.
 
 Files: aten/src/ATen/core/MT19937RNGEngine.h
 Copyright: 1997-2002, Makoto Matsumoto and Takuji Nishimura,
 License: BSD-3-Clause
+
+Files: aten/src/ATen/native/vulkan/api/vk_mem_alloc.h
+Copyright: 2017-2020 Advanced Micro Devices, Inc.
+License: Expat
 
 ## benchmarks/ ( nothing special
 
@@ -354,6 +359,11 @@ Copyright: Copyright (C) 2018 Marat Dukhan
  Copyright (c) 2017 Georgia Institute of Technology
 License: BSD-2-Clause
 
+Files: third_party/valgrind-headers/*
+Copyright: 2003-2017 Josef Weidendorfer.
+           2000-2017 Julian Seward.
+License: GPL-2.0
+
 ## tools/ (nothing special
 
 ## torch/
@@ -542,6 +552,22 @@ License: BSL-1.0
  FOR ANY DAMAGES OR OTHER LIABILITY, WHETHER IN CONTRACT, TORT OR OTHERWISE,
  ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
  DEALINGS IN THE SOFTWARE.
+
+License: GPL-2.0
+ This package is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; version 2 of the License.
+ .
+ This package is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ .
+ You should have received a copy of the GNU General Public License
+ along with this program. If not, see <http://www.gnu.org/licenses/>
+ .
+ On Debian systems, the complete text of the GNU General
+ Public License version 2 can be found in "/usr/share/common-licenses/GPL-2".
 
 License: GPL-2.0+
  This package is free software; you can redistribute it and/or modify

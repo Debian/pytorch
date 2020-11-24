@@ -43,7 +43,11 @@ export USE_ROCM = OFF
 export USE_SYSTEM_LIBS = ON
 export USE_SYSTEM_NCCL = OFF
 export USE_TENSORPIPE = ON
+ifneq (,$(filter $(DEB_HOST_ARCH),amd64 arm64))
 export USE_XNNPACK = ON
+else
+export USE_XNNPACK = OFF
+endif
 export USE_ZMQ = ON
 export USE_ZSTD = ON
 

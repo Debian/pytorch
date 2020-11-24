@@ -90,6 +90,15 @@ Author: Mo Zhou
  
   # UBSAN triggers when compiling protobuf, so we need to disable it.
  set(UBSAN_FLAG "-fsanitize=undefined")
+@@ -507,7 +507,7 @@
+ 
+   include_directories(SYSTEM ${XNNPACK_INCLUDE_DIR})
+   list(APPEND Caffe2_DEPENDENCY_LIBS XNNPACK)
+-elseif(NOT TARGET XNNPACK AND USE_SYSTEM_XNNPACK)
++elseif(USE_XNNPACK AND NOT TARGET XNNPACK AND USE_SYSTEM_XNNPACK)
+   add_library(XNNPACK SHARED IMPORTED)
+   find_library(XNNPACK_LIBRARY XNNPACK)
+   set_property(TARGET XNNPACK PROPERTY IMPORTED_LOCATION "${XNNPACK_LIBRARY}")
 @@ -1304,7 +1304,12 @@
    endif()
  endif()

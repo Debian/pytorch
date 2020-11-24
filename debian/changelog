@@ -1,3 +1,12 @@
+pytorch (1.7.0-1) unstable; urgency=medium
+
+  * Make B-D:libxnnpack-dev amd64 and arm64 arch-specific.
+  * Make USE_DISTRIBUTED and the corresponding Build-Depends specific
+    to the 64-bit architectures: amd64 arm64 ppc64el mips64el s390x.
+  * Upload to unstable.
+
+ -- Mo Zhou <lumin@debian.org>  Tue, 24 Nov 2020 12:59:42 +0800
+
 pytorch (1.7.0-1~exp1) experimental; urgency=medium
 
   * New upstream version 1.7.0

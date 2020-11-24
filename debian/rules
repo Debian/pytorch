@@ -19,7 +19,11 @@ export ONNX_NAMESPACE = onnx
 export REL_WITH_DEB_INFO = ON
 export USE_CUDA = OFF
 export USE_CUDNN = OFF
+ifneq (,$(filter $(DEB_HOST_ARCH),amd64 arm64 ppc64el mips64el s390x))
 export USE_DISTRIBUTED = ON
+else
+export USE_DISTRIBUTED = OFF
+endif
 export USE_FBGEMM = OFF
 export USE_FFMPEG = ON
 export USE_GFLAGS= ON

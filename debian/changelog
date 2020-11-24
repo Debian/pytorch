@@ -1,3 +1,11 @@
+pytorch (1.7.0-2) unstable; urgency=medium
+
+  * Patch cmake to fix ppc64el and s390x FTBFS, really disabling XNNPACK.
+  * d/rules: Only enable QNNPACK on amd64.
+  * Refresh symbols control file for amd64 to fix amd64 FTBFS.
+
+ -- Mo Zhou <lumin@debian.org>  Tue, 24 Nov 2020 20:10:34 +0800
+
 pytorch (1.7.0-1) unstable; urgency=medium
 
   * Make B-D:libxnnpack-dev amd64 and arm64 arch-specific.

@@ -37,6 +37,8 @@ else
 export USE_MKLDNN = OFF
 endif
 ifneq (,$(filter $(DEB_HOST_ARCH),amd64))
+export USE_PYTORCH_QNNPACK = ON
+else
 export USE_PYTORCH_QNNPACK = OFF
 endif
 export USE_NNPACK = OFF

@@ -66,6 +66,7 @@ Depends: libtorch1.7 (= ${binary:Version}),
          ${shlibs:Depends}
 # PyTorch's JIT (C++ Extension) functionality needs development files/tools.
 Recommends: libtorch-dev (= ${binary:Version}), build-essential, ninja-build,
+ pybind11-dev,
 Suggests: python3-hypothesis, python3-pytest
 Provides: ${python3:Provides}
 Description: Tensors and Dynamic neural networks in Python with strong GPU acceleration

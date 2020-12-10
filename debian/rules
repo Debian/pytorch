@@ -31,6 +31,7 @@ export USE_GLOG = ON
 export USE_LEVELDB = ON
 export USE_LMDB = ON
 export USE_MIOPEN = OFF
+export USE_MPI = OFF
 ifneq (,$(filter $(DEB_HOST_ARCH),amd64 arm64 ppc64el))
 export USE_MKLDNN = ON
 else

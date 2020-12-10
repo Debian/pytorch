@@ -12410,6 +12410,14 @@ libtorch_cpu.so.1.7 libtorch1.7 #MINVER#
  _ZN6google8protobuf8internal20RepeatedPtrFieldBase7DestroyINS0_16RepeatedPtrFieldIN6caffe29StringMapEE11TypeHandlerEEEvv@Base 1.6.0
  _ZN6google8protobuf8internal21arena_destruct_objectINS1_16InternalMetadata9ContainerINS0_15UnknownFieldSetEEEEEvPv@Base 1.6.0
  _ZN6google8protobuf8internal7memswapILi28EEENSt9enable_ifIXaageT_stoltT_lsLj1ELi31EEvE4typeEPcS6_@Base 1.6.0
+ _ZN7qnnpack11PackBMatrixC1EmmPKhPKfS2_PKi@Base 1.7.0
+ _ZN7qnnpack11PackBMatrixC2EmmPKhPKfS2_PKi@Base 1.7.0
+ _ZN7qnnpack11qnnpackConvERKNS_12conv_param_tEP21pytorch_qnnp_operatorPvmmmhPKhS7_PKfhhhPhP11pthreadpool@Base 1.7.0
+ _ZN7qnnpack13qnnpackDeConvERKNS_12conv_param_tEP21pytorch_qnnp_operatorPvmmmhPKhS7_PKfhhhPhP11pthreadpool@Base 1.7.0
+ _ZN7qnnpack13qnnpackLinearEmmmhPKhPKfhhhS1_mPvPhmP11pthreadpool@Base 1.7.0
+ _ZN7qnnpack18PrePackConvWeightsC1ERKNS_12conv_param_tEPKhS5_PKi@Base 1.7.0
+ _ZN7qnnpack18PrePackConvWeightsC2ERKNS_12conv_param_tEPKhS5_PKi@Base 1.7.0
+ _ZN7qnnpack20qnnpackLinearDynamicEmmmhPKhPKfS1_mPvS3_PfmP11pthreadpool@Base 1.7.0
  _ZN9__gnu_cxx12__to_xstringINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEcEET_PFiPT0_mPKS8_P13__va_list_tagEmSB_z@Base 1.6.0
  _ZN9__gnu_cxx6__stoaIlicJiEEET0_PFT_PKT1_PPS3_DpT2_EPKcS5_PmS9_@Base 1.6.0
  _ZN9__gnu_cxx6__stoaIxxcJiEEET0_PFT_PKT1_PPS3_DpT2_EPKcS5_PmS9_@Base 1.6.0
@@ -14670,6 +14678,7 @@ libtorch_cpu.so.1.7 libtorch1.7 #MINVER#
  _ZNSt6vectorIN3c106StrideESaIS1_EE17_M_realloc_insertIJRmRbRKlEEEvN9__gnu_cxx17__normal_iteratorIPS1_S3_EEDpOT_@Base 1.6.0
  _ZNSt6vectorIN3c106SymbolESaIS1_EE17_M_realloc_insertIJRKS1_EEEvN9__gnu_cxx17__normal_iteratorIPS1_S3_EEDpOT_@Base 1.6.0
  _ZNSt6vectorIN3c106SymbolESaIS1_EE17_M_realloc_insertIJS1_EEEvN9__gnu_cxx17__normal_iteratorIPS1_S3_EEDpOT_@Base 1.6.0
+ _ZNSt6vectorIN3c107QEngineESaIS1_EE17_M_realloc_insertIJRKS1_EEEvN9__gnu_cxx17__normal_iteratorIPS1_S3_EEDpOT_@Base 1.7.0
  _ZNSt6vectorIN3c108TypeKindESaIS1_EE17_M_realloc_insertIJS1_EEEvN9__gnu_cxx17__normal_iteratorIPS1_S3_EEDpOT_@Base 1.6.0
  _ZNSt6vectorIN3c109ClassType8PropertyESaIS2_EE17_M_realloc_insertIJS2_EEEvN9__gnu_cxx17__normal_iteratorIPS2_S4_EEDpOT_@Base 1.7.0
  _ZNSt6vectorIN4onnx11TensorProtoESaIS1_EE12emplace_backIJS1_EEEvDpOT_@Base 1.6.0
@@ -21116,6 +21125,35 @@ libtorch_cpu.so.1.7 libtorch1.7 #MINVER#
  descriptor_table_caffe2_2fproto_2fpredictor_5fconsts_2eproto@Base 1.6.0
  descriptor_table_caffe2_2fproto_2fprof_5fdag_2eproto@Base 1.6.0
  descriptor_table_caffe2_2fproto_2ftorch_2eproto@Base 1.6.0
+ pytorch_qnnp_create_add_nc_q8@Base 1.7.0
+ pytorch_qnnp_create_average_pooling2d_nhwc_q8@Base 1.7.0
+ pytorch_qnnp_create_channel_shuffle_nc_x8@Base 1.7.0
+ pytorch_qnnp_create_clamp_nc_u8@Base 1.7.0
+ pytorch_qnnp_create_convolution2d_nhwc_q8@Base 1.7.0
+ pytorch_qnnp_create_deconvolution2d_nhwc_q8@Base 1.7.0
+ pytorch_qnnp_create_global_average_pooling_nwc_q8@Base 1.7.0
+ pytorch_qnnp_create_hardsigmoid_nc_q8@Base 1.7.0
+ pytorch_qnnp_create_hardswish_nc_q8@Base 1.7.0
+ pytorch_qnnp_create_max_pooling2d_nhwc_u8@Base 1.7.0
+ pytorch_qnnp_create_sigmoid_nc_q8@Base 1.7.0
+ pytorch_qnnp_create_tanh_nc_q8@Base 1.7.0
+ pytorch_qnnp_deinitialize@Base 1.7.0
+ pytorch_qnnp_delete_operator@Base 1.7.0
+ pytorch_qnnp_initialize@Base 1.7.0
+ pytorch_qnnp_params@Base 1.7.0
+ pytorch_qnnp_run_operator@Base 1.7.0
+ pytorch_qnnp_setup_add_nc_q8@Base 1.7.0
+ pytorch_qnnp_setup_average_pooling2d_nhwc_q8@Base 1.7.0
+ pytorch_qnnp_setup_channel_shuffle_nc_x8@Base 1.7.0
+ pytorch_qnnp_setup_clamp_nc_u8@Base 1.7.0
+ pytorch_qnnp_setup_convolution2d_nhwc_q8@Base 1.7.0
+ pytorch_qnnp_setup_deconvolution2d_nhwc_q8@Base 1.7.0
+ pytorch_qnnp_setup_global_average_pooling_nwc_q8@Base 1.7.0
+ pytorch_qnnp_setup_hardsigmoid_nc_q8@Base 1.7.0
+ pytorch_qnnp_setup_hardswish_nc_q8@Base 1.7.0
+ pytorch_qnnp_setup_max_pooling2d_nhwc_u8@Base 1.7.0
+ pytorch_qnnp_setup_sigmoid_nc_q8@Base 1.7.0
+ pytorch_qnnp_setup_tanh_nc_q8@Base 1.7.0
  scc_info_AOTConfig_caffe2_2fproto_2fcaffe2_2eproto@Base 1.7.0
  scc_info_Argument_caffe2_2fproto_2fcaffe2_2eproto@Base 1.6.0
  scc_info_AttributeDef_caffe2_2fproto_2ftorch_2eproto@Base 1.6.0

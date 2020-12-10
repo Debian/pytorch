@@ -7,1140 +7,1122 @@ Depends: python3-torch,
 #
 # C++ test 0/142
 Test-Command: /usr/lib/libtorch-test/AlgorithmsTest
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=1_of_142__cpptest__AlgorithmsTest
 Restrictions: allow-stderr
 
 # C++ test 1/142
 Test-Command: /usr/lib/libtorch-test/BinaryMatchImplTest
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=2_of_142__cpptest__BinaryMatchImplTest
 Restrictions: allow-stderr
 
 # C++ test 2/142
 Test-Command: /usr/lib/libtorch-test/CppSignature_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=3_of_142__cpptest__CppSignature_test
 Restrictions: allow-stderr
 
 # C++ test 3/142
 Test-Command: /usr/lib/libtorch-test/Dict_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=4_of_142__cpptest__Dict_test
 Restrictions: allow-stderr
 
 # C++ test 4/142
 Test-Command: /usr/lib/libtorch-test/Dimname_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=5_of_142__cpptest__Dimname_test
 Restrictions: allow-stderr
 
 # C++ test 5/142
 Test-Command: /usr/lib/libtorch-test/GraphTest
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=6_of_142__cpptest__GraphTest
 Restrictions: allow-stderr
 
 # C++ test 6/142
 Test-Command: /usr/lib/libtorch-test/KernelFunction_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=7_of_142__cpptest__KernelFunction_test
 Restrictions: allow-stderr
 
 # C++ test 7/142
 Test-Command: /usr/lib/libtorch-test/List_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=8_of_142__cpptest__List_test
 Restrictions: allow-stderr
 
 # C++ test 8/142
 Test-Command: /usr/lib/libtorch-test/MatchTest
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=9_of_142__cpptest__MatchTest
 Restrictions: allow-stderr
 
 # C++ test 9/142
 Test-Command: /usr/lib/libtorch-test/NamedTensor_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=10_of_142__cpptest__NamedTensor_test
 Restrictions: allow-stderr
 
 # C++ test 10/142
 Test-Command: /usr/lib/libtorch-test/NeuralNetTest
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=11_of_142__cpptest__NeuralNetTest
 Restrictions: allow-stderr
 
 # C++ test 11/142
 Test-Command: /usr/lib/libtorch-test/SubgraphMatcherTest
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=12_of_142__cpptest__SubgraphMatcherTest
 Restrictions: allow-stderr
 
 # C++ test 12/142
 Test-Command: /usr/lib/libtorch-test/TarjansImplTest
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=13_of_142__cpptest__TarjansImplTest
 Restrictions: allow-stderr
 
 # C++ test 13/142
 Test-Command: /usr/lib/libtorch-test/TensorImpl_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=14_of_142__cpptest__TensorImpl_test
 Restrictions: allow-stderr
 
 # C++ test 14/142
 Test-Command: /usr/lib/libtorch-test/TopoSortTest
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=15_of_142__cpptest__TopoSortTest
 Restrictions: allow-stderr
 
 # C++ test 15/142
 Test-Command: /usr/lib/libtorch-test/apply_utils_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=16_of_142__cpptest__apply_utils_test
 Restrictions: allow-stderr
 
 # C++ test 16/142
 Test-Command: /usr/lib/libtorch-test/atest
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=17_of_142__cpptest__atest
 Restrictions: allow-stderr
 
 # C++ test 17/142
 Test-Command: /usr/lib/libtorch-test/backend_cutting_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=18_of_142__cpptest__backend_cutting_test
 Restrictions: allow-stderr
 
 # C++ test 18/142
 Test-Command: /usr/lib/libtorch-test/backend_fallback_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=19_of_142__cpptest__backend_fallback_test
 Restrictions: allow-stderr
 
 # C++ test 19/142
 Test-Command: /usr/lib/libtorch-test/basic
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=20_of_142__cpptest__basic
 Restrictions: allow-stderr
 
 # C++ test 20/142
 Test-Command: /usr/lib/libtorch-test/batch_matmul_op_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=21_of_142__cpptest__batch_matmul_op_test
 Restrictions: allow-stderr
 
 # C++ test 21/142
 Test-Command: /usr/lib/libtorch-test/blob_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=22_of_142__cpptest__blob_test
 Restrictions: allow-stderr
 
 # C++ test 22/142
 Test-Command: /usr/lib/libtorch-test/boolean_unmask_ops_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=23_of_142__cpptest__boolean_unmask_ops_test
 Restrictions: allow-stderr
 
 # C++ test 23/142
 Test-Command: /usr/lib/libtorch-test/bound_shape_inference_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=24_of_142__cpptest__bound_shape_inference_test
 Restrictions: allow-stderr
 
 # C++ test 24/142
 Test-Command: /usr/lib/libtorch-test/broadcast_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=25_of_142__cpptest__broadcast_test
 Restrictions: allow-stderr
 
 # C++ test 25/142
 Test-Command: /usr/lib/libtorch-test/c10_Array_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=26_of_142__cpptest__c10_Array_test
 Restrictions: allow-stderr
 
 # C++ test 26/142
 Test-Command: /usr/lib/libtorch-test/c10_Bitset_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=27_of_142__cpptest__c10_Bitset_test
 Restrictions: allow-stderr
 
 # C++ test 27/142
 Test-Command: /usr/lib/libtorch-test/c10_C++17_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=28_of_142__cpptest__c10_C++17_test
 Restrictions: allow-stderr
 
 # C++ test 28/142
 Test-Command: /usr/lib/libtorch-test/c10_CompileTimeFunctionPointer_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=29_of_142__cpptest__c10_CompileTimeFunctionPointer_test
 Restrictions: allow-stderr
 
 # C++ test 29/142
 Test-Command: /usr/lib/libtorch-test/c10_ConstexprCrc_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=30_of_142__cpptest__c10_ConstexprCrc_test
 Restrictions: allow-stderr
 
 # C++ test 30/142
 Test-Command: /usr/lib/libtorch-test/c10_DeviceGuard_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=31_of_142__cpptest__c10_DeviceGuard_test
 Restrictions: allow-stderr
 
 # C++ test 31/142
 Test-Command: /usr/lib/libtorch-test/c10_DispatchKeySet_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=32_of_142__cpptest__c10_DispatchKeySet_test
 Restrictions: allow-stderr
 
 # C++ test 32/142
 Test-Command: /usr/lib/libtorch-test/c10_Half_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=33_of_142__cpptest__c10_Half_test
 Restrictions: allow-stderr
 
 # C++ test 33/142
 Test-Command: /usr/lib/libtorch-test/c10_InlineDeviceGuard_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=34_of_142__cpptest__c10_InlineDeviceGuard_test
 Restrictions: allow-stderr
 
 # C++ test 34/142
 Test-Command: /usr/lib/libtorch-test/c10_InlineStreamGuard_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=35_of_142__cpptest__c10_InlineStreamGuard_test
 Restrictions: allow-stderr
 
 # C++ test 35/142
 Test-Command: /usr/lib/libtorch-test/c10_LeftRight_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=36_of_142__cpptest__c10_LeftRight_test
 Restrictions: allow-stderr
 
 # C++ test 36/142
 Test-Command: /usr/lib/libtorch-test/c10_Metaprogramming_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=37_of_142__cpptest__c10_Metaprogramming_test
 Restrictions: allow-stderr
 
 # C++ test 37/142
 Test-Command: /usr/lib/libtorch-test/c10_StreamGuard_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=38_of_142__cpptest__c10_StreamGuard_test
 Restrictions: allow-stderr
 
 # C++ test 38/142
 Test-Command: /usr/lib/libtorch-test/c10_TypeIndex_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=39_of_142__cpptest__c10_TypeIndex_test
 Restrictions: allow-stderr
 
 # C++ test 39/142
 Test-Command: /usr/lib/libtorch-test/c10_TypeList_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=40_of_142__cpptest__c10_TypeList_test
 Restrictions: allow-stderr
 
 # C++ test 40/142
 Test-Command: /usr/lib/libtorch-test/c10_TypeTraits_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=41_of_142__cpptest__c10_TypeTraits_test
 Restrictions: allow-stderr
 
 # C++ test 41/142
 Test-Command: /usr/lib/libtorch-test/c10_bfloat16_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=42_of_142__cpptest__c10_bfloat16_test
 Restrictions: allow-stderr
 
 # C++ test 42/142
 Test-Command: /usr/lib/libtorch-test/c10_complex_math_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=43_of_142__cpptest__c10_complex_math_test
 Restrictions: allow-stderr
 
 # C++ test 43/142
 Test-Command: /usr/lib/libtorch-test/c10_complex_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=44_of_142__cpptest__c10_complex_test
 Restrictions: allow-stderr
 
 # C++ test 44/142
 Test-Command: /usr/lib/libtorch-test/c10_either_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=45_of_142__cpptest__c10_either_test
 Restrictions: allow-stderr
 
 # C++ test 45/142
 Test-Command: /usr/lib/libtorch-test/c10_exception_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=46_of_142__cpptest__c10_exception_test
 Restrictions: allow-stderr
 
 # C++ test 46/142
 Test-Command: /usr/lib/libtorch-test/c10_flags_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=47_of_142__cpptest__c10_flags_test
 Restrictions: allow-stderr
 
 # C++ test 47/142
 Test-Command: /usr/lib/libtorch-test/c10_intrusive_ptr_benchmark
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=48_of_142__cpptest__c10_intrusive_ptr_benchmark
 Restrictions: allow-stderr
 
 # C++ test 48/142
 Test-Command: /usr/lib/libtorch-test/c10_intrusive_ptr_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=49_of_142__cpptest__c10_intrusive_ptr_test
 Restrictions: allow-stderr
 
 # C++ test 49/142
 Test-Command: /usr/lib/libtorch-test/c10_logging_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=50_of_142__cpptest__c10_logging_test
 Restrictions: allow-stderr
 
 # C++ test 50/142
 Test-Command: /usr/lib/libtorch-test/c10_ordered_preserving_dict_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=51_of_142__cpptest__c10_ordered_preserving_dict_test
 Restrictions: allow-stderr
 
 # C++ test 51/142
 Test-Command: /usr/lib/libtorch-test/c10_registry_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=52_of_142__cpptest__c10_registry_test
 Restrictions: allow-stderr
 
 # C++ test 52/142
 Test-Command: /usr/lib/libtorch-test/c10_string_view_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=53_of_142__cpptest__c10_string_view_test
 Restrictions: allow-stderr
 
 # C++ test 53/142
 Test-Command: /usr/lib/libtorch-test/c10_tempfile_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=54_of_142__cpptest__c10_tempfile_test
 Restrictions: allow-stderr
 
 # C++ test 54/142
 Test-Command: /usr/lib/libtorch-test/c10_typeid_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=55_of_142__cpptest__c10_typeid_test
 Restrictions: allow-stderr
 
 # C++ test 55/142
 Test-Command: /usr/lib/libtorch-test/cast_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=56_of_142__cpptest__cast_test
 Restrictions: allow-stderr
 
 # C++ test 56/142
 Test-Command: /usr/lib/libtorch-test/common_subexpression_elimination_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=57_of_142__cpptest__common_subexpression_elimination_test
 Restrictions: allow-stderr
 
 # C++ test 57/142
 Test-Command: /usr/lib/libtorch-test/common_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=58_of_142__cpptest__common_test
 Restrictions: allow-stderr
 
 # C++ test 58/142
 Test-Command: /usr/lib/libtorch-test/context_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=59_of_142__cpptest__context_test
 Restrictions: allow-stderr
 
 # C++ test 59/142
 Test-Command: /usr/lib/libtorch-test/conv_to_nnpack_transform_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=60_of_142__cpptest__conv_to_nnpack_transform_test
 Restrictions: allow-stderr
 
 # C++ test 60/142
 Test-Command: /usr/lib/libtorch-test/conv_transpose_op_mobile_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=61_of_142__cpptest__conv_transpose_op_mobile_test
 Restrictions: allow-stderr
 
 # C++ test 61/142
 Test-Command: /usr/lib/libtorch-test/converter_nomigraph_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=62_of_142__cpptest__converter_nomigraph_test
 Restrictions: allow-stderr
 
 # C++ test 62/142
 Test-Command: /usr/lib/libtorch-test/cpu_generator_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=63_of_142__cpptest__cpu_generator_test
 Restrictions: allow-stderr
 
 # C++ test 63/142
 Test-Command: /usr/lib/libtorch-test/cpu_rng_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=64_of_142__cpptest__cpu_rng_test
 Restrictions: allow-stderr
 
 # C++ test 64/142
 Test-Command: /usr/lib/libtorch-test/cpuid_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=65_of_142__cpptest__cpuid_test
 Restrictions: allow-stderr
 
 # C++ test 65/142
 Test-Command: /usr/lib/libtorch-test/data_filler_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=66_of_142__cpptest__data_filler_test
 Restrictions: allow-stderr
 
 # C++ test 66/142
 Test-Command: /usr/lib/libtorch-test/dead_code_elim_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=67_of_142__cpptest__dead_code_elim_test
 Restrictions: allow-stderr
 
 # C++ test 67/142
 Test-Command: /usr/lib/libtorch-test/depthwise3x3_conv_op_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=68_of_142__cpptest__depthwise3x3_conv_op_test
 Restrictions: allow-stderr
 
 # C++ test 68/142
 Test-Command: /usr/lib/libtorch-test/device_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=69_of_142__cpptest__device_test
 Restrictions: allow-stderr
 
 # C++ test 69/142
 Test-Command: /usr/lib/libtorch-test/distributed_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=70_of_142__cpptest__distributed_test
 Restrictions: allow-stderr
 
 # C++ test 70/142
 Test-Command: /usr/lib/libtorch-test/dlconvertor_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=71_of_142__cpptest__dlconvertor_test
 Restrictions: allow-stderr
 
 # C++ test 71/142
 Test-Command: /usr/lib/libtorch-test/elementwise_op_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=72_of_142__cpptest__elementwise_op_test
 Restrictions: allow-stderr
 
 # C++ test 72/142
 Test-Command: /usr/lib/libtorch-test/event_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=73_of_142__cpptest__event_test
 Restrictions: allow-stderr
 
 # C++ test 73/142
 Test-Command: /usr/lib/libtorch-test/extension_backend_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=74_of_142__cpptest__extension_backend_test
 Restrictions: allow-stderr
 
 # C++ test 74/142
 Test-Command: /usr/lib/libtorch-test/fatal_signal_asan_no_sig_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=75_of_142__cpptest__fatal_signal_asan_no_sig_test
 Restrictions: allow-stderr
 
 # C++ test 75/142
 Test-Command: /usr/lib/libtorch-test/fixed_divisor_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=76_of_142__cpptest__fixed_divisor_test
 Restrictions: allow-stderr
 
 # C++ test 76/142
 Test-Command: /usr/lib/libtorch-test/generate_proposals_op_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=77_of_142__cpptest__generate_proposals_op_test
 Restrictions: allow-stderr
 
 # C++ test 77/142
 Test-Command: /usr/lib/libtorch-test/generate_proposals_op_util_boxes_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=78_of_142__cpptest__generate_proposals_op_util_boxes_test
 Restrictions: allow-stderr
 
 # C++ test 78/142
 Test-Command: /usr/lib/libtorch-test/generate_proposals_op_util_nms_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=79_of_142__cpptest__generate_proposals_op_util_nms_test
 Restrictions: allow-stderr
 
 # C++ test 79/142
 Test-Command: /usr/lib/libtorch-test/graph_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=80_of_142__cpptest__graph_test
 Restrictions: allow-stderr
 
 # C++ test 80/142
 Test-Command: /usr/lib/libtorch-test/half_float_ops_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=81_of_142__cpptest__half_float_ops_test
 Restrictions: allow-stderr
 
 # C++ test 81/142
 Test-Command: /usr/lib/libtorch-test/half_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=82_of_142__cpptest__half_test
 Restrictions: allow-stderr
 
 # C++ test 82/142
 Test-Command: /usr/lib/libtorch-test/init_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=83_of_142__cpptest__init_test
 Restrictions: allow-stderr
 
 # C++ test 83/142
 Test-Command: /usr/lib/libtorch-test/inline_container_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=84_of_142__cpptest__inline_container_test
 Restrictions: allow-stderr
 
 # C++ test 84/142
 Test-Command: /usr/lib/libtorch-test/ivalue_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=85_of_142__cpptest__ivalue_test
 Restrictions: allow-stderr
 
 # C++ test 85/142
 Test-Command: /usr/lib/libtorch-test/kernel_function_legacy_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=86_of_142__cpptest__kernel_function_legacy_test
 Restrictions: allow-stderr
 
 # C++ test 86/142
 Test-Command: /usr/lib/libtorch-test/kernel_function_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=87_of_142__cpptest__kernel_function_test
 Restrictions: allow-stderr
 
 # C++ test 87/142
 Test-Command: /usr/lib/libtorch-test/kernel_lambda_legacy_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=88_of_142__cpptest__kernel_lambda_legacy_test
 Restrictions: allow-stderr
 
 # C++ test 88/142
 Test-Command: /usr/lib/libtorch-test/kernel_lambda_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=89_of_142__cpptest__kernel_lambda_test
 Restrictions: allow-stderr
 
 # C++ test 89/142
 Test-Command: /usr/lib/libtorch-test/kernel_stackbased_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=90_of_142__cpptest__kernel_stackbased_test
 Restrictions: allow-stderr
 
 # C++ test 90/142
 Test-Command: /usr/lib/libtorch-test/make_boxed_from_unboxed_functor_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=91_of_142__cpptest__make_boxed_from_unboxed_functor_test
 Restrictions: allow-stderr
 
 # C++ test 91/142
 Test-Command: /usr/lib/libtorch-test/math_kernel_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=92_of_142__cpptest__math_kernel_test
 Restrictions: allow-stderr
 
 # C++ test 92/142
 Test-Command: /usr/lib/libtorch-test/math_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=93_of_142__cpptest__math_test
 Restrictions: allow-stderr
 
 # C++ test 93/142
 Test-Command: /usr/lib/libtorch-test/memory_format_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=94_of_142__cpptest__memory_format_test
 Restrictions: allow-stderr
 
 # C++ test 94/142
 Test-Command: /usr/lib/libtorch-test/memory_overlapping_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=95_of_142__cpptest__memory_overlapping_test
 Restrictions: allow-stderr
 
 # C++ test 95/142
 Test-Command: /usr/lib/libtorch-test/mobile_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=96_of_142__cpptest__mobile_test
 Restrictions: allow-stderr
 
 # C++ test 96/142
 Test-Command: /usr/lib/libtorch-test/module_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=97_of_142__cpptest__module_test
 Restrictions: allow-stderr
 
 # C++ test 97/142
 Test-Command: /usr/lib/libtorch-test/mpi_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=98_of_142__cpptest__mpi_test
 Restrictions: allow-stderr
 
 # C++ test 98/142
 Test-Command: /usr/lib/libtorch-test/native_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=99_of_142__cpptest__native_test
 Restrictions: allow-stderr
 
 # C++ test 99/142
 Test-Command: /usr/lib/libtorch-test/net_async_tracing_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=100_of_142__cpptest__net_async_tracing_test
 Restrictions: allow-stderr
 
 # C++ test 100/142
 Test-Command: /usr/lib/libtorch-test/net_dag_utils_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=101_of_142__cpptest__net_dag_utils_test
 Restrictions: allow-stderr
 
 # C++ test 101/142
 Test-Command: /usr/lib/libtorch-test/net_simple_refcount_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=102_of_142__cpptest__net_simple_refcount_test
 Restrictions: allow-stderr
 
 # C++ test 102/142
 Test-Command: /usr/lib/libtorch-test/net_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=103_of_142__cpptest__net_test
 Restrictions: allow-stderr
 
 # C++ test 103/142
 Test-Command: /usr/lib/libtorch-test/observer_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=104_of_142__cpptest__observer_test
 Restrictions: allow-stderr
 
 # C++ test 104/142
 Test-Command: /usr/lib/libtorch-test/op_registration_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=105_of_142__cpptest__op_registration_test
 Restrictions: allow-stderr
 
 # C++ test 105/142
 Test-Command: /usr/lib/libtorch-test/op_whitelist_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=106_of_142__cpptest__op_whitelist_test
 Restrictions: allow-stderr
 
 # C++ test 106/142
 Test-Command: /usr/lib/libtorch-test/operator_schema_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=107_of_142__cpptest__operator_schema_test
 Restrictions: allow-stderr
 
 # C++ test 107/142
 Test-Command: /usr/lib/libtorch-test/operator_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=108_of_142__cpptest__operator_test
 Restrictions: allow-stderr
 
 # C++ test 108/142
 Test-Command: /usr/lib/libtorch-test/parallel_net_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=109_of_142__cpptest__parallel_net_test
 Restrictions: allow-stderr
 
 # C++ test 109/142
 Test-Command: /usr/lib/libtorch-test/pattern_net_transform_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=110_of_142__cpptest__pattern_net_transform_test
 Restrictions: allow-stderr
 
 # C++ test 110/142
 Test-Command: /usr/lib/libtorch-test/plan_executor_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=111_of_142__cpptest__plan_executor_test
 Restrictions: allow-stderr
 
 # C++ test 111/142
 Test-Command: /usr/lib/libtorch-test/pow_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=112_of_142__cpptest__pow_test
 Restrictions: allow-stderr
 
 # C++ test 112/142
 Test-Command: /usr/lib/libtorch-test/predictor_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=113_of_142__cpptest__predictor_test
 Restrictions: allow-stderr
 
 # C++ test 113/142
 Test-Command: /usr/lib/libtorch-test/proto_utils_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=114_of_142__cpptest__proto_utils_test
 Restrictions: allow-stderr
 
 # C++ test 114/142
 Test-Command: /usr/lib/libtorch-test/quantized_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=115_of_142__cpptest__quantized_test
 Restrictions: allow-stderr
 
 # C++ test 115/142
 Test-Command: /usr/lib/libtorch-test/reduce_ops_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=116_of_142__cpptest__reduce_ops_test
 Restrictions: allow-stderr
 
 # C++ test 116/142
 Test-Command: /usr/lib/libtorch-test/scalar_tensor_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=117_of_142__cpptest__scalar_tensor_test
 Restrictions: allow-stderr
 
 # C++ test 117/142
 Test-Command: /usr/lib/libtorch-test/scalar_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=118_of_142__cpptest__scalar_test
 Restrictions: allow-stderr
 
 # C++ test 118/142
 Test-Command: /usr/lib/libtorch-test/simple_queue_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=119_of_142__cpptest__simple_queue_test
 Restrictions: allow-stderr
 
 # C++ test 119/142
 Test-Command: /usr/lib/libtorch-test/smart_tensor_printer_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=120_of_142__cpptest__smart_tensor_printer_test
 Restrictions: allow-stderr
 
 # C++ test 120/142
 Test-Command: /usr/lib/libtorch-test/split_slss_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=121_of_142__cpptest__split_slss_test
 Restrictions: allow-stderr
 
 # C++ test 121/142
 Test-Command: /usr/lib/libtorch-test/ssa_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=122_of_142__cpptest__ssa_test
 Restrictions: allow-stderr
 
 # C++ test 122/142
 Test-Command: /usr/lib/libtorch-test/stats_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=123_of_142__cpptest__stats_test
 Restrictions: allow-stderr
 
 # C++ test 123/142
 Test-Command: /usr/lib/libtorch-test/string_ops_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=124_of_142__cpptest__string_ops_test
 Restrictions: allow-stderr
 
 # C++ test 124/142
 Test-Command: /usr/lib/libtorch-test/tensor_interop_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=125_of_142__cpptest__tensor_interop_test
 Restrictions: allow-stderr
 
 # C++ test 125/142
 Test-Command: /usr/lib/libtorch-test/tensor_iterator_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=126_of_142__cpptest__tensor_iterator_test
 Restrictions: allow-stderr
 
 # C++ test 126/142
 Test-Command: /usr/lib/libtorch-test/test_parallel
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=127_of_142__cpptest__test_parallel
 Restrictions: allow-stderr
 
 # C++ test 127/142
 Test-Command: /usr/lib/libtorch-test/text_file_reader_utils_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=128_of_142__cpptest__text_file_reader_utils_test
 Restrictions: allow-stderr
 
 # C++ test 128/142
 Test-Command: /usr/lib/libtorch-test/thread_init_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=129_of_142__cpptest__thread_init_test
 Restrictions: allow-stderr
 
 # C++ test 129/142
 Test-Command: /usr/lib/libtorch-test/time_observer_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=130_of_142__cpptest__time_observer_test
 Restrictions: allow-stderr
 
 # C++ test 130/142
 Test-Command: /usr/lib/libtorch-test/timer_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=131_of_142__cpptest__timer_test
 Restrictions: allow-stderr
 
 # C++ test 131/142
 Test-Command: /usr/lib/libtorch-test/transform_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=132_of_142__cpptest__transform_test
 Restrictions: allow-stderr
 
 # C++ test 132/142
 Test-Command: /usr/lib/libtorch-test/type_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=133_of_142__cpptest__type_test
 Restrictions: allow-stderr
 
 # C++ test 133/142
 Test-Command: /usr/lib/libtorch-test/undefined_tensor_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=134_of_142__cpptest__undefined_tensor_test
 Restrictions: allow-stderr
 
 # C++ test 134/142
 Test-Command: /usr/lib/libtorch-test/utility_ops_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=135_of_142__cpptest__utility_ops_test
 Restrictions: allow-stderr
 
 # C++ test 135/142
 Test-Command: /usr/lib/libtorch-test/variant_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=136_of_142__cpptest__variant_test
 Restrictions: allow-stderr
 
 # C++ test 136/142
 Test-Command: /usr/lib/libtorch-test/verify_api_visibility
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=137_of_142__cpptest__verify_api_visibility
 Restrictions: allow-stderr
 
 # C++ test 137/142
 Test-Command: /usr/lib/libtorch-test/vmap_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=138_of_142__cpptest__vmap_test
 Restrictions: allow-stderr
 
 # C++ test 138/142
 Test-Command: /usr/lib/libtorch-test/weakref_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=139_of_142__cpptest__weakref_test
 Restrictions: allow-stderr
 
 # C++ test 139/142
 Test-Command: /usr/lib/libtorch-test/workspace_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=140_of_142__cpptest__workspace_test
 Restrictions: allow-stderr
 
 # C++ test 140/142
 Test-Command: /usr/lib/libtorch-test/wrapdim_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=141_of_142__cpptest__wrapdim_test
 Restrictions: allow-stderr
 
 # C++ test 141/142
 Test-Command: /usr/lib/libtorch-test/xla_tensor_test
-Depends: build-essential, libtorch-dev, libtorch-test
+Depends: build-essential, ninja-build, libtorch-dev, libtorch-test
 Features: test-name=142_of_142__cpptest__xla_tensor_test
 Restrictions: allow-stderr
 
 
 # Generating Autopkgtest Test Cases for the Python Testing Programs
 # The tests are collected from test/run_test.py
-# Found 47 tests
+# Found 44 tests
 #
-# Py test 0/47
-Test-Command: cd test/ ; python3 run_test.py -pt -i test_autograd -v
-Depends: build-essential, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools,
-Features: test-name=1_of_47__pytest__test_autograd
+# Py test 0/44
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_autograd, -v
+Depends: build-essential, ninja-build, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools,
+Features: test-name=1_of_44__pytest__test_autograd,
 Restrictions: allow-stderr
 
-# Py test 1/47
-Test-Command: cd test/ ; python3 run_test.py -pt -i test_bundled_inputs -v
-Depends: build-essential, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools,
-Features: test-name=2_of_47__pytest__test_bundled_inputs
+# Py test 1/44
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_bundled_inputs, -v
+Depends: build-essential, ninja-build, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools,
+Features: test-name=2_of_44__pytest__test_bundled_inputs,
 Restrictions: allow-stderr
 
-# Py test 2/47
-Test-Command: cd test/ ; python3 run_test.py -pt -i test_complex -v
-Depends: build-essential, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools,
-Features: test-name=3_of_47__pytest__test_complex
+# Py test 2/44
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_complex, -v
+Depends: build-essential, ninja-build, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools,
+Features: test-name=3_of_44__pytest__test_complex,
 Restrictions: allow-stderr
 
-# Py test 3/47
-Test-Command: cd test/ ; python3 run_test.py -pt -i test_cpp_api_parity -v
-Depends: build-essential, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools,
-Features: test-name=4_of_47__pytest__test_cpp_api_parity
+# Py test 3/44
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_cpp_api_parity, -v
+Depends: build-essential, ninja-build, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools,
+Features: test-name=4_of_44__pytest__test_cpp_api_parity,
 Restrictions: allow-stderr
 
-# Py test 4/47
-Test-Command: cd test/ ; python3 run_test.py -pt -i test_cpp_extensions_aot_no_ninja -v
-Depends: build-essential, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools,
-Features: test-name=5_of_47__pytest__test_cpp_extensions_aot_no_ninja
+# Py test 4/44
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_cpp_extensions_aot_no_ninja, -v
+Depends: build-essential, ninja-build, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools,
+Features: test-name=5_of_44__pytest__test_cpp_extensions_aot_no_ninja,
 Restrictions: allow-stderr
 
-# Py test 5/47
-Test-Command: cd test/ ; python3 run_test.py -pt -i test_cpp_extensions_aot_ninja -v
-Depends: build-essential, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools,
-Features: test-name=6_of_47__pytest__test_cpp_extensions_aot_ninja
+# Py test 5/44
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_cpp_extensions_aot_ninja, -v
+Depends: build-essential, ninja-build, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools,
+Features: test-name=6_of_44__pytest__test_cpp_extensions_aot_ninja,
 Restrictions: allow-stderr
 
-# Py test 6/47
-Test-Command: cd test/ ; python3 run_test.py -pt -i test_cpp_extensions_jit -v
-Depends: build-essential, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools,
-Features: test-name=7_of_47__pytest__test_cpp_extensions_jit
+# Py test 6/44
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_cpp_extensions_jit, -v
+Depends: build-essential, ninja-build, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools,
+Features: test-name=7_of_44__pytest__test_cpp_extensions_jit,
 Restrictions: allow-stderr
 
-# Py test 7/47
-Test-Command: cd test/ ; python3 run_test.py -pt -i distributed/test_c10d -v
-Depends: build-essential, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools,
-Features: test-name=8_of_47__pytest__test_c10d
+# Py test 7/44
+Test-Command: cd test/ ; python3 run_test.py -pt -i distributed/test_c10d, -v
+Depends: build-essential, ninja-build, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools,
+Features: test-name=8_of_44__pytest__test_c10d,
 Restrictions: allow-stderr
 
-# Py test 8/47
-Test-Command: cd test/ ; python3 run_test.py -pt -i distributed/test_c10d_spawn -v
-Depends: build-essential, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools,
-Features: test-name=9_of_47__pytest__test_c10d_spawn
+# Py test 8/44
+Test-Command: cd test/ ; python3 run_test.py -pt -i distributed/test_c10d_spawn, -v
+Depends: build-essential, ninja-build, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools,
+Features: test-name=9_of_44__pytest__test_c10d_spawn,
 Restrictions: allow-stderr
 
-# Py test 9/47
-Test-Command: cd test/ ; python3 run_test.py -pt -i test_dataloader -v
-Depends: build-essential, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools,
-Features: test-name=10_of_47__pytest__test_dataloader
+# Py test 9/44
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_dataloader, -v
+Depends: build-essential, ninja-build, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools,
+Features: test-name=10_of_44__pytest__test_dataloader,
 Restrictions: allow-stderr
 
-# Py test 10/47
-Test-Command: cd test/ ; python3 run_test.py -pt -i distributed/test_data_parallel -v
-Depends: build-essential, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools,
-Features: test-name=11_of_47__pytest__test_data_parallel
+# Py test 10/44
+Test-Command: cd test/ ; python3 run_test.py -pt -i distributed/test_data_parallel, -v
+Depends: build-essential, ninja-build, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools,
+Features: test-name=11_of_44__pytest__test_data_parallel,
 Restrictions: allow-stderr
 
-# Py test 11/47
-Test-Command: cd test/ ; python3 run_test.py -pt -i distributed/test_distributed -v
-Depends: build-essential, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools,
-Features: test-name=12_of_47__pytest__test_distributed
+# Py test 11/44
+Test-Command: cd test/ ; python3 run_test.py -pt -i distributed/test_distributed_fork, -v
+Depends: build-essential, ninja-build, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools,
+Features: test-name=12_of_44__pytest__test_distributed_fork,
 Restrictions: allow-stderr
 
-# Py test 12/47
-Test-Command: cd test/ ; python3 run_test.py -pt -i test_distributions -v
-Depends: build-essential, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools,
-Features: test-name=13_of_47__pytest__test_distributions
+# Py test 12/44
+Test-Command: cd test/ ; python3 run_test.py -pt -i distributed/test_distributed_spawn, -v
+Depends: build-essential, ninja-build, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools,
+Features: test-name=13_of_44__pytest__test_distributed_spawn,
 Restrictions: allow-stderr
 
-# Py test 13/47
-Test-Command: cd test/ ; python3 run_test.py -pt -i test_expecttest -v
-Depends: build-essential, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools,
-Features: test-name=14_of_47__pytest__test_expecttest
+# Py test 13/44
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_distributions, -v
+Depends: build-essential, ninja-build, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools,
+Features: test-name=14_of_44__pytest__test_distributions,
 Restrictions: allow-stderr
 
-# Py test 14/47
-Test-Command: cd test/ ; python3 run_test.py -pt -i test_indexing -v
-Depends: build-essential, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools,
-Features: test-name=15_of_47__pytest__test_indexing
+# Py test 14/44
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_expecttest, -v
+Depends: build-essential, ninja-build, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools,
+Features: test-name=15_of_44__pytest__test_expecttest,
 Restrictions: allow-stderr
 
-# Py test 15/47
-Test-Command: cd test/ ; python3 run_test.py -pt -i test_jit -v
-Depends: build-essential, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools,
-Features: test-name=16_of_47__pytest__test_jit
+# Py test 15/44
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_foreach, -v
+Depends: build-essential, ninja-build, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools,
+Features: test-name=16_of_44__pytest__test_foreach,
 Restrictions: allow-stderr
 
-# Py test 16/47
-Test-Command: cd test/ ; python3 run_test.py -pt -i test_logging -v
-Depends: build-essential, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools,
-Features: test-name=17_of_47__pytest__test_logging
+# Py test 16/44
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_indexing, -v
+Depends: build-essential, ninja-build, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools,
+Features: test-name=17_of_44__pytest__test_indexing,
 Restrictions: allow-stderr
 
-# Py test 17/47
-Test-Command: cd test/ ; python3 run_test.py -pt -i test_mkldnn -v
-Depends: build-essential, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools,
-Features: test-name=18_of_47__pytest__test_mkldnn
+# Py test 17/44
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_jit, -v
+Depends: build-essential, ninja-build, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools,
+Features: test-name=18_of_44__pytest__test_jit,
 Restrictions: allow-stderr
 
-# Py test 18/47
-Test-Command: cd test/ ; python3 run_test.py -pt -i test_multiprocessing -v
-Depends: build-essential, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools,
-Features: test-name=19_of_47__pytest__test_multiprocessing
+# Py test 18/44
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_linalg, -v
+Depends: build-essential, ninja-build, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools,
+Features: test-name=19_of_44__pytest__test_linalg,
 Restrictions: allow-stderr
 
-# Py test 19/47
-Test-Command: cd test/ ; python3 run_test.py -pt -i test_multiprocessing_spawn -v
-Depends: build-essential, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools,
-Features: test-name=20_of_47__pytest__test_multiprocessing_spawn
+# Py test 19/44
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_logging, -v
+Depends: build-essential, ninja-build, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools,
+Features: test-name=20_of_44__pytest__test_logging,
 Restrictions: allow-stderr
 
-# Py test 20/47
-Test-Command: cd test/ ; python3 run_test.py -pt -i distributed/test_nccl -v
-Depends: build-essential, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools,
-Features: test-name=21_of_47__pytest__test_nccl
+# Py test 20/44
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_mkldnn, -v
+Depends: build-essential, ninja-build, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools,
+Features: test-name=21_of_44__pytest__test_mkldnn,
 Restrictions: allow-stderr
 
-# Py test 21/47
-Test-Command: cd test/ ; python3 run_test.py -pt -i test_nn -v
-Depends: build-essential, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools,
-Features: test-name=22_of_47__pytest__test_nn
+# Py test 21/44
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_multiprocessing, -v
+Depends: build-essential, ninja-build, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools,
+Features: test-name=22_of_44__pytest__test_multiprocessing,
 Restrictions: allow-stderr
 
-# Py test 22/47
-Test-Command: cd test/ ; python3 run_test.py -pt -i test_numba_integration -v
-Depends: build-essential, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools,
-Features: test-name=23_of_47__pytest__test_numba_integration
+# Py test 22/44
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_multiprocessing_spawn, -v
+Depends: build-essential, ninja-build, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools,
+Features: test-name=23_of_44__pytest__test_multiprocessing_spawn,
 Restrictions: allow-stderr
 
-# Py test 23/47
-Test-Command: cd test/ ; python3 run_test.py -pt -i test_optim -v
-Depends: build-essential, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools,
-Features: test-name=24_of_47__pytest__test_optim
+# Py test 23/44
+Test-Command: cd test/ ; python3 run_test.py -pt -i distributed/test_nccl, -v
+Depends: build-essential, ninja-build, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools,
+Features: test-name=24_of_44__pytest__test_nccl,
 Restrictions: allow-stderr
 
-# Py test 24/47
-Test-Command: cd test/ ; python3 run_test.py -pt -i test_mobile_optimizer -v
-Depends: build-essential, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools,
-Features: test-name=25_of_47__pytest__test_mobile_optimizer
+# Py test 24/44
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_native_functions, -v
+Depends: build-essential, ninja-build, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools,
+Features: test-name=25_of_44__pytest__test_native_functions,
 Restrictions: allow-stderr
 
-# Py test 25/47
-Test-Command: cd test/ ; python3 run_test.py -pt -i test_xnnpack_integration -v
-Depends: build-essential, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools,
-Features: test-name=26_of_47__pytest__test_xnnpack_integration
+# Py test 25/44
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_nn, -v
+Depends: build-essential, ninja-build, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools,
+Features: test-name=26_of_44__pytest__test_nn,
 Restrictions: allow-stderr
 
-# Py test 26/47
-Test-Command: cd test/ ; python3 run_test.py -pt -i test_vulkan -v
-Depends: build-essential, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools,
-Features: test-name=27_of_47__pytest__test_vulkan
+# Py test 26/44
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_numba_integration, -v
+Depends: build-essential, ninja-build, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools,
+Features: test-name=27_of_44__pytest__test_numba_integration,
 Restrictions: allow-stderr
 
-# Py test 27/47
-Test-Command: cd test/ ; python3 run_test.py -pt -i test_quantization -v
-Depends: build-essential, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools,
-Features: test-name=28_of_47__pytest__test_quantization
+# Py test 27/44
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_ops, -v
+Depends: build-essential, ninja-build, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools,
+Features: test-name=28_of_44__pytest__test_ops,
 Restrictions: allow-stderr
 
-# Py test 28/47
-Test-Command: cd test/ ; python3 run_test.py -pt -i test_sparse -v
-Depends: build-essential, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools,
-Features: test-name=29_of_47__pytest__test_sparse
+# Py test 28/44
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_optim, -v
+Depends: build-essential, ninja-build, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools,
+Features: test-name=29_of_44__pytest__test_optim,
 Restrictions: allow-stderr
 
-# Py test 29/47
-Test-Command: cd test/ ; python3 run_test.py -pt -i test_serialization -v
-Depends: build-essential, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools,
-Features: test-name=30_of_47__pytest__test_serialization
+# Py test 29/44
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_mobile_optimizer, -v
+Depends: build-essential, ninja-build, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools,
+Features: test-name=30_of_44__pytest__test_mobile_optimizer,
 Restrictions: allow-stderr
 
-# Py test 30/47
-Test-Command: cd test/ ; python3 run_test.py -pt -i test_show_pickle -v
-Depends: build-essential, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools,
-Features: test-name=31_of_47__pytest__test_show_pickle
+# Py test 30/44
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_xnnpack_integration, -v
+Depends: build-essential, ninja-build, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools,
+Features: test-name=31_of_44__pytest__test_xnnpack_integration,
 Restrictions: allow-stderr
 
-# Py test 31/47
-Test-Command: cd test/ ; python3 run_test.py -pt -i test_torch -v
-Depends: build-essential, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools,
-Features: test-name=32_of_47__pytest__test_torch
+# Py test 31/44
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_vulkan, -v
+Depends: build-essential, ninja-build, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools,
+Features: test-name=32_of_44__pytest__test_vulkan,
 Restrictions: allow-stderr
 
-# Py test 32/47
-Test-Command: cd test/ ; python3 run_test.py -pt -i test_type_info -v
-Depends: build-essential, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools,
-Features: test-name=33_of_47__pytest__test_type_info
+# Py test 32/44
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_quantization, -v
+Depends: build-essential, ninja-build, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools,
+Features: test-name=33_of_44__pytest__test_quantization,
 Restrictions: allow-stderr
 
-# Py test 33/47
-Test-Command: cd test/ ; python3 run_test.py -pt -i test_type_hints -v
-Depends: build-essential, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools,
-Features: test-name=34_of_47__pytest__test_type_hints
+# Py test 33/44
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_sparse, -v
+Depends: build-essential, ninja-build, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools,
+Features: test-name=34_of_44__pytest__test_sparse,
 Restrictions: allow-stderr
 
-# Py test 34/47
-Test-Command: cd test/ ; python3 run_test.py -pt -i test_utils -v
-Depends: build-essential, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools,
-Features: test-name=35_of_47__pytest__test_utils
+# Py test 34/44
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_spectral_ops, -v
+Depends: build-essential, ninja-build, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools,
+Features: test-name=35_of_44__pytest__test_spectral_ops,
 Restrictions: allow-stderr
 
-# Py test 35/47
-Test-Command: cd test/ ; python3 run_test.py -pt -i test_namedtuple_return_api -v
-Depends: build-essential, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools,
-Features: test-name=36_of_47__pytest__test_namedtuple_return_api
+# Py test 35/44
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_serialization, -v
+Depends: build-essential, ninja-build, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools,
+Features: test-name=36_of_44__pytest__test_serialization,
 Restrictions: allow-stderr
 
-# Py test 36/47
-Test-Command: cd test/ ; python3 run_test.py -pt -i test_jit_profiling -v
-Depends: build-essential, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools,
-Features: test-name=37_of_47__pytest__test_jit_profiling
+# Py test 36/44
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_show_pickle, -v
+Depends: build-essential, ninja-build, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools,
+Features: test-name=37_of_44__pytest__test_show_pickle,
 Restrictions: allow-stderr
 
-# Py test 37/47
-Test-Command: cd test/ ; python3 run_test.py -pt -i test_jit_legacy -v
-Depends: build-essential, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools,
-Features: test-name=38_of_47__pytest__test_jit_legacy
+# Py test 37/44
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_tensor_creation_ops, -v
+Depends: build-essential, ninja-build, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools,
+Features: test-name=38_of_44__pytest__test_tensor_creation_ops,
 Restrictions: allow-stderr
 
-# Py test 38/47
-Test-Command: cd test/ ; python3 run_test.py -pt -i test_jit_fuser_legacy -v
-Depends: build-essential, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools,
-Features: test-name=39_of_47__pytest__test_jit_fuser_legacy
+# Py test 38/44
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_torch, -v
+Depends: build-essential, ninja-build, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools,
+Features: test-name=39_of_44__pytest__test_torch,
 Restrictions: allow-stderr
 
-# Py test 39/47
-Test-Command: cd test/ ; python3 run_test.py -pt -i test_tensorboard -v
-Depends: build-essential, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools,
-Features: test-name=40_of_47__pytest__test_tensorboard
+# Py test 39/44
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_type_info, -v
+Depends: build-essential, ninja-build, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools,
+Features: test-name=40_of_44__pytest__test_type_info,
 Restrictions: allow-stderr
 
-# Py test 40/47
-Test-Command: cd test/ ; python3 run_test.py -pt -i test_namedtensor -v
-Depends: build-essential, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools,
-Features: test-name=41_of_47__pytest__test_namedtensor
+# Py test 40/44
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_type_hints, -v
+Depends: build-essential, ninja-build, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools,
+Features: test-name=41_of_44__pytest__test_type_hints,
 Restrictions: allow-stderr
 
-# Py test 41/47
-Test-Command: cd test/ ; python3 run_test.py -pt -i test_type_promotion -v
-Depends: build-essential, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools,
-Features: test-name=42_of_47__pytest__test_type_promotion
+# Py test 41/44
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_unary_ufuncs, -v
+Depends: build-essential, ninja-build, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools,
+Features: test-name=42_of_44__pytest__test_unary_ufuncs,
 Restrictions: allow-stderr
 
-# Py test 42/47
-Test-Command: cd test/ ; python3 run_test.py -pt -i test_jit_disabled -v
-Depends: build-essential, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools,
-Features: test-name=43_of_47__pytest__test_jit_disabled
+# Py test 42/44
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_utils, -v
+Depends: build-essential, ninja-build, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools,
+Features: test-name=43_of_44__pytest__test_utils,
 Restrictions: allow-stderr
 
-# Py test 43/47
-Test-Command: cd test/ ; python3 run_test.py -pt -i test_function_schema -v
-Depends: build-essential, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools,
-Features: test-name=44_of_47__pytest__test_function_schema
-Restrictions: allow-stderr
-
-# Py test 44/47
-Test-Command: cd test/ ; python3 run_test.py -pt -i test_overrides -v
-Depends: build-essential, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools,
-Features: test-name=45_of_47__pytest__test_overrides
-Restrictions: allow-stderr
-
-# Py test 45/47
-Test-Command: cd test/ ; python3 run_test.py -pt -i test_jit_fuser_te -v
-Depends: build-essential, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools,
-Features: test-name=46_of_47__pytest__test_jit_fuser_te
-Restrictions: allow-stderr
-
-# Py test 46/47
-Test-Command: cd test/ ; python3 run_test.py -pt -i test_tensorexpr -v
-Depends: build-essential, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools,
-Features: test-name=47_of_47__pytest__test_tensorexpr
+# Py test 43/44
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_vmap, -v
+Depends: build-essential, ninja-build, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools,
+Features: test-name=44_of_44__pytest__test_vmap,
 Restrictions: allow-stderr
 

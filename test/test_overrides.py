@@ -587,6 +587,16 @@ def generate_tensor_like_override_tests(cls):
                     raise RuntimeError(f"Unsupported argument type {t} for {arg['name']} of function {func}")
         else:
             args = inspect.getfullargspec(override)
+            try:
+                func_args = inspect.getfullargspec(func)
+                # Remove annotations from argspec
+                func_args = type(func_args)(**{**func_args, 'annotations': None})
+                if func_args != args:
+                    raise RuntimeError(f"Override for {func} doesn't match its argspec.\n"
+                                       + f"Original: {inspect.signature(func)}\n"
+                                       + f"Override: {inspect.signature(override)}")
+            except TypeError:
+                pass
             nargs = len(args.args)
             if args.defaults is not None:
                 nargs -= len(args.defaults)
@@ -806,6 +816,15 @@ class TestEinsumOverride(TestCase):
 #             torch.add,
 #         })
 
+class TestNamedTuple(TestCase):
+    "Regression test for gh-47090"
+    def test_max(self):
+        x = torch.tensor([1, 2])
+        xs = x.as_subclass(SubTensor2)
+        r = torch.max(x, dim=0)
+        rs = torch.max(xs, dim=0)
+        self.assertEqual(type(r), type(rs))
+        self.assertEqual(r, rs)
 
 if __name__ == '__main__':
     unittest.main()

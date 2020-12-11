@@ -1,3 +1,17 @@
+pytorch (1.7.1-1) UNRELEASED; urgency=medium
+
+  * New upstream version 1.7.1
+  * Disable OpenMPI in the distributed functionality of pytorch.
+    - Refresh symbols control file (remove those related to OpenMPI).
+    + Regenerate Autopkgtest control file after removing OpenMPI support.
+    + Explicitly specify USE_MPI=OFF in d/rules.
+  * Add missing runtime deps to autopkgtest and refresh.
+    - Autopkgtest: allow several tests to fail.
+    + Revamp of the python part of autopkgtest and adding missing B-Ds.
+  * Refresh symbols control file.
+
+ -- Mo Zhou <lumin@debian.org>  Fri, 11 Dec 2020 12:27:17 +0800
+
 pytorch (1.7.0-2) unstable; urgency=medium
 
   * Patch cmake to fix ppc64el and s390x FTBFS, really disabling XNNPACK.

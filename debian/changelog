@@ -1,4 +1,4 @@
-pytorch (1.7.1-1) UNRELEASED; urgency=medium
+pytorch (1.7.1-1) unstable; urgency=medium
 
   * New upstream version 1.7.1
   * Disable OpenMPI in the distributed functionality of pytorch.
@@ -6,10 +6,10 @@ pytorch (1.7.1-1) UNRELEASED; urgency=medium
     + Explicitly specify USE_MPI=OFF in d/rules.
   * Add missing runtime deps to autopkgtest and refresh.
     - Autopkgtest: allow several tests to fail. (Closes: #974210)
-    + Revamp of the python part of autopkgtest and adding missing B-Ds.
+    + Revamp of the python part of autopkgtest and add the missing B-Ds.
   * Get rid of the symbols control file. (Closes: #977533)
 
- -- Mo Zhou <lumin@debian.org>  Wed, 16 Dec 2020 14:35:01 +0800
+ -- Mo Zhou <lumin@debian.org>  Wed, 16 Dec 2020 20:58:19 +0800
 
 pytorch (1.7.0-2) unstable; urgency=medium
 

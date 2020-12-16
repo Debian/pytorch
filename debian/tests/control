@@ -1,6 +1,7 @@
 # Sanity test of python package
-Test-Command: python3 -c "import sys, torch as th; print(sys.version, th.__path__, th.__version__)"
+Test-Command: cd test/ ; python3 -c "import sys, torch as th; print(sys.version, th.__path__, th.__version__)"
 Depends: python3-torch,
+Restrictions: allow-stderr
 
 # Generating Autopkgtest Test Cases for the C++ Testing Programs
 # Found 141 tests

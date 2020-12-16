@@ -858,267 +858,267 @@ Restrictions: allow-stderr
 # Found 50 tests
 #
 # Py test 0/50
-Test-Command: cd test/ ; python3 run_test.py -pt -i test_autograd.py -v || true
+Test-Command: cd test/ ; python3 run_test.py -pt -i distributed/test_c10d.py -v || true
 Depends: build-essential, ninja-build, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools, pybind11-dev,
-Features: test-name=1_of_50__pytest__test_autograd
+Features: test-name=1_of_50__pytest__test_c10d
 Restrictions: allow-stderr
 
 # Py test 1/50
-Test-Command: cd test/ ; python3 run_test.py -pt -i test_bundled_inputs.py -v || if test 134 = $?; then true; else exit $?; fi
+Test-Command: cd test/ ; python3 run_test.py -pt -i distributed/test_c10d_spawn.py -v || true
 Depends: build-essential, ninja-build, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools, pybind11-dev,
-Features: test-name=2_of_50__pytest__test_bundled_inputs
+Features: test-name=2_of_50__pytest__test_c10d_spawn
 Restrictions: allow-stderr
 
 # Py test 2/50
-Test-Command: cd test/ ; python3 run_test.py -pt -i test_complex.py -v || if test 134 = $?; then true; else exit $?; fi
+Test-Command: cd test/ ; python3 run_test.py -pt -i distributed/test_data_parallel.py -v || true
 Depends: build-essential, ninja-build, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools, pybind11-dev,
-Features: test-name=3_of_50__pytest__test_complex
+Features: test-name=3_of_50__pytest__test_data_parallel
 Restrictions: allow-stderr
 
 # Py test 3/50
-Test-Command: cd test/ ; python3 run_test.py -pt -i test_cpp_api_parity.py -v || true
+Test-Command: cd test/ ; python3 run_test.py -pt -i distributed/test_distributed_fork.py -v || true
 Depends: build-essential, ninja-build, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools, pybind11-dev,
-Features: test-name=4_of_50__pytest__test_cpp_api_parity
+Features: test-name=4_of_50__pytest__test_distributed_fork
 Restrictions: allow-stderr
 
 # Py test 4/50
-Test-Command: cd test/ ; python3 run_test.py -pt -i test_cpp_extensions_aot_no_ninja.py -v || true
+Test-Command: cd test/ ; python3 run_test.py -pt -i distributed/test_distributed_spawn.py -v || true
 Depends: build-essential, ninja-build, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools, pybind11-dev,
-Features: test-name=5_of_50__pytest__test_cpp_extensions_aot_no_ninja
+Features: test-name=5_of_50__pytest__test_distributed_spawn
 Restrictions: allow-stderr
 
 # Py test 5/50
-Test-Command: cd test/ ; python3 run_test.py -pt -i test_cpp_extensions_aot_ninja.py -v || true
+Test-Command: cd test/ ; python3 run_test.py -pt -i distributed/test_nccl.py -v || true
 Depends: build-essential, ninja-build, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools, pybind11-dev,
-Features: test-name=6_of_50__pytest__test_cpp_extensions_aot_ninja
+Features: test-name=6_of_50__pytest__test_nccl
 Restrictions: allow-stderr
 
 # Py test 6/50
-Test-Command: cd test/ ; python3 run_test.py -pt -i test_cpp_extensions_jit.py -v || true
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_autograd.py -v || true
 Depends: build-essential, ninja-build, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools, pybind11-dev,
-Features: test-name=7_of_50__pytest__test_cpp_extensions_jit
+Features: test-name=7_of_50__pytest__test_autograd
 Restrictions: allow-stderr
 
 # Py test 7/50
-Test-Command: cd test/ ; python3 run_test.py -pt -i distributed/test_c10d.py -v || if test 134 = $?; then true; else exit $?; fi
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_bundled_inputs.py -v || if test 134 = $?; then true; else exit $?; fi
 Depends: build-essential, ninja-build, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools, pybind11-dev,
-Features: test-name=8_of_50__pytest__test_c10d
+Features: test-name=8_of_50__pytest__test_bundled_inputs
 Restrictions: allow-stderr
 
 # Py test 8/50
-Test-Command: cd test/ ; python3 run_test.py -pt -i distributed/test_c10d_spawn.py -v || if test 134 = $?; then true; else exit $?; fi
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_complex.py -v || if test 134 = $?; then true; else exit $?; fi
 Depends: build-essential, ninja-build, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools, pybind11-dev,
-Features: test-name=9_of_50__pytest__test_c10d_spawn
+Features: test-name=9_of_50__pytest__test_complex
 Restrictions: allow-stderr
 
 # Py test 9/50
-Test-Command: cd test/ ; python3 run_test.py -pt -i test_cuda.py -v || true
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_cpp_api_parity.py -v || true
 Depends: build-essential, ninja-build, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools, pybind11-dev,
-Features: test-name=10_of_50__pytest__test_cuda
+Features: test-name=10_of_50__pytest__test_cpp_api_parity
 Restrictions: allow-stderr
 
 # Py test 10/50
-Test-Command: cd test/ ; python3 run_test.py -pt -i test_jit_cuda_fuser.py -v || true
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_cpp_extensions_aot_ninja.py -v || true
 Depends: build-essential, ninja-build, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools, pybind11-dev,
-Features: test-name=11_of_50__pytest__test_jit_cuda_fuser
+Features: test-name=11_of_50__pytest__test_cpp_extensions_aot_ninja
 Restrictions: allow-stderr
 
 # Py test 11/50
-Test-Command: cd test/ ; python3 run_test.py -pt -i test_jit_cuda_fuser_legacy.py -v || true
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_cpp_extensions_aot_no_ninja.py -v || true
 Depends: build-essential, ninja-build, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools, pybind11-dev,
-Features: test-name=12_of_50__pytest__test_jit_cuda_fuser_legacy
+Features: test-name=12_of_50__pytest__test_cpp_extensions_aot_no_ninja
 Restrictions: allow-stderr
 
 # Py test 12/50
-Test-Command: cd test/ ; python3 run_test.py -pt -i test_jit_cuda_fuser_profiling.py -v || true
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_cpp_extensions_jit.py -v || true
 Depends: build-essential, ninja-build, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools, pybind11-dev,
-Features: test-name=13_of_50__pytest__test_jit_cuda_fuser_profiling
+Features: test-name=13_of_50__pytest__test_cpp_extensions_jit
 Restrictions: allow-stderr
 
 # Py test 13/50
-Test-Command: cd test/ ; python3 run_test.py -pt -i test_cuda_primary_ctx.py -v || if test 134 = $?; then true; else exit $?; fi
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_cuda.py -v || true
 Depends: build-essential, ninja-build, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools, pybind11-dev,
-Features: test-name=14_of_50__pytest__test_cuda_primary_ctx
+Features: test-name=14_of_50__pytest__test_cuda
 Restrictions: allow-stderr
 
 # Py test 14/50
-Test-Command: cd test/ ; python3 run_test.py -pt -i test_dataloader.py -v || true
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_cuda_primary_ctx.py -v || if test 134 = $?; then true; else exit $?; fi
 Depends: build-essential, ninja-build, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools, pybind11-dev,
-Features: test-name=15_of_50__pytest__test_dataloader
+Features: test-name=15_of_50__pytest__test_cuda_primary_ctx
 Restrictions: allow-stderr
 
 # Py test 15/50
-Test-Command: cd test/ ; python3 run_test.py -pt -i distributed/test_data_parallel.py -v || if test 134 = $?; then true; else exit $?; fi
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_dataloader.py -v || true
 Depends: build-essential, ninja-build, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools, pybind11-dev,
-Features: test-name=16_of_50__pytest__test_data_parallel
+Features: test-name=16_of_50__pytest__test_dataloader
 Restrictions: allow-stderr
 
 # Py test 16/50
-Test-Command: cd test/ ; python3 run_test.py -pt -i distributed/test_distributed_fork.py -v || if test 134 = $?; then true; else exit $?; fi
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_distributions.py -v || true
 Depends: build-essential, ninja-build, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools, pybind11-dev,
-Features: test-name=17_of_50__pytest__test_distributed_fork
+Features: test-name=17_of_50__pytest__test_distributions
 Restrictions: allow-stderr
 
 # Py test 17/50
-Test-Command: cd test/ ; python3 run_test.py -pt -i distributed/test_distributed_spawn.py -v || if test 134 = $?; then true; else exit $?; fi
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_expecttest.py -v || if test 134 = $?; then true; else exit $?; fi
 Depends: build-essential, ninja-build, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools, pybind11-dev,
-Features: test-name=18_of_50__pytest__test_distributed_spawn
+Features: test-name=18_of_50__pytest__test_expecttest
 Restrictions: allow-stderr
 
 # Py test 18/50
-Test-Command: cd test/ ; python3 run_test.py -pt -i test_distributions.py -v || true
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_foreach.py -v || if test 134 = $?; then true; else exit $?; fi
 Depends: build-essential, ninja-build, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools, pybind11-dev,
-Features: test-name=19_of_50__pytest__test_distributions
+Features: test-name=19_of_50__pytest__test_foreach
 Restrictions: allow-stderr
 
 # Py test 19/50
-Test-Command: cd test/ ; python3 run_test.py -pt -i test_expecttest.py -v || if test 134 = $?; then true; else exit $?; fi
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_indexing.py -v || if test 134 = $?; then true; else exit $?; fi
 Depends: build-essential, ninja-build, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools, pybind11-dev,
-Features: test-name=20_of_50__pytest__test_expecttest
+Features: test-name=20_of_50__pytest__test_indexing
 Restrictions: allow-stderr
 
 # Py test 20/50
-Test-Command: cd test/ ; python3 run_test.py -pt -i test_foreach.py -v || if test 134 = $?; then true; else exit $?; fi
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_jit.py -v || true
 Depends: build-essential, ninja-build, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools, pybind11-dev,
-Features: test-name=21_of_50__pytest__test_foreach
+Features: test-name=21_of_50__pytest__test_jit
 Restrictions: allow-stderr
 
 # Py test 21/50
-Test-Command: cd test/ ; python3 run_test.py -pt -i test_indexing.py -v || if test 134 = $?; then true; else exit $?; fi
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_jit_cuda_fuser.py -v || true
 Depends: build-essential, ninja-build, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools, pybind11-dev,
-Features: test-name=22_of_50__pytest__test_indexing
+Features: test-name=22_of_50__pytest__test_jit_cuda_fuser
 Restrictions: allow-stderr
 
 # Py test 22/50
-Test-Command: cd test/ ; python3 run_test.py -pt -i test_jit.py -v || true
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_jit_cuda_fuser_legacy.py -v || true
 Depends: build-essential, ninja-build, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools, pybind11-dev,
-Features: test-name=23_of_50__pytest__test_jit
+Features: test-name=23_of_50__pytest__test_jit_cuda_fuser_legacy
 Restrictions: allow-stderr
 
 # Py test 23/50
-Test-Command: cd test/ ; python3 run_test.py -pt -i test_linalg.py -v || true
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_jit_cuda_fuser_profiling.py -v || true
 Depends: build-essential, ninja-build, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools, pybind11-dev,
-Features: test-name=24_of_50__pytest__test_linalg
+Features: test-name=24_of_50__pytest__test_jit_cuda_fuser_profiling
 Restrictions: allow-stderr
 
 # Py test 24/50
-Test-Command: cd test/ ; python3 run_test.py -pt -i test_logging.py -v || if test 134 = $?; then true; else exit $?; fi
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_linalg.py -v || true
 Depends: build-essential, ninja-build, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools, pybind11-dev,
-Features: test-name=25_of_50__pytest__test_logging
+Features: test-name=25_of_50__pytest__test_linalg
 Restrictions: allow-stderr
 
 # Py test 25/50
-Test-Command: cd test/ ; python3 run_test.py -pt -i test_mkldnn.py -v || true
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_logging.py -v || if test 134 = $?; then true; else exit $?; fi
 Depends: build-essential, ninja-build, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools, pybind11-dev,
-Features: test-name=26_of_50__pytest__test_mkldnn
+Features: test-name=26_of_50__pytest__test_logging
 Restrictions: allow-stderr
 
 # Py test 26/50
-Test-Command: cd test/ ; python3 run_test.py -pt -i test_multiprocessing.py -v || true
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_mkldnn.py -v || true
 Depends: build-essential, ninja-build, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools, pybind11-dev,
-Features: test-name=27_of_50__pytest__test_multiprocessing
+Features: test-name=27_of_50__pytest__test_mkldnn
 Restrictions: allow-stderr
 
 # Py test 27/50
-Test-Command: cd test/ ; python3 run_test.py -pt -i test_multiprocessing_spawn.py -v || true
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_mobile_optimizer.py -v || true
 Depends: build-essential, ninja-build, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools, pybind11-dev,
-Features: test-name=28_of_50__pytest__test_multiprocessing_spawn
+Features: test-name=28_of_50__pytest__test_mobile_optimizer
 Restrictions: allow-stderr
 
 # Py test 28/50
-Test-Command: cd test/ ; python3 run_test.py -pt -i distributed/test_nccl.py -v || if test 134 = $?; then true; else exit $?; fi
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_multiprocessing.py -v || true
 Depends: build-essential, ninja-build, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools, pybind11-dev,
-Features: test-name=29_of_50__pytest__test_nccl
+Features: test-name=29_of_50__pytest__test_multiprocessing
 Restrictions: allow-stderr
 
 # Py test 29/50
-Test-Command: cd test/ ; python3 run_test.py -pt -i test_native_functions.py -v || true
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_multiprocessing_spawn.py -v || true
 Depends: build-essential, ninja-build, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools, pybind11-dev,
-Features: test-name=30_of_50__pytest__test_native_functions
+Features: test-name=30_of_50__pytest__test_multiprocessing_spawn
 Restrictions: allow-stderr
 
 # Py test 30/50
-Test-Command: cd test/ ; python3 run_test.py -pt -i test_nn.py -v || true
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_namedtuple_return_api.py -v || if test 134 = $?; then true; else exit $?; fi
 Depends: build-essential, ninja-build, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools, pybind11-dev,
-Features: test-name=31_of_50__pytest__test_nn
+Features: test-name=31_of_50__pytest__test_namedtuple_return_api
 Restrictions: allow-stderr
 
 # Py test 31/50
-Test-Command: cd test/ ; python3 run_test.py -pt -i test_numba_integration.py -v || if test 134 = $?; then true; else exit $?; fi
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_native_functions.py -v || true
 Depends: build-essential, ninja-build, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools, pybind11-dev,
-Features: test-name=32_of_50__pytest__test_numba_integration
+Features: test-name=32_of_50__pytest__test_native_functions
 Restrictions: allow-stderr
 
 # Py test 32/50
-Test-Command: cd test/ ; python3 run_test.py -pt -i test_ops.py -v || true
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_nn.py -v || true
 Depends: build-essential, ninja-build, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools, pybind11-dev,
-Features: test-name=33_of_50__pytest__test_ops
+Features: test-name=33_of_50__pytest__test_nn
 Restrictions: allow-stderr
 
 # Py test 33/50
-Test-Command: cd test/ ; python3 run_test.py -pt -i test_optim.py -v || true
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_numba_integration.py -v || if test 134 = $?; then true; else exit $?; fi
 Depends: build-essential, ninja-build, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools, pybind11-dev,
-Features: test-name=34_of_50__pytest__test_optim
+Features: test-name=34_of_50__pytest__test_numba_integration
 Restrictions: allow-stderr
 
 # Py test 34/50
-Test-Command: cd test/ ; python3 run_test.py -pt -i test_mobile_optimizer.py -v || true
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_ops.py -v || true
 Depends: build-essential, ninja-build, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools, pybind11-dev,
-Features: test-name=35_of_50__pytest__test_mobile_optimizer
+Features: test-name=35_of_50__pytest__test_ops
 Restrictions: allow-stderr
 
 # Py test 35/50
-Test-Command: cd test/ ; python3 run_test.py -pt -i test_xnnpack_integration.py -v || if test 134 = $?; then true; else exit $?; fi
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_optim.py -v || true
 Depends: build-essential, ninja-build, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools, pybind11-dev,
-Features: test-name=36_of_50__pytest__test_xnnpack_integration
+Features: test-name=36_of_50__pytest__test_optim
 Restrictions: allow-stderr
 
 # Py test 36/50
-Test-Command: cd test/ ; python3 run_test.py -pt -i test_vulkan.py -v || if test 134 = $?; then true; else exit $?; fi
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_quantization.py -v || true
 Depends: build-essential, ninja-build, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools, pybind11-dev,
-Features: test-name=37_of_50__pytest__test_vulkan
+Features: test-name=37_of_50__pytest__test_quantization
 Restrictions: allow-stderr
 
 # Py test 37/50
-Test-Command: cd test/ ; python3 run_test.py -pt -i test_quantization.py -v || true
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_serialization.py -v || if test 134 = $?; then true; else exit $?; fi
 Depends: build-essential, ninja-build, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools, pybind11-dev,
-Features: test-name=38_of_50__pytest__test_quantization
+Features: test-name=38_of_50__pytest__test_serialization
 Restrictions: allow-stderr
 
 # Py test 38/50
-Test-Command: cd test/ ; python3 run_test.py -pt -i test_sparse.py -v || true
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_show_pickle.py -v || if test 134 = $?; then true; else exit $?; fi
 Depends: build-essential, ninja-build, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools, pybind11-dev,
-Features: test-name=39_of_50__pytest__test_sparse
+Features: test-name=39_of_50__pytest__test_show_pickle
 Restrictions: allow-stderr
 
 # Py test 39/50
-Test-Command: cd test/ ; python3 run_test.py -pt -i test_spectral_ops.py -v || if test 134 = $?; then true; else exit $?; fi
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_sparse.py -v || true
 Depends: build-essential, ninja-build, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools, pybind11-dev,
-Features: test-name=40_of_50__pytest__test_spectral_ops
+Features: test-name=40_of_50__pytest__test_sparse
 Restrictions: allow-stderr
 
 # Py test 40/50
-Test-Command: cd test/ ; python3 run_test.py -pt -i test_serialization.py -v || if test 134 = $?; then true; else exit $?; fi
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_spectral_ops.py -v || if test 134 = $?; then true; else exit $?; fi
 Depends: build-essential, ninja-build, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools, pybind11-dev,
-Features: test-name=41_of_50__pytest__test_serialization
+Features: test-name=41_of_50__pytest__test_spectral_ops
 Restrictions: allow-stderr
 
 # Py test 41/50
-Test-Command: cd test/ ; python3 run_test.py -pt -i test_show_pickle.py -v || if test 134 = $?; then true; else exit $?; fi
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_tensor_creation_ops.py -v || if test 134 = $?; then true; else exit $?; fi
 Depends: build-essential, ninja-build, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools, pybind11-dev,
-Features: test-name=42_of_50__pytest__test_show_pickle
+Features: test-name=42_of_50__pytest__test_tensor_creation_ops
 Restrictions: allow-stderr
 
 # Py test 42/50
-Test-Command: cd test/ ; python3 run_test.py -pt -i test_tensor_creation_ops.py -v || if test 134 = $?; then true; else exit $?; fi
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_torch.py -v || true
 Depends: build-essential, ninja-build, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools, pybind11-dev,
-Features: test-name=43_of_50__pytest__test_tensor_creation_ops
+Features: test-name=43_of_50__pytest__test_torch
 Restrictions: allow-stderr
 
 # Py test 43/50
-Test-Command: cd test/ ; python3 run_test.py -pt -i test_torch.py -v || true
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_type_hints.py -v || if test 134 = $?; then true; else exit $?; fi
 Depends: build-essential, ninja-build, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools, pybind11-dev,
-Features: test-name=44_of_50__pytest__test_torch
+Features: test-name=44_of_50__pytest__test_type_hints
 Restrictions: allow-stderr
 
 # Py test 44/50
@@ -1128,32 +1128,32 @@ Features: test-name=45_of_50__pytest__test_type_info
 Restrictions: allow-stderr
 
 # Py test 45/50
-Test-Command: cd test/ ; python3 run_test.py -pt -i test_type_hints.py -v || if test 134 = $?; then true; else exit $?; fi
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_unary_ufuncs.py -v || if test 134 = $?; then true; else exit $?; fi
 Depends: build-essential, ninja-build, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools, pybind11-dev,
-Features: test-name=46_of_50__pytest__test_type_hints
+Features: test-name=46_of_50__pytest__test_unary_ufuncs
 Restrictions: allow-stderr
 
 # Py test 46/50
-Test-Command: cd test/ ; python3 run_test.py -pt -i test_unary_ufuncs.py -v || if test 134 = $?; then true; else exit $?; fi
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_utils.py -v || true
 Depends: build-essential, ninja-build, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools, pybind11-dev,
-Features: test-name=47_of_50__pytest__test_unary_ufuncs
+Features: test-name=47_of_50__pytest__test_utils
 Restrictions: allow-stderr
 
 # Py test 47/50
-Test-Command: cd test/ ; python3 run_test.py -pt -i test_utils.py -v || true
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_vmap.py -v || true
 Depends: build-essential, ninja-build, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools, pybind11-dev,
-Features: test-name=48_of_50__pytest__test_utils
+Features: test-name=48_of_50__pytest__test_vmap
 Restrictions: allow-stderr
 
 # Py test 48/50
-Test-Command: cd test/ ; python3 run_test.py -pt -i test_vmap.py -v || true
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_vulkan.py -v || if test 134 = $?; then true; else exit $?; fi
 Depends: build-essential, ninja-build, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools, pybind11-dev,
-Features: test-name=49_of_50__pytest__test_vmap
+Features: test-name=49_of_50__pytest__test_vulkan
 Restrictions: allow-stderr
 
 # Py test 49/50
-Test-Command: cd test/ ; python3 run_test.py -pt -i test_namedtuple_return_api.py -v || if test 134 = $?; then true; else exit $?; fi
+Test-Command: cd test/ ; python3 run_test.py -pt -i test_xnnpack_integration.py -v || if test 134 = $?; then true; else exit $?; fi
 Depends: build-essential, ninja-build, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools, pybind11-dev,
-Features: test-name=50_of_50__pytest__test_namedtuple_return_api
+Features: test-name=50_of_50__pytest__test_xnnpack_integration
 Restrictions: allow-stderr
 

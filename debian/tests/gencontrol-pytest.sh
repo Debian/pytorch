@@ -56,20 +56,36 @@ FILES=(
 )
 
 PERMISSIVE_LIST=(
-	test_utils
-	test_torch
-	test_quantization
-	test_xnnpack_integration
-	test_mobile_optimizer
-	test_native_functions
-	test_multiprocessing_spawn
-	test_mkldnn
-	test_jit
-	test_dataloader
-	test_jit_cuda_fuser_profiling
-	test_jit_cuda_fuser_legacy
-	test_jit_cuda_fuser
+	test_autograd 
+	test_c10d 
+	test_c10d_spawn 
+	test_cpp_api_parity 
+	test_cpp_extensions_aot_ninja 
+	test_cpp_extensions_aot_no_ninja 
+	test_cpp_extensions_jit 
 	test_cuda
+	test_dataloader
+	test_distributed_fork 
+	test_distributed_spawn 
+	test_distributions 
+	test_jit
+	test_jit_cuda_fuser
+	test_jit_cuda_fuser_legacy
+	test_jit_cuda_fuser_profiling
+	test_linalg 
+	test_mkldnn
+	test_mobile_optimizer
+	test_multiprocessing_spawn
+	test_native_functions
+	test_nccl 
+	test_nn 
+	test_ops 
+	test_optim 
+	test_quantization
+	test_sparse 
+	test_torch
+	test_utils
+	test_vmap 
 )
 
 echo "# Found" ${#FILES[@]} "tests"
@@ -78,9 +94,9 @@ echo "#"
 for (( i = 0; i < ${#FILES[@]}; i++ )); do
 	echo "# Py test ${i}/${#FILES[@]}"
 	if echo ${PERMISSIVE_LIST[@]} | grep -o ${FILES[$i]} >/dev/null 2>/dev/null; then
-		echo "Test-Command: cd test/ ; python3 run_test.py -pt -i ${FILES[$i]} -v || true"
+		echo "Test-Command: cd test/ ; python3 run_test.py -pt -i ${FILES[$i]}.py -v || true"
 	else
-		echo "Test-Command: cd test/ ; python3 run_test.py -pt -i ${FILES[$i]} -v"
+		echo "Test-Command: cd test/ ; python3 run_test.py -pt -i ${FILES[$i]}.py -v || if test 134 = \$?; then true; else exit \$?; fi"
 	fi
 	echo "Depends: build-essential, ninja-build, libtorch-dev, python3-torch, python3-pytest, python3-hypothesis, python3-setuptools, pybind11-dev,"
 	echo "Features: test-name=$((${i}+1))_of_${#FILES[@]}__pytest__$(basename ${FILES[$i]})"

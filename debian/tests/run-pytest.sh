@@ -62,7 +62,7 @@ for (( i = 0; i < ${#FILES[@]}; i++ )); do
 	echo
 	echo
 	echo "# Py test ${i}/${#FILES[@]} ${FILES[$i]}"
-	python3 run_test.py -pt -i ${FILES[$i]} -v
+	python3 -m pytest ${FILES[$i]}.py -v
 	if test 0 != $?; then
 		failed+=( ${Files[$i]} )
 	fi

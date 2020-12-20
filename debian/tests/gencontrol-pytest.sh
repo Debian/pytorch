@@ -70,6 +70,7 @@ PERMISSIVE_LIST=(
 	test_cuda
 	test_dataloader
 	test_distributions 
+	test_indexing
 	test_jit
 	test_jit_cuda_fuser
 	test_jit_cuda_fuser_legacy
@@ -83,8 +84,11 @@ PERMISSIVE_LIST=(
 	test_ops 
 	test_optim 
 	test_quantization
+	test_serialization
 	test_sparse 
+	test_tensor_creation_ops
 	test_torch
+	test_utils
 	test_utils
 	test_vmap 
 )

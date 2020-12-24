@@ -11,7 +11,6 @@ export PATCH = 0
 #export CXX=/usr/lib/ccache/g++
 
 # configurations
-export BLAS = OpenBLAS
 export CFLAGS = $(shell dpkg-buildflags --get CPPFLAGS) $(shell dpkg-buildflags --get CFLAGS) -gsplit-dwarf
 export CXXFLAGS = $(shell dpkg-buildflags --get CPPFLAGS) $(shell dpkg-buildflags --get CXXFLAGS) -gsplit-dwarf
 export NO_CUDA = 1 # Will never build CUDA version. Use Anaconda/Pip please.

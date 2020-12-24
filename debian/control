@@ -30,7 +30,8 @@ Build-Depends: cmake,
                libdnnl-dev [amd64 arm64 ppc64el],
                libnop-dev,
                libonnx-dev,
-               libopenblas-dev | libblas-dev,
+               libblas-dev,
+               liblapack-dev,
                libopencv-dev,
                libprotobuf-dev,
                libprotoc-dev,
@@ -103,6 +104,7 @@ Package: libtorch1.7
 Section: libs
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends},
+Recommends: libopenblas0 | libblis3 | libatlas3-base | libmkl-rt | libblas3,
 Description: Tensors and Dynamic neural networks in Python with strong GPU acceleration
  PyTorch is a Python package that provides two high-level features:
  .

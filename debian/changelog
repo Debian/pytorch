@@ -1,3 +1,9 @@
+pytorch (1.7.1-3) unstable; urgency=medium
+
+  * Build against generic BLAS/LAPACK instead of OpenBLAS.
+
+ -- Mo Zhou <lumin@debian.org>  Sun, 27 Dec 2020 19:47:18 +0800
+
 pytorch (1.7.1-2) unstable; urgency=medium
 
   * Update autopkgtest scripts.

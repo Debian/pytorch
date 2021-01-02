@@ -1,3 +1,9 @@
+pytorch (1.7.1-4) unstable; urgency=medium
+
+  * Allow more autopkgtest cases to fail on armhf.
+
+ -- Mo Zhou <lumin@debian.org>  Sat, 02 Jan 2021 17:17:42 +0800
+
 pytorch (1.7.1-3) unstable; urgency=medium
 
   * Build against generic BLAS/LAPACK instead of OpenBLAS.

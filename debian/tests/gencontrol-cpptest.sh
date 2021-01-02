@@ -11,6 +11,8 @@ PERMISSIVE_LIST=(
 /usr/lib/libtorch-test/cpuid_test
 /usr/lib/libtorch-test/c10_string_view_test
 /usr/lib/libtorch-test/blob_test
+/usr/lib/libtorch-test/generate_proposals_op_util_boxes_test
+/usr/lib/libtorch-test/generate_proposals_op_util_nms_test
 )
 
 for (( i = 0; i < ${#FILES[@]}; i++ )); do

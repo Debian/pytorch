@@ -1,3 +1,10 @@
+pytorch (1.7.1-5) unstable; urgency=medium
+
+  * Add libunwind-dev to avoid weird FTBFS (due to missing header).
+  * Require libonnx-dev (>= 1.7.0+dfsg-3) to avoid FTBFS (Closes: #980636)
+
+ -- Mo Zhou <lumin@debian.org>  Wed, 27 Jan 2021 18:38:00 +0800
+
 pytorch (1.7.1-4) unstable; urgency=medium
 
   * Allow more autopkgtest cases to fail on armhf.
